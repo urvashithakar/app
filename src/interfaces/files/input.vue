@@ -162,7 +162,7 @@ import { diff } from "deep-object-diff";
 import shortid from "shortid";
 
 export default {
-  name: "InterfaceManyToMany",
+  name: "InterfaceFiles",
   mixins: [mixin],
   data() {
     return {
@@ -177,7 +177,7 @@ export default {
 
       dragging: false,
 
-      items: null,
+      items: [],
       loading: false,
       error: null,
       stagedSelection: null,
