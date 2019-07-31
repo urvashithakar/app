@@ -5,7 +5,7 @@
       {{ $t("interfaces-translation-translation_not_setup") }}
     </p>
   </div>
-  <div v-else-if="languages && languages.length === 0" class="translation error">
+  <div v-else-if="!languages || languages.length === 0" class="translation error">
     <p>
       <v-icon name="warning" />
       {{ $t("interfaces-translation-translation_no_languages") }}
