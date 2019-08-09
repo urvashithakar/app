@@ -280,6 +280,8 @@ export default {
         params.fields = ["*"];
       } else if (this.fields.length > 0) {
         params.fields = _.clone(this.fields);
+      } else {
+        params.fields = []; // ISSUE#1865 Fixed Define the blank fields array to push the data.
       }
 
       let sortString = "";
