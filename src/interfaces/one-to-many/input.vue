@@ -44,7 +44,7 @@
             <div v-if="sortable" class="sort-column" :class="{ disabled: !manualSortActive }">
               <v-icon v-if="!readonly" name="drag_handle" class="drag-handle" />
             </div>
-            <div v-for="field in visibleFields" :key="field.field">
+            <div v-for="field in visibleFields" :key="field.field" class="field-preview">
               <v-ext-display
                 :interface-type="field.interface"
                 :name="field.field"
@@ -520,6 +520,7 @@ export default {
     > div {
       padding: 3px 5px;
       flex-basis: 200px;
+      max-width: 200px;
     }
   }
 
@@ -530,6 +531,7 @@ export default {
     & > button {
       padding: 3px 5px 2px;
       flex-basis: 200px;
+      max-width: 200px;
     }
   }
 
@@ -606,5 +608,10 @@ export default {
       [start] minmax(0, var(--column-width)) [half] minmax(0, var(--column-width))
       [full];
   }
+}
+
+.remove {
+  position: absolute;
+  right: 10px;
 }
 </style>
