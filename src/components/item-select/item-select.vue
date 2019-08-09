@@ -371,6 +371,7 @@ export default {
   display: block;
   top: 0px;
   font-weight: 500;
+  background-color: var(--white);
 }
 .items .head > * {
   display: table-cell;
@@ -414,6 +415,7 @@ export default {
   border: none;
   border-radius: 0;
   padding: 8px 0 8px 32px;
+  appearance: none;
 }
 .search-sort input[type="search"]::placeholder {
   color: var(--lighter-gray);
