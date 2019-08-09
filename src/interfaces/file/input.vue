@@ -9,13 +9,18 @@
       :icon="icon"
       :href="href"
       :options="{
+        deselect: {
+          text: $t('deselect'),
+          icon: 'clear'
+        },
         remove: {
           text: $t('delete'),
           icon: 'delete'
         }
       }"
       big-image
-      @remove="$emit('input', null)"
+      @deselect="$emit('input', null)"
+      @remove="removeFile"
     ></v-card>
     <v-upload
       v-else
@@ -219,6 +224,17 @@ export default {
       const file = value[value.length - 1];
       this.image = file;
       this.$emit("input", { id: file.id });
+    },
+    async removeFile() {
+      const file = this.value;
+      await this.$api.deleteItem("directus_files", file.id);
+      this.$notify({
+        title: this.$t("item_deleted"),
+        color: "green",
+        iconMain: "check"
+      });
+      this.image = null;
+      this.$emit("input", null);
     }
   }
 };
