@@ -286,9 +286,9 @@ export default {
 
       let sortString = "";
       if (this.sortDirection === "desc") sortString += "-";
-      sortString += this.sortField;
+      if (this.sortField) sortString += this.sortField;
 
-      params.sort = sortString;
+      if (sortString) params.sort = sortString;
 
       // No matter what, always fetch the primary key as that's used for the selection
       params.fields.push(this.primaryKeyField);
