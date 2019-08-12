@@ -1361,18 +1361,20 @@ export default {
           },
           {
             field: this.relationInfoM2M[0].field_many,
-            type: "integer",
+            type: this.primaryKeyFieldByCollection(this.relationInfoM2M[0].collection_one).type,
             length: 10,
-            datatype: "int",
+            datatype: this.primaryKeyFieldByCollection(this.relationInfoM2M[0].collection_one)
+              .datatype,
             interface: null,
             readonly: false,
             required: true
           },
           {
             field: this.relationInfoM2M[1].field_many,
-            type: "integer",
+            type: this.primaryKeyFieldByCollection(this.relationInfoM2M[1].collection_one).type,
             length: 10,
-            datatype: "int",
+            datatype: this.primaryKeyFieldByCollection(this.relationInfoM2M[1].collection_one)
+              .datatype,
             interface: null,
             readonly: false,
             required: true
@@ -1409,14 +1411,14 @@ export default {
       fieldDispatch[this.relationInfoM2M[0].field_many] = {
         collection: this.createM2MjunctionName,
         field: this.relationInfoM2M[0].field_many,
-        datatype: "int",
+        datatype: this.primaryKeyFieldByCollection(this.relationInfoM2M[0].collection_one).datatype,
         unique: false,
         primary_key: false,
         auto_increment: false,
         default_value: null,
         note: null,
         signed: true,
-        type: "integer",
+        type: this.primaryKeyFieldByCollection(this.relationInfoM2M[0].collection_one).type,
         sort: 0,
         interface: null,
         hidden_detail: true,
@@ -1434,14 +1436,14 @@ export default {
       fieldDispatch[this.relationInfoM2M[1].field_many] = {
         collection: this.createM2MjunctionName,
         field: this.relationInfoM2M[1].field_many,
-        datatype: "int",
+        datatype: this.primaryKeyFieldByCollection(this.relationInfoM2M[1].collection_one).datatype,
         unique: false,
         primary_key: false,
         auto_increment: false,
         default_value: null,
         note: null,
         signed: true,
-        type: "integer",
+        type: this.primaryKeyFieldByCollection(this.relationInfoM2M[1].collection_one).type,
         sort: 0,
         interface: null,
         hidden_detail: true,
