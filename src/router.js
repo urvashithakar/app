@@ -11,6 +11,7 @@ import Items from "./routes/items.vue";
 import FileLibrary from "./routes/file-library.vue";
 import Item from "./routes/item.vue";
 import Login from "./routes/login.vue";
+import TFAActivation from "./routes/2fa-activation.vue";
 import NotFound from "./routes/not-found.vue";
 import Interfaces from "./routes/settings/interfaces.vue";
 import InterfaceDebugger from "./routes/settings/interface-debugger.vue";
@@ -213,6 +214,13 @@ const router = new Router({
       }
     },
     {
+      path: "/2fa-activation",
+      component: TFAActivation,
+      meta: {
+        publicRoute: true
+      }
+    },
+    {
       path: "/logout",
       beforeEnter(to, from, next) {
         store.dispatch("logout");
@@ -234,6 +242,10 @@ router.beforeEach((to, from, next) => {
   store.commit(TOGGLE_INFO, false);
 
   if (loggedIn === false) {
+    if (to.path === "/2fa-activation") {
+      return next();
+    }
+
     if (publicRoute) {
       return next();
     }
@@ -266,7 +278,12 @@ router.beforeEach((to, from, next) => {
 });
 
 router.afterEach((to, from) => {
-  if (store.state.hydrated && from.path !== "/logout") {
+  // Prevent tracking if not logged in
+  if (to.path === "/2fa-activation" && api.loggedIn === false) {
+    return;
+  }
+
+  if ((store.state.hydrated && from.path !== "/logout") || to.path !== "/2fa-activation") {
     store.dispatch("track", { page: to.path });
   }
 });
