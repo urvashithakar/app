@@ -740,7 +740,7 @@ label.style-4 {
     top: 0;
     left: 0;
     cursor: pointer;
-    -webkit-appearance: menulist-button;
+    appearance: menulist-button;
   }
 }
 
