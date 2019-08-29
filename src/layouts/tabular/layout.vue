@@ -91,10 +91,15 @@ export default {
   methods: {
     sort(sortVal) {
       const sortValString = (sortVal.asc ? "" : "-") + sortVal.field;
-
-      this.$emit("query", {
-        sort: sortValString
-      });
+      const fieldValues = Object.values(this.fields);
+      var result = fieldValues.filter(
+        field => field.field == sortVal.field && field.type.toLowerCase() === "alias"
+      );
+      if (result.length == 0) {
+        this.$emit("query", {
+          sort: sortValString
+        });
+      }
     },
     setWidths(widths) {
       this.$emit("options", {
