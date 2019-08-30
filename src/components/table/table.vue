@@ -29,7 +29,8 @@
               !(
                 columns[index].fieldInfo.type.toLowerCase() === 'o2m' ||
                 columns[index].fieldInfo.type.toLowerCase() === 'm2o' ||
-                columns[index].fieldInfo.type.toLowerCase() === 'translation'
+                columns[index].fieldInfo.type.toLowerCase() === 'translation' ||
+                columns[index].fieldInfo.type.toLowerCase() === 'alias'
               )
           "
           :class="{ active: sortVal.field === field }"
@@ -45,6 +46,7 @@
           v-tooltip="
             (columns[index].fieldInfo && columns[index].fieldInfo.type.toLowerCase() === 'o2m') ||
             (columns[index].fieldInfo && columns[index].fieldInfo.type.toLowerCase() === 'm2o') ||
+            (columns[index].fieldInfo && columns[index].fieldInfo.type.toLowerCase() === 'alias') ||
             (columns[index].fieldInfo &&
               columns[index].fieldInfo.type.toLowerCase() === 'translation')
               ? $t('cant_sort_by_this_field')
