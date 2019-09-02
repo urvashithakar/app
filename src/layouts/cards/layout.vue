@@ -42,6 +42,7 @@
             :type="fields[title].type"
             :options="fields[title].options"
             :value="item[title]"
+            :values="item"
             :relation="fields[title].relation"
           />
         </template>
@@ -54,6 +55,7 @@
             :type="fields[subtitle].type"
             :options="fields[subtitle].options"
             :value="item[subtitle]"
+            :values="item"
             :relation="fields[subtitle].relation"
           />
         </template>
@@ -66,6 +68,7 @@
             :type="fields[content].type"
             :options="fields[content].options"
             :value="item[content]"
+            :values="item"
             :relation="fields[content].relation"
           />
         </template>
