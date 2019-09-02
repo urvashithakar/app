@@ -274,6 +274,13 @@ export default {
     viewQuery() {
       if (!this.preferences) return {};
 
+      // `Fields` computed property return the fields which need to displayed. Here we want all fields.
+      let fields = this.$store.state.collections[this.collection].fields;
+      fields = Object.values(fields).map(field => ({
+        ...field,
+        name: this.$helpers.formatTitle(field.field)
+      }));
+
       const viewQuery =
         (this.preferences.view_query && this.preferences.view_query[this.viewType]) || {};
 
@@ -281,7 +288,7 @@ export default {
       // Sorting / querying fields that don't exist anymore will return
       // a 422 in the API and brick the app
 
-      const collectionFieldNames = this.fields.map(f => f.field);
+      const collectionFieldNames = fields.map(f => f.field);
 
       if (viewQuery.fields) {
         viewQuery.fields = viewQuery.fields
