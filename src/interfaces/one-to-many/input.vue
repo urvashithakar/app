@@ -53,6 +53,7 @@
                 :datatype="field.datatype"
                 :options="field.options"
                 :value="String(item[field.field]).startsWith('$temp_') ? null : item[field.field]"
+                :values="item"
               />
             </div>
             <button

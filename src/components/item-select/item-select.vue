@@ -94,6 +94,7 @@
               :datatype="fieldInfo.datatype"
               :options="fieldInfo.options"
               :value="item[fieldInfo.field]"
+              :values="getItemValueByID(item.id)"
             />
           </span>
         </label>
@@ -284,6 +285,14 @@ export default {
         params.fields = []; // ISSUE#1865 Fixed Define the blank fields array to push the data.
       }
 
+      const fieldsData = this.fields.map(fieldName => {
+        return this.$store.state.collections[this.collection].fields[fieldName];
+      });
+
+      // ISSUE#1993 Preview Field URL Doesn't Contain Variable in List
+      var result = fieldsData.filter(field => field.type.toLowerCase() === "alias");
+      if (result.length > 0) params.fields = ["*.*"];
+
       let sortString = "";
       if (this.sortDirection === "desc") sortString += "-";
       if (this.sortField) sortString += this.sortField;
@@ -346,6 +355,10 @@ export default {
         offset: offset,
         replace: false
       });
+    },
+    getItemValueByID(id) {
+      var value = this.items.filter(item => item.id == id);
+      return Object.assign({}, value[0]);
     }
   }
 };

@@ -393,9 +393,8 @@ export default {
       Object.assign(params, this.viewQuery);
 
       if (this.viewQuery && this.viewQuery.fields) {
-        if (params.fields instanceof Array == false)
-          params.fields = params.fields.split(",");
-          
+        if (params.fields instanceof Array == false) params.fields = params.fields.split(",");
+
         params.fields = params.fields.map(field => `${field}.*`);
 
         if (!params.fields.includes(this.primaryKeyField)) {
@@ -406,6 +405,11 @@ export default {
       } else {
         params.fields = "*.*";
       }
+
+      // ISSUE#1993 Preview Field URL Doesn't Contain Variable in List
+      const fieldValues = Object.values(this.fields);
+      var result = fieldValues.filter(field => field.type.toLowerCase() === "alias");
+      if (result.length > 0) params.fields = "*.*";
 
       if (this.searchQuery) {
         params.q = this.searchQuery;

@@ -124,11 +124,19 @@
               }"
               class="cell"
             >
-              <div v-if="row[field] === '' || isNil(row[field])" class="empty">
+              <div
+                v-if="
+                  (row[field] === '' || isNil(row[field])) &&
+                    fieldInfo.type.toLowerCase() != 'alias'
+                "
+                class="empty"
+              >
                 --
               </div>
               <v-ext-display
-                v-else-if="useInterfaces && !isNil(row[field])"
+                v-else-if="
+                  useInterfaces && (!isNil(row[field]) || fieldInfo.type.toLowerCase() == 'alias')
+                "
                 :id="field"
                 :interface-type="fieldInfo.interface"
                 :name="field"
