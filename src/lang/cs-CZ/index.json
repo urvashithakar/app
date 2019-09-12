@@ -202,7 +202,7 @@
     "status": "Systémové pole používané pro publikování workflow",
     "string": "Any text, numbers, spaces, or symbols; defined and limited by its length (number of characters)",
     "time": "Čas, např.: 14:09:22",
-    "translation": "Specifické pro překladová rozhraní, toto spojení 1:N ukládá vícejazyčný obsah",
+    "translation": "Specific to translation interfaces, this o2m stores multi-lingual content",
     "user_created": "Systémové pole pro sledování uživatele, který vytvořil položku, používáno pro revize",
     "user_updated": "Systémové pole pro sledování uživatele, který aktualizoval položku, používáno pro revize",
     "uuid": "Univerzálně jedinečný identifikátor"
