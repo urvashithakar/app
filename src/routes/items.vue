@@ -30,6 +30,14 @@
       />
       <template slot="buttons">
         <v-header-button
+          v-if="this.$store.state.currentUser.admin"
+          :label="$t('settings')"
+          icon="settings"
+          icon-color="lighter_gray"
+          no-background
+          @click="editCollection()"
+        />
+        <v-header-button
           v-if="editButton && !activity"
           key="edit"
           icon="mode_edit"
@@ -494,6 +502,10 @@ export default {
   },
   methods: {
     keyBy: _.keyBy,
+    editCollection() {
+      if (!this.$store.state.currentUser.admin) return;
+      this.$router.push(`/settings/collections/${this.collection}`);
+    },
     closeBookmark() {
       this.bookmarkModal = false;
     },
@@ -694,7 +706,8 @@ label.style-4 {
   padding-bottom: 5px;
 }
 
-.bookmark {
+.bookmark,
+.settings {
   margin-left: 5px;
   position: relative;
 
