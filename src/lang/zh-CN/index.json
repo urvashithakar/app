@@ -125,7 +125,7 @@
   "discard_changes": "不保存修改并离开此页",
   "display_name": "显示名称",
   "done": "已完成",
-  "dont_manage": "不要管理",
+  "dont_manage": "不管理",
   "dont_manage_copy": "即将永久删除 {collection} 集合的权限、首选项和设置! 你确定吗?",
   "dont_show": "不显示",
   "drop_files": "不能拖放多个文件 | 拖放单个文件到此处... | 拖放多个文件到此处...",
@@ -181,7 +181,7 @@
   "field_width_fill": "填充页面",
   "field_width_note": "此字段在表单布局中的宽度。宽度换行不同，表单中的位置也可能会受影响（加上字段的排列顺序不同）。",
   "fields": "字段",
-  "fields_are_saved_instantly": "立即保存修改",
+  "fields_are_saved_instantly": "字段的变化将会立即得到保存",
   "fieldtypes": {
     "alias": "不保存数据或数据库没有对应列的字段",
     "array": "API响应的标准数组格式",
