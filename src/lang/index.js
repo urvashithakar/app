@@ -78,6 +78,7 @@ export const availableLanguages = {
   "el-GR": "Greek (Greece)",
   "he-IL": "Hebrew (Israel)",
   "hu-HU": "Hungarian (Hungary)",
+  "id-ID": "Indonesian (Indonesia)",
   "it-IT": "Italian (Italy)",
   "ja-JP": "Japanese (Japan)",
   "ko-KR": "Korean (Korea)",
