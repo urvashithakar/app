@@ -62,7 +62,7 @@ export async function loadLanguageAsync(lang) {
   return Promise.resolve(lang);
 }
 
-// Array of available languages in the system
+// List of available languages in the system
 export const availableLanguages = {
   "af-ZA": "Afrikaans (South Africa)",
   "ar-SA": "Arabic (Saudi Arabia)",
