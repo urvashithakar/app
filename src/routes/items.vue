@@ -427,7 +427,7 @@ export default {
       this.selection.forEach(item => {
         const status = this.statusField ? item[this.statusField] : null;
         const permission = this.statusField ? this.permission.statuses[status] : this.permission;
-        const userID = item[this.userCreatedField];
+        const userID = item[this.userCreatedField] ? item[this.userCreatedField].id : null;
 
         if (permission.delete === "none") {
           return (enabled = false);
@@ -439,7 +439,7 @@ export default {
 
         if (permission.delete === "role") {
           const userRoles = this.$store.state.users[userID].roles;
-          const currentUserRoles = this.$store.state.currentUser.roles;
+          const currentUserRoles = _.map(this.$store.state.currentUser.roles, "id");
           let contains = false;
 
           userRoles.forEach(role => {
@@ -465,7 +465,7 @@ export default {
       this.selection.forEach(item => {
         const status = this.statusField ? item[this.statusField] : null;
         const permission = this.statusField ? this.permission.statuses[status] : this.permission;
-        const userID = item[this.userCreatedField];
+        const userID = item[this.userCreatedField] ? item[this.userCreatedField].id : null;
 
         if (permission.update === "none") {
           return (enabled = false);
@@ -477,7 +477,7 @@ export default {
 
         if (permission.update === "role") {
           const userRoles = this.$store.state.users[userID].roles;
-          const currentUserRoles = this.$store.state.currentUser.roles;
+          const currentUserRoles = _.map(this.$store.state.currentUser.roles, "id");
           let contains = false;
 
           userRoles.forEach(role => {
