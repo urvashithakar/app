@@ -32,7 +32,7 @@ Directus is an open-source suite of software that provides an instant API wrappe
 
 * **[Directus API](https://github.com/directus/api)** — Wraps any new or existing SQL database with RESTful JSON endpoints for connecting content anywhere: websites, native apps, wearables, IoT devices, kiosks, or anything else!
 * **[Directus Admin App](https://github.com/directus/app)** — A friendly admin interface built with Vue.js that works in conjunction with our API to allow non-technical users to manage database content and digital assets.
-* **[Directus Suite](https://github.com/directus/directus)** A package that combines our API, Admin App, and all dependencies for quick and easy installation on most servers.
+* **[Directus Suite](https://github.com/directus/directus)** A package that combines our API, admin app, and all dependencies for quick and easy installation on most servers.
 
 <p>&nbsp;</p>
 
