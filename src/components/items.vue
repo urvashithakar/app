@@ -60,6 +60,7 @@
 
 <script>
 import formatFilters from "../helpers/format-filters";
+import getFieldsFromTemplate from "@/helpers/get-fields-from-template";
 
 export default {
   name: "VItems",
@@ -401,15 +402,26 @@ export default {
           params.fields.push(this.primaryKeyField);
         }
 
+        // ISSUE#1993 Preview Field URL Doesn't Contain Variable in List
+        const aliasFields = Object.values(this.fields).filter(
+          field => field.type.toLowerCase() === "alias"
+        );
+        if (aliasFields.length > 0) {
+          _.forEach(aliasFields, function(value) {
+            if (value.options.url_template.match(/{{(.*)}}/g)) {
+              const templateFields = getFieldsFromTemplate(value.options.url_template)[0];
+              const field = templateFields.split(".")[0];
+              if (!params.fields.includes(`${field}.*`) && !params.fields.includes(field)) {
+                params.fields.push(`${field}.*`);
+              }
+            }
+          });
+        }
+
         params.fields = params.fields.join(",");
       } else {
         params.fields = "*.*";
       }
-
-      // ISSUE#1993 Preview Field URL Doesn't Contain Variable in List
-      const fieldValues = Object.values(this.fields);
-      var result = fieldValues.filter(field => field.type.toLowerCase() === "alias");
-      if (result.length > 0) params.fields = "*.*";
 
       if (this.searchQuery) {
         params.q = this.searchQuery;

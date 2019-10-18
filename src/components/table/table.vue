@@ -127,7 +127,7 @@
               <div
                 v-if="
                   (row[field] === '' || isNil(row[field])) &&
-                    fieldInfo.type.toLowerCase() != 'alias'
+                    (fieldInfo && fieldInfo.type.toLowerCase() != 'alias')
                 "
                 class="empty"
               >
@@ -135,7 +135,8 @@
               </div>
               <v-ext-display
                 v-else-if="
-                  useInterfaces && (!isNil(row[field]) || fieldInfo.type.toLowerCase() == 'alias')
+                  useInterfaces &&
+                    (!isNil(row[field]) || (fieldInfo && fieldInfo.type.toLowerCase() === 'alias'))
                 "
                 :id="field"
                 :interface-type="fieldInfo.interface"

@@ -356,8 +356,8 @@ export default {
       });
     },
     getItemValueById(id) {
-      var value = this.items.filter(item => item.id == id);
-      return Object.assign({}, value[0]);
+      const value = this.items.filter(item => item.id == id)[0];
+      return Object.assign({}, value);
     }
   }
 };
