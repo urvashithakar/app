@@ -331,12 +331,17 @@ export default {
         !_.isEmpty(this.preferences.filters) ||
         (!_.isNil(this.preferences.search_query) && this.preferences.search_query.length > 0);
 
+      /* total_count returns the total number of data in collection.So for mine and 
+         role only permissions it also returns the same.So to fix it removed
+         total_count from item_count and added result_count.
+         Issue Fix 2122
+      */
       return isFiltering
         ? this.$tc("item_count_filter", this.meta.result_count, {
             count: this.$n(this.meta.result_count)
           })
-        : this.$tc("item_count", this.meta.total_count, {
-            count: this.$n(this.meta.total_count)
+        : this.$tc("item_count", this.meta.result_count, {
+            count: this.$n(this.meta.result_count)
           });
     },
     filterableFieldNames() {
