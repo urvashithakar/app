@@ -194,6 +194,20 @@ export default {
             };
           }
 
+          if (this.savedPermissions[collection] && this.savedPermissions[collection]["$create"]) {
+            permissions[collection]["$create"] = {
+              ...permissions[collection]["$create"],
+              ...this.savedPermissions[collection]["$create"]
+            };
+          }
+
+          if (this.permissionEdits[collection] && this.permissionEdits[collection]["$create"]) {
+            permissions[collection]["$create"] = {
+              ...permissions[collection]["$create"],
+              ...this.permissionEdits[collection]["$create"]
+            };
+          }
+
           return;
         }
 
@@ -223,10 +237,20 @@ export default {
 
           return;
         });
+        if (this.savedPermissions[collection] && this.savedPermissions[collection]["$create"]) {
+          permissions[collection]["$create"] = {
+            ...permissions[collection]["$create"],
+            ...this.savedPermissions[collection]["$create"]
+          };
+        }
 
-        permissions[collection].$create = defaultPermission;
+        if (this.permissionEdits[collection] && this.permissionEdits[collection]["$create"]) {
+          permissions[collection]["$create"] = {
+            ...permissions[collection]["$create"],
+            ...this.permissionEdits[collection]["$create"]
+          };
+        }
       });
-
       return permissions;
     }
   },
@@ -390,25 +414,25 @@ export default {
 
             if (Object.keys(this.permissionEdits[collection]) === 0) return;
           }
+          if (!_.isEmpty(this.permissionEdits[collection])) {
+            const id =
+              (this.savedPermissions[collection] && this.savedPermissions[collection].id) || null;
 
-          const id =
-            (this.savedPermissions[collection] && this.savedPermissions[collection].id) || null;
-
-          if (id) {
-            update.push({
-              id,
-              ...this.permissionEdits[collection]
-            });
-          } else {
-            create.push({
-              collection,
-              role: this.role.id,
-              ...this.permissionEdits[collection]
-            });
+            if (id) {
+              update.push({
+                id,
+                ...this.permissionEdits[collection]
+              });
+            } else {
+              create.push({
+                collection,
+                role: this.role.id,
+                ...this.permissionEdits[collection]
+              });
+            }
           }
         }
       });
-
       return Promise.all([
         create.length > 0 ? this.$api.createPermissions(create) : Promise.resolve(),
         update.length > 0 ? this.$api.updatePermissions(update) : Promise.resolve()
@@ -461,13 +485,11 @@ export default {
           const savedPermissions = {};
 
           permissions.forEach(permission => {
+            if (!savedPermissions[permission.collection])
+              savedPermissions[permission.collection] = {};
             if (permission.status == null) {
-              savedPermissions[permission.collection] = {
-                ...permission
-              };
+              Object.assign(savedPermissions[permission.collection], permission);
             } else {
-              if (!savedPermissions[permission.collection])
-                savedPermissions[permission.collection] = {};
               savedPermissions[permission.collection][permission.status] = {
                 ...permission
               };
