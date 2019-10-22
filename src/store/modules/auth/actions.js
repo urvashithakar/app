@@ -1,6 +1,7 @@
 import jwtPayload from "@rijk/jwt-payload";
 import { mapKeys } from "lodash";
 import formatTitle from "@directus/format-title";
+import hydrateStore from "../../../hydrate";
 import { i18n } from "../../../lang/";
 import api from "../../../api";
 import router from "../../../router";
@@ -16,7 +17,6 @@ import {
   SWITCH_PROJECT
 } from "../../mutation-types";
 import { stopPolling } from "../../../polling";
-import { tokenPayload } from "./getters";
 
 const config = window.__DirectusConfig__; // eslint-disable-line
 const urls = config
@@ -64,11 +64,13 @@ export function login({ commit }, credentials) {
       project,
       persist: true
     })
-    .then(info => {
-      let payload = tokenPayload(info);
-      if (payload.needs2FA === true) {
-        throw { code: 113, message: "2FA enforced but not enabled by user", token: info.token };
-      }
+    .then(async info => {
+      // let payload = tokenPayload(info);
+      // if (payload.needs2FA === true) {
+      //   throw { code: 113, message: "2FA enforced but not enabled by user", token: info.token };
+      // }
+
+      await hydrateStore();
 
       commit(LOGIN_SUCCESS, {
         ...info,

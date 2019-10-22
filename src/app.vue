@@ -119,6 +119,10 @@ export default {
   created() {
     this.bodyClass();
 
+    if (this.$store.state.projects === null) {
+      this.$store.dispatch("getProjects");
+    }
+
     const shouldLoadLocale =
       window.__DirectusConfig__ &&
       window.__DirectusConfig__.defaultLocale &&

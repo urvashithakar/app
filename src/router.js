@@ -5,7 +5,6 @@ import store from "./store";
 import { TOGGLE_NAV, TOGGLE_INFO } from "./store/mutation-types";
 import { i18n } from "./lang/";
 import EventBus from "./events/";
-import hydrateStore from "./hydrate";
 import Collections from "./routes/collections.vue";
 import Items from "./routes/items.vue";
 import FileLibrary from "./routes/file-library.vue";
@@ -28,15 +27,13 @@ import ModalDebug from "./routes/modal-debug.vue";
 
 Vue.use(Router);
 
-const routerMode = window.__DirectusConfig__ && window.__DirectusConfig__.routerMode;
-
 const base =
   process.env.NODE_ENV === "production" // eslint-disable-line
     ? window.__DirectusConfig__ && window.__DirectusConfig__.routerBaseUrl
     : "/";
 
 const router = new Router({
-  mode: routerMode || "hash",
+  mode: "hash",
   base: base || "/",
   // Make sure that the page is scrolled to the top on navigation
   scrollBehavior(to, from, savedPosition) {
@@ -234,52 +231,45 @@ const router = new Router({
   ]
 });
 
-router.beforeEach((to, from, next) => {
-  const loggedIn = api.loggedIn;
+router.beforeEach(async (to, from, next) => {
   const publicRoute = to.matched.some(record => record.meta.publicRoute);
 
   store.commit(TOGGLE_NAV, false);
   store.commit(TOGGLE_INFO, false);
 
-  if (loggedIn === false) {
-    if (to.path === "/2fa-activation") {
-      return next();
-    }
+  let loggedIn = false;
 
-    if (publicRoute) {
-      return next();
-    }
+  try {
+    const currentProject = await api.projectInfo();
+    loggedIn = currentProject.data.public !== true;
+  } catch {}
 
-    //This check prevents the default redirect query parameter which is "/collections"
-    if (from.fullPath === "/" && to.redirectedFrom === "/") {
-      return next({ path: "/login" });
-    }
+  if (loggedIn) return next();
 
-    //If user tried to open the private route and not logged in.
-    //Save the path in query as to 'redirect'
-    return next({
-      path: "/login",
-      query: { redirect: to.fullPath }
-    });
+  if (to.path === "/2fa-activation") {
+    return next();
   }
 
-  // NOTE: This is first load
-  if (store.state.hydrated === false) {
-    return hydrateStore().then(() => {
-      if (store.getters.editing) {
-        const { collection, primaryKey } = store.state.edits;
-        return next(`/collections/${collection}/${primaryKey}`);
-      }
-      return next();
-    });
+  if (publicRoute) {
+    return next();
   }
 
-  return next();
+  //This check prevents the default redirect query parameter which is "/collections"
+  if (from.fullPath === "/" && to.redirectedFrom === "/") {
+    return next({ path: "/login" });
+  }
+
+  //If user tried to open the private route and not logged in.
+  //Save the path in query as to 'redirect'
+  return next({
+    path: "/login",
+    query: { redirect: to.fullPath }
+  });
 });
 
-router.afterEach((to, from) => {
+router.afterEach(to => {
   // Prevent tracking if not logged in
-  if (store.state.hydrated && api.loggedIn === true) {
+  if (store.state.hydrated) {
     const pathsToIgnore = ["/2fa-activation", "/logout", "/login"];
     if (!pathsToIgnore.includes(to.path)) {
       store.dispatch("track", { page: to.path });

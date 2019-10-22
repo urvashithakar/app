@@ -74,3 +74,6 @@ export const SET_USERS = "👯‍♀️ Set Users";
 // Notifications
 export const PUSH_NOTIFICATION = "💬 Push Notification";
 export const REMOVE_NOTIFICATION = "💬❌ Remove Notification";
+
+// Projects
+export const SET_PROJECTS = "🌟 Set Projects";

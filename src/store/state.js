@@ -9,5 +9,6 @@ export default {
     nav: false,
     info: false
   },
-  queue: []
+  queue: [],
+  projects: null
 };

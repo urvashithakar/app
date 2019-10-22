@@ -10,7 +10,8 @@ import {
   TOGGLE_NAV,
   TOGGLE_INFO,
   LOADING_START,
-  LOADING_FINISHED
+  LOADING_FINISHED,
+  SET_PROJECTS
 } from "./mutation-types";
 
 const mutations = {
@@ -71,6 +72,10 @@ const mutations = {
 
   [LOADING_FINISHED](state, id) {
     state.queue = state.queue.filter(req => req.id !== id);
+  },
+
+  [SET_PROJECTS](state, projects) {
+    state.projects = projects;
   }
 };
 

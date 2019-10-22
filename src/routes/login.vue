@@ -12,19 +12,19 @@
 
         <label class="project-switcher">
           <select
-            v-if="Object.keys(urls).length > 1 || allowOther"
+            v-if="urls.length > 1 || allowOther"
             id="selectedUrl"
             v-model="selectedUrl"
             :disabled="loading"
             name="selectedUrl"
           >
             <option
-              v-for="(name, u) in urls"
-              :key="u"
-              :value="u"
-              :checked="u === url || u === url + '/'"
+              v-for="info in urls"
+              :key="info.url"
+              :value="info.url"
+              :checked="info.url === url || info.url === url + '/'"
             >
-              {{ name }}
+              {{ info.project_name }}
             </option>
             <option v-if="allowOther" value="other">{{ $t("other") }}</option>
           </select>
@@ -32,7 +32,7 @@
           <span>
             {{ urls[selectedUrl] || $t("choose_project") }}
             <v-icon
-              v-if="Object.keys(urls).length > 1 || allowOther"
+              v-if="urls.length > 1 || allowOther"
               size="18"
               class="icon"
               name="arrow_drop_down"
@@ -164,7 +164,7 @@
 </template>
 
 <script>
-import sdk from "@directus/sdk-js";
+import { SDK } from "@directus/sdk-js";
 import { version } from "../../package.json";
 
 import VInstall from "../components/install.vue";
@@ -204,10 +204,7 @@ export default {
   },
   computed: {
     urls() {
-      if (!window.__DirectusConfig__) return;
-      return _.mapKeys(window.__DirectusConfig__.api, (val, key) =>
-        key.endsWith("/") === false ? key + "/" : key
-      );
+      return this.$store.state.projects || [];
     },
     allowOther() {
       if (!window.__DirectusConfig__) return;
@@ -427,14 +424,11 @@ export default {
       this.gettingThirdPartyAuthProviders = true;
       this.thirdPartyAuthProviders = null;
 
-      const scopedAPI = new sdk();
-
       const parts = this.url.split("/");
       const env = parts.pop() || parts.pop();
-      const newUrl = parts.join("/");
+      const url = parts.join("/");
 
-      scopedAPI.env = env;
-      scopedAPI.url = newUrl;
+      const scopedAPI = new SDK({ url, env });
 
       scopedAPI
         .getThirdPartyAuthProviders()
