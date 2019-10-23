@@ -42,7 +42,7 @@ export default {
       const blacklist = this.blacklist;
 
       _.forEach(allStatuses, function(value) {
-        if (blacklist.includes(value.value)) {
+        if (blacklist && blacklist.includes(value.value)) {
           value.readonly = true;
         }
       });

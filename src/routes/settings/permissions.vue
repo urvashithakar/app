@@ -237,6 +237,9 @@ export default {
 
           return;
         });
+
+        permissions[collection].$create = defaultPermission;
+
         if (this.savedPermissions[collection] && this.savedPermissions[collection]["$create"]) {
           permissions[collection]["$create"] = {
             ...permissions[collection]["$create"],
