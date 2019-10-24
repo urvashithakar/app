@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import createPersistedState from "vuex-persistedstate";
 
 import auth from "./modules/auth/";
 import extensions from "./modules/extensions";
@@ -38,7 +39,14 @@ const store = new Vuex.Store({
     serverInfo,
     notifications,
     settings
-  }
+  },
+  plugins: [
+    createPersistedState({
+      key: "directus-app",
+      paths: ["currentProject"],
+      storage: window.sessionStorage
+    })
+  ]
 });
 
 // Make a clone of the current Vuex state without the reactivity
