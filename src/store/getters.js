@@ -26,3 +26,8 @@ export function signalStrength(state) {
 
   return 0;
 }
+
+export function currentProject(state) {
+  if (!state.projects) return null;
+  return state.projects[state.currentProject];
+}
