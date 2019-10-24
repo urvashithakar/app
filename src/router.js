@@ -10,7 +10,9 @@ import Items from "./routes/items.vue";
 import FileLibrary from "./routes/file-library.vue";
 import Item from "./routes/item.vue";
 import Login from "./routes/login.vue";
-import TFAActivation from "./routes/2fa-activation.vue";
+import Setup2FA from "./routes/setup-2fa.vue";
+import ForgotPassword from "./routes/forgot-password.vue";
+import Install from "./routes/install.vue";
 import NotFound from "./routes/not-found.vue";
 import Interfaces from "./routes/settings/interfaces.vue";
 import InterfaceDebugger from "./routes/settings/interface-debugger.vue";
@@ -204,15 +206,25 @@ const router = new Router({
       component: Login,
       meta: {
         publicRoute: true
-      },
-      beforeEnter(to, from, next) {
-        if (api.loggedIn) return next(false);
-        return next();
       }
     },
     {
-      path: "/2fa-activation",
-      component: TFAActivation,
+      path: "/forgot-password",
+      component: ForgotPassword,
+      meta: {
+        publicRoute: true
+      }
+    },
+    {
+      path: "/install",
+      component: Install,
+      meta: {
+        publicRoute: true
+      }
+    },
+    {
+      path: "/setup-2fa",
+      component: Setup2FA,
       meta: {
         publicRoute: true
       }
@@ -237,6 +249,18 @@ router.beforeEach(async (to, from, next) => {
   store.commit(TOGGLE_NAV, false);
   store.commit(TOGGLE_INFO, false);
 
+  if (store.state.projects === null) {
+    await store.dispatch("getProjects");
+  }
+
+  if (to.path === "/setup-2fa") {
+    return next();
+  }
+
+  if (publicRoute) {
+    return next();
+  }
+
   let loggedIn = false;
 
   try {
@@ -245,14 +269,6 @@ router.beforeEach(async (to, from, next) => {
   } catch {}
 
   if (loggedIn) return next();
-
-  if (to.path === "/2fa-activation") {
-    return next();
-  }
-
-  if (publicRoute) {
-    return next();
-  }
 
   //This check prevents the default redirect query parameter which is "/collections"
   if (from.fullPath === "/" && to.redirectedFrom === "/") {
@@ -270,7 +286,7 @@ router.beforeEach(async (to, from, next) => {
 router.afterEach(to => {
   // Prevent tracking if not logged in
   if (store.state.hydrated) {
-    const pathsToIgnore = ["/2fa-activation", "/logout", "/login"];
+    const pathsToIgnore = ["/setup-2fa", "/logout", "/login"];
     if (!pathsToIgnore.includes(to.path)) {
       store.dispatch("track", { page: to.path });
     }
