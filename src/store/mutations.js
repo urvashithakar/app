@@ -11,7 +11,8 @@ import {
   TOGGLE_INFO,
   LOADING_START,
   LOADING_FINISHED,
-  SET_PROJECTS
+  SET_PROJECTS,
+  SET_CURRENT_PROJECT
 } from "./mutation-types";
 
 const mutations = {
@@ -76,6 +77,10 @@ const mutations = {
 
   [SET_PROJECTS](state, projects) {
     state.projects = projects;
+  },
+
+  [SET_CURRENT_PROJECT](state, index) {
+    state.currentProject = index;
   }
 };
 
