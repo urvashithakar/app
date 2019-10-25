@@ -12,7 +12,8 @@ import {
   LOADING_START,
   LOADING_FINISHED,
   SET_PROJECTS,
-  SET_CURRENT_PROJECT
+  SET_CURRENT_PROJECT,
+  UPDATE_PROJECT
 } from "./mutation-types";
 
 const mutations = {
@@ -80,7 +81,14 @@ const mutations = {
   },
 
   [SET_CURRENT_PROJECT](state, index) {
-    state.currentProject = index;
+    state.currentProjectIndex = index;
+  },
+
+  [UPDATE_PROJECT](state, { index, data }) {
+    state.projects[index] = {
+      ...state.projects[index],
+      ...data
+    };
   }
 };
 

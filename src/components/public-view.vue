@@ -9,6 +9,7 @@
         />
       </a>
       <div class="content"><slot /></div>
+      <div class="notice"><slot name="notice" /></div>
     </div>
     <div class="art" :style="artStyles">
       <img v-if="project_logo" :src="project_logo" :alt="project_name" />
@@ -87,6 +88,14 @@ export default {
 
 .content {
   width: 100%;
+}
+
+.notice {
+  position: absolute;
+  bottom: 40px;
+  left: 80px;
+  user-select: none;
+  pointer-events: none;
 }
 
 .art {

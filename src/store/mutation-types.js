@@ -78,3 +78,4 @@ export const REMOVE_NOTIFICATION = "💬❌ Remove Notification";
 // Projects
 export const SET_PROJECTS = "🌟 Set Projects";
 export const SET_CURRENT_PROJECT = "🌟 Set Current Project";
+export const UPDATE_PROJECT = "🌟 Update Project";

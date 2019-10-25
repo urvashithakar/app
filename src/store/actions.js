@@ -123,6 +123,16 @@ export async function getProjects({ commit }) {
       project_icon
     } = response.data.data.api;
     const authenticated = response.data.public === undefined;
+
+    // NOTE: The app config has the URL as a single string, including project. However, the SDK needs
+    // URL and Project separated in order to work correctly. The following extracts the project from
+    // the URL.
+    if (url.endsWith("/") === false) url += "/";
+    const urlParts = url.split("/").filter(s => s);
+    const project = urlParts[urlParts.length - 1];
+    url = url.slice(0, -1);
+    url = url.substring(0, url.lastIndexOf("/"));
+
     return {
       project_name,
       project_logo,
@@ -130,7 +140,12 @@ export async function getProjects({ commit }) {
       project_image,
       project_icon,
       url,
-      authenticated
+      project,
+      authenticated,
+      version: null,
+      database: null,
+      requires2FA: null,
+      max_upload_size: null
     };
   }
 }

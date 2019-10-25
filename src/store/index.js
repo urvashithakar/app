@@ -2,7 +2,6 @@ import Vue from "vue";
 import Vuex from "vuex";
 import createPersistedState from "vuex-persistedstate";
 
-import auth from "./modules/auth/";
 import extensions from "./modules/extensions";
 import collections from "./modules/collections";
 import edits from "./modules/edits";
@@ -29,7 +28,6 @@ const store = new Vuex.Store({
   mutations,
   strict: debug,
   modules: {
-    auth,
     collections,
     extensions,
     edits,
@@ -59,8 +57,5 @@ export function resetState() {
   // This will make a clone to modify, so the original initialStateCopy stays
   // as-is
   const newState = JSON.parse(JSON.stringify(initialStateCopy));
-  newState.auth.projectName = store.state.auth.projectName;
-  newState.auth.project = store.state.auth.project;
-  newState.auth.url = store.state.auth.url;
   store.replaceState(newState);
 }

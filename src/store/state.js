@@ -11,5 +11,5 @@ export default {
   },
   queue: [],
   projects: null,
-  currentProject: 0
+  currentProjectIndex: 0
 };

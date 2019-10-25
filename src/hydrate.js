@@ -17,7 +17,8 @@ export default function hydrateStore() {
       store.dispatch("getBookmarks"),
       store.dispatch("getUsers"),
       store.dispatch("getRelations"),
-      store.dispatch("getServerInfo")
+      store.dispatch("getServerInfo"),
+      store.dispatch("getProjects")
     ])
       // Getting permissions relies on the current user and collection info
       // that's why it's being called after the others are done
