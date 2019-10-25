@@ -115,8 +115,22 @@ export async function getProjects({ commit }) {
 
   async function fetchProjectInfo(url) {
     const response = await axios.get(url);
-    const { project_name, project_logo } = response.data.data.api;
+    const {
+      project_name,
+      project_logo,
+      project_color,
+      project_image,
+      project_icon
+    } = response.data.data.api;
     const authenticated = response.data.public === undefined;
-    return { project_name, project_logo, url, authenticated };
+    return {
+      project_name,
+      project_logo,
+      project_color,
+      project_image,
+      project_icon,
+      url,
+      authenticated
+    };
   }
 }
