@@ -40,7 +40,7 @@ Directus is an open-source suite of software that provides an instant API wrappe
 
 ### Database-First
 
-Directus follows a database-first approach, storing all of your data _unaltered_ in pure SQL databases with that can be completely cusotmized.
+Directus follows a database-first approach, storing all of your data _unaltered_ in pure SQL databases that can be completely cusotmized.
 
 #### Access and Optimization
 
