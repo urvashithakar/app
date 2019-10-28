@@ -1,7 +1,14 @@
 <template functional>
   <span class="public-notice" :style="{ color: `var(--${props.color})` }">
-    <v-icon :name="props.icon" :color="props.color" />
-    <slot />
+    <v-spinner
+      v-if="props.loading"
+      :size="20"
+      :line-size="2"
+      line-fg-color="var(--blue-grey)"
+      line-bg-color="var(--blue-grey-100)"
+    />
+    <v-icon v-if="!props.loading && props.icon" :name="props.icon" :color="props.color" />
+    <span class="copy"><slot /></span>
   </span>
 </template>
 
@@ -15,7 +22,11 @@ export default {
     },
     icon: {
       type: String,
-      required: true
+      default: null
+    },
+    loading: {
+      type: Boolean,
+      default: false
     }
   }
 };
@@ -26,5 +37,9 @@ export default {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+
+.copy {
+  margin-left: 8px;
 }
 </style>

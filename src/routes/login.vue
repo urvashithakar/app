@@ -2,13 +2,21 @@
   <PublicView>
     <h1>{{ $t("sign_in") }}</h1>
     <form @submit.prevent="logIn">
-      <ProjectChooser />
-      <input v-model="email" type="email" :placeholder="$t('email')" />
-      <input v-model="password" type="password" :placeholder="$t('password')" />
+      <project-chooser />
+      <input v-model="email" type="email" :placeholder="$t('email')" required />
+      <input v-model="password" type="password" :placeholder="$t('password')" required />
       <router-link to="/forgot-password">{{ $t("forgot_password") }}</router-link>
       <button type="submit">{{ $t("sign_in") }}</button>
     </form>
-    <PublicNotice slot="notice" color="warning" icon="warning">This is a warning</PublicNotice>
+    <public-notice
+      v-if="notice.text"
+      slot="notice"
+      :loading="signingIn"
+      :color="notice.color"
+      :icon="notice.icon"
+    >
+      {{ notice.text }}
+    </public-notice>
   </PublicView>
 </template>
 
@@ -30,7 +38,13 @@ export default {
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
+      signingIn: false,
+      notice: {
+        text: null,
+        color: null,
+        icon: null
+      }
     };
   },
   computed: {
@@ -42,6 +56,13 @@ export default {
     logIn() {
       const { url, project } = this.currentProject;
       const { email, password } = this;
+      this.signingIn = true;
+
+      this.notice = {
+        text: this.$t("signing_in"),
+        color: "blue-grey",
+        icon: null
+      };
 
       this.$api
         .login({
@@ -66,13 +87,45 @@ export default {
             }
           });
 
+          this.notice = {
+            text: this.$t("fetching_data")
+          };
+
+          // This will fetch all the needed information about the project in order to run Directus
           await hydrateStore();
 
-          // TODO: Base this on user's last page and or ref param
-          this.$router.push("/collections");
+          // Default to /collections as homepage
+          let route = "/collections";
+
+          // If the last visited page is saved in the current user record, use that
+          if (this.$store.state.currentUser.last_page) {
+            route = this.$store.state.currentUser.last_page;
+          }
+
+          // In the case the URL contains a redirect query, use that instead
+          if (this.$route.query.redirect) {
+            route = this.$route.query.redirect;
+          }
+
+          this.$router.push(route);
         })
-        // TODO: Render this error to notice slot
-        .catch(console.error);
+        .catch(error => {
+          const { code } = error;
+          if (code) {
+            this.notice = {
+              text: this.$t(`errors.${code}`),
+              color: "warning",
+              icon: "warning"
+            };
+          } else {
+            this.notice = {
+              text: this.$t(`errors.-1`),
+              color: "danger",
+              icon: "error_outline"
+            };
+          }
+        })
+        .finally(() => (this.signingIn = false));
     }
   }
 };
