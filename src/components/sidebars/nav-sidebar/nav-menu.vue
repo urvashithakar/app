@@ -1,5 +1,6 @@
 <template>
   <div v-if="links.length > 0" class="nav-menu">
+    <h3 v-if="title" class="style-4">{{ title }}</h3>
     <nav>
       <ul>
         <li v-for="{ path, name, target, icon, color } in links" :key="path">
