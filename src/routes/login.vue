@@ -1,12 +1,17 @@
 <template>
   <PublicView>
     <h1>{{ $t("sign_in") }}</h1>
-    <form @submit.prevent="logIn">
+    <form @submit.prevent="onSubmit">
       <project-chooser />
-      <input v-model="email" type="email" :placeholder="$t('email')" required />
-      <input v-model="password" type="password" :placeholder="$t('password')" required />
-      <router-link to="/forgot-password">{{ $t("forgot_password") }}</router-link>
-      <button type="submit">{{ $t("sign_in") }}</button>
+      <button v-if="currentProject.authenticated" type="submit">
+        {{ $t("continue_as", { name: firstName }) }}
+      </button>
+      <template v-else>
+        <input v-model="email" type="email" :placeholder="$t('email')" required />
+        <input v-model="password" type="password" :placeholder="$t('password')" required />
+        <router-link to="/forgot-password">{{ $t("forgot_password") }}</router-link>
+        <button type="submit">{{ $t("sign_in") }}</button>
+      </template>
     </form>
     <public-notice
       v-if="notice.text"
@@ -44,16 +49,45 @@ export default {
         text: null,
         color: null,
         icon: null
-      }
+      },
+      firstName: null
     };
   },
   computed: {
     ...mapGetters(["currentProject"]),
     ...mapState(["currentProjectIndex"])
   },
+  watch: {
+    currentProjectIndex() {
+      this.fetchProjectInfo();
+    }
+  },
   methods: {
     ...mapMutations([UPDATE_PROJECT]),
-    logIn() {
+    async enterApp() {
+      this.notice = {
+        text: this.$t("fetching_data")
+      };
+
+      // This will fetch all the needed information about the project in order to run Directus
+      await hydrateStore();
+
+      // Default to /collections as homepage
+      let route = "/collections";
+
+      // If the last visited page is saved in the current user record, use that
+      if (this.$store.state.currentUser.last_page) {
+        route = this.$store.state.currentUser.last_page;
+      }
+
+      // In the case the URL contains a redirect query, use that instead
+      if (this.$route.query.redirect) {
+        route = this.$route.query.redirect;
+      }
+
+      this.$router.push(route);
+    },
+    login() {
       const { url, project } = this.currentProject;
       const { email, password } = this;
       this.signingIn = true;
@@ -87,27 +121,7 @@ export default {
             }
           });
 
-          this.notice = {
-            text: this.$t("fetching_data")
-          };
-
-          // This will fetch all the needed information about the project in order to run Directus
-          await hydrateStore();
-
-          // Default to /collections as homepage
-          let route = "/collections";
-
-          // If the last visited page is saved in the current user record, use that
-          if (this.$store.state.currentUser.last_page) {
-            route = this.$store.state.currentUser.last_page;
-          }
-
-          // In the case the URL contains a redirect query, use that instead
-          if (this.$route.query.redirect) {
-            route = this.$route.query.redirect;
-          }
-
-          this.$router.push(route);
+          this.enterApp();
         })
         .catch(error => {
           const { code } = error;
@@ -126,7 +140,30 @@ export default {
           }
         })
         .finally(() => (this.signingIn = false));
+    },
+    onSubmit() {
+      if (this.currentProject.authenticated) {
+        return this.enterApp();
+      } else {
+        return this.login();
+      }
+    },
+    // Fetches SSO providers for unauthenticated projects, and the users first name for authenticated
+    // projects
+    async fetchProjectInfo() {
+      this.firstName = null;
+
+      if (this.currentProject.authenticated) {
+        this.$api.config.url = this.currentProject.url;
+        this.$api.config.project = this.currentProject.project;
+
+        const { data } = await this.$api.getMe({ fields: "first_name" });
+        this.firstName = data.first_name;
+      }
     }
+  },
+  created() {
+    this.fetchProjectInfo();
   }
 };
 </script>

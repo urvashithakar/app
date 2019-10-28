@@ -62,6 +62,7 @@
   "confirm": "Confirm",
   "connection": "Connection",
   "contains": "Contains",
+  "continue_as": "Continue as {name}",
   "cozy": "Cozy",
   "create": "Create",
   "create_collection": "Create Collection",

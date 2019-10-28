@@ -1,11 +1,12 @@
 module.exports = {
   lintOnSave: false,
-  publicPath: process.env.NODE_ENV === "production" ? "" : "/",
+  publicPath: process.env.NODE_ENV === "production" ? "" : "/admin/",
 
   devServer: {
-    allowedHosts: ['localhost', '.gitpod.io'],
+    allowedHosts: ["localhost", ".gitpod.io"],
+    proxy: process.env.API_URL
   },
-  
+
   // There are so many chunks (from all the interfaces / layouts) that we need to make sure to not
   // prefetch them all. Prefetching them all will cause the server to apply rate limits in most cases
   chainWebpack: config => {
