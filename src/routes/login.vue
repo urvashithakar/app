@@ -9,7 +9,7 @@
       <template v-else>
         <input v-model="email" type="email" :placeholder="$t('email')" required />
         <input v-model="password" type="password" :placeholder="$t('password')" required />
-        <router-link to="/forgot-password">{{ $t("forgot_password") }}</router-link>
+        <router-link class="forgot" to="/forgot-password">{{ $t("forgot_password") }}</router-link>
         <button type="submit">{{ $t("sign_in") }}</button>
       </template>
     </form>
@@ -174,3 +174,98 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+button {
+  position: relative;
+  background-color: var(--darkest-gray);
+  border: 2px solid var(--darkest-gray);
+  border-radius: var(--border-radius);
+  color: var(--white);
+  width: 100%;
+  height: 60px;
+  max-width: 154px;
+  padding: 18px 10px;
+  font-size: 16px;
+  font-weight: 400;
+  transition: background-color var(--fast) var(--transition);
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+
+  &:not([disabled]) {
+    &:hover {
+      background-color: var(--darkest-gray);
+      border-color: var(--darkest-gray);
+    }
+  }
+
+  &.outline {
+    background-color: transparent;
+    color: var(--darkest-gray);
+
+    &[disabled] {
+      background-color: transparent;
+    }
+
+    &:not([disabled]) {
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+input {
+  position: relative;
+  width: 100%;
+  margin-bottom: 32px;
+  border: 0;
+  font-size: 16px;
+  border: 2px solid var(--blue-grey-100);
+  width: 100%;
+  padding: 20px 10px;
+  color: var(--darker-gray);
+  transition: border-color var(--fast) var(--transition);
+  border-radius: var(--border-radius);
+
+  &::placeholder {
+    color: var(--light-gray);
+  }
+
+  &:-webkit-autofill {
+    color: var(--darker-gray) !important;
+    -webkit-text-fill-color: var(--darker-gray);
+    -webkit-box-shadow: 0 0 0px 1000px var(--white) inset;
+  }
+
+  &:hover:not([disabled]) {
+    transition: none;
+    border-color: var(--gray);
+    &:focus {
+      border-color: var(--darker-gray);
+    }
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    outline: 0;
+    border-color: var(--darker-gray);
+
+    &:-webkit-autofill {
+      color: var(--darker-gray) !important;
+      -webkit-text-fill-color: var(--darker-gray);
+      -webkit-box-shadow: 0 0 0px 1000px var(--white) inset;
+    }
+  }
+}
+
+.forgot {
+  display: block;
+  text-align: right;
+}
+</style>
