@@ -47,18 +47,19 @@ body {
 
 .type-heading-large {
   font-size: 48px;
+  font-weight: 300;
   color: var(--blue-grey-900);
 }
 
 .type-heading-medium {
   font-size: 28px;
-  font-weight: 300; // Look if this is needed
+  font-weight: 300;
+  line-height: 1.4; // Look if this is needed
   color: var(--blue-grey-800);
 }
 
-// Currently only used as modal heading
-// make "-small"
-.type-heading {
+// Currently only used as modal/error heading
+.type-heading-small {
   font-size: 18px;
   color: var(--blue-grey-800);
 }
@@ -118,20 +119,6 @@ fieldset {
 }
 
 // TODO: Get rid of the old font classes below once the places they're used are cleaned up
-
-.style-0 {
-  color: var(--blue-grey-800);
-  font-size: 28px;
-  line-height: 1.4;
-  font-weight: 300;
-}
-
-.style-1 {
-  color: var(--green);
-  font-size: 18px;
-  line-height: 1.4;
-  font-weight: 400;
-}
 
 .style-btn {
   color: var(--white);

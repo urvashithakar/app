@@ -4,7 +4,7 @@
       <div class="circle" :style="{ borderColor: 'var(--' + color + ')' }">
         <v-icon class="icon" :class="icon" :name="icon" size="48" :color="color" />
       </div>
-      <h2 class="type-heading" :style="{ color: 'var(--' + color + ')' }">{{ title }}</h2>
+      <h2 class="type-heading-small" :style="{ color: 'var(--' + color + ')' }">{{ title }}</h2>
       <p>{{ body }}</p>
     </div>
   </transition>

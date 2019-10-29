@@ -10,7 +10,7 @@
   >
     <template slot="interface">
       <template v-if="!existing">
-        <h1 class="style-0">{{ $t("choose_interface") }}</h1>
+        <h1 class="type-heading-medium">{{ $t("choose_interface") }}</h1>
       </template>
       <v-notice v-if="interfaceName" color="gray" class="currently-selected">
         {{ $t("currently_selected", { thing: interfaces[interfaceName].name }) }}
@@ -72,7 +72,7 @@
 
     <template v-if="interfaceName" slot="schema">
       <template v-if="!existing">
-        <h1 class="style-0">
+        <h1 class="type-heading-medium">
           {{ $t("name_field", { field: $helpers.formatTitle(interfaces[interfaceName].name) }) }}
         </h1>
       </template>
@@ -203,7 +203,7 @@
 
     <template v-if="selectedInterfaceInfo && relation" slot="relation">
       <template v-if="!existing">
-        <h1 class="style-0">{{ $t("relation_setup", { relation: $t(relation) }) }}</h1>
+        <h1 class="type-heading-medium">{{ $t("relation_setup", { relation: $t(relation) }) }}</h1>
       </template>
 
       <form v-if="relation === 'm2o'" class="single">
@@ -480,7 +480,7 @@
 
     <template slot="options">
       <template v-if="!existing">
-        <h1 class="style-0">{{ $t("almost_done_options") }}</h1>
+        <h1 class="type-heading-medium">{{ $t("almost_done_options") }}</h1>
       </template>
 
       <label for="__width" class="type-label">{{ $t("field_width") }}</label>
@@ -1496,7 +1496,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.style-0 {
+.type-heading-medium {
   max-width: 80%;
   margin-bottom: 30px;
 }

@@ -22,7 +22,7 @@
               {{ actionRequired ? null : $t("esc_cancel") }}
             </div>
             <header v-if="title">
-              <h1 id="modal-title" class="type-heading">{{ title }}</h1>
+              <h1 id="modal-title" class="type-heading-small">{{ title }}</h1>
               <button v-if="!actionRequired" @click="$emit('close')">
                 <v-icon name="close" />
               </button>
