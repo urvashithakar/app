@@ -135,6 +135,7 @@
 <script>
 import { version } from "../../../package.json";
 import VSignal from "../../components/signal.vue";
+import { mapGetters } from "vuex";
 
 export default {
   name: "Settings",
@@ -155,6 +156,7 @@ export default {
     };
   },
   computed: {
+    ...mapGetters(["currentProject"]),
     globalNum() {
       return Object.keys(this.$store.state.collections.directus_settings.fields).length;
     },
@@ -164,7 +166,7 @@ export default {
       ).length;
     },
     projectName() {
-      return this.$store.state.auth.projectName;
+      return this.currentProject.project_name;
     },
     interfaceCount() {
       return Object.keys(this.$store.state.extensions.interfaces).length;

@@ -30,7 +30,7 @@
 import PublicView from "@/components/public-view";
 import PublicNotice from "@/components/public/notice";
 import Sso from "@/components/public/sso";
-import ProjectChooser from "@/components/project-chooser";
+import ProjectChooser from "@/components/public/project-chooser";
 import { mapState, mapGetters, mapMutations } from "vuex";
 import { UPDATE_PROJECT } from "@/store/mutation-types";
 import hydrateStore from "@/hydrate";
