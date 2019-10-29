@@ -27,11 +27,11 @@ export default {
 <style lang="scss" scoped>
 .change {
   width: 100%;
-  margin-top: 14px;
+  margin-top: 16px;
 
   p {
     margin-bottom: 4px;
-    color: var(--blue-grey-300);
+    // color: var(--blue-grey-300);
   }
 
   .diff {
@@ -51,6 +51,8 @@ export default {
     color: var(--danger);
     background-color: var(--white);
     border-bottom: 2px solid var(--blue-grey-50);
+    max-height: 300px;
+    overflow: auto;
     &:after {
       content: "close";
       position: absolute;
@@ -70,6 +72,8 @@ export default {
     position: relative;
     color: var(--success);
     background-color: var(--white);
+    max-height: 300px;
+    overflow: auto;
     &:after {
       content: "check";
       position: absolute;

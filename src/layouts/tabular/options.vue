@@ -2,7 +2,7 @@
   <form @submit.prevent>
     <fieldset>
       <legend class="type-label">{{ $t("layouts-tabular-fields") }}</legend>
-      <draggable v-model="sortList" handle=".handle" @end="sort">
+      <draggable v-model="sortList" direction="vertical" @end="sort">
         <div
           v-for="field in sortList"
           :key="'tabular-layout-options-field-' + field.field"
@@ -119,7 +119,7 @@ fieldset {
 }
 
 label {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   margin-top: 30px;
 }
 
@@ -130,6 +130,12 @@ label {
   cursor: ns-resize;
   padding: 2px 0;
 
+  &:hover {
+    i {
+      color: var(--input-border-color-hover);
+    }
+  }
+
   .checkbox {
     max-width: 125px;
     label {
@@ -138,7 +144,8 @@ label {
   }
 
   i {
-    color: var(--blue-grey-200);
+    transition: all var(--fast) var(--transition);
+    color: var(--input-border-color);
   }
 }
 </style>

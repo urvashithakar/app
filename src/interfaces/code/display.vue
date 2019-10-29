@@ -49,7 +49,7 @@ i.material-icons {
   cursor: help;
 
   &.empty {
-    color: var(--blue-grey-200);
+    color: var(--empty-value);
   }
 }
 </style>

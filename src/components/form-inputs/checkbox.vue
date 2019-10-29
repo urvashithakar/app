@@ -97,7 +97,7 @@ label {
 
   &:hover:not(:disabled) .checkbox,
   .user-is-tabbing &:focus {
-    color: var(--blue-grey-600);
+    color: var(--input-border-color-hover);
   }
 
   .checkbox {
@@ -113,6 +113,6 @@ label {
 
 input:checked + label .checkbox,
 input:checked + label:hover:not(:disabled) .checkbox {
-  color: var(--blue-grey-900);
+  color: var(--input-border-color-focus);
 }
 </style>

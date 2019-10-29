@@ -6,10 +6,9 @@
       :body="$t('server_error_copy')"
       color="danger"
     />
-    <p>
+    <p class="try-again">
       Try again later or
-      <router-link to="/logout">login to another instance</router-link>
-      .
+      <router-link to="/logout">login to a different project</router-link>
     </p>
   </div>
 
@@ -223,6 +222,11 @@ body.info-wide-active {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.try-again {
+  position: absolute;
+  bottom: 40px;
 }
 
 .public {

@@ -44,7 +44,11 @@
           @click="updateSort(field)"
         >
           {{ widths[field] > 40 ? name : null }}
-          <v-icon class="sort-arrow" :name="sortVal.asc ? 'arrow_upward' : 'arrow_downward'" />
+          <v-icon
+            class="sort-arrow"
+            size="12"
+            :name="sortVal.asc ? 'arrow_upward' : 'arrow_downward'"
+          />
         </button>
 
         <span
@@ -506,13 +510,13 @@ export default {
 
 .drag-handle-line {
   background-color: var(--blue-grey-50);
-  width: 1px;
+  width: 2px;
   height: 60%;
   transition: background-color var(--fast) var(--transition);
 }
 
 .drag-handle:hover .drag-handle-line {
-  background-color: var(--blue-grey-400);
+  background-color: var(--input-border-color-hover);
 }
 
 .toolbar:hover .drag-handle {
@@ -539,10 +543,6 @@ export default {
   background-color: var(--highlight);
 }
 
-.sort.active {
-  color: var(--blue-grey-600);
-}
-
 .cell {
   flex-shrink: 0;
   flex-basis: 200px;
@@ -557,7 +557,7 @@ export default {
 }
 
 .empty {
-  color: var(--blue-grey-200);
+  color: var(--empty-value);
 }
 
 .toolbar .cell:not(.select) {
@@ -566,25 +566,29 @@ export default {
   align-items: center;
 }
 
+// Table column header
 .sort {
   width: 100%;
   height: 100%;
   text-align: left;
   transition: color var(--fast) var(--transition);
   position: relative;
-}
 
-.sort:hover {
-  color: var(--blue-grey-800);
+  &.active {
+    //
+  }
+
+  &:hover {
+    //
+  }
 }
 
 .sort-arrow {
   opacity: 0;
-  font-size: 12px !important;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  margin-left: 5px;
+  margin-left: 4px;
 }
 
 .active .sort-arrow {
@@ -601,28 +605,28 @@ export default {
 
 .toolbar .manual-sort {
   button {
-    color: var(--blue-grey-300);
+    color: var(--input-border-color);
     transition: color var(--fast) var(--transition);
 
     &:hover {
       transition: none;
-      color: var(--blue-grey-600);
+      color: var(--input-border-color-hover);
     }
   }
 
   &.active button {
-    color: var(--blue-grey-900);
+    color: var(--input-border-color-focus);
   }
 }
 
 .body .manual-sort {
   cursor: not-allowed;
-  color: var(--blue-grey-50);
+  color: var(--input-background-disabled);
 
   &.active {
     cursor: grab;
     cursor: -webkit-grab;
-    color: var(--blue-grey-400);
+    color: var(--input-border-color);
   }
 }
 
@@ -636,7 +640,7 @@ export default {
   color: var(--blue-grey-900);
 
   .manual-sort {
-    color: var(--blue-grey-900);
+    color: var(--blue-grey-700);
   }
 }
 

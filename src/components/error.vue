@@ -1,13 +1,9 @@
 <template>
   <transition name="error">
     <div class="v-error">
-      <v-icon
-        class="icon"
-        :style="{ borderColor: 'var(--' + color + ')' }"
-        :name="icon"
-        size="48"
-        :color="color"
-      />
+      <div class="circle" :style="{ borderColor: 'var(--' + color + ')' }">
+        <v-icon class="icon" :class="icon" :name="icon" size="48" :color="color" />
+      </div>
       <h2 class="type-heading" :style="{ color: 'var(--' + color + ')' }">{{ title }}</h2>
       <p>{{ body }}</p>
     </div>
@@ -49,10 +45,21 @@ export default {
   flex-direction: column;
   margin: 100px 0;
 
-  .icon {
+  .circle {
     border: 2px solid var(--blue-grey-50);
     border-radius: 50%;
     padding: 20px;
+    width: 88px;
+    height: 88px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .icon {
+      // optical alignment for weighted icons
+      &.warning {
+        margin-top: -4px;
+      }
+    }
   }
 
   h2 {

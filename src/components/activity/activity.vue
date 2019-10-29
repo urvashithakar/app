@@ -275,11 +275,11 @@ export default {
 
     .name {
       font-weight: 500;
-      color: var(--blue-grey-900);
+      color: var(--blue-grey-800);
     }
 
     .date {
-      color: var(--blue-grey-300);
+      color: var(--blue-grey-200);
       margin-left: 8px;
     }
 

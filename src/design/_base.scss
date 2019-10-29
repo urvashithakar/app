@@ -39,12 +39,25 @@ body {
 
 // Type Style Classes
 
+// Currently only used for page/modal titles
 .type-title {
   font-size: 22px;
   color: var(--blue-grey-800);
 }
 
+.type-heading-large {
+  font-size: 48px;
+  color: var(--blue-grey-900);
+}
+
+.type-heading-medium {
+  font-size: 28px;
+  font-weight: 300; // Look if this is needed
+  color: var(--blue-grey-800);
+}
+
 // Currently only used as modal heading
+// make "-small"
 .type-heading {
   font-size: 18px;
   color: var(--blue-grey-800);
