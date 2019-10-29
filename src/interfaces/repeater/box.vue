@@ -62,12 +62,12 @@ export default {
   transition: all var(--fast) var(--transition);
   background-color: var(--off-white);
   border-radius: var(--border-radius);
-  border: 2px solid var(--lighter-gray);
+  border: 2px solid var(--blue-grey-200);
   overflow: hidden;
   margin: 12px 0;
 
   &:hover {
-    border-color: var(--light-gray);
+    border-color: var(--blue-grey-300);
   }
 
   &.closed {
@@ -93,7 +93,7 @@ export default {
       left: 10px;
       width: calc(100% - 20px);
       height: 2px;
-      background-color: var(--lightest-gray);
+      background-color: var(--blue-grey-50);
       opacity: 0.1;
     }
 
@@ -102,15 +102,15 @@ export default {
       align-items: center;
       .handle {
         cursor: pointer;
-        color: var(--lighter-gray);
+        color: var(--blue-grey-200);
         margin-right: 10px;
         &:hover {
-          color: var(--gray);
+          color: var(--blue-grey-400);
         }
       }
 
       .v-ext-display {
-        color: var(--darker-gray);
+        color: var(--blue-grey-800);
         font-size: 14px;
         margin: 10px 10px 10px 0;
       }
@@ -118,9 +118,9 @@ export default {
     .end {
       i {
         transition: all var(--fast) var(--transition);
-        color: var(--lighter-gray);
+        color: var(--blue-grey-200);
         &:hover {
-          color: var(--gray);
+          color: var(--blue-grey-400);
         }
       }
       .delete i:hover {

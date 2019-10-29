@@ -6,12 +6,12 @@
         <li v-for="{ path, name, target, icon, color } in links" :key="path">
           <template v-if="path.startsWith('http')">
             <a :href="path" :class="color || null" :target="target">
-              <v-icon class="icon" :name="icon || 'box'" color="darker-gray" />
+              <v-icon class="icon" :name="icon || 'box'" color="blue-grey-800" />
               {{ name }}
             </a>
           </template>
           <router-link v-else-if="path" :to="path" :class="color || null">
-            <v-icon class="icon" :name="icon || 'box'" color="darker-gray" />
+            <v-icon class="icon" :name="icon || 'box'" color="blue-grey-800" />
             {{ name }}
           </router-link>
         </li>
@@ -58,7 +58,7 @@ a {
 a:hover,
 .content .router-link-active,
 .user-menu .router-link-exact-active {
-  background-color: #dde3e6; // rgba(var(--lighter-gray), 0.5);
+  background-color: #dde3e6; // rgba(var(--blue-grey-200), 0.5);
   border-radius: var(--border-radius);
 
   .icon {

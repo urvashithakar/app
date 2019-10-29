@@ -2,7 +2,7 @@
   <div ref="searchFilter" :class="{ open }" class="search-filter">
     <v-header-button
       class="toggle"
-      icon-color="lighter-gray"
+      icon-color="blue-grey-200"
       :alert="hasFilters"
       icon="filter_list"
       no-background
@@ -219,10 +219,10 @@ export default {
   left: 0;
   z-index: 19;
   padding: 20px;
-  color: var(--darkest-gray);
+  color: var(--blue-grey-900);
   transform-origin: top;
   box-shadow: var(--box-shadow);
-  border-bottom: 2px solid var(--lighter-gray);
+  border-bottom: 2px solid var(--blue-grey-200);
   border-radius: 0 0 var(--border-radius) var(--border-radius);
 
   @media (min-width: 800px) {
@@ -231,8 +231,8 @@ export default {
   }
 
   @media (min-width: 1000px) {
-    border-left: 2px solid var(--lighter-gray);
-    border-right: 2px solid var(--lighter-gray);
+    border-left: 2px solid var(--blue-grey-200);
+    border-right: 2px solid var(--blue-grey-200);
     left: 0;
     width: 100%;
   }
@@ -255,12 +255,12 @@ export default {
     font-size: 11px;
     text-transform: uppercase;
     margin-bottom: 5px;
-    color: var(--dark-gray);
+    color: var(--blue-grey-600);
     font-weight: 700;
 
     span {
       position: relative;
-      color: var(--darkest-gray);
+      color: var(--blue-grey-900);
       margin-left: 5px;
       padding-right: 2em;
       flex-grow: 1;
@@ -288,7 +288,7 @@ export default {
       opacity: 0;
       transition: var(--fast) var(--transition);
       transition-property: color, opacity;
-      color: var(--gray);
+      color: var(--blue-grey-400);
 
       &:hover,
       .user-is-tabbing &:focus {
@@ -347,30 +347,30 @@ export default {
       height: var(--input-height);
       border-radius: 22px;
       display: block;
-      border: 2px solid var(--lighter-gray);
-      color: var(--gray);
+      border: 2px solid var(--blue-grey-200);
+      color: var(--blue-grey-400);
       padding: 10px 40px 10px 40px;
       line-height: 1.5;
       transition: var(--fast) var(--transition);
       transition-property: color, border-color, padding, border-radius;
 
       &::placeholder {
-        color: var(--light-gray);
+        color: var(--blue-grey-300);
       }
 
       &:focus {
-        color: var(--darker-gray);
-        border-color: var(--gray);
+        color: var(--blue-grey-800);
+        border-color: var(--blue-grey-400);
         outline: 0;
       }
 
       &:focus + i {
-        color: var(--darker-gray);
+        color: var(--blue-grey-800);
       }
 
       &:-webkit-autofill {
-        color: var(--dark-gray) !important;
-        -webkit-text-fill-color: var(--dark-gray) !important;
+        color: var(--blue-grey-600) !important;
+        -webkit-text-fill-color: var(--blue-grey-600) !important;
       }
 
       &:-webkit-autofill,
@@ -397,7 +397,7 @@ export default {
       }
 
       > i {
-        color: var(--lighter-gray);
+        color: var(--blue-grey-200);
         left: 10px;
       }
 
@@ -407,11 +407,11 @@ export default {
 
       .toggle {
         right: 10px;
-        color: var(--gray);
+        color: var(--blue-grey-400);
 
         &:hover,
         .user-is-tabbing &:focus {
-          color: var(--darker-gray);
+          color: var(--blue-grey-800);
         }
 
         &::after {
@@ -438,7 +438,7 @@ export default {
 
       .clear-filters {
         right: 40px;
-        color: var(--gray);
+        color: var(--blue-grey-400);
 
         &:hover,
         .user-is-tabbing &:focus {
@@ -454,7 +454,7 @@ export default {
     &.open {
       .toggle {
         i {
-          color: var(--darker-gray);
+          color: var(--blue-grey-800);
         }
       }
 

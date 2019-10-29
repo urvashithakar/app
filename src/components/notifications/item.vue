@@ -28,12 +28,12 @@ export default {
       return this.item.details !== undefined ? this.$helpers.snarkdown(this.item.details) : "";
     },
     iconColor() {
-      return this.item.color !== undefined ? `${this.item.color}-500` : "blue-gray-500";
+      return this.item.color !== undefined ? `${this.item.color}-500` : "blue-grey-500";
     },
     ringColor() {
       return this.item.color !== undefined
         ? `var(--${this.item.color}-100)`
-        : "var(--blue-gray-100)";
+        : "var(--blue-grey-100)";
     }
   },
   methods: {
@@ -65,7 +65,7 @@ export default {
   align-items: center;
   min-height: 64px;
   width: 100%;
-  border: var(--input-border-width) solid var(--lightest-gray);
+  border: var(--input-border-width) solid var(--blue-grey-50);
   border-radius: 5px;
   margin-bottom: 12px;
   padding: 10px;
@@ -103,19 +103,19 @@ export default {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background-color: var(--lighter-gray);
+  background-color: var(--blue-grey-200);
 }
 
 .icon-right {
   width: 24px;
   height: 24px;
   margin-left: auto;
-  color: var(--lighter-gray);
+  color: var(--blue-grey-200);
   transition: color var(--fast) var(--transition);
   cursor: pointer;
 
   &:hover {
-    color: var(--dark-gray);
+    color: var(--blue-grey-600);
   }
 }
 
@@ -124,11 +124,11 @@ export default {
   padding-right: 10px;
   .title {
     font-size: var(--size-2);
-    color: var(--darker-gray);
+    color: var(--blue-grey-800);
   }
 
   .details {
-    color: var(--light-gray);
+    color: var(--blue-grey-300);
   }
 }
 </style>

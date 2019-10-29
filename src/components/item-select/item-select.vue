@@ -25,7 +25,7 @@
               {{ $helpers.formatTitle(field) }}
             </option>
           </select>
-          <v-icon name="arrow_drop_down" color="light-gray" />
+          <v-icon name="arrow_drop_down" color="blue-grey-300" />
         </div>
 
         <div class="select">
@@ -33,7 +33,7 @@
             <option value="asc">↑</option>
             <option value="desc">↓</option>
           </select>
-          <v-icon name="arrow_drop_down" color="light-gray" />
+          <v-icon name="arrow_drop_down" color="blue-grey-300" />
         </div>
       </div>
 
@@ -375,7 +375,7 @@ export default {
 }
 .items .head > * {
   display: table-cell;
-  border-bottom: 2px solid var(--lightest-gray);
+  border-bottom: 2px solid var(--blue-grey-50);
   padding: 12px 32px 12px 0;
 }
 .items label > * {
@@ -404,7 +404,7 @@ export default {
 }
 .search-sort {
   display: flex;
-  border-bottom: 2px solid var(--lightest-gray);
+  border-bottom: 2px solid var(--blue-grey-50);
   padding: 8px 0;
   padding-right: 32px;
   align-items: center;
@@ -418,7 +418,7 @@ export default {
   appearance: none;
 }
 .search-sort input[type="search"]::placeholder {
-  color: var(--lighter-gray);
+  color: var(--blue-grey-200);
 }
 .search-sort .select {
   position: relative;
@@ -428,13 +428,13 @@ export default {
   appearance: none;
   background-color: transparent;
   margin-left: 16px;
-  border: 2px solid var(--lightest-gray);
+  border: 2px solid var(--blue-grey-50);
   padding: 4px 8px;
   padding-right: 20px;
   cursor: pointer;
 }
 .search-sort select:hover {
-  border-color: var(--dark-gray);
+  border-color: var(--blue-grey-600);
 }
 .search-sort .select i {
   position: absolute;

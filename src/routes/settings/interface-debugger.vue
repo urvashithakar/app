@@ -404,16 +404,16 @@ label {
 }
 
 fieldset {
-  border-top: 1px solid var(--lighter-gray);
+  border-top: 1px solid var(--blue-grey-200);
 
   legend {
-    color: var(--gray);
+    color: var(--blue-grey-400);
     padding: 10px 20px;
     text-align: center;
   }
 
   p {
-    color: var(--light-gray);
+    color: var(--blue-grey-300);
     padding-bottom: 10px;
     font-style: italic;
     max-width: 460px;

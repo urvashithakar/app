@@ -7,8 +7,8 @@
       class="back"
       :icon="icon"
       :to="iconLink"
-      :color="iconColor ? iconColor + '-light' : 'lightest-gray'"
-      :icon-color="iconColor ? iconColor : 'gray'"
+      :color="iconColor ? iconColor + '-light' : 'blue-grey-50'"
+      :icon-color="iconColor ? iconColor : 'blue-grey-400'"
     />
     <div class="title" :class="{ 'has-breadcrumb': navBreadcrumb }">
       <ol v-if="navBreadcrumb" class="breadcrumb">
@@ -28,7 +28,7 @@
       :label="$t('info')"
       icon="info"
       no-background
-      icon-color="lighter-gray"
+      icon-color="blue-grey-200"
       @click="toggleInfo"
     />
     <v-header-button
@@ -37,7 +37,7 @@
       icon="info"
       no-background
       class="info-mobile"
-      icon-color="lighter-gray"
+      icon-color="blue-grey-200"
       @click="toggleInfo"
     />
     <slot name="buttons" />
@@ -66,7 +66,6 @@ export default {
       type: Boolean,
       default: false
     },
-
     icon: {
       type: String,
       default: "arrow_back"
@@ -203,7 +202,7 @@ body.info-wide-active .v-header {
   }
 
   h1 {
-    color: var(--darker-gray);
+    color: var(--blue-grey-800);
     font-size: 22px;
   }
 
@@ -217,18 +216,18 @@ body.info-wide-active .v-header {
 
     a {
       text-decoration: none;
-      color: var(--light-gray);
+      color: var(--blue-grey-300);
       transition: color var(--fast) var(--transition);
     }
 
     a:hover {
-      color: var(--dark-gray);
+      color: var(--blue-grey-600);
     }
   }
 
   .breadcrumb-item + .breadcrumb-item::before {
     content: "chevron_right";
-    color: var(--lighter-gray);
+    color: var(--blue-grey-200);
     font-family: "Material Icons";
     font-weight: normal;
     font-style: normal;
@@ -256,7 +255,7 @@ body.info-wide-active .v-header {
 }
 
 .scrolled {
-  border-bottom: 2px solid var(--lightest-gray);
+  border-bottom: 2px solid var(--blue-grey-50);
   height: calc(4.286rem + 2px);
 }
 

@@ -54,7 +54,7 @@ export default {
     margin-top: -2px;
   }
   &.gray {
-    background-color: var(--lightest-gray);
+    background-color: var(--blue-grey-50);
   }
   &.warning {
     color: var(--warning);

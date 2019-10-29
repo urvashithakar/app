@@ -554,12 +554,12 @@ export default {
   right: 3px;
 
   i {
-    color: var(--lighter-gray);
+    color: var(--blue-grey-200);
     transition: color var(--fast) var(--transition);
   }
 
   &:hover i {
-    color: var(--darkest-gray);
+    color: var(--blue-grey-900);
   }
 }
 
@@ -582,7 +582,7 @@ export default {
 }
 
 .mixed {
-  color: var(--lighter-gray);
+  color: var(--blue-grey-200);
 }
 
 .limited {
@@ -590,7 +590,7 @@ export default {
 }
 
 .block {
-  color: var(--lightest-gray);
+  color: var(--blue-grey-50);
 }
 
 .set-all {
@@ -598,7 +598,7 @@ export default {
   font-size: 12px;
   font-weight: 600;
   margin-left: 5px;
-  color: var(--light-gray);
+  color: var(--blue-grey-300);
   transition: opacity var(--fast) var(--transition);
 
   button {
@@ -624,7 +624,7 @@ export default {
 }
 
 .system-row {
-  color: var(--light-gray);
+  color: var(--blue-grey-300);
   background-color: var(--off-white);
 }
 </style>

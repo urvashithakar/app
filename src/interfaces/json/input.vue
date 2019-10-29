@@ -108,14 +108,14 @@ button {
   top: 10px;
   right: 10px;
   user-select: none;
-  color: var(--light-gray);
+  color: var(--blue-grey-300);
   cursor: pointer;
   transition: color var(--fast) var(--transition-out);
   z-index: 10;
 
   &:hover {
     transition: none;
-    color: var(--dark-gray);
+    color: var(--blue-grey-600);
   }
 }
 </style>

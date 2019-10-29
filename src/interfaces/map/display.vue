@@ -39,7 +39,7 @@ export default {
 i {
   cursor: help;
   &.empty {
-    color: var(--lighter-gray);
+    color: var(--blue-grey-200);
   }
 }
 </style>
@@ -48,7 +48,7 @@ i {
 .map-value-tooltip {
   border-collapse: collapse;
   tr + tr {
-    border-top: 1px solid var(--dark-gray);
+    border-top: 1px solid var(--blue-grey-600);
   }
   td {
     padding: 4px 8px;

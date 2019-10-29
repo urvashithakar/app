@@ -138,7 +138,7 @@ export default {
   transform: translateY(calc(100% - var(--header-height)));
   transition: transform var(--medium) var(--transition-out);
   will-change: transform;
-  background-color: var(--lightest-gray);
+  background-color: var(--blue-grey-50);
 
   &:hover,
   .user-is-tabbing &:focus,
@@ -169,7 +169,7 @@ export default {
     > i {
       position: absolute;
       right: 10px;
-      color: var(--light-gray);
+      color: var(--blue-grey-300);
     }
   }
   .warning {
@@ -190,8 +190,8 @@ export default {
     width: 20px;
     height: 22px;
     margin-right: 16px;
-    color: var(--darker-gray);
-    fill: var(--darker-gray);
+    color: var(--blue-grey-800);
+    fill: var(--blue-grey-800);
 
     /* Forces left-alignment of material-icons */
     display: inline-flex;
@@ -212,7 +212,7 @@ export default {
 
   .sign-out:hover,
   .user-is-tabbing .sign-out:focus {
-    background-color: #dde3e6; // rgba(var(--lighter-gray), 0.5);
+    background-color: #dde3e6; // rgba(var(--blue-grey-200), 0.5);
     border-radius: var(--border-radius);
 
     .icon {
@@ -228,7 +228,7 @@ export default {
 
 hr {
   border: 0;
-  border-top: 2px solid var(--lighter-gray);
+  border-top: 2px solid var(--blue-grey-200);
   margin-bottom: 10px;
 }
 </style>

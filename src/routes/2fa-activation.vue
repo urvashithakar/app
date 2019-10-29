@@ -156,14 +156,14 @@ export default {
 
 <style lang="scss" scoped>
 h1 {
-  color: var(--darker-gray);
+  color: var(--blue-grey-800);
   font-size: 36px;
   line-height: 1.4;
   font-weight: 300;
 }
 
 .qr {
-  border: var(--input-border-width) solid var(--lightest-gray);
+  border: var(--input-border-width) solid var(--blue-grey-50);
   border-radius: var(--border-radius);
   align-self: center;
 }
@@ -177,7 +177,7 @@ h1 {
 }
 
 .content {
-  background-color: var(--darkest-gray);
+  background-color: var(--blue-grey-900);
   height: 100%;
   display: flex;
   justify-content: center;
@@ -237,35 +237,35 @@ h1 {
   input {
     border: 0;
     font-size: 16px;
-    border-bottom: 2px solid var(--lighter-gray);
+    border-bottom: 2px solid var(--blue-grey-200);
     width: 100%;
     padding: 10px 0;
-    color: var(--gray);
+    color: var(--blue-grey-400);
     transition: border-color var(--fast) var(--transition);
     border-radius: 0;
 
     &:-webkit-autofill {
-      color: var(--gray) !important;
-      -webkit-text-fill-color: var(--gray);
+      color: var(--blue-grey-400) !important;
+      -webkit-text-fill-color: var(--blue-grey-400);
       -webkit-box-shadow: 0 0 0px 1000px var(--white) inset;
     }
 
     &:hover {
       transition: none;
-      border-color: var(--gray);
+      border-color: var(--blue-grey-400);
       &:focus {
-        border-color: var(--darker-gray);
+        border-color: var(--blue-grey-800);
       }
     }
 
     &:focus {
       outline: 0;
-      border-color: var(--darker-gray);
-      color: var(--dark-gray);
+      border-color: var(--blue-grey-800);
+      color: var(--blue-grey-600);
 
       &:-webkit-autofill {
-        color: var(--darker-gray) !important;
-        -webkit-text-fill-color: var(--darker-gray);
+        color: var(--blue-grey-800) !important;
+        -webkit-text-fill-color: var(--blue-grey-800);
         -webkit-box-shadow: 0 0 0px 1000px var(--white) inset;
       }
     }

@@ -18,7 +18,7 @@
           :loading="removing"
           :label="$t('delete')"
           icon="delete_outline"
-          color="gray"
+          color="blue-grey-400"
           hover-color="danger"
           @click="confirmRemove = true"
         />
@@ -539,7 +539,7 @@ export default {
 label {
   margin-bottom: 10px;
   text-transform: none;
-  color: var(--darker-gray);
+  color: var(--blue-grey-800);
   font-size: 1.2rem;
   line-height: 1.1;
   font-weight: 400;

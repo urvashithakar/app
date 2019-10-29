@@ -73,7 +73,7 @@ export default {
 
 .wrapper {
   border-radius: var(--border-radius);
-  background-color: var(--lightest-gray);
+  background-color: var(--blue-grey-50);
   height: 100%;
   width: 100%;
   position: relative;
@@ -92,7 +92,7 @@ i {
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--lighter-gray);
+  color: var(--blue-grey-200);
   text-align: center;
 }
 

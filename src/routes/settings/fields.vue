@@ -6,7 +6,7 @@
         <v-header-button
           key="delete"
           icon="delete_outline"
-          color="gray"
+          color="blue-grey-400"
           hover-color="danger"
           :label="$t('delete')"
           @click="confirmRemove = true"
@@ -621,7 +621,7 @@ h2 {
 
 .table {
   background-color: var(--white);
-  border: var(--input-border-width) solid var(--lighter-gray);
+  border: var(--input-border-width) solid var(--input-border-color);
   border-radius: var(--border-radius);
   border-spacing: 0;
   width: 100%;
@@ -629,7 +629,7 @@ h2 {
   margin: 10px 0 20px;
 
   .header {
-    border-bottom: 2px solid var(--lightest-gray);
+    border-bottom: 2px solid var(--blue-grey-50);
     height: 60px;
     .row {
       height: 60px;
@@ -664,10 +664,10 @@ h2 {
   .dragging .sortable-chosen,
   .sortable-chosen:active {
     background-color: var(--highlight) !important;
-    color: var(--darkest-gray);
+    color: var(--blue-grey-900);
 
     .manual-sort {
-      color: var(--darkest-gray);
+      color: var(--blue-grey-900);
     }
   }
 
@@ -694,10 +694,10 @@ h2 {
     .drag {
       user-select: none;
       cursor: -webkit-grab;
-      color: var(--lighter-gray);
+      color: var(--blue-grey-200);
 
       &:hover {
-        color: var(--dark-gray);
+        color: var(--blue-grey-600);
       }
     }
   }
@@ -714,20 +714,20 @@ h2 {
   transform: translateY(-50%);
 
   i {
-    color: var(--lighter-gray);
+    color: var(--blue-grey-200);
     transition: color var(--fast) var(--transition);
   }
 
   &:hover {
     i {
       transition: none;
-      color: var(--gray);
+      color: var(--blue-grey-400);
     }
   }
 }
 
 em.note {
-  color: var(--lighter-gray);
+  color: var(--blue-grey-200);
   margin-top: 4px;
   margin-bottom: 40px;
   display: block;
@@ -736,7 +736,7 @@ em.note {
 label.label {
   margin-bottom: 10px;
   text-transform: none;
-  color: var(--darker-gray);
+  color: var(--blue-grey-800);
   font-size: 1.2rem;
   line-height: 1.1;
   font-weight: 400;
@@ -752,7 +752,7 @@ label.label {
   }
 
   i {
-    color: var(--light-gray);
+    color: var(--blue-grey-300);
     margin-right: 5px;
     transition: color var(--fast) var(--transition);
   }
@@ -761,22 +761,22 @@ label.label {
     display: flex;
     align-items: center;
     padding: 5px;
-    color: var(--gray);
+    color: var(--blue-grey-400);
     width: 100%;
     height: 100%;
     transition: color var(--fast) var(--transition);
     &:disabled,
     &[disabled] {
-      color: var(--lighter-gray);
+      color: var(--blue-grey-200);
       i {
-        color: var(--lighter-gray);
+        color: var(--blue-grey-200);
       }
     }
     &:not(:disabled):not(&[disabled]):hover {
-      color: var(--darkest-gray);
+      color: var(--blue-grey-900);
       transition: none;
       i {
-        color: var(--darkest-gray);
+        color: var(--blue-grey-900);
         transition: none;
       }
     }
@@ -787,7 +787,7 @@ button {
   &.not-managed {
     padding: 5px 10px;
     border-radius: var(--border-radius);
-    background-color: var(--darker-gray);
+    background-color: var(--blue-grey-800);
     color: var(--white);
 
     min-width: auto;
@@ -798,13 +798,13 @@ button {
     border: 0;
 
     &:hover {
-      background-color: var(--darkest-gray);
+      background-color: var(--blue-grey-900);
       color: var(--white);
     }
   }
 }
 
 .optional {
-  color: var(--lighter-gray);
+  color: var(--blue-grey-200);
 }
 </style>

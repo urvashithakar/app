@@ -194,14 +194,14 @@ export default {
 
 <style scoped lang="scss">
 .note {
-  color: var(--light-gray);
+  color: var(--blue-grey-300);
   margin-top: 4px;
 }
 
 .name {
   font-size: var(--size-2);
   margin-bottom: 10px;
-  color: var(--darkest-gray);
+  color: var(--blue-grey-900);
 }
 
 .required {
@@ -224,7 +224,7 @@ export default {
     }
   }
   .dropdown {
-    color: var(--lighter-gray);
+    color: var(--blue-grey-200);
     vertical-align: -2px;
   }
 }

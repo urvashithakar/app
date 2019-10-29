@@ -301,7 +301,7 @@ export default {
 .video,
 .image {
   width: 100%;
-  background-color: var(--darker-gray);
+  background-color: var(--blue-grey-800);
   text-align: center;
   border-radius: var(--border-radius);
   overflow: hidden;
@@ -330,7 +330,7 @@ export default {
   font-size: 3em;
   text-transform: uppercase;
   font-weight: 300;
-  color: var(--lighter-gray);
+  color: var(--blue-grey-200);
 }
 .toolbar {
   margin-top: 10px;
@@ -343,13 +343,13 @@ export default {
 .file-link {
   transition: var(--fast) var(--transition);
   text-decoration: none;
-  color: var(--gray);
+  color: var(--blue-grey-400);
   &:hover {
-    color: var(--darker-gray);
+    color: var(--blue-grey-800);
   }
   i {
     margin-right: 6px;
-    color: var(--gray);
+    color: var(--blue-grey-400);
   }
   span {
     margin-right: 10px;
@@ -359,7 +359,7 @@ export default {
 .image-edit-start {
   margin-left: 10px;
   i {
-    color: var(--gray);
+    color: var(--blue-grey-400);
   }
 }
 
@@ -372,12 +372,12 @@ export default {
     flex: 0 0 33.33%;
     text-align: center;
     button {
-      color: var(--dark-gray);
+      color: var(--blue-grey-600);
       + button {
         margin-left: 10px;
       }
       &:hover {
-        color: var(--darkest-gray);
+        color: var(--blue-grey-900);
       }
     }
     &:first-child {
@@ -468,7 +468,7 @@ export default {
   align-items: center;
 
   i {
-    color: var(--light-gray);
+    color: var(--blue-grey-300);
     font-size: 48px;
   }
 }

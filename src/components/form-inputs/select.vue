@@ -166,9 +166,9 @@ export default {
   input {
     transition: all var(--fast) var(--transition);
     background-color: var(--white);
-    color: var(--gray);
+    color: var(--blue-grey-400);
     height: var(--input-height);
-    border: var(--input-border-width) solid var(--lighter-gray);
+    border: var(--input-border-width) solid var(--input-border-color);
     transition: var(--fast) var(--transition);
     transition-property: color, border-color;
 
@@ -204,7 +204,7 @@ export default {
     z-index: +1;
 
     &::placeholder {
-      color: var(--lighter-gray);
+      color: var(--blue-grey-200);
     }
 
     &:-webkit-autofill {
@@ -221,8 +221,8 @@ export default {
   select:disabled ~ input,
   input:disabled + div,
   input:disabled {
-    background-color: var(--lightest-gray);
-    border-color: var(--lighter-gray);
+    background-color: var(--blue-grey-50);
+    border-color: var(--blue-grey-200);
     cursor: not-allowed;
   }
 
@@ -230,7 +230,7 @@ export default {
   select:hover:not(:disabled) ~ input,
   input:hover:not(:disabled) + div,
   input:hover:not(:disabled) {
-    border-color: var(--light-gray);
+    border-color: var(--blue-grey-300);
     transition: none;
   }
 
@@ -242,8 +242,8 @@ export default {
   select:hover:not(:disabled):focus ~ input,
   input:hover:not(:disabled):focus + div,
   input:hover:not(:disabled):focus {
-    color: var(--dark-gray);
-    border-color: var(--dark-gray);
+    color: var(--blue-grey-600);
+    border-color: var(--blue-grey-600);
     outline: 0;
   }
 
@@ -251,7 +251,7 @@ export default {
     position: absolute;
     left: 5px;
     top: 50%;
-    color: var(--lighter-gray);
+    color: var(--blue-grey-200);
     transform: translateY(-50%);
     font-size: 24px;
   }
@@ -275,12 +275,12 @@ export default {
     select:focus ~ div i,
     input:focus + div i,
     input:focus i {
-      color: var(--light-gray);
+      color: var(--blue-grey-300);
     }
   }
 
   .placeholder {
-    color: var(--lighter-gray);
+    color: var(--blue-grey-200);
     width: 100%;
     text-overflow: ellipsis;
     overflow: hidden;

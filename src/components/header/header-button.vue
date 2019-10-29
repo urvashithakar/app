@@ -42,7 +42,7 @@ export default {
     },
     color: {
       type: String,
-      default: "gray"
+      default: "blue-grey-400"
     },
     hoverColor: {
       type: String,
@@ -176,18 +176,18 @@ a {
 }
 
 button.no-bg {
-  border: 2px solid var(--lighter-gray);
+  border: 2px solid var(--blue-grey-200);
   background-color: transparent;
   i {
-    color: var(--lighter-gray);
+    color: var(--blue-grey-200);
   }
 }
 
 button[disabled] {
-  background-color: var(--lighter-gray) !important;
+  background-color: var(--blue-grey-200) !important;
   cursor: not-allowed;
   i {
-    color: var(--lightest-gray) !important;
+    color: var(--blue-grey-50) !important;
   }
 }
 

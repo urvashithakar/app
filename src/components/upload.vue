@@ -288,12 +288,12 @@ export default {
 
       input {
         border-radius: var(--border-radius);
-        border: 1px solid var(--lighter-gray);
+        border: 1px solid var(--blue-grey-200);
         padding: 4px;
-        color: var(--dark-gray);
+        color: var(--blue-grey-600);
 
         &::placeholder {
-          color: var(--lighter-gray);
+          color: var(--blue-grey-200);
         }
 
         padding-right: 40px;
@@ -305,13 +305,13 @@ export default {
         position: absolute;
         right: 0;
         height: 100%;
-        background-color: var(--light-gray);
+        background-color: var(--blue-grey-300);
         border-top-right-radius: var(--border-radius);
         border-bottom-right-radius: var(--border-radius);
         color: var(--white);
 
         &:hover {
-          background-color: var(--darkest-gray);
+          background-color: var(--blue-grey-900);
           color: var(--white);
         }
       }
@@ -334,7 +334,7 @@ input.select {
 }
 
 .v-upload:not(.uploading) .dropzone {
-  color: var(--dark-gray);
+  color: var(--blue-grey-600);
   height: 100%;
   display: flex;
   justify-content: center;
@@ -343,12 +343,12 @@ input.select {
   user-select: none;
   transition: var(--fast) var(--transition);
   transition-property: border-color, color;
-  border: var(--input-border-width) dashed var(--lighter-gray);
+  border: var(--input-border-width) dashed var(--blue-grey-200);
   border-radius: var(--border-radius);
 
   .icon i {
     font-size: 100px !important;
-    color: var(--lighter-gray);
+    color: var(--blue-grey-200);
   }
 
   p {
@@ -362,26 +362,26 @@ input.select {
 
   .info {
     text-align: center;
-    color: var(--lighter-gray);
+    color: var(--blue-grey-200);
   }
 
   .file-info {
     text-align: center;
-    color: var(--lighter-gray);
+    color: var(--blue-grey-200);
     margin-top: 8px;
   }
 
   .buttons > * {
-    color: var(--lighter-gray);
+    color: var(--blue-grey-200);
 
     &:hover {
-      color: var(--dark-gray);
+      color: var(--blue-grey-600);
     }
   }
 
   .dragging & {
     transition: border-color var(--slow) var(--transition);
-    border-color: var(--darkest-gray);
+    border-color: var(--blue-grey-900);
   }
 
   &.smaller {
@@ -403,16 +403,16 @@ input.select {
 
   .dragging & ol {
     transition: border-color var(--slow) var(--transition);
-    border-color: var(--darkest-gray);
+    border-color: var(--blue-grey-900);
   }
 
   .dropzone {
-    background-color: var(--darkest-gray);
+    background-color: var(--blue-grey-900);
     border-top-left-radius: var(--border-radius);
     border-top-right-radius: var(--border-radius);
     padding: 10px 20px;
     padding-right: 50px;
-    border: var(--input-border-width) solid var(--darkest-gray);
+    border: var(--input-border-width) solid var(--blue-grey-900);
     color: var(--white);
     flex-shrink: 0;
 
@@ -421,7 +421,7 @@ input.select {
     }
 
     .file-info {
-      color: var(--light-gray);
+      color: var(--blue-grey-300);
     }
 
     .icon {
@@ -447,7 +447,7 @@ input.select {
 
     .buttons {
       & > * {
-        color: var(--light-gray);
+        color: var(--blue-grey-300);
 
         &:hover {
           color: var(--white);
@@ -458,7 +458,7 @@ input.select {
 
   ol {
     flex-grow: 1;
-    border: var(--input-border-width) dashed var(--lighter-gray);
+    border: var(--input-border-width) dashed var(--blue-grey-200);
     border-top: 0;
     border-bottom-left-radius: var(--border-radius);
     border-bottom-right-radius: var(--border-radius);
@@ -484,11 +484,11 @@ input.select {
     background-color: var(--white);
 
     &:not(:last-of-type) {
-      border-bottom: 1px solid var(--lightest-gray);
+      border-bottom: 1px solid var(--blue-grey-50);
     }
 
     .file-info {
-      color: var(--gray);
+      color: var(--blue-grey-400);
     }
   }
 }

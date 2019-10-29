@@ -92,15 +92,15 @@ input {
 label {
   font-size: inherit;
   cursor: pointer;
-  color: var(--dark-gray);
+  color: var(--blue-grey-600);
 
   &:hover:not(:disabled),
   .user-is-tabbing &:focus {
-    color: var(--darker-gray);
+    color: var(--blue-grey-800);
   }
 }
 
 input:checked + label {
-  color: var(--darker-gray);
+  color: var(--blue-grey-800);
 }
 </style>

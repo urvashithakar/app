@@ -197,8 +197,8 @@ aside {
   z-index: 30;
   width: 100%;
   max-width: 80%;
-  background-color: var(--lightest-gray);
-  color: var(--darker-gray);
+  background-color: var(--blue-grey-50);
+  color: var(--blue-grey-800);
 
   transform: translateX(-100%);
   visibility: hidden;
@@ -250,7 +250,7 @@ aside {
 }
 
 .menu-section + .menu-section {
-  border-top: 2px solid var(--lighter-gray);
+  border-top: 2px solid var(--blue-grey-100);
   padding-top: 20px;
 }
 </style>

@@ -33,7 +33,7 @@
           v-if="this.$store.state.currentUser.admin"
           :label="$t('settings')"
           icon="settings"
-          icon-color="lighter_gray"
+          icon-color="blue-grey-200"
           no-background
           @click="editCollection()"
         />
@@ -41,7 +41,7 @@
           v-if="editButton && !activity"
           key="edit"
           icon="mode_edit"
-          color="gray"
+          color="blue-grey-400"
           hover-color="warning"
           :disabled="!editButtonEnabled"
           :label="$t('batch')"
@@ -51,7 +51,7 @@
           v-if="deleteButton && !activity"
           key="delete"
           icon="delete_outline"
-          color="gray"
+          color="blue-grey-400"
           hover-color="danger"
           :disabled="!deleteButtonEnabled"
           :label="$t('delete')"
@@ -94,9 +94,9 @@
             </option>
           </select>
           <div class="preview">
-            <v-icon :name="layoutIcons[viewType]" color="darker-gray" />
+            <v-icon :name="layoutIcons[viewType]" color="blue-grey-800" />
             <span>{{ layoutNames[viewType] }}</span>
-            <v-icon name="expand_more" color="light-gray" />
+            <v-icon name="expand_more" color="blue-grey-300" />
           </div>
         </div>
       </template>
@@ -116,7 +116,7 @@
 
       <router-link v-if="canReadActivity" to="/activity" class="notifications">
         <div class="preview">
-          <v-icon name="notifications" color="light-gray" />
+          <v-icon name="notifications" color="blue-grey-300" />
           <span>{{ $t("notifications") }}</span>
         </div>
       </router-link>
@@ -331,7 +331,7 @@ export default {
         !_.isEmpty(this.preferences.filters) ||
         (!_.isNil(this.preferences.search_query) && this.preferences.search_query.length > 0);
 
-      /* total_count returns the total number of data in collection.So for mine and 
+      /* total_count returns the total number of data in collection.So for mine and
          role only permissions it also returns the same.So to fix it removed
          total_count from item_count and added result_count.
          Issue Fix 2122
@@ -718,7 +718,7 @@ label.style-4 {
 
   i {
     transition: color var(--fast) var(--transition);
-    color: var(--light-gray);
+    color: var(--blue-grey-300);
     font-size: 24px;
     height: 20px;
     transform: translateY(-1px); // Vertical alignment of icon
@@ -726,7 +726,7 @@ label.style-4 {
 
   &:hover {
     i {
-      color: var(--darker-gray);
+      color: var(--blue-grey-800);
     }
   }
 }
@@ -743,7 +743,7 @@ label.style-4 {
   margin: -20px;
   padding: 20px;
   background-color: #dde3e6;
-  color: var(--darker-gray);
+  color: var(--blue-grey-800);
   position: relative;
   display: block;
 

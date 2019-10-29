@@ -5,8 +5,8 @@
       <transition name="fade">
         <v-spinner
           v-show="spinnerActive"
-          line-fg-color="var(--light-gray)"
-          line-bg-color="var(--lighter-gray)"
+          line-fg-color="var(--blue-grey-300)"
+          line-bg-color="var(--blue-grey-200)"
           class="spinner"
         />
       </transition>

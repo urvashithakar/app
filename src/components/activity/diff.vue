@@ -31,7 +31,7 @@ export default {
 
   p {
     margin-bottom: 4px;
-    color: var(--light-gray);
+    color: var(--blue-grey-300);
   }
 
   .diff {
@@ -50,7 +50,7 @@ export default {
     position: relative;
     color: var(--danger);
     background-color: var(--white);
-    border-bottom: 2px solid var(--lightest-gray);
+    border-bottom: 2px solid var(--blue-grey-50);
     &:after {
       content: "close";
       position: absolute;
@@ -86,7 +86,7 @@ export default {
   }
 
   .empty {
-    color: var(--lighter-gray);
+    color: var(--blue-grey-200);
     background-color: var(--white);
     &:after {
       content: "block";
@@ -96,7 +96,7 @@ export default {
       transform: translateY(-50%);
       font-family: "Material Icons";
       font-feature-settings: "liga";
-      color: var(--lighter-gray);
+      color: var(--blue-grey-200);
       display: inline-block;
       vertical-align: middle;
       margin: 0 5px;

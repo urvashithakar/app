@@ -100,7 +100,7 @@ export default {
   position: relative;
 }
 .interface-file-size-formatted {
-  color: var(--light-gray);
+  color: var(--blue-grey-300);
   margin-left: 10px;
   font-style: italic;
 }

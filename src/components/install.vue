@@ -184,7 +184,7 @@ export default {
   p.subtext {
     max-width: 400px;
     font-size: 16px;
-    color: var(--light-gray);
+    color: var(--blue-grey-300);
     line-height: 26px;
     font-weight: 400;
   }
@@ -195,7 +195,7 @@ export default {
   padding: 0;
   list-style: none;
   justify-content: center;
-  border-bottom: 1px solid var(--lightest-gray);
+  border-bottom: 1px solid var(--blue-grey-50);
   position: sticky;
   top: 0;
   background-color: var(--white);
@@ -208,7 +208,7 @@ export default {
     flex-basis: 120px;
     height: 50px;
     position: relative;
-    color: var(--gray);
+    color: var(--blue-grey-400);
 
     text-decoration: none;
     text-transform: uppercase;
@@ -217,7 +217,7 @@ export default {
     position: relative;
 
     &:hover {
-      color: var(--darker-gray);
+      color: var(--blue-grey-800);
     }
 
     &::after {
@@ -227,13 +227,13 @@ export default {
       position: absolute;
       height: 3px;
       bottom: -2px;
-      background-color: var(--darkest-gray);
+      background-color: var(--blue-grey-900);
       transform: scaleY(0);
       transition: transform var(--fast) var(--transition-out);
     }
 
     &.active {
-      color: var(--darkest-gray);
+      color: var(--blue-grey-900);
 
       &::after {
         transform: scaleY(1);
@@ -242,7 +242,7 @@ export default {
     }
 
     &[disabled] {
-      color: var(--lighter-gray);
+      color: var(--blue-grey-200);
       cursor: not-allowed;
     }
   }

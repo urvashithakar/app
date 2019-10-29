@@ -78,7 +78,7 @@
 
   button:hover {
     transition: none;
-    color: var(--dark-gray);
+    color: var(--blue-grey-600);
   }
 }
 </style>

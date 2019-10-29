@@ -91,7 +91,7 @@ export default {
     },
     color: {
       type: String,
-      default: "gray"
+      default: "blue-grey-400"
     },
     src: {
       type: String,
@@ -211,7 +211,7 @@ export default {
   &:not(.disabled):hover,
   &:not(.disabled).selected {
     .header:not(.big-image) {
-      background-color: var(--dark-gray) !important;
+      background-color: var(--blue-grey-600) !important;
     }
   }
 
@@ -296,7 +296,7 @@ export default {
       border-radius: var(--border-radius);
       opacity: 0.5;
       background-color: var(--white);
-      color: var(--darker-gray);
+      color: var(--blue-grey-800);
       backdrop-filter: blur(5px);
       font-size: 10px;
       text-transform: uppercase;
@@ -339,13 +339,13 @@ export default {
     margin-bottom: 2px;
   }
   .subtitle {
-    color: var(--light-gray);
+    color: var(--blue-grey-300);
     font-size: 13px;
   }
 
   .content {
     font-size: 11px;
-    color: var(--gray);
+    color: var(--blue-grey-400);
     max-height: 114px; // 8 lines of text
     overflow: hidden;
     margin-top: 10px;

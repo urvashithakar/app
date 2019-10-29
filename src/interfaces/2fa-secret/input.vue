@@ -58,7 +58,7 @@ export default {
 
 <style scoped>
 .qr {
-  border: var(--input-border-width) solid var(--lightest-gray);
+  border: var(--input-border-width) solid var(--blue-grey-50);
   border-radius: var(--border-radius);
   margin-bottom: 16px;
 }

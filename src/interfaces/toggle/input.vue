@@ -67,17 +67,17 @@ input {
   }
   label {
     transition: all var(--fast) var(--transition);
-    color: var(--gray);
+    color: var(--blue-grey-400);
     padding: 0.5rem 0 0.5rem 0;
   }
   &:hover label {
-    color: var(--darker-gray);
+    color: var(--blue-grey-800);
   }
   input:checked + label {
-    color: var(--darkest-gray);
+    color: var(--blue-grey-900);
   }
   input:disabled + label {
-    color: var(--light-gray);
+    color: var(--blue-grey-300);
   }
   input:disabled {
     cursor: not-allowed;
@@ -93,11 +93,11 @@ input {
     margin-left: 4px;
     font-size: var(--size-3);
     font-weight: var(--weight-bold);
-    color: var(--gray);
+    color: var(--blue-grey-400);
   }
 
   &.on span {
-    color: var(--darker-gray);
+    color: var(--blue-grey-800);
   }
 }
 </style>

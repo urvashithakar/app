@@ -2,7 +2,7 @@
   <div id="timeline" ref="timeline">
     <Day v-for="day in days" :key="day.id" :date="day.date" :events="day.events" />
     <div v-if="lazyLoading" class="lazy-loader">
-      <v-spinner line-fg-color="var(--light-gray)" line-bg-color="var(--lighter-gray)" />
+      <v-spinner line-fg-color="var(--blue-grey-300)" line-bg-color="var(--blue-grey-200)" />
     </div>
   </div>
 </template>
@@ -21,7 +21,7 @@ export default {
       actionColor: {
         create: "success",
         update: "success",
-        authenticate: "dark-gray",
+        authenticate: "blue-grey-600",
         delete: "warning",
         upload: "accent"
       },

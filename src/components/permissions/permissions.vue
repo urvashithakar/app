@@ -1,6 +1,6 @@
 <template>
   <div v-if="loading" class="v-permissions interface loading">
-    <v-spinner line-fg-color="var(--light-gray)" line-bg-color="var(--lighter-gray)" />
+    <v-spinner line-fg-color="var(--blue-grey-300)" line-bg-color="var(--blue-grey-200)" />
   </div>
   <div v-else class="interface">
     <div class="v-permissions">
@@ -155,7 +155,7 @@ export default {
 .v-permissions {
   background-color: var(--white);
   border-radius: var(--border-radius);
-  border: var(--input-border-width) solid var(--lighter-gray);
+  border: var(--input-border-width) solid var(--input-border-color);
   max-width: 632px;
   .no-collections-message {
     margin-top: 20px;
@@ -174,14 +174,14 @@ export default {
         position: absolute;
         transform: rotate(45deg);
         font-size: 18px;
-        color: var(--lighter-gray);
+        color: var(--blue-grey-200);
       }
       & .cell:first-child {
         padding-left: 2rem;
       }
     }
     &:not(.sub) {
-      border-top: 1px solid var(--lightest-gray);
+      border-top: 1px solid var(--blue-grey-50);
     }
   }
   ::v-deep .cell {
@@ -200,7 +200,7 @@ export default {
     }
   }
   .border {
-    border-top: 1px solid var(--lightest-gray);
+    border-top: 1px solid var(--blue-grey-50);
   }
   &.loading {
     padding: 300px 0;

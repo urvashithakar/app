@@ -657,7 +657,7 @@ export default {
 
     .row {
       height: 100%;
-      border-bottom: 2px solid var(--lightest-gray);
+      border-bottom: 2px solid var(--blue-grey-50);
     }
   }
 
@@ -683,8 +683,8 @@ export default {
     border: 0;
 
     &.managed {
-      background-color: var(--lightest-gray);
-      color: var(--light-gray);
+      background-color: var(--blue-grey-50);
+      color: var(--blue-grey-300);
 
       &:hover {
         background-color: var(--danger);
@@ -693,11 +693,11 @@ export default {
     }
 
     &.not-managed {
-      background-color: var(--darker-gray);
+      background-color: var(--blue-grey-800);
       color: var(--white);
 
       &:hover {
-        background-color: var(--darkest-gray);
+        background-color: var(--blue-grey-900);
         color: var(--white);
       }
     }
@@ -722,7 +722,7 @@ export default {
       width: max-content;
 
       &:not(.disabled):hover {
-        color: var(--darkest-gray);
+        color: var(--blue-grey-900);
       }
 
       > *:first-child {
@@ -730,7 +730,7 @@ export default {
       }
 
       &.disabled {
-        color: var(--light-gray);
+        color: var(--blue-grey-300);
       }
     }
   }

@@ -515,7 +515,7 @@ label.style-4 {
   }
 }
 .bookmark-name {
-  color: var(--darkest-gray);
+  color: var(--blue-grey-900);
   margin-left: 5px;
   margin-top: 3px;
   font-size: 0.77em;

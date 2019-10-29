@@ -38,7 +38,7 @@ export default {
 }
 .immutable {
   display: block;
-  color: var(--light-gray);
+  color: var(--blue-grey-300);
   text-transform: initial;
   margin-right: 20px;
   font-style: italic;

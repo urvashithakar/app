@@ -98,7 +98,7 @@ export default {
 }
 
 .none {
-  border-color: var(--lighter-gray);
+  border-color: var(--blue-grey-200);
 }
 
 .mine {
@@ -137,8 +137,8 @@ export default {
 }
 
 .indeterminate {
-  background-color: var(--light-gray);
-  border-color: var(--light-gray);
+  background-color: var(--blue-grey-300);
+  border-color: var(--blue-grey-300);
 }
 
 .popover-content {
@@ -148,7 +148,7 @@ export default {
     text-transform: uppercase;
     font-weight: 700;
     font-size: 12px;
-    color: var(--light-gray);
+    color: var(--blue-grey-300);
     padding: 0 8px;
 
     // Hack to fix misaligned icons
@@ -158,7 +158,7 @@ export default {
     }
 
     &:hover {
-      color: var(--dark-gray);
+      color: var(--blue-grey-600);
     }
   }
 

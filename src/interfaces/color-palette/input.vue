@@ -108,7 +108,7 @@ export default {
 
     &:nth-last-child(2) {
       flex-grow: 1;
-      border: 1px solid var(--lightest-gray);
+      border: 1px solid var(--blue-grey-50);
 
       position: absolute;
       left: 0;

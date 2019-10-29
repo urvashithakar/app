@@ -59,7 +59,7 @@ export default {
 <style lang="scss" scoped>
 .select {
   transition: all var(--fast) var(--transition);
-  border: var(--input-border-width) solid var(--lighter-gray);
+  border: var(--input-border-width) solid var(--input-border-color);
   border-radius: var(--border-radius);
   width: 100%;
   max-width: var(--width-large);
@@ -68,25 +68,25 @@ export default {
 
   &:hover {
     transition: none;
-    border-color: var(--light-gray);
+    border-color: var(--blue-grey-300);
   }
   &:focus {
-    border-color: var(--darker-gray);
+    border-color: var(--blue-grey-800);
     option {
-      color: var(--dark-gray);
+      color: var(--blue-grey-600);
     }
   }
   option {
     transition: color var(--fast) var(--transition);
     padding: 5px 10px;
-    color: var(--gray);
+    color: var(--blue-grey-400);
     &:hover {
       transition: none;
-      color: var(--darker-gray);
+      color: var(--blue-grey-800);
     }
     &:checked {
-      background: var(--darkest-gray)
-        linear-gradient(0deg, var(--darkest-gray) 0%, var(--darkest-gray) 100%);
+      background: var(--blue-grey-900)
+        linear-gradient(0deg, var(--blue-grey-900) 0%, var(--blue-grey-900) 100%);
       position: relative;
       color: var(--white);
       -webkit-text-fill-color: var(--white);

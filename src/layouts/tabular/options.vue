@@ -138,7 +138,7 @@ label {
   }
 
   i {
-    color: var(--lighter-gray);
+    color: var(--blue-grey-200);
   }
 }
 </style>

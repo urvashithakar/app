@@ -5,11 +5,7 @@
       <div class="header-day">{{ date }}</div>
     </div>
     <div class="events">
-      <a
-        v-for="event in eventList"
-        :key="event.id"
-        @click.stop="goToItem(event.id)"
-      >
+      <a v-for="event in eventList" :key="event.id" @click.stop="goToItem(event.id)">
         <div
           class="event"
           :class="event.id == -1 ? 'event-more' : ''"
@@ -29,11 +25,6 @@ export default {
   props: ["week", "display", "date", "events"],
   data() {
     return {};
-  },
-  methods: {
-     goToItem(id) {
-      if(id!== -1) this.$router.push(`/collections/${this.$parent.$parent.collection}/${id}`)
-    },
   },
   computed: {
     hidden() {
@@ -72,6 +63,11 @@ export default {
       }
       return events;
     }
+  },
+  methods: {
+    goToItem(id) {
+      if (id !== -1) this.$router.push(`/collections/${this.$parent.$parent.collection}/${id}`);
+    }
   }
 };
 </script>
@@ -85,8 +81,8 @@ export default {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  border: 2px solid var(--darkest-gray);
-  color: var(--darkest-gray);
+  border: 2px solid var(--blue-grey-900);
+  color: var(--blue-grey-900);
   line-height: 0;
 }
 
@@ -111,7 +107,7 @@ export default {
   width: 32px;
   text-align: center;
   font-size: 0.7em;
-  color: var(--light-gray);
+  color: var(--blue-grey-300);
 }
 
 .header-day {
@@ -145,11 +141,9 @@ export default {
 
 .event-more {
   .title {
-    color: var(--dark-gray);
+    color: var(--blue-grey-600);
   }
   background-color: transparent;
   justify-content: center;
 }
-
-
 </style>

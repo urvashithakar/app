@@ -73,8 +73,8 @@ h3 {
   width: 20px;
   height: 22px;
   margin-right: 15px;
-  color: var(--darker-gray);
-  fill: var(--darker-gray);
+  color: var(--blue-grey-800);
+  fill: var(--blue-grey-800);
 
   /* Forces left-alignment of material-icons */
   display: inline-flex;
@@ -90,13 +90,13 @@ svg {
 
 .bookmark button:first-child:hover,
 .user-menu button:hover {
-  background-color: #dde3e6; // rgba(var(--lighter-gray), 0.5);
+  background-color: #dde3e6; // rgba(var(--blue-grey-200), 0.5);
   border-radius: var(--border-radius);
 
   i,
   svg {
-    color: var(--darker-gray);
-    fill: var(--darker-gray);
+    color: var(--blue-grey-800);
+    fill: var(--blue-grey-800);
   }
 }
 
@@ -124,7 +124,7 @@ nav > ul > li > * {
     text-decoration: none;
 
     &:hover {
-      background-color: #dde3e6; // rgba(var(--lighter-gray), 0.5);
+      background-color: #dde3e6; // rgba(var(--blue-grey-200), 0.5);
       border-radius: var(--border-radius);
     }
   }
@@ -136,7 +136,7 @@ nav > ul > li > * {
 
     i {
       vertical-align: baseline;
-      color: var(--lighter-gray);
+      color: var(--blue-grey-200);
     }
 
     &:hover i {

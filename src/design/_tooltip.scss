@@ -2,11 +2,11 @@
   display: block !important;
   z-index: 10000;
   border-radius: var(--border-radius);
-  background: var(--darkest-gray);
+  background: var(--blue-grey-900);
 
   &.popover {
     background: var(--white);
-    border: 2px solid var(--lighter-gray);
+    border: 2px solid var(--blue-grey-200);
     box-shadow: var(--box-shadow);
   }
 
@@ -26,24 +26,24 @@
     border-style: solid;
     position: absolute;
     margin: 5px;
-    border-color: var(--darkest-gray);
+    border-color: var(--blue-grey-900);
   }
 
   &.inverted {
-    background: var(--lightest-gray);
+    background: var(--blue-grey-50);
 
     & .tooltip-inner {
-      color: var(--darker-gray);
+      color: var(--blue-grey-800);
     }
 
     & .tooltip-arrow {
-      border-color: var(--lightest-gray);
+      border-color: var(--blue-grey-50);
     }
   }
 
   & .popover-arrow {
     border-color: var(--white);
-    border: 1px solid var(--lighter-gray);
+    border: 1px solid var(--blue-grey-200);
   }
 
   &[x-placement^="top"] {

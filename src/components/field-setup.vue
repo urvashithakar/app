@@ -1514,7 +1514,7 @@ p {
   &.subtext {
     max-width: 460px;
     font-size: 16px;
-    color: var(--light-gray);
+    color: var(--blue-grey-300);
     line-height: 26px;
     font-weight: 400;
     margin-bottom: 40px;
@@ -1534,7 +1534,7 @@ p {
   font-style: italic;
   font-size: 12px;
   line-height: 1.5em;
-  color: var(--light-gray);
+  color: var(--blue-grey-300);
   & b {
     font-weight: 600;
   }
@@ -1547,7 +1547,7 @@ p {
   font-style: italic;
   font-size: var(--size-3);
   line-height: 1.5em;
-  color: var(--light-gray);
+  color: var(--blue-grey-300);
   font-weight: var(--weight-bold);
 }
 
@@ -1567,7 +1567,7 @@ p {
     cursor: pointer;
 
     .header {
-      background-color: var(--lighter-gray);
+      background-color: var(--blue-grey-200);
       border-radius: var(--border-radius);
       display: flex;
       justify-content: center;
@@ -1578,14 +1578,14 @@ p {
 
     &.active {
       .header {
-        background-color: var(--darkest-gray);
+        background-color: var(--blue-grey-900);
         transition: background-color var(--fast) var(--transition-in);
       }
     }
 
     &:hover {
       .header {
-        background-color: var(--gray);
+        background-color: var(--blue-grey-400);
       }
     }
 
@@ -1601,7 +1601,7 @@ p {
     }
 
     p {
-      color: var(--lighter-gray);
+      color: var(--blue-grey-200);
       font-size: 13px;
     }
   }
@@ -1637,7 +1637,7 @@ form.schema {
       font-size: 12px;
       line-height: 1.5em;
       font-weight: 500;
-      color: var(--light-gray);
+      color: var(--blue-grey-300);
     }
 
     .toggle {
@@ -1649,7 +1649,7 @@ form.schema {
       width: max-content;
 
       &:not(.disabled):hover {
-        color: var(--darkest-gray);
+        color: var(--blue-grey-900);
       }
 
       > *:first-child {
@@ -1657,7 +1657,7 @@ form.schema {
       }
 
       &.disabled {
-        color: var(--light-gray);
+        color: var(--blue-grey-300);
       }
     }
   }
@@ -1678,7 +1678,7 @@ form.options {
 details {
   position: relative;
   margin-top: 60px;
-  border-top: 2px solid var(--lightest-gray);
+  border-top: 2px solid var(--blue-grey-50);
   padding-top: 40px;
   padding-bottom: 32px;
   summary {
@@ -1687,7 +1687,7 @@ details {
     top: -22px;
     transform: translateX(-50%);
     background-color: var(--body-background);
-    color: var(--light-gray);
+    color: var(--blue-grey-300);
     font-size: 1.2rem;
     line-height: 1.1;
     font-weight: 400;
@@ -1698,7 +1698,7 @@ details {
     text-transform: capitalize;
 
     &:hover {
-      color: var(--darker-gray);
+      color: var(--blue-grey-800);
     }
 
     &::-webkit-details-marker {
@@ -1734,7 +1734,7 @@ details {
 }
 
 .required {
-  color: var(--darkest-gray);
+  color: var(--blue-grey-900);
   vertical-align: super;
   font-size: 7px !important;
 }
@@ -1779,7 +1779,7 @@ details {
   i {
     grid-area: f;
     font-size: 20px;
-    color: var(--light-gray);
+    color: var(--blue-grey-300);
   }
 }
 
@@ -1842,7 +1842,7 @@ details {
   i {
     grid-area: l;
     font-size: 20px;
-    color: var(--light-gray);
+    color: var(--blue-grey-300);
 
     &:last-of-type {
       grid-area: s;
@@ -1868,6 +1868,6 @@ label {
 hr {
   margin: 32px 0;
   border: 0;
-  border-top: 2px solid var(--lightest-gray);
+  border-top: 2px solid var(--blue-grey-50);
 }
 </style>

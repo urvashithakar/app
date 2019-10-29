@@ -14,9 +14,9 @@ export default {
   props: {
     color: {
       type: String,
-      default: "darker-gray",
+      default: "blue-grey-800",
       validator(val) {
-        return ["darker-gray", "accent", "success", "warning", "danger"].includes(val);
+        return ["blue-grey-800", "accent", "success", "warning", "danger"].includes(val);
       }
     },
     icon: {
@@ -44,7 +44,7 @@ export default {
   margin: 100px 0;
 
   .icon {
-    border: 2px solid var(--lightest-gray);
+    border: 2px solid var(--blue-grey-50);
     border-radius: 50%;
     padding: 20px;
     margin-bottom: 10px;
@@ -56,7 +56,7 @@ export default {
 
   p {
     line-height: 1.4;
-    color: var(--light-gray);
+    color: var(--blue-grey-300);
     max-width: 200px;
     text-align: center;
   }

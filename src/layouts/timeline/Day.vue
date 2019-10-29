@@ -50,7 +50,7 @@ export default {
   .date {
     padding: 19px 32px; // 19 visually aligns it with the project switcher
     font-size: var(--size-2);
-    border-bottom: 2px solid var(--lightest-gray);
+    border-bottom: 2px solid var(--blue-grey-50);
     position: sticky;
     top: var(--header-height);
     background-color: var(--white);

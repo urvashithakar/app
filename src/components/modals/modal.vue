@@ -133,7 +133,7 @@ export default {
 .v-modal {
   display: table;
   position: fixed;
-  z-index: 500;
+  z-index: 1500;
   top: 0;
   left: 0;
   width: 100%;
@@ -146,7 +146,7 @@ export default {
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: var(--darkest-gray);
+  background-color: var(--blue-grey-900);
   opacity: 0.9;
 
   &.pointer {
@@ -183,7 +183,7 @@ export default {
   }
 
   h1 {
-    color: var(--darker-gray);
+    color: var(--blue-grey-800);
     line-height: 24px; /* match close icon */
   }
 
@@ -207,7 +207,7 @@ export default {
     position: sticky;
     top: 0;
     height: 64px;
-    background-color: var(--lightest-gray);
+    background-color: var(--blue-grey-50);
   }
 
   .body {
@@ -224,16 +224,16 @@ export default {
   }
 
   .footer {
-    border-top: 2px solid var(--lightest-gray);
+    border-top: 2px solid var(--blue-grey-50);
     height: 64px;
   }
 
   button:not(.confirm) {
     transition: var(--fast) var(--transition);
-    color: var(--light-gray);
+    color: var(--blue-grey-300);
 
     &:hover {
-      color: var(--dark-gray);
+      color: var(--blue-grey-600);
     }
   }
 }
@@ -263,7 +263,7 @@ export default {
   padding: 0;
   list-style: none;
   justify-content: center;
-  border-bottom: 2px solid var(--lightest-gray);
+  border-bottom: 2px solid var(--blue-grey-50);
   position: sticky;
   top: 0;
   background-color: var(--white);
@@ -276,7 +276,7 @@ export default {
     flex-basis: 120px;
     height: 48px;
     position: relative;
-    color: var(--gray);
+    color: var(--blue-grey-400);
 
     text-decoration: none;
     text-transform: uppercase;
@@ -285,7 +285,7 @@ export default {
     position: relative;
 
     &:hover {
-      color: var(--darker-gray);
+      color: var(--blue-grey-800);
     }
 
     &::after {
@@ -295,16 +295,16 @@ export default {
       position: absolute;
       height: 2px;
       bottom: -2px;
-      background-color: var(--darkest-gray);
+      background-color: var(--blue-grey-900);
       transform: scaleY(0);
       transition: transform var(--fast) var(--transition-out);
     }
 
     &.active {
-      color: var(--darker-gray);
+      color: var(--blue-grey-800);
 
       &:hover {
-        color: var(--darkest-gray);
+        color: var(--blue-grey-900);
       }
 
       &::after {
@@ -314,10 +314,10 @@ export default {
     }
 
     &[disabled] {
-      color: var(--lighter-gray);
+      color: var(--blue-grey-200);
       cursor: not-allowed;
       &:hover {
-        color: var(--lighter-gray);
+        color: var(--blue-grey-200);
       }
     }
   }

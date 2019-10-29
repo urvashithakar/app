@@ -26,7 +26,7 @@ export default {
     left: 50%;
     transform: translateX(-50%);
 
-    color: var(--darker-gray);
+    color: var(--blue-grey-800);
     font-size: 16px;
     line-height: 18px;
     background-color: var(--body-background);
@@ -37,13 +37,13 @@ export default {
     top: 28px;
     left: 50%;
     transform: translateX(-50%);
-    color: var(--light-gray);
+    color: var(--blue-grey-300);
     max-width: 460px;
   }
   hr {
     border: 0;
     background: none;
-    border-bottom: 2px solid var(--lightest-gray);
+    border-bottom: 2px solid var(--blue-grey-50);
   }
 }
 
@@ -52,21 +52,21 @@ export default {
   padding-top: 6px;
   padding-bottom: 20px;
   h2 {
-    color: var(--darker-gray);
+    color: var(--blue-grey-800);
     font-size: 22px;
     line-height: 28px;
     font-weight: 400;
     margin-bottom: 10px;
   }
   p {
-    color: var(--light-gray);
+    color: var(--blue-grey-300);
     max-width: 460px;
     margin-top: 6px;
   }
   hr {
     border: 0;
     background: none;
-    border-bottom: 2px solid var(--lightest-gray);
+    border-bottom: 2px solid var(--blue-grey-50);
   }
 }
 
@@ -75,21 +75,21 @@ export default {
   padding-top: 6px;
   padding-bottom: 20px;
   h2 {
-    color: var(--darker-gray);
+    color: var(--blue-grey-800);
     font-size: 28px;
     line-height: 32px;
     font-weight: 300;
     margin-bottom: 10px;
   }
   p {
-    color: var(--light-gray);
+    color: var(--blue-grey-300);
     max-width: 460px;
     margin-top: 14px;
   }
   hr {
     border: 0;
     background: none;
-    border-bottom: 2px solid var(--lightest-gray);
+    border-bottom: 2px solid var(--blue-grey-50);
   }
 }
 </style>

@@ -232,7 +232,7 @@ export default {
     top: 80px;
     bottom: 8px;
     width: 2px;
-    background-color: var(--lighter-gray);
+    background-color: var(--blue-grey-100);
     z-index: -1;
   }
 
@@ -243,12 +243,12 @@ export default {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: var(--lighter-gray);
-    // box-shadow: 0 0 0 5px var(--lightest-gray);
+    background-color: var(--blue-grey-200);
+    // box-shadow: 0 0 0 5px var(--blue-grey-50);
     flex-shrink: 0;
 
     &.update {
-      background-color: var(--action);
+      background-color: var(--blue-grey-600);
     }
     &.delete {
       background-color: var(--danger);
@@ -257,7 +257,7 @@ export default {
       background-color: var(--success);
     }
     &.external {
-      background-color: var(--lighter-gray);
+      background-color: var(--blue-grey-200);
     }
     &.upload {
       background-color: var(--purple-500);
@@ -275,11 +275,11 @@ export default {
 
     .name {
       font-weight: 500;
-      color: var(--darkest-gray);
+      color: var(--blue-grey-900);
     }
 
     .date {
-      color: var(--light-gray);
+      color: var(--blue-grey-300);
       margin-left: 8px;
     }
 
@@ -299,11 +299,11 @@ export default {
       overflow: hidden;
       padding-right: 20px;
       cursor: pointer;
-      color: var(--light-gray);
+      color: var(--blue-grey-300);
 
       &:hover {
         .chevron {
-          color: var(--dark-gray);
+          color: var(--blue-grey-600);
         }
       }
 
@@ -311,7 +311,7 @@ export default {
         position: absolute;
         top: 0;
         right: 0;
-        color: var(--lighter-gray);
+        color: var(--blue-grey-200);
         transition: all var(--fast) var(--transition);
       }
     }
@@ -322,7 +322,7 @@ export default {
 
     .revert {
       transition: all var(--fast) var(--transition);
-      background-color: var(--lighter-gray);
+      background-color: var(--blue-grey-200);
       border-radius: var(--border-radius);
       padding: 4px;
       margin: 14px auto;
@@ -333,10 +333,10 @@ export default {
         transform: translateX(0);
         background-color: inherit;
         font-size: 24px;
-        color: var(--lightest-gray);
+        color: var(--blue-grey-50);
       }
       &:hover {
-        background-color: var(--dark-gray);
+        background-color: var(--blue-grey-600);
         i.material-icons {
           color: var(--white);
         }
@@ -346,7 +346,7 @@ export default {
     .comment {
       position: relative;
       background-color: var(--white);
-      color: var(--dark-gray);
+      color: var(--blue-grey-600);
       border-radius: var(--border-radius);
       padding: 8px 10px;
       display: inline-block;
@@ -362,13 +362,13 @@ export default {
         height: 0;
         border-style: solid;
         border-width: 0 8px 6px 8px;
-        border-color: transparent transparent var(--lightest-gray) transparent;
+        border-color: transparent transparent var(--blue-grey-50) transparent;
       }
       a {
-        color: var(--darker-gray);
+        color: var(--blue-grey-800);
         text-decoration: none;
         &:hover {
-          color: var(--darkest-gray);
+          color: var(--blue-grey-900);
         }
       }
       strong {
@@ -376,14 +376,14 @@ export default {
       }
       code {
         font-family: "Roboto Mono";
-        color: var(--gray);
+        color: var(--blue-grey-400);
         font-weight: 600;
       }
       pre {
         font-family: "Roboto Mono";
-        color: var(--gray);
+        color: var(--blue-grey-400);
         font-weight: 600;
-        background-color: var(--lighter-gray);
+        background-color: var(--blue-grey-200);
         padding: 4px 6px;
         border-radius: var(--border-radius);
         margin: 4px 0;
@@ -397,16 +397,16 @@ export default {
         font-size: 1.2em;
         font-weight: 400;
         margin: 20px 10px 20px 10px;
-        border-left: 2px solid var(--lighter-gray);
+        border-left: 2px solid var(--blue-grey-200);
         padding-left: 10px;
-        color: var(--darkest-gray);
+        color: var(--blue-grey-900);
         line-height: 1.4em;
       }
       hr {
         margin: 20px 0;
         height: 1px;
         border: none;
-        background-color: var(--lighter-gray);
+        background-color: var(--blue-grey-200);
       }
     }
   }
@@ -436,15 +436,15 @@ export default {
     transition-property: color, opacity;
     font-weight: var(--weight-bold);
     opacity: 0;
-    color: var(--darker-gray);
+    color: var(--blue-grey-800);
     background-color: var(--white);
     cursor: pointer;
     &:hover {
-      color: var(--darkest-gray);
+      color: var(--blue-grey-900);
     }
 
     &[disabled] {
-      color: var(--lighter-gray);
+      color: var(--blue-grey-200);
       cursor: not-allowed;
       background-color: var(--white);
     }
@@ -464,26 +464,26 @@ export default {
 <style lang="scss">
 .v-activity .content .comment {
   a {
-    // color: var(--darker-gray);
+    // color: var(--blue-grey-800);
     // text-decoration: underline;
     &:hover {
-      color: var(--darkest-gray);
+      color: var(--blue-grey-900);
     }
   }
   strong {
     font-weight: 600;
-    color: var(--gray);
+    color: var(--blue-grey-400);
   }
   code {
     font-family: "Roboto Mono";
-    color: var(--gray);
+    color: var(--blue-grey-400);
     font-weight: 600;
   }
   pre {
     font-family: "Roboto Mono";
-    color: var(--gray);
+    color: var(--blue-grey-400);
     font-weight: 600;
-    background-color: var(--lighter-gray);
+    background-color: var(--blue-grey-200);
     padding: 4px 6px;
     border-radius: var(--border-radius);
     margin: 10px 0;
@@ -497,16 +497,16 @@ export default {
     font-size: 1.2em;
     font-weight: 400;
     margin: 20px 10px 20px 10px;
-    border-left: 2px solid var(--lighter-gray);
+    border-left: 2px solid var(--blue-grey-200);
     padding-left: 10px;
-    color: var(--darkest-gray);
+    color: var(--blue-grey-900);
     line-height: 1.4em;
   }
   hr {
     margin: 20px 0;
     height: 1px;
     border: none;
-    background-color: var(--lighter-gray);
+    background-color: var(--blue-grey-200);
   }
 }
 </style>

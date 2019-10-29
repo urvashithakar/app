@@ -3,7 +3,7 @@
     <div class="line" :class="{ connect: connect }">
       <div
         class="point"
-        :style="{ backgroundColor: 'var(--' + (data.color || 'gray') + ')' }"
+        :style="{ backgroundColor: 'var(--' + (data.color || 'blue-grey-400') + ')' }"
       ></div>
     </div>
     <div class="container" @click="$router.push(data.to)">
@@ -74,7 +74,7 @@ export default {
     transform: translate(-50%, 0);
 
     &.connect {
-      background-color: var(--lightest-gray);
+      background-color: var(--blue-grey-50);
     }
 
     .point {
@@ -102,7 +102,7 @@ export default {
     }
 
     .title {
-      color: var(--darker-gray);
+      color: var(--blue-grey-800);
       margin-bottom: 4px;
       font-weight: 500;
       // font-size: 15px;
@@ -116,11 +116,11 @@ export default {
       .display {
         margin-right: 4px;
         font-weight: 500;
-        color: var(--gray);
+        color: var(--blue-grey-400);
       }
 
       .time {
-        color: var(--light-gray);
+        color: var(--blue-grey-300);
       }
     }
   }

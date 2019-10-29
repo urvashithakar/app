@@ -87,48 +87,48 @@ export default {
 <style lang="scss" scoped>
 textarea {
   width: 100%;
-  border: var(--input-border-width) solid var(--lighter-gray);
+  border: var(--input-border-width) solid var(--input-border-color);
   border-radius: var(--border-radius);
-  color: var(--gray);
+  color: var(--blue-grey-400);
   padding: 10px;
   line-height: 1.5;
   transition: var(--fast) var(--transition);
   transition-property: color, border-color;
 
   &::placeholder {
-    color: var(--lighter-gray);
+    color: var(--blue-grey-200);
   }
 
   &:read-only {
-    background-color: var(--lightest-gray);
-    border-color: var(--lighter-gray);
+    background-color: var(--blue-grey-50);
+    border-color: var(--blue-grey-200);
     cursor: not-allowed;
     &:focus {
-      color: var(--gray);
-      border-color: var(--lighter-gray);
+      color: var(--blue-grey-400);
+      border-color: var(--blue-grey-200);
     }
   }
 
   &:hover:not(:read-only) {
     transition: none;
-    border-color: var(--light-gray);
+    border-color: var(--blue-grey-300);
     outline: 0;
   }
 
   &:focus:not(:read-only) {
-    color: var(--dark-gray);
-    border-color: var(--dark-gray);
+    color: var(--blue-grey-600);
+    border-color: var(--blue-grey-600);
     outline: 0;
   }
 
   &:focus:not(:read-only) + i {
-    color: var(--dark-gray);
+    color: var(--blue-grey-600);
   }
 
   &:-webkit-autofill {
     box-shadow: inset 0 0 0 1000px var(--white) !important;
-    color: var(--dark-gray) !important;
-    -webkit-text-fill-color: var(--dark-gray) !important;
+    color: var(--blue-grey-600) !important;
+    -webkit-text-fill-color: var(--blue-grey-600) !important;
   }
 
   input:-webkit-autofill,
@@ -136,7 +136,7 @@ textarea {
   input:-webkit-autofill:focus input:-webkit-autofill,
   textarea:-webkit-autofill,
   textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus {
-    border: var(--input-border-width) solid var(--lighter-gray);
+    border: var(--input-border-width) solid var(--input-border-color);
     background-color: var(--white);
     box-shadow: inset 0 0 0 2000px var(--white);
   }

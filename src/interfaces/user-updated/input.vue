@@ -7,7 +7,7 @@
       :size="28"
       :src="src"
       :alt="displayValue"
-      color="light-gray"
+      color="blue-grey-300"
     ></v-avatar>
     <span v-if="options.display !== 'avatar'" class="label gray style-3">
       <div>{{ displayValue }}</div>
@@ -64,6 +64,6 @@ export default {
   }
 }
 .gray {
-  color: var(--light-gray);
+  color: var(--blue-grey-300);
 }
 </style>

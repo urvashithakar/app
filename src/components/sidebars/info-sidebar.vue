@@ -54,14 +54,14 @@ export default {
   z-index: 30;
   transition: var(--slow) var(--transition-out);
   width: 90%;
-  background-color: var(--lightest-gray);
+  background-color: var(--blue-grey-50);
   padding: 20px;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
 
   & .system:not(:empty) {
     padding-bottom: 20px;
-    border-bottom: 1px solid var(--lightest-gray);
+    border-bottom: 1px solid var(--blue-grey-50);
     margin-bottom: 20px;
   }
 

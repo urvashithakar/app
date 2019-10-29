@@ -9,7 +9,11 @@
         <div class="header">
           <div class="row">
             <button v-if="sortable" class="sort-column" @click="toggleManualSort">
-              <v-icon name="sort" size="18" :color="manualSortActive ? 'action' : 'light-gray'" />
+              <v-icon
+                name="sort"
+                size="18"
+                :color="manualSortActive ? 'action' : 'blue-grey-300'"
+              />
             </button>
             <button
               v-for="field in visibleFields"
@@ -518,7 +522,7 @@ export default {
 <style lang="scss" scoped>
 .table {
   background-color: var(--white);
-  border: var(--input-border-width) solid var(--lighter-gray);
+  border: var(--input-border-width) solid var(--input-border-color);
   border-radius: var(--border-radius);
   border-spacing: 0;
   width: 100%;
@@ -526,7 +530,7 @@ export default {
 
   .header {
     height: var(--input-height);
-    border-bottom: 2px solid var(--lightest-gray);
+    border-bottom: 2px solid var(--blue-grey-50);
 
     button {
       text-align: left;
@@ -535,13 +539,13 @@ export default {
 
       &:hover {
         transition: none;
-        color: var(--darker-gray);
+        color: var(--blue-grey-800);
       }
     }
 
     i {
       vertical-align: top;
-      color: var(--light-gray);
+      color: var(--blue-grey-300);
     }
   }
 
@@ -588,7 +592,7 @@ export default {
       }
 
       button {
-        color: var(--lighter-gray);
+        color: var(--blue-grey-200);
         transition: color var(--fast) var(--transition);
 
         &:hover {
@@ -607,7 +611,7 @@ export default {
     flex-basis: 36px !important;
 
     &.disabled i {
-      color: var(--lightest-gray);
+      color: var(--blue-grey-50);
       cursor: not-allowed;
     }
   }

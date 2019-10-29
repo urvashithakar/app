@@ -271,7 +271,7 @@ button {
 }
 
 .search-input {
-  border-bottom: 2px solid var(--lightest-gray);
+  border-bottom: 2px solid var(--blue-grey-50);
   &::v-deep input {
     border-radius: 0;
     border: none;
@@ -279,7 +279,7 @@ button {
     height: var(--header-height);
 
     &::placeholder {
-      color: var(--dark-gray);
+      color: var(--blue-grey-600);
     }
   }
 }

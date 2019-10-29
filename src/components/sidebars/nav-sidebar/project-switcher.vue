@@ -99,7 +99,7 @@ export default {
   margin: 0 -20px 20px;
   padding: 0 30px;
   position: relative;
-  background-color: #dde3e6; // rgba(var(--lighter-gray), 0.5);
+  background-color: #dde3e6; // rgba(var(--blue-grey-200), 0.5);
 
   .content {
     padding: 8px 0 8px 10px;
@@ -123,19 +123,19 @@ export default {
     }
 
     svg {
-      fill: var(--darkest-gray);
+      fill: var(--blue-grey-900);
     }
 
     i {
-      color: var(--darkest-gray);
+      color: var(--blue-grey-900);
     }
 
     svg {
-      fill: var(--darker-gray);
+      fill: var(--blue-grey-800);
     }
 
     i {
-      color: var(--light-gray);
+      color: var(--blue-grey-300);
     }
 
     &.has-error {
@@ -158,8 +158,8 @@ export default {
     width: 21px;
     height: 24px;
     margin-right: 21px;
-    color: var(--light-gray);
-    fill: var(--light-gray);
+    color: var(--blue-grey-300);
+    fill: var(--blue-grey-300);
   }
 
   .project-name {
@@ -169,7 +169,7 @@ export default {
   .chevron {
     position: absolute;
     right: 10px;
-    color: var(--light-gray);
+    color: var(--blue-grey-300);
   }
 
   select {

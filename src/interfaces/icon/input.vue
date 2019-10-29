@@ -77,7 +77,7 @@ export default {
   background-color: white;
   padding: 10px;
   background-color: var(--off-white);
-  border: var(--input-border-width) solid var(--lightest-gray);
+  border: var(--input-border-width) solid var(--blue-grey-50);
 
   .v-input {
     position: sticky;
@@ -91,10 +91,10 @@ export default {
     summary {
       margin: 20px 2px 5px;
       cursor: pointer;
-      color: var(--gray);
+      color: var(--blue-grey-400);
 
       &:hover {
-        color: var(--darkest-gray);
+        color: var(--blue-grey-900);
       }
     }
   }
@@ -102,22 +102,22 @@ export default {
   button {
     padding: 0.5em;
     transition: color var(--fast) var(--transition);
-    color: var(--light-gray);
+    color: var(--blue-grey-300);
     max-width: 37px;
 
     &.active {
-      color: var(--darkest-gray);
+      color: var(--blue-grey-900);
     }
 
     &:hover {
       transition: none;
-      color: var(--darker-gray);
+      color: var(--blue-grey-800);
     }
   }
   button[disabled="disabled"] {
     &:hover {
       cursor: not-allowed;
-      color: var(--lighter-gray);
+      color: var(--blue-grey-200);
     }
   }
 }

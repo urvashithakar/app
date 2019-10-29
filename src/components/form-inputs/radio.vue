@@ -93,20 +93,20 @@ label::before {
 }
 
 input:hover + label {
-  color: var(--darker-gray);
+  color: var(--blue-grey-800);
 }
 
 input:disabled + label {
-  color: var(--light-gray);
+  color: var(--blue-grey-300);
   cursor: not-allowed;
 }
 
 input:checked + label::before {
   content: "radio_button_checked";
-  color: var(--darkest-gray);
+  color: var(--blue-grey-900);
 }
 
 input:checked + label {
-  color: var(--darkest-gray);
+  color: var(--blue-grey-900);
 }
 </style>

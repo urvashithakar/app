@@ -38,7 +38,7 @@ export default {
 
 <style lang="scss" scoped>
 .gray {
-  color: var(--light-gray);
+  color: var(--blue-grey-300);
   text-transform: capitalize;
 }
 </style>

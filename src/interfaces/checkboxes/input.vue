@@ -11,7 +11,7 @@
       <template v-if="choice.custom">
         <button @click="choices[index].checked = !choices[index].checked">
           <v-icon
-            color="darker-gray"
+            color="blue-grey-800"
             :name="choice.checked ? 'check_box' : 'check_box_outline_blank'"
           />
         </button>
@@ -147,7 +147,7 @@ export default {
 
   input {
     border: 0;
-    border-bottom: 1px solid var(--gray);
+    border-bottom: 1px solid var(--blue-grey-400);
     width: 100%;
     margin-left: 4px;
     width: 100%;
@@ -155,15 +155,15 @@ export default {
   }
 
   input:hover {
-    border-color: var(--darker-gray);
+    border-color: var(--blue-grey-800);
   }
 
   input:focus {
-    border-color: var(--darkest-gray);
+    border-color: var(--blue-grey-900);
   }
 
   input::placeholder {
-    color: var(--light-gray);
+    color: var(--blue-grey-300);
   }
 }
 

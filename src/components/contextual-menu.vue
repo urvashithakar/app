@@ -77,19 +77,19 @@ export default {
   align-items: center;
 
   i {
-    color: var(--lighter-gray);
+    color: var(--blue-grey-200);
     transition: color var(--fast) var(--transition);
   }
 
   &:hover i {
-    color: var(--dark-gray);
+    color: var(--blue-grey-600);
     transition: none;
   }
 
   &.disabled {
-    color: var(--lighter-gray);
+    color: var(--blue-grey-200);
     &:hover i {
-      color: var(--lighter-gray);
+      color: var(--blue-grey-200);
     }
   }
 }
@@ -101,7 +101,7 @@ export default {
     display: block;
   }
   i {
-    color: var(--gray);
+    color: var(--blue-grey-400);
     margin-right: 8px;
     transition: color var(--fast) var(--transition);
   }
@@ -109,33 +109,33 @@ export default {
     display: flex;
     align-items: center;
     padding: 4px 8px;
-    color: var(--dark-gray);
+    color: var(--blue-grey-600);
     width: 100%;
     height: 100%;
     transition: color var(--fast) var(--transition);
 
     &.disabled {
-      color: var(--lighter-gray);
+      color: var(--blue-grey-200);
       cursor: not-allowed;
       i {
-        color: var(--lighter-gray);
+        color: var(--blue-grey-200);
       }
 
       &:hover {
         background-color: transparent;
-        color: var(--lighter-gray);
+        color: var(--blue-grey-200);
         i {
-          color: var(--lighter-gray);
+          color: var(--blue-grey-200);
         }
       }
     }
 
     &:hover {
       background-color: var(--highlight);
-      color: var(--darkest-gray);
+      color: var(--blue-grey-900);
       transition: none;
       i {
-        color: var(--darkest-gray);
+        color: var(--blue-grey-900);
         transition: none;
       }
     }

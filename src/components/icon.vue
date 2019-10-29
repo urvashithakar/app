@@ -58,7 +58,7 @@ export default {
       }
     },
 
-    // A color name from our global variables, eg `red-500`, `accent`, or `darkest-gray`
+    // A color name from our global variables, eg `red-500`, `accent`, or `blue-grey-900`
     color: {
       type: String,
       default: undefined

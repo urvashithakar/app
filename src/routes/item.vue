@@ -36,7 +36,7 @@
         <v-header-button
           v-if="!newItem && !singleItem && permission.delete !== 'none'"
           icon="delete_outline"
-          color="gray"
+          color="blue-grey-400"
           hover-color="danger"
           :label="$t('delete')"
           @click="confirmRemove = true"
@@ -81,7 +81,7 @@
 
       <router-link v-if="canReadActivity" to="/activity" class="notifications">
         <div class="preview">
-          <v-icon name="notifications" color="light-gray" />
+          <v-icon name="notifications" color="blue-grey-300" />
           <span>{{ $t("notifications") }}</span>
         </div>
       </router-link>
@@ -1081,7 +1081,7 @@ export default {
   text-decoration: none;
   padding: 20px;
   background-color: #dde3e6;
-  color: var(--darker-gray);
+  color: var(--blue-grey-800);
   display: block;
 
   .preview {

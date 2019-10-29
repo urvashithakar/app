@@ -11,7 +11,7 @@
       v-if="loading"
       :line-size="2"
       size="13"
-      line-fg-color="var(--light-gray)"
+      line-fg-color="var(--blue-grey-300)"
       line-bg-color="#fff"
       class="spinner"
     />
@@ -59,22 +59,22 @@ export default {
 
 <style lang="scss" scoped>
 button.action {
-  background-color: var(--darker-gray);
-  border-color: var(--darker-gray);
+  background-color: var(--blue-grey-800);
+  border-color: var(--blue-grey-800);
 
   &:hover:not(:disabled) {
-    background-color: var(--darkest-gray);
-    border-color: var(--darkest-gray);
+    background-color: var(--blue-grey-900);
+    border-color: var(--blue-grey-900);
   }
 }
 
 button.gray {
-  background-color: var(--lightest-gray);
-  border-color: var(--lightest-gray);
+  background-color: var(--blue-grey-50);
+  border-color: var(--blue-grey-50);
 
   &:hover:not(:disabled) {
-    background-color: var(--lighter-gray);
-    border-color: var(--lighter-gray);
+    background-color: var(--blue-grey-200);
+    border-color: var(--blue-grey-200);
   }
 }
 
@@ -99,7 +99,7 @@ button.danger {
 }
 
 button.black {
-  color: var(--darker-gray);
+  color: var(--blue-grey-800);
 }
 
 button.white {
@@ -121,9 +121,9 @@ button {
   border: var(--input-border-width) solid var(--action);
 
   &:disabled:not(.loading) {
-    background-color: var(--lightest-gray);
-    border: var(--input-border-width) solid var(--lightest-gray);
-    color: var(--light-gray);
+    background-color: var(--blue-grey-50);
+    border: var(--input-border-width) solid var(--blue-grey-50);
+    color: var(--blue-grey-300);
     cursor: not-allowed;
   }
 

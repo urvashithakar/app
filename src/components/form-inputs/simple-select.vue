@@ -76,13 +76,13 @@ export default {
 
   .preview {
     height: var(--input-height);
-    border: var(--input-border-width) solid var(--lighter-gray);
+    border: var(--input-border-width) solid var(--input-border-color);
     border-radius: var(--border-radius);
     background-color: var(--white);
     display: flex;
     align-items: center;
     padding-left: 10px;
-    color: var(--gray);
+    color: var(--blue-grey-400);
     font-size: 14px;
     font-weight: 400;
     line-height: 1.5;
@@ -110,21 +110,21 @@ export default {
   }
 
   select:hover + .preview {
-    border-color: var(--light-gray);
+    border-color: var(--blue-grey-300);
   }
 
   select:focus + .preview {
-    border-color: var(--dark-gray);
-    color: var(--dark-gray);
+    border-color: var(--blue-grey-600);
+    color: var(--blue-grey-600);
   }
 
   select[disabled] {
     cursor: not-allowed;
 
     & + .preview {
-      background-color: var(--lightest-gray);
-      border-color: var(--lighter-gray);
-      color: var(--light-gray);
+      background-color: var(--blue-grey-50);
+      border-color: var(--blue-grey-200);
+      color: var(--blue-grey-300);
     }
   }
 }

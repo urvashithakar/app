@@ -193,7 +193,7 @@
     </div>
     <transition name="fade">
       <div v-if="lazyLoading" class="lazy-loader">
-        <v-spinner line-fg-color="var(--light-gray)" line-bg-color="var(--lighter-gray)" />
+        <v-spinner line-fg-color="var(--blue-grey-300)" line-bg-color="var(--blue-grey-200)" />
       </div>
     </transition>
   </div>
@@ -473,7 +473,7 @@ export default {
   top: 0;
   z-index: +1;
   background-color: var(--white);
-  border-color: var(--lightest-gray);
+  border-color: var(--blue-grey-50);
   transition: box-shadow var(--fast) var(--transition-out);
 
   &.shadow {
@@ -505,14 +505,14 @@ export default {
 }
 
 .drag-handle-line {
-  background-color: var(--lightest-gray);
+  background-color: var(--blue-grey-50);
   width: 1px;
   height: 60%;
   transition: background-color var(--fast) var(--transition);
 }
 
 .drag-handle:hover .drag-handle-line {
-  background-color: var(--gray);
+  background-color: var(--blue-grey-400);
 }
 
 .toolbar:hover .drag-handle {
@@ -540,7 +540,7 @@ export default {
 }
 
 .sort.active {
-  color: var(--dark-gray);
+  color: var(--blue-grey-600);
 }
 
 .cell {
@@ -557,7 +557,7 @@ export default {
 }
 
 .empty {
-  color: var(--lighter-gray);
+  color: var(--blue-grey-200);
 }
 
 .toolbar .cell:not(.select) {
@@ -575,7 +575,7 @@ export default {
 }
 
 .sort:hover {
-  color: var(--darker-gray);
+  color: var(--blue-grey-800);
 }
 
 .sort-arrow {
@@ -601,28 +601,28 @@ export default {
 
 .toolbar .manual-sort {
   button {
-    color: var(--light-gray);
+    color: var(--blue-grey-300);
     transition: color var(--fast) var(--transition);
 
     &:hover {
       transition: none;
-      color: var(--dark-gray);
+      color: var(--blue-grey-600);
     }
   }
 
   &.active button {
-    color: var(--darkest-gray);
+    color: var(--blue-grey-900);
   }
 }
 
 .body .manual-sort {
   cursor: not-allowed;
-  color: var(--lightest-gray);
+  color: var(--blue-grey-50);
 
   &.active {
     cursor: grab;
     cursor: -webkit-grab;
-    color: var(--gray);
+    color: var(--blue-grey-400);
   }
 }
 
@@ -633,10 +633,10 @@ export default {
 .dragging .sortable-chosen,
 .sortable-chosen:active {
   background-color: var(--highlight) !important;
-  color: var(--darkest-gray);
+  color: var(--blue-grey-900);
 
   .manual-sort {
-    color: var(--darkest-gray);
+    color: var(--blue-grey-900);
   }
 }
 
@@ -659,7 +659,7 @@ export default {
   }
 
   to {
-    border-color: var(--lightest-gray);
+    border-color: var(--blue-grey-50);
   }
 }
 

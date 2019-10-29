@@ -192,9 +192,9 @@ export default {
 
   input {
     width: 100%;
-    border: var(--input-border-width) solid var(--lighter-gray);
+    border: var(--input-border-width) solid var(--input-border-color);
     border-radius: var(--border-radius);
-    color: var(--gray);
+    color: var(--blue-grey-400);
     padding: 10px;
     font-size: 1rem;
     line-height: 1.5;
@@ -216,41 +216,41 @@ export default {
     }
 
     &::placeholder {
-      color: var(--lighter-gray);
+      color: var(--blue-grey-200);
     }
 
     &:hover:not(:read-only) {
       transition: none;
-      border-color: var(--light-gray);
+      border-color: var(--blue-grey-300);
     }
 
     &:focus:not(:read-only) {
-      color: var(--dark-gray);
-      border-color: var(--dark-gray);
+      color: var(--blue-grey-600);
+      border-color: var(--blue-grey-600);
       outline: 0;
     }
 
     &:-webkit-autofill {
       box-shadow: inset 0 0 0 1000px var(--white) !important;
-      color: var(--dark-gray) !important;
-      -webkit-text-fill-color: var(--dark-gray) !important;
+      color: var(--blue-grey-600) !important;
+      -webkit-text-fill-color: var(--blue-grey-600) !important;
     }
 
     &:-webkit-autofill,
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus {
-      border: var(--input-border-width) solid var(--lighter-gray);
+      border: var(--input-border-width) solid var(--input-border-color);
       background-color: var(--white);
       box-shadow: inset 0 0 0 2000px var(--white);
     }
 
     &:read-only {
-      background-color: var(--lightest-gray);
-      border-color: var(--lighter-gray);
+      background-color: var(--blue-grey-50);
+      border-color: var(--blue-grey-200);
       cursor: not-allowed;
       &:focus {
-        color: var(--gray);
-        border-color: var(--lighter-gray);
+        color: var(--blue-grey-400);
+        border-color: var(--blue-grey-200);
       }
     }
   }
@@ -262,7 +262,7 @@ export default {
     transform: translateY(-50%);
     opacity: 0;
     transition: var(--fast) var(--transition);
-    color: var(--light-gray);
+    color: var(--blue-grey-300);
   }
 
   input.charactercount:focus {
@@ -285,12 +285,12 @@ export default {
   &.icon-right i {
     position: absolute;
     top: 50%;
-    color: var(--lighter-gray);
+    color: var(--blue-grey-200);
     transform: translateY(-50%);
     font-size: 24px;
 
     &.accent {
-      color: var(--darkest-gray);
+      color: var(--blue-grey-900);
     }
 
     &.success {

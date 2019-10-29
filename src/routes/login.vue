@@ -120,8 +120,8 @@
               class="spinner"
               :size="18"
               :line-size="2"
-              line-fg-color="var(--gray)"
-              line-bg-color="var(--lighter-gray)"
+              line-fg-color="var(--blue-grey-400)"
+              line-bg-color="var(--blue-grey-200)"
             />
 
             <span
@@ -523,7 +523,7 @@ export default {
 
 <style lang="scss" scoped>
 .login {
-  background-color: var(--darkest-gray);
+  background-color: var(--blue-grey-900);
   height: 100%;
   display: flex;
   justify-content: center;
@@ -552,12 +552,12 @@ label {
   position: relative;
   text-transform: none;
   font-size: 16px;
-  color: var(--light-gray);
+  color: var(--blue-grey-300);
   font-weight: 400;
 }
 
 h1 {
-  color: var(--darker-gray);
+  color: var(--blue-grey-800);
   font-size: 36px;
   line-height: 1.4;
   font-weight: 300;
@@ -586,7 +586,7 @@ select {
   select:focus + span {
     transition: none;
     cursor: pointer;
-    color: var(--darker-gray);
+    color: var(--blue-grey-800);
   }
 
   .icon {
@@ -604,24 +604,24 @@ select {
   input {
     border: 0;
     font-size: 16px;
-    border-bottom: 2px solid var(--lighter-gray);
+    border-bottom: 2px solid var(--blue-grey-200);
     width: 100%;
     padding: 10px 0;
-    color: var(--gray);
+    color: var(--blue-grey-400);
     transition: border-color var(--fast) var(--transition);
     border-radius: 0;
 
     &:-webkit-autofill {
-      color: var(--gray) !important;
-      -webkit-text-fill-color: var(--gray);
+      color: var(--blue-grey-400) !important;
+      -webkit-text-fill-color: var(--blue-grey-400);
       -webkit-box-shadow: 0 0 0px 1000px var(--white) inset;
     }
 
     &:hover:not([disabled]) {
       transition: none;
-      border-color: var(--gray);
+      border-color: var(--blue-grey-400);
       &:focus {
-        border-color: var(--darker-gray);
+        border-color: var(--blue-grey-800);
       }
     }
 
@@ -631,12 +631,12 @@ select {
 
     &:focus {
       outline: 0;
-      border-color: var(--darker-gray);
-      color: var(--dark-gray);
+      border-color: var(--blue-grey-800);
+      color: var(--blue-grey-600);
 
       &:-webkit-autofill {
-        color: var(--darker-gray) !important;
-        -webkit-text-fill-color: var(--darker-gray);
+        color: var(--blue-grey-800) !important;
+        -webkit-text-fill-color: var(--blue-grey-800);
         -webkit-box-shadow: 0 0 0px 1000px var(--white) inset;
       }
     }
@@ -675,20 +675,20 @@ select {
   text-decoration: none;
   margin-bottom: 50px;
   transition: color var(--fast) var(--transition-out);
-  color: var(--light-gray);
+  color: var(--blue-grey-300);
 
   &:hover,
   .user-is-tabbing &:focus {
     outline: 0;
     transition: none;
-    color: var(--darkest-gray);
+    color: var(--blue-grey-900);
   }
 }
 
 button.style-btn {
   font-size: 16px;
   font-weight: 500;
-  background-color: var(--darker-gray);
+  background-color: var(--blue-grey-800);
   width: 100%;
   display: block;
   padding: 12px 0;
@@ -698,13 +698,13 @@ button.style-btn {
   top: 0;
 
   &[disabled] {
-    background-color: var(--lighter-gray);
+    background-color: var(--blue-grey-200);
     cursor: not-allowed;
   }
 
   &:not([disabled]) {
     &:hover {
-      background-color: var(--darkest-gray);
+      background-color: var(--blue-grey-900);
     }
   }
 }
@@ -715,7 +715,7 @@ button.style-btn {
   width: max-content;
   pointer-events: none;
   user-select: none;
-  color: var(--lighter-gray);
+  color: var(--blue-grey-200);
 }
 
 small {
@@ -874,7 +874,7 @@ small {
   margin-bottom: 80px;
   max-width: 400px;
   font-size: 16px;
-  color: var(--light-gray);
+  color: var(--blue-grey-300);
   line-height: 26px;
   font-weight: 400;
 }

@@ -101,7 +101,7 @@ export default {
 
     &:hover {
       transition: none;
-      border-color: var(--light-gray);
+      border-color: var(--blue-grey-300);
     }
   }
 
@@ -115,7 +115,7 @@ export default {
 
     .track-fill {
       position: absolute;
-      background-color: var(--darkest-gray);
+      background-color: var(--blue-grey-900);
       border-radius: 4px;
       width: 100%;
       height: 100%;
@@ -138,7 +138,7 @@ export default {
 
     &::-webkit-slider-runnable-track {
       height: 4px;
-      background: var(--lighter-gray);
+      background: var(--blue-grey-200);
       box-shadow: none;
       border: none;
       border-radius: 4px;
@@ -152,7 +152,7 @@ export default {
       height: 14px;
       width: 14px;
       border-radius: 50%;
-      background: var(--darkest-gray);
+      background: var(--blue-grey-900);
       margin-top: -5px;
       cursor: ew-resize;
       box-shadow: 0 0 0 2px var(--white);
@@ -168,7 +168,7 @@ export default {
       height: 14px;
       width: 14px;
       border-radius: 50%;
-      background: var(--darkest-gray);
+      background: var(--blue-grey-900);
       margin-top: -5px;
       cursor: ew-resize;
       box-shadow: 0 0 0 2px var(--white);
@@ -196,7 +196,7 @@ export default {
     text-align: center;
     transform: translateX(-50%);
     color: var(--white);
-    background-color: var(--darkest-gray);
+    background-color: var(--blue-grey-900);
     border-radius: var(--border-radius);
     padding: 4px 8px;
     opacity: 0;
@@ -211,7 +211,7 @@ export default {
       height: 10px;
       border-radius: var(--border-radius);
       transform: translateX(-50%) rotate(45deg);
-      background-color: var(--darkest-gray);
+      background-color: var(--blue-grey-900);
     }
     &.output-shown {
       opacity: 1;

@@ -75,7 +75,7 @@ export default {
       let _starType = this.starType(n);
       if (_starType != "empty") {
         if (this.hovered) {
-          _style.color = `var(--light-gray)`;
+          _style.color = `var(--blue-grey-300)`;
         } else {
           _style.color = `var(--${this.options.active_color})`;
         }
@@ -129,19 +129,19 @@ export default {
   }
 }
 .rating-empty {
-  color: var(--lightest-gray);
+  color: var(--blue-grey-50);
   &:after {
     content: "star";
   }
 }
 .rating-half {
-  color: var(--darker-gray);
+  color: var(--blue-grey-800);
   &:after {
     content: "star_half";
   }
 }
 .rating-full {
-  color: var(--darker-gray);
+  color: var(--blue-grey-800);
   &:after {
     content: "star";
   }

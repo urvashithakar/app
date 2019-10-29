@@ -64,11 +64,11 @@ input {
     background-color: transparent;
     border-radius: 12px;
     cursor: pointer;
-    border: 2px solid var(--darker-gray);
+    border: 2px solid var(--blue-grey-800);
   }
 
   &.active::after {
-    background-color: var(--darker-gray);
+    background-color: var(--blue-grey-800);
   }
 }
 
@@ -80,7 +80,7 @@ input {
   width: 14px;
   height: 14px;
   border-radius: 7px;
-  background-color: var(--darker-gray);
+  background-color: var(--blue-grey-800);
   transition: transform var(--fast) var(--transition);
 
   &.active {
@@ -90,10 +90,10 @@ input {
 }
 
 input:disabled ~ .switch {
-  background-color: var(--lightest-gray);
+  background-color: var(--blue-grey-50);
 
   &::after {
-    background-color: var(--lighter-gray);
+    background-color: var(--blue-grey-200);
   }
 }
 </style>

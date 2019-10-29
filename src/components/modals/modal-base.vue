@@ -47,7 +47,7 @@ export default {
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: var(--darkest-gray);
+  background-color: var(--blue-grey-900);
   opacity: 0.9;
   cursor: pointer;
 
