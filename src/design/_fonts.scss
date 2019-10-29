@@ -1,3 +1,5 @@
+// Roboto
+
 @font-face {
   font-family: "Roboto";
   src: url("../assets/fonts/roboto-light.woff2") format("woff2"),
@@ -24,6 +26,19 @@
   font-style: normal;
   font-display: block;
 }
+
+// Roboto Mono
+
+@font-face {
+  font-family: "Roboto Mono";
+  src: url("../assets/fonts/robotomono-regular.woff2") format("woff2"),
+    url("../assets/fonts/robotomono-regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+
+// Merriweather
 
 @font-face {
   font-family: "Merriweather";
@@ -61,14 +76,7 @@
   font-display: block;
 }
 
-@font-face {
-  font-family: "Roboto Mono";
-  src: url("../assets/fonts/robotomono-regular.woff2") format("woff2"),
-    url("../assets/fonts/robotomono-regular.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-  font-display: block;
-}
+// Material Icons
 
 @font-face {
   font-family: "Material Icons";
