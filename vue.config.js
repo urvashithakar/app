@@ -4,7 +4,12 @@ module.exports = {
 
   devServer: {
     allowedHosts: ["localhost", ".gitpod.io"],
-    proxy: process.env.API_URL
+    proxy: {
+      "/": {
+        target: process.env.API_URL,
+        changeOrigin: true
+      }
+    }
   },
 
   // There are so many chunks (from all the interfaces / layouts) that we need to make sure to not

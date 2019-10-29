@@ -1,6 +1,6 @@
 <template>
   <PublicView>
-    <h1>Install</h1>
+    <h1 class="type-heading-large">Install</h1>
   </PublicView>
 </template>
 

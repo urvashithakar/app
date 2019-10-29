@@ -1,6 +1,6 @@
 <template>
   <PublicView>
-    <h1>{{ $t("forgot_password") }}</h1>
+    <h1 class="type-heading-large">{{ $t("forgot_password") }}</h1>
     <project-chooser />
     <form @submit.prevent="onSubmit">
       <input v-model="email" type="email" />

@@ -1,6 +1,6 @@
 <template>
   <PublicView>
-    <h1>{{ $t("sign_in") }}</h1>
+    <h1 class="type-heading-large">{{ $t("sign_in") }}</h1>
     <form @submit.prevent="onSubmit">
       <project-chooser />
       <button v-if="currentProject.authenticated" type="submit">

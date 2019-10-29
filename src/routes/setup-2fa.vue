@@ -1,6 +1,6 @@
 <template>
   <PublicView>
-    <h1>Setup 2FA</h1>
+    <h1 class="type-heading-large">Setup 2FA</h1>
   </PublicView>
 </template>
 
