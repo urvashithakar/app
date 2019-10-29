@@ -84,7 +84,7 @@
       "DATETIME": "Una fecha y hora. Permite `1000-01-01 00:00:00` a `9999-12-31 23:59:59`.",
       "DECIMAL": "Un número exacto (por ejemplo: para la moneda), con longitud de 1 a 65 dígitos (L) y de 0 a 30 dígitos decimales (D). Formato de longitud: `L,D`",
       "DOUBLE": "Un número binario aproximado, 8 bytes con un punto decimal flotante.",
-      "FLOAT": "An approximate binary number, 4 bytes with a floating decimal point.",
+      "FLOAT": "Un número binario aproximado, 4 bytes con un punto decimal flotante.",
       "INT": "An integer. When signed (allows negative) length is -2,147,483,648 to 2,147,483,647, otherwise the max is 4,294,967,295.",
       "LONGTEXT": "A string with a max length of 4,294,967,295 characters.",
       "MEDIUMINT": "An integer. When signed (allows negative) length is -8,388,608 to 8,388,607, otherwise the max is 16,777,215.",
@@ -99,7 +99,7 @@
       "YEAR": "A year. Allows `1901` to `2155` or `0000`"
     }
   },
-  "date_and_time": "Date & Time",
+  "date_and_time": "Fecha y hora",
   "db_column_name": "Database column name...",
   "db_datatype": "{db} Datatype",
   "db_name": "Database Name",
@@ -144,10 +144,10 @@
   "empty_collection_body": "There are no items in this collection yet",
   "enable_manual_sorting": "Enable manual sorting",
   "enter_collection_name": "Introduce el nombre de la colección...",
-  "enter_role_name": "Enter role name...",
-  "enter_value": "Enter Value",
-  "environment": "Environment",
-  "equal_to": "Equal to",
+  "enter_role_name": "Introduzca el nombre del rol...",
+  "enter_value": "Ingrese valor",
+  "environment": "Entorno",
+  "equal_to": "Igual a",
   "error_unknown": "Unknown error. Try again later.",
   "errors": {
     "11": "Can't connect to database",
@@ -158,9 +158,9 @@
     "106": "Wrong username and/or password",
     "107": "User not found",
     "112": "Wrong OTP",
-    "-1": "Couldn't reach API"
+    "-1": "No se pudo alcanzar la API"
   },
-  "esc_cancel": "Escape will cancel and close the window.",
+  "esc_cancel": "La tecla de escape cancelará y cerrará la ventana.",
   "event_count": "No Events | One Event | {count} Events",
   "existing": "Existing",
   "extension_error": "There was a problem loading the {ext} extension.",
