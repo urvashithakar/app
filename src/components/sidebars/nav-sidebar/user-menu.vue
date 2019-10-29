@@ -28,6 +28,7 @@
 
 <script>
 import NavMenu from "./nav-menu.vue";
+import { UPDATE_PROJECT } from "@/store/mutation-types";
 
 export default {
   name: "UserMenu",
@@ -119,9 +120,17 @@ export default {
     }
   },
   methods: {
-    signOut() {
+    async signOut() {
       this.confirmSignOutLoading = true;
-      this.$store.dispatch("logout");
+      await this.$api.logout();
+      this.$store.commit(UPDATE_PROJECT, {
+        index: this.$store.state.currentProjectIndex,
+        data: {
+          authenticated: false
+        }
+      });
+      this.$router.push("/login");
+      this.confirmSignOutLoading = false;
     }
   }
 };

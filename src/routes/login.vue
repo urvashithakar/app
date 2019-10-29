@@ -13,6 +13,7 @@
         <button type="submit">{{ $t("sign_in") }}</button>
       </template>
     </form>
+    <sso :providers="ssoProviders" />
     <public-notice
       v-if="notice.text"
       slot="notice"
@@ -28,6 +29,7 @@
 <script>
 import PublicView from "@/components/public-view";
 import PublicNotice from "@/components/public/notice";
+import Sso from "@/components/public/sso";
 import ProjectChooser from "@/components/project-chooser";
 import { mapState, mapGetters, mapMutations } from "vuex";
 import { UPDATE_PROJECT } from "@/store/mutation-types";
@@ -38,7 +40,8 @@ export default {
   components: {
     PublicView,
     PublicNotice,
-    ProjectChooser
+    ProjectChooser,
+    Sso
   },
   data() {
     return {
@@ -50,7 +53,8 @@ export default {
         color: null,
         icon: null
       },
-      firstName: null
+      firstName: null,
+      ssoProviders: []
     };
   },
   computed: {
@@ -59,7 +63,7 @@ export default {
   },
   watch: {
     currentProjectIndex() {
-      this.fetchProjectInfo();
+      this.fetchUserName();
     }
   },
   methods: {
@@ -148,22 +152,25 @@ export default {
         return this.login();
       }
     },
-    // Fetches SSO providers for unauthenticated projects, and the users first name for authenticated
-    // projects
-    async fetchProjectInfo() {
+    // Fetch the users name if logged in
+    async fetchUserName() {
       this.firstName = null;
+      this.ssoProviders = [];
+
+      this.$api.config.url = this.currentProject.url;
+      this.$api.config.project = this.currentProject.project;
 
       if (this.currentProject.authenticated) {
-        this.$api.config.url = this.currentProject.url;
-        this.$api.config.project = this.currentProject.project;
-
         const { data } = await this.$api.getMe({ fields: "first_name" });
         this.firstName = data.first_name;
+      } else {
+        const { data } = await this.$api.getThirdPartyAuthProviders();
+        this.ssoProviders = data;
       }
     }
   },
   created() {
-    this.fetchProjectInfo();
+    this.fetchUserName();
   }
 };
 </script>

@@ -15,6 +15,7 @@ import {
   SET_CURRENT_PROJECT,
   UPDATE_PROJECT
 } from "./mutation-types";
+import Vue from "vue";
 
 const mutations = {
   [STORE_HYDRATED](state, date) {
@@ -85,10 +86,10 @@ const mutations = {
   },
 
   [UPDATE_PROJECT](state, { index, data }) {
-    state.projects[index] = {
+    Vue.set(state.projects, index, {
       ...state.projects[index],
       ...data
-    };
+    });
   }
 };
 
