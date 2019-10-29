@@ -1,5 +1,5 @@
 <template>
-  <v-modal-base :message="message" @cancel="$emit('cancel')">
+  <v-modal-base :title="title" :message="message" @cancel="$emit('cancel')">
     <div class="buttons" @keydown.esc="$emit('cancel')">
       <button class="cancel" @click="$emit('cancel')">
         {{ cancelText || $t("cancel") }}
@@ -25,6 +25,10 @@ export default {
     VModalBase
   },
   props: {
+    title: {
+      type: String,
+      required: false
+    },
     message: {
       type: String,
       required: true
@@ -52,12 +56,31 @@ export default {
 <style lang="scss" scoped>
 .buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   margin-top: 30px;
 }
 
 .cancel {
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--fast) var(--transition);
+  transition-property: border-color, background-color, color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px 1px;
+  height: 44px;
+  min-width: 136px;
+  border: var(--input-border-width) solid var(--action);
+  border-color: var(--blue-grey-200);
+  color: var(--blue-grey-200);
+  margin-right: 20px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+
   color: var(--blue-grey-400);
   transition: color var(--fast) var(--transition);
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="interface-code">
+  <div class="interface-code codemirror-custom-styles">
     <codemirror
       ref="codemirrorEl"
       :options="altOptions ? altOptions : cmOptions"
@@ -181,6 +181,8 @@ export default {
   position: relative;
   width: 100%;
   max-width: var(--width-x-large);
+  // border: var(--input-border-width) solid var(--input-border-color);
+  // border-radius: var(--border-radius);
   font-size: 13px;
 
   &:focus {

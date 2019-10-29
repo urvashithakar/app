@@ -77,7 +77,7 @@ export default {
   background-color: white;
   padding: 10px;
   background-color: var(--off-white);
-  border: var(--input-border-width) solid var(--blue-grey-50);
+  border: var(--input-border-width) solid var(--input-border-color);
 
   .v-input {
     position: sticky;

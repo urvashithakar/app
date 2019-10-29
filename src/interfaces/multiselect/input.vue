@@ -2,6 +2,7 @@
   <select
     :id="name"
     :disabled="readonly"
+    :size="options.size"
     class="select"
     multiple
     @change="updateValue($event.target.options)"
@@ -63,30 +64,25 @@ export default {
   border-radius: var(--border-radius);
   width: 100%;
   max-width: var(--width-large);
-  font-family: "Roboto", sans-serif;
-  height: 130px;
 
   &:hover {
     transition: none;
-    border-color: var(--blue-grey-300);
+    border-color: var(--input-border-color-hover);
   }
   &:focus {
-    border-color: var(--blue-grey-800);
-    option {
-      color: var(--blue-grey-600);
-    }
+    border-color: var(--input-border-color-focus);
   }
   option {
     transition: color var(--fast) var(--transition);
     padding: 5px 10px;
-    color: var(--blue-grey-400);
     &:hover {
       transition: none;
-      color: var(--blue-grey-800);
+      background: var(--blue-grey-50)
+        linear-gradient(0deg, var(--blue-grey-50) 0%, var(--blue-grey-50) 100%);
     }
     &:checked {
-      background: var(--blue-grey-900)
-        linear-gradient(0deg, var(--blue-grey-900) 0%, var(--blue-grey-900) 100%);
+      background: var(--blue-grey-100)
+        linear-gradient(0deg, var(--blue-grey-100) 0%, var(--blue-grey-100) 100%);
       position: relative;
       color: var(--white);
       -webkit-text-fill-color: var(--white);

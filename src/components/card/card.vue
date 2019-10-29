@@ -91,7 +91,7 @@ export default {
     },
     color: {
       type: String,
-      default: "blue-grey-400"
+      default: "blue-grey-100"
     },
     src: {
       type: String,

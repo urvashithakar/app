@@ -59,28 +59,30 @@ input {
   &::after {
     content: "";
     display: block;
-    height: 20px;
-    width: 36px;
+    height: 16px;
+    width: 32px;
     background-color: transparent;
     border-radius: 12px;
     cursor: pointer;
-    border: 2px solid var(--blue-grey-800);
+    border: 2px solid var(--input-border-color);
+    transition: all var(--fast) var(--transition);
   }
 
   &.active::after {
+    border: 2px solid var(--blue-grey-800);
     background-color: var(--blue-grey-800);
   }
 }
 
 .switch-thumb {
   position: absolute;
-  top: 8px;
-  left: 8px;
+  top: 7px;
+  left: 7px;
   display: block;
-  width: 14px;
-  height: 14px;
-  border-radius: 7px;
-  background-color: var(--blue-grey-800);
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+  background-color: var(--input-border-color);
   transition: transform var(--fast) var(--transition);
 
   &.active {

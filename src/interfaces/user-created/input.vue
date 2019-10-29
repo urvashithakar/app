@@ -1,22 +1,21 @@
 <template>
-  <div v-if="userInfo">
+  <div v-if="userInfo" class="user-created">
     <v-avatar
       v-if="options.display !== 'name'"
       v-tooltip="options.display === 'avatar' ? displayValue : null"
       class="display-user"
-      :size="28"
+      :size="32"
       :src="src"
       :alt="displayValue"
-      color="blue-grey-300"
     ></v-avatar>
-    <span v-if="options.display !== 'avatar'" class="label gray style-3">
-      <div>{{ displayValue }}</div>
+    <span v-if="options.display !== 'avatar'" class="label gray">
+      {{ displayValue }}
     </span>
   </div>
-  <div v-else-if="newItem" class="gray style-3">
+  <div v-else-if="newItem" class="gray">
     {{ $t("interfaces-user-created-you") }}
   </div>
-  <div v-else class="gray style-3">
+  <div v-else class="gray">
     {{ $t("interfaces-user-created-unknown") }}
   </div>
 </template>
@@ -50,20 +49,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.user-created {
+  border: var(--input-border-width) solid var(--input-border-color);
+  border-radius: var(--border-radius);
+  height: 44px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  background-color: var(--input-background-disabled);
+}
 .display-user {
   width: max-content;
   display: inline-block;
-  vertical-align: top;
 }
 .label {
   display: inline-block;
-  margin-left: 4px;
-  height: 28px;
-  div {
-    margin-top: 6px;
-  }
+  margin-left: 12px;
 }
 .gray {
-  color: var(--blue-grey-300);
+  color: var(--blue-grey-600);
 }
 </style>

@@ -4,6 +4,7 @@
       <div class="mask" @click="$emit('cancel')" />
       <div class="wrapper">
         <aside class="modal">
+          <h2 v-if="title" class="type-title">{{ title }}</h2>
           <p>{{ message }}</p>
           <slot />
         </aside>
@@ -16,6 +17,10 @@
 export default {
   name: "VModalBase",
   props: {
+    title: {
+      type: String,
+      required: false
+    },
     message: {
       type: String,
       required: true
@@ -69,7 +74,7 @@ aside {
   position: relative;
   margin: 0 auto;
   width: 90%;
-  max-width: 500px;
+  max-width: 560px;
   background-color: var(--white);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
@@ -78,6 +83,10 @@ aside {
   cursor: default;
   padding: 30px;
   overflow: auto;
+
+  h2 {
+    margin-bottom: 20px;
+  }
 
   p {
     font-size: 16px;

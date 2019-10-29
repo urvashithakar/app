@@ -531,6 +531,7 @@ export default {
     display: flex;
     align-items: center;
     padding: 0 5px;
+    color: var(--input-text-color);
 
     > div {
       padding: 3px 5px;

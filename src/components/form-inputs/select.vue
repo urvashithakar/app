@@ -50,7 +50,7 @@
     />
     <div class="value">
       <v-icon v-if="icon" :name="icon" />
-      <span v-if="placeholder && value === ''" class="placeholder">{{ placeholder }}</span>
+      <span v-if="placeholder && !value" class="placeholder">{{ placeholder }}</span>
       <span class="no-wrap">{{ parsedOptions[value] }}</span>
     </div>
     <v-icon class="chevron" name="arrow_drop_down" />
@@ -100,7 +100,7 @@ export default {
     },
     placeholder: {
       type: String,
-      default: ""
+      default: "Choose one..."
     },
 
     defaultValue: {
@@ -166,7 +166,7 @@ export default {
   input {
     transition: all var(--fast) var(--transition);
     background-color: var(--white);
-    color: var(--blue-grey-400);
+    color: var(--input-text-color);
     height: var(--input-height);
     border: var(--input-border-width) solid var(--input-border-color);
     transition: var(--fast) var(--transition);
@@ -221,8 +221,7 @@ export default {
   select:disabled ~ input,
   input:disabled + div,
   input:disabled {
-    background-color: var(--blue-grey-50);
-    border-color: var(--blue-grey-200);
+    background-color: var(--input-background-disabled);
     cursor: not-allowed;
   }
 
@@ -242,7 +241,7 @@ export default {
   select:hover:not(:disabled):focus ~ input,
   input:hover:not(:disabled):focus + div,
   input:hover:not(:disabled):focus {
-    color: var(--blue-grey-600);
+    color: var(--input-text-color);
     border-color: var(--blue-grey-600);
     outline: 0;
   }
@@ -251,7 +250,7 @@ export default {
     position: absolute;
     left: 5px;
     top: 50%;
-    color: var(--blue-grey-200);
+    color: var(--input-icon-color);
     transform: translateY(-50%);
     font-size: 24px;
   }

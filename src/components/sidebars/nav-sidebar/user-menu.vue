@@ -162,7 +162,7 @@ export default {
     margin-right: -20px;
 
     .avatar {
-      margin-right: 10px;
+      margin-right: 12px;
       flex-shrink: 0;
     }
 

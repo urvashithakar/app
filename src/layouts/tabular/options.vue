@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent>
     <fieldset>
-      <legend class="style-3">{{ $t("layouts-tabular-fields") }}</legend>
+      <legend class="type-label">{{ $t("layouts-tabular-fields") }}</legend>
       <draggable v-model="sortList" handle=".handle" @end="sort">
         <div
           v-for="field in sortList"
@@ -21,7 +21,7 @@
         </div>
       </draggable>
     </fieldset>
-    <label for="spacing" class="style-3">{{ $t("spacing") }}</label>
+    <label for="spacing" class="type-label">{{ $t("spacing") }}</label>
     <v-select
       id="spacing"
       :value="viewOptions.spacing || 'comfortable'"

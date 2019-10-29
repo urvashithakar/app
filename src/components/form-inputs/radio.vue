@@ -72,9 +72,11 @@ label {
   display: flex;
   align-items: center;
   cursor: pointer;
+  color: var(--input-text-color);
 }
 
 label::before {
+  transition: all var(--fast) var(--transition);
   content: "radio_button_unchecked";
   direction: ltr;
   display: inline-block;
@@ -90,10 +92,11 @@ label::before {
   -webkit-font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
   margin-right: 5px;
+  color: var(--input-border-color);
 }
 
-input:hover + label {
-  color: var(--blue-grey-800);
+input:hover + label::before {
+  color: var(--blue-grey-600);
 }
 
 input:disabled + label {
@@ -103,10 +106,6 @@ input:disabled + label {
 
 input:checked + label::before {
   content: "radio_button_checked";
-  color: var(--blue-grey-900);
-}
-
-input:checked + label {
   color: var(--blue-grey-900);
 }
 </style>

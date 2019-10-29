@@ -340,11 +340,15 @@ export default {
 }
 
 .map {
+  transition: all var(--fast) var(--transition);
   position: relative;
   display: flex;
   flex-direction: column;
   border: var(--input-border-width) solid var(--input-border-color);
   border-radius: var(--border-radius);
+  &:hover {
+    border-color: var(--input-border-color-hover);
+  }
 }
 
 .map-container {

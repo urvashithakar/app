@@ -101,6 +101,12 @@ export default {
   position: relative;
   background-color: #dde3e6; // rgba(var(--blue-grey-200), 0.5);
 
+  &:hover {
+    .chevron {
+      opacity: 1;
+    }
+  }
+
   .content {
     padding: 8px 0 8px 10px;
   }
@@ -158,8 +164,8 @@ export default {
     width: 21px;
     height: 24px;
     margin-right: 21px;
-    color: var(--blue-grey-300);
-    fill: var(--blue-grey-300);
+    color: var(--blue-grey-800);
+    fill: var(--blue-grey-800);
   }
 
   .project-name {
@@ -169,7 +175,9 @@ export default {
   .chevron {
     position: absolute;
     right: 10px;
-    color: var(--blue-grey-300);
+    color: var(--blue-grey-400);
+    opacity: 0;
+    transition: all var(--fast) var(--transition);
   }
 
   select {

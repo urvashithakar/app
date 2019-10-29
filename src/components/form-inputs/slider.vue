@@ -88,7 +88,7 @@ export default {
 
   .input {
     transition: border-color var(--fast) var(--transition);
-    padding: 12px 0;
+    padding: 12px 0 0;
     border-radius: 4px;
     background-color: var(--white);
 
@@ -115,7 +115,7 @@ export default {
 
     .track-fill {
       position: absolute;
-      background-color: var(--blue-grey-900);
+      background-color: var(--input-text-color);
       border-radius: 4px;
       width: 100%;
       height: 100%;
@@ -137,11 +137,11 @@ export default {
     height: 4px;
 
     &::-webkit-slider-runnable-track {
-      height: 4px;
-      background: var(--blue-grey-200);
+      height: 2px;
+      background: var(--input-border-color);
       box-shadow: none;
       border: none;
-      border-radius: 4px;
+      border-radius: 2px;
     }
 
     &::-webkit-slider-thumb {
@@ -152,8 +152,8 @@ export default {
       height: 14px;
       width: 14px;
       border-radius: 50%;
-      background: var(--blue-grey-900);
-      margin-top: -5px;
+      background: var(--input-text-color);
+      margin-top: -6px;
       cursor: ew-resize;
       box-shadow: 0 0 0 2px var(--white);
       z-index: +1;
@@ -168,8 +168,8 @@ export default {
       height: 14px;
       width: 14px;
       border-radius: 50%;
-      background: var(--blue-grey-900);
-      margin-top: -5px;
+      background: var(--input-text-color);
+      margin-top: -6px;
       cursor: ew-resize;
       box-shadow: 0 0 0 2px var(--white);
       z-index: +1;
@@ -184,19 +184,19 @@ export default {
     position: relative;
     margin-right: 14px;
     margin-top: 2px;
-    height: 28px;
+    height: 0;
   }
   output {
     transition: opacity var(--fast) var(--transition);
     position: absolute;
     display: inline-block;
     white-space: nowrap;
-    top: 0;
+    top: 4px;
     margin-left: 7px;
     text-align: center;
     transform: translateX(-50%);
-    color: var(--white);
-    background-color: var(--blue-grey-900);
+    color: var(--input-text-color);
+    background-color: var(--blue-grey-50);
     border-radius: var(--border-radius);
     padding: 4px 8px;
     opacity: 0;
@@ -211,7 +211,7 @@ export default {
       height: 10px;
       border-radius: var(--border-radius);
       transform: translateX(-50%) rotate(45deg);
-      background-color: var(--blue-grey-900);
+      background-color: var(--blue-grey-50);
     }
     &.output-shown {
       opacity: 1;

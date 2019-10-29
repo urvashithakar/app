@@ -257,8 +257,7 @@
       >
         <form class="modal-content" @submit.prevent>
           <fieldset>
-            <legend class="style-3">{{ $t("readable_fields") }}</legend>
-            <p class="style-4">{{ $t("readable_fields_copy") }}</p>
+            <legend class="type-label">{{ $t("readable_fields") }}</legend>
             <v-checkbox
               v-for="(field, name) in fieldsWithoutPK"
               :id="`${permissionName}-read-${name}`"
@@ -270,8 +269,7 @@
             />
           </fieldset>
           <fieldset>
-            <legend class="style-3">{{ $t("writable_fields") }}</legend>
-            <p class="style-4">{{ $t("writable_fields_copy") }}</p>
+            <legend class="type-label">{{ $t("writable_fields") }}</legend>
             <v-checkbox
               v-for="(field, name) in fields"
               :id="`${permissionName}-write-${name}`"
@@ -294,8 +292,7 @@
       >
         <form class="modal-content" @submit.prevent>
           <fieldset>
-            <legend class="style-3">{{ $t("statuses") }}</legend>
-            <p class="style-4">{{ $t("select_statuses_copy") }}</p>
+            <legend class="type-label">{{ $t("allowed_status_options") }}</legend>
             <v-checkbox
               v-for="(status, name) in statuses"
               :id="`status-${name}`"

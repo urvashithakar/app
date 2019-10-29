@@ -707,10 +707,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-label.style-4 {
-  padding-bottom: 5px;
-}
-
 .bookmark,
 .settings {
   margin-left: 5px;

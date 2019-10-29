@@ -132,6 +132,7 @@ export default {
 }
 
 .drag-handle {
+  color: var(--blue-grey-100);
   cursor: grab;
 }
 

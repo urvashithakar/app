@@ -102,7 +102,7 @@ export default {
   width: calc(var(--header-height) - 20px);
   min-width: calc(var(--header-height) - 20px);
   display: inline-block;
-  margin-left: 16px;
+  margin-left: 12px;
 }
 
 .button {

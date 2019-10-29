@@ -22,7 +22,7 @@
               {{ actionRequired ? null : $t("esc_cancel") }}
             </div>
             <header v-if="title">
-              <h1 id="modal-title" class="style-1">{{ title }}</h1>
+              <h1 id="modal-title" class="type-heading">{{ title }}</h1>
               <button v-if="!actionRequired" @click="$emit('close')">
                 <v-icon name="close" />
               </button>
@@ -183,8 +183,7 @@ export default {
   }
 
   h1 {
-    color: var(--blue-grey-800);
-    line-height: 24px; /* match close icon */
+    line-height: 18px; /* match close icon */
   }
 
   header,

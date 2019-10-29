@@ -1,8 +1,14 @@
 <template>
   <transition name="error">
     <div class="v-error">
-      <v-icon class="icon" :name="icon" size="48" :color="color" />
-      <h2 class="style-1">{{ title }}</h2>
+      <v-icon
+        class="icon"
+        :style="{ borderColor: 'var(--' + color + ')' }"
+        :name="icon"
+        size="48"
+        :color="color"
+      />
+      <h2 class="type-heading" :style="{ color: 'var(--' + color + ')' }">{{ title }}</h2>
       <p>{{ body }}</p>
     </div>
   </transition>
@@ -47,16 +53,16 @@ export default {
     border: 2px solid var(--blue-grey-50);
     border-radius: 50%;
     padding: 20px;
-    margin-bottom: 10px;
   }
 
   h2 {
-    margin-bottom: 5px;
+    margin-top: 12px;
+    margin-bottom: 8px;
   }
 
   p {
     line-height: 1.4;
-    color: var(--blue-grey-300);
+    color: var(--blue-grey-200);
     max-width: 200px;
     text-align: center;
   }

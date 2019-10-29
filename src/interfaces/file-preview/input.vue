@@ -5,6 +5,15 @@
       <div v-if="imgError" class="broken-image">
         <v-icon name="broken_image" />
       </div>
+      <button
+        v-if="!imgError && !editMode && isImage && options.edit.includes('image_editor')"
+        type="button"
+        title="Edit image"
+        class="image-edit-start"
+        @click="initImageEdit()"
+      >
+        <v-icon name="crop_rotate" />
+      </button>
     </div>
 
     <div v-else-if="isVideo" class="video">
@@ -52,15 +61,6 @@
           <v-icon name="link" />
           {{ url }}
         </a>
-        <button
-          v-if="isImage && options.edit.includes('image_editor')"
-          type="button"
-          title="Edit image"
-          class="image-edit-start"
-          @click="initImageEdit()"
-        >
-          <v-icon name="crop_rotate" />
-        </button>
       </div>
 
       <!-- Image Edit Toolbar -->
@@ -300,6 +300,7 @@ export default {
 .audio,
 .video,
 .image {
+  position: relative;
   width: 100%;
   background-color: var(--blue-grey-800);
   text-align: center;
@@ -324,6 +325,13 @@ export default {
     display: block;
   }
 }
+.image {
+  &:hover {
+    .image-edit-start {
+      opacity: 1;
+    }
+  }
+}
 .audio,
 .file {
   padding: 80px 40px;
@@ -343,13 +351,19 @@ export default {
 .file-link {
   transition: var(--fast) var(--transition);
   text-decoration: none;
-  color: var(--blue-grey-400);
+  color: var(--input-placeholder-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   &:hover {
-    color: var(--blue-grey-800);
+    color: var(--input-text-color);
+    i {
+      color: var(--input-text-color);
+    }
   }
   i {
-    margin-right: 6px;
-    color: var(--blue-grey-400);
+    margin-right: 4px;
+    color: var(--input-placeholder-color);
   }
   span {
     margin-right: 10px;
@@ -357,9 +371,24 @@ export default {
   }
 }
 .image-edit-start {
-  margin-left: 10px;
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  padding: 8px;
+  opacity: 0;
+  transition: all var(--fast) var(--transition);
+  &:hover {
+    i {
+      color: var(--warning);
+    }
+  }
   i {
-    color: var(--blue-grey-400);
+    color: var(--input-text-color);
   }
 }
 

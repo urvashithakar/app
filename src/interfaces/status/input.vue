@@ -83,6 +83,7 @@ export default {
 <style lang="scss" scoped>
 .interface-status {
   max-width: var(--width-x-large);
+  margin-bottom: -12px;
   .v-radio {
     display: inline-block;
     margin-right: 40px;

@@ -14,6 +14,7 @@
     :wrap="wrap"
     :value="value"
     :autofocus="autofocus"
+    :class="[serif ? 'type-body-serif' : 'type-body-sans']"
     class="v-textarea"
     @keydown="$emit('keydown', $event.target.value)"
     @input="$emit('input', $event.target.value)"
@@ -64,6 +65,10 @@ export default {
       type: Number,
       default: null
     },
+    serif: {
+      type: Boolean,
+      default: false
+    },
     spellcheck: {
       type: Boolean,
       default: null
@@ -89,46 +94,49 @@ textarea {
   width: 100%;
   border: var(--input-border-width) solid var(--input-border-color);
   border-radius: var(--border-radius);
-  color: var(--blue-grey-400);
-  padding: 10px;
-  line-height: 1.5;
+  color: var(--input-text-color);
   transition: var(--fast) var(--transition);
   transition-property: color, border-color;
 
+  &.type-body-serif {
+    padding: 20px;
+  }
+
+  &.type-body-sans {
+    padding: 10px;
+  }
+
   &::placeholder {
-    color: var(--blue-grey-200);
+    color: var(--input-placeholder-color);
   }
 
   &:read-only {
-    background-color: var(--blue-grey-50);
-    border-color: var(--blue-grey-200);
+    background-color: var(--input-background-disabled);
     cursor: not-allowed;
     &:focus {
-      color: var(--blue-grey-400);
-      border-color: var(--blue-grey-200);
+      border-color: var(--input-border-color-focus);
     }
   }
 
   &:hover:not(:read-only) {
     transition: none;
-    border-color: var(--blue-grey-300);
+    border-color: var(--input-border-color-hover);
     outline: 0;
   }
 
   &:focus:not(:read-only) {
-    color: var(--blue-grey-600);
-    border-color: var(--blue-grey-600);
+    border-color: var(--input-border-color-focus);
     outline: 0;
   }
 
   &:focus:not(:read-only) + i {
-    color: var(--blue-grey-600);
+    color: var(--input-text-color);
   }
 
   &:-webkit-autofill {
     box-shadow: inset 0 0 0 1000px var(--white) !important;
-    color: var(--blue-grey-600) !important;
-    -webkit-text-fill-color: var(--blue-grey-600) !important;
+    color: var(--input-text-color) !important;
+    -webkit-text-fill-color: var(--input-text-color) !important;
   }
 
   input:-webkit-autofill,

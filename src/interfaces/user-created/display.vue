@@ -46,7 +46,7 @@ export default {
 }
 .label {
   display: inline-block;
-  margin-left: 4px;
+  margin-left: 8px;
   height: 28px;
   div {
     margin-top: 6px;

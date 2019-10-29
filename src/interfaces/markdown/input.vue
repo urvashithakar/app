@@ -59,6 +59,7 @@ export default {
   flex-wrap: wrap;
   flex-direction: column-reverse;
   width: 100%;
+  color: var(--input-text-color);
   &.float {
     flex-wrap: nowrap;
     flex-direction: row;
@@ -377,7 +378,7 @@ export default {
     }
 
     a {
-      color: var(--blue-grey-900);
+      //
     }
   }
 }

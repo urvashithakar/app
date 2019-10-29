@@ -75,11 +75,10 @@
         <h1 class="style-0">
           {{ $t("name_field", { field: $helpers.formatTitle(interfaces[interfaceName].name) }) }}
         </h1>
-        <p class="subtext">{{ $t("intelligent_defaults") }}</p>
       </template>
       <form class="schema" @submit.prevent>
         <div class="name">
-          <label>
+          <label class="type-label">
             {{ $t("name") }}*
             <v-input
               v-model="field"
@@ -96,7 +95,7 @@
               <b>{{ $helpers.formatTitle(field || "...") }}</b>
             </p>
           </label>
-          <label>
+          <label class="type-label">
             {{ $t("default_value") }}
             <v-input
               v-model="default_value"
@@ -106,7 +105,7 @@
             />
           </label>
         </div>
-        <label>
+        <label class="type-label">
           {{ $t("note") }}
           <v-input v-model="note" type="text" :placeholder="$t('add_note')" />
         </label>
@@ -125,7 +124,7 @@
         <details class="advanced" :open="existing">
           <summary>{{ $t("advanced_options") }}</summary>
           <div class="advanced-form">
-            <label>
+            <label class="type-label">
               {{ $t("field_type") }}
               <v-simple-select v-model="type">
                 <option
@@ -139,7 +138,7 @@
               </v-simple-select>
               <small class="description">{{ fieldTypeDescription }}</small>
             </label>
-            <label>
+            <label class="type-label">
               {{
                 $t("db_datatype", {
                   db: $helpers.formatTitle(databaseVendor)
@@ -159,7 +158,7 @@
                 {{ selectedDatatypeInfo && $t(selectedDatatypeInfo.description) }}
               </small>
             </label>
-            <label>
+            <label class="type-label">
               {{ $t("length") }}
               <v-input
                 :type="selectedDatatypeInfo && selectedDatatypeInfo.decimal ? 'string' : 'number'"
@@ -169,7 +168,7 @@
                 @input="length = $event"
               />
             </label>
-            <label>
+            <label class="type-label">
               {{ $t("validation") }}
               <v-input v-model="validation" type="text" :placeholder="$t('regex')" />
             </label>
@@ -204,10 +203,7 @@
 
     <template v-if="selectedInterfaceInfo && relation" slot="relation">
       <template v-if="!existing">
-        <h1 class="style-0">{{ $t("relation_setup") }}</h1>
-        <p class="subtext">
-          {{ $t("relation_setup_copy", { relation: $t(relation) }) }}
-        </p>
+        <h1 class="style-0">{{ $t("relation_setup", { relation: $t(relation) }) }}</h1>
       </template>
 
       <form v-if="relation === 'm2o'" class="single">
@@ -274,7 +270,7 @@
           </option>
         </v-simple-select>
 
-        <v-icon name="arrow_forward" />
+        <v-icon name="arrow_forward" size="20" />
 
         <p>{{ $t("related_collection") }}</p>
 
@@ -325,7 +321,7 @@
           </option>
         </v-simple-select>
 
-        <v-icon name="arrow_forward" />
+        <v-icon name="arrow_forward" size="20" />
 
         <p>{{ $t("junction_collection") }}</p>
 
@@ -485,10 +481,9 @@
     <template slot="options">
       <template v-if="!existing">
         <h1 class="style-0">{{ $t("almost_done_options") }}</h1>
-        <p class="subtext">{{ $t("almost_done_copy") }}</p>
       </template>
 
-      <label for="__width">{{ $t("field_width") }}</label>
+      <label for="__width" class="type-label">{{ $t("field_width") }}</label>
       <v-simple-select v-model="width" name="__width">
         <option value="half">{{ $t("field_width_half") }}</option>
         <option value="half-left">{{ $t("field_width_left") }}</option>
@@ -496,13 +491,11 @@
         <option value="full">{{ $t("field_width_full") }}</option>
         <option value="fill">{{ $t("field_width_fill") }}</option>
       </v-simple-select>
-      <p class="note">{{ $t("field_width_note") }}</p>
-
-      <hr />
+      <p class="note type-note">{{ $t("field_width_note") }}</p>
 
       <form v-if="selectedInterfaceInfo" class="options" @submit.prevent>
         <div v-for="(option, optionID) in interfaceOptions.regular" :key="optionID" class="options">
-          <label :for="optionID">{{ option.name }}</label>
+          <label :for="optionID" class="type-label">{{ option.name }}</label>
           <v-ext-input
             :id="option.interface"
             :name="optionID"
@@ -517,7 +510,7 @@
             :values="options"
             @input="$set(options, optionID, $event)"
           />
-          <p class="note" v-html="$helpers.snarkdown(option.comment || '')" />
+          <p class="note type-note" v-html="$helpers.snarkdown(option.comment || '')" />
         </div>
 
         <details
@@ -531,7 +524,7 @@
             :key="optionID"
             class="options"
           >
-            <label :for="optionID">{{ option.name }}</label>
+            <label :for="optionID" class="type-label">{{ option.name }}</label>
             <v-ext-input
               :id="option.interface"
               :name="optionID"
@@ -546,7 +539,7 @@
               :values="options"
               @input="$set(options, optionID, $event)"
             />
-            <p class="note" v-html="$helpers.snarkdown(option.comment || '')" />
+            <p class="note type-note" v-html="$helpers.snarkdown(option.comment || '')" />
           </div>
         </details>
       </form>
@@ -1543,12 +1536,6 @@ p {
 .note {
   display: block;
   margin-top: 4px;
-  margin-bottom: 10px;
-  font-style: italic;
-  font-size: var(--size-3);
-  line-height: 1.5em;
-  color: var(--blue-grey-300);
-  font-weight: var(--weight-bold);
 }
 
 .interfaces {
@@ -1664,6 +1651,7 @@ form.schema {
 }
 
 form.options {
+  margin-top: 30px;
   label {
     margin-bottom: 8px;
   }
@@ -1861,8 +1849,7 @@ details {
 }
 
 label {
-  font-size: var(--size-2);
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 hr {

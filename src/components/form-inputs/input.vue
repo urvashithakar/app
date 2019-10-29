@@ -194,7 +194,7 @@ export default {
     width: 100%;
     border: var(--input-border-width) solid var(--input-border-color);
     border-radius: var(--border-radius);
-    color: var(--blue-grey-400);
+    color: var(--input-text-color);
     padding: 10px;
     font-size: 1rem;
     line-height: 1.5;
@@ -216,24 +216,23 @@ export default {
     }
 
     &::placeholder {
-      color: var(--blue-grey-200);
+      color: var(--input-placeholder-color);
     }
 
     &:hover:not(:read-only) {
       transition: none;
-      border-color: var(--blue-grey-300);
+      border-color: var(--input-border-color-hover);
     }
 
     &:focus:not(:read-only) {
-      color: var(--blue-grey-600);
-      border-color: var(--blue-grey-600);
+      border-color: var(--input-border-color-focus);
       outline: 0;
     }
 
     &:-webkit-autofill {
       box-shadow: inset 0 0 0 1000px var(--white) !important;
-      color: var(--blue-grey-600) !important;
-      -webkit-text-fill-color: var(--blue-grey-600) !important;
+      color: var(--input-text-color) !important;
+      -webkit-text-fill-color: var(--input-text-color) !important;
     }
 
     &:-webkit-autofill,
@@ -245,12 +244,13 @@ export default {
     }
 
     &:read-only {
-      background-color: var(--blue-grey-50);
-      border-color: var(--blue-grey-200);
+      background-color: var(--input-background-disabled);
+      border-color: var(--input-border-color);
       cursor: not-allowed;
+      outline: none;
       &:focus {
         color: var(--blue-grey-400);
-        border-color: var(--blue-grey-200);
+        border-color: var(--input-border-color);
       }
     }
   }
@@ -263,6 +263,8 @@ export default {
     opacity: 0;
     transition: var(--fast) var(--transition);
     color: var(--blue-grey-300);
+    padding-left: 4px;
+    background-color: white;
   }
 
   input.charactercount:focus {

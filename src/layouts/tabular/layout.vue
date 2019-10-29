@@ -107,6 +107,7 @@ export default {
 
 <style lang="scss" scoped>
 .layout {
+  margin-top: 20px;
   padding: 0 32px;
 }
 </style>

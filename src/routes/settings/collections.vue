@@ -21,8 +21,8 @@
     <div v-else class="table">
       <div class="header">
         <div class="row">
-          <div class="cell style-4">{{ $t("collection") }}</div>
-          <div class="cell note style-4">{{ $t("note") }}</div>
+          <div class="cell type-table-head">{{ $t("collection") }}</div>
+          <div class="cell note type-table-head">{{ $t("note") }}</div>
         </div>
       </div>
       <div class="body">

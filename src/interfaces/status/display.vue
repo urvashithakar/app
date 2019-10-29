@@ -30,7 +30,7 @@ export default {
 <style lang="scss" scoped>
 .badge {
   border-radius: var(--border-radius);
-  padding: 5px 10px;
+  padding: 4px 12px;
   display: block;
   cursor: default;
   max-width: max-content;
@@ -39,8 +39,8 @@ export default {
 
 .simple {
   border-radius: 50%;
-  width: 10px;
-  height: 10px;
-  padding: 0;
+  width: 12px;
+  height: 12px;
+  padding: 6px;
 }
 </style>

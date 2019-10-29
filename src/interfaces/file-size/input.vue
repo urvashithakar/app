@@ -98,6 +98,8 @@ export default {
 <style lang="scss" scoped>
 .interface-container {
   position: relative;
+  display: flex;
+  justify-content: space-between;
 }
 .interface-file-size-formatted {
   color: var(--blue-grey-300);
@@ -105,17 +107,9 @@ export default {
   font-style: italic;
 }
 .interface-file-size {
-  width: calc(100% - 78px);
-  z-index: 2;
+  width: calc(100% - 80px);
 }
 .interface-file-size-units {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 0;
-  display: inline-block;
-  width: 80px;
-  margin-left: -12px;
-  z-index: 1;
+  width: 68px;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="interface-json">
+  <div class="interface-json codemirror-custom-styles">
     <codemirror :value="stringValue" :options="cmOptions" @input="updateValue"></codemirror>
     <button v-if="options.template" @click="fillTemplate">
       <v-icon name="playlist_add" />
@@ -11,7 +11,6 @@
 import mixin from "@directus/extension-toolkit/mixins/interface";
 
 import jsonlint from "jsonlint-mod";
-import CodeMirror from "codemirror";
 
 import "codemirror/lib/codemirror.css";
 import "codemirror/mode/javascript/javascript.js";
@@ -19,7 +18,7 @@ import "codemirror/addon/scroll/annotatescrollbar.js";
 import "codemirror/addon/edit/matchbrackets.js";
 import "codemirror/addon/display/autorefresh.js";
 import "codemirror/addon/lint/lint.js";
-
+import CodeMirror from "codemirror";
 import { codemirror } from "vue-codemirror";
 
 CodeMirror.registerHelper("lint", "json", text => {

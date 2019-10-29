@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent>
-    <label for="spacing" class="style-3 required">
+    <label for="spacing" class="type-label required">
       {{ $t("layouts-timeline-date") }}
     </label>
     <v-select
@@ -11,7 +11,7 @@
       icon="today"
       @input="setOption('date', $event)"
     ></v-select>
-    <label for="spacing" class="style-3 required">
+    <label for="spacing" class="type-label required">
       {{ $t("layouts-timeline-title") }}
     </label>
     <v-input
@@ -21,7 +21,7 @@
       :options="textOptions"
       @input="setOption('title', $event)"
     ></v-input>
-    <label for="spacing" class="style-3 required">
+    <label for="spacing" class="type-label required">
       {{ $t("layouts-timeline-content") }}
     </label>
     <v-select
@@ -32,7 +32,7 @@
       icon="title"
       @input="setOption('content', $event)"
     ></v-select>
-    <label for="spacing" class="style-3">
+    <label for="spacing" class="type-label">
       {{ $t("layouts-timeline-color") }}
     </label>
     <v-select

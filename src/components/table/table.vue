@@ -40,7 +40,7 @@
               )
           "
           :class="{ active: sortVal.field === field }"
-          class="sort style-4 no-wrap"
+          class="sort type-table-head no-wrap"
           @click="updateSort(field)"
         >
           {{ widths[field] > 40 ? name : null }}
@@ -58,7 +58,7 @@
               ? $t('cant_sort_by_this_field')
               : undefined
           "
-          class="style-4"
+          class="type-table-head"
         >
           {{ widths[field] > 40 ? name : null }}
         </span>

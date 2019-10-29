@@ -72,7 +72,7 @@
 
     <v-info-sidebar v-if="preferences">
       <template slot="system">
-        <label for="listing" class="style-4">{{ $t("view_type") }}</label>
+        <label for="listing" class="type-label">{{ $t("view_type") }}</label>
         <v-select
           id="listing"
           :options="layoutNames"
@@ -491,8 +491,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-label.style-4 {
-  padding-bottom: 5px;
+label.type-label {
+  padding-bottom: 8px;
 }
 .bookmark {
   margin-left: 10px;

@@ -426,6 +426,7 @@ export default {
   .textarea {
     height: 100%;
     resize: none;
+    line-height: 20px;
   }
 
   button {

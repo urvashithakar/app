@@ -82,7 +82,7 @@ export default {
     display: flex;
     align-items: center;
     padding-left: 10px;
-    color: var(--blue-grey-400);
+    color: var(--input-text-color);
     font-size: 14px;
     font-weight: 400;
     line-height: 1.5;
@@ -95,6 +95,7 @@ export default {
       transform: translateY(-50%);
       user-select: none;
       pointer-events: none;
+      color: var(--input-icon-color);
     }
   }
 
@@ -115,7 +116,6 @@ export default {
 
   select:focus + .preview {
     border-color: var(--blue-grey-600);
-    color: var(--blue-grey-600);
   }
 
   select[disabled] {

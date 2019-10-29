@@ -203,6 +203,7 @@ export default {
 .layout-cards {
   overflow: auto;
   height: 100%;
+  margin-top: 20px;
   max-height: calc(100vh - var(--header-height));
 }
 

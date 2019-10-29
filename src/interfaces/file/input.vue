@@ -8,6 +8,7 @@
       :src="src"
       :icon="icon"
       :href="href"
+      color="blue-grey-900"
       :options="{
         deselect: {
           text: $t('deselect'),

@@ -89,9 +89,12 @@ export default {
     contentStyle() {
       return `
         body {
-          color: #263238;
+          color: #546e7a;
           margin: 20px;
           font-family: 'Roboto', sans-serif;
+          -webkit-font-smoothing: antialiased;
+          text-rendering: optimizeLegibility;
+          -moz-osx-font-smoothing: grayscale;
         }
         h1 {
           font-family: 'Merriweather', serif;
@@ -143,7 +146,7 @@ export default {
           margin-bottom: 20px;
         }
         a {
-          color: #263238;
+          color: #546e7a;
         }
         ul,ol {
           font-family: 'Merriweather', serif;
@@ -182,7 +185,7 @@ export default {
           font-family: 'Merriweather', serif;
           font-size: 18px;
           line-height: 34px;
-          border-left: 2px solid #263238;
+          border-left: 2px solid #546e7a;
           padding-left: 10px;
           margin-left: -10px;
           font-style: italic;
@@ -191,8 +194,6 @@ export default {
         iframe,
         img {
           max-width: 100%;
-          // margin-top: 20px;
-          // margin-bottom: 20px;
           border-radius: 3px;
         }
         hr {

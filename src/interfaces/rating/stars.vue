@@ -75,7 +75,7 @@ export default {
       let _starType = this.starType(n);
       if (_starType != "empty") {
         if (this.hovered) {
-          _style.color = `var(--blue-grey-300)`;
+          _style.color = `var(--input-text-color)`;
         } else {
           _style.color = `var(--${this.options.active_color})`;
         }

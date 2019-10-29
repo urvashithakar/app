@@ -89,11 +89,8 @@ input {
   align-items: center;
 
   span {
-    text-transform: uppercase;
     margin-left: 4px;
-    font-size: var(--size-3);
-    font-weight: var(--weight-bold);
-    color: var(--blue-grey-400);
+    // font-weight: var(--weight-bold);
   }
 
   &.on span {

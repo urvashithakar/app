@@ -2,7 +2,7 @@
   <div class="interface-debugger">
     <v-header :breadcrumb="links" :icon-link="`/settings/interfaces`" icon-color="warning" />
 
-    <label>Dummy Label</label>
+    <label class="type-label">Dummy Label</label>
 
     <div :style="{ width: width + 'px' }" class="interface">
       <v-ext-input
@@ -24,13 +24,13 @@
 
     <form @submit.prevent>
       <fieldset>
-        <legend>Output</legend>
+        <legend class="type-label">Output</legend>
 
-        <label for="value">Value</label>
+        <label for="value" class="type-label">Value</label>
         <p>The value saved into the database</p>
         <v-input id="value" v-model="value" type="text" class="value" />
 
-        <label>Display</label>
+        <label class="type-label">Display</label>
         <p>Appearance on the Items Page (eg: Tabular)</p>
         <div class="listing">
           <v-ext-display
@@ -49,9 +49,9 @@
         </div>
       </fieldset>
       <fieldset>
-        <legend>Options</legend>
+        <legend class="type-label">Options</legend>
         <div v-for="(option, optionID) in extension.options" :key="optionID" class="options">
-          <label :for="optionID">{{ option.name }}</label>
+          <label :for="optionID" class="type-label">{{ option.name }}</label>
           <p v-if="options.comment" v-html="$helpers.snarkdown(option.comment)" />
           <v-ext-input
             :id="option.interface"
@@ -67,10 +67,10 @@
         </div>
       </fieldset>
       <fieldset>
-        <legend>Settings</legend>
+        <legend class="type-label">Settings</legend>
 
         <div class="settings">
-          <label for="type">Type</label>
+          <label for="type" class="type-label">Type</label>
           <p>Allowed datatypes this interface supports</p>
           <v-simple-select id="type" v-model="type" class="small">
             <option v-for="type in extension.types" :key="type" :value="type">
@@ -80,13 +80,13 @@
         </div>
 
         <div class="settings">
-          <label for="length">Length</label>
+          <label for="length" class="type-label">Length</label>
           <p>Database length for the column</p>
           <v-input id="length" v-model="length" type="number" class="length" :min="0" />
         </div>
 
         <div class="settings">
-          <label for="collection">Collection</label>
+          <label for="collection" class="type-label">Collection</label>
           <p>The parent collection for this field</p>
           <v-input id="collection" v-model="collection" class="value" />
         </div>
@@ -100,7 +100,7 @@
             class="checkbox"
             type="checkbox"
           />
-          <label for="readonly" class="inline">Read only</label>
+          <label for="readonly" class="inline type-label">Read only</label>
         </div>
 
         <div class="settings">
@@ -112,7 +112,7 @@
             class="checkbox"
             type="checkbox"
           />
-          <label for="required" class="inline">Required</label>
+          <label for="required" class="inline type-label">Required</label>
         </div>
 
         <div class="settings">
@@ -124,15 +124,15 @@
             class="checkbox"
             type="checkbox"
           />
-          <label for="loading" class="inline">Loading</label>
+          <label for="loading" class="inline type-label">Loading</label>
         </div>
       </fieldset>
       <fieldset>
-        <legend>Relation</legend>
+        <legend class="type-label">Relation</legend>
 
         <div class="relation">
           <div class="settings">
-            <label for="collection_many">Collection Many</label>
+            <label for="collection_many" class="type-label">Collection Many</label>
             <v-input
               id="collection_many"
               v-model="relation.collection_many"
@@ -142,12 +142,12 @@
           </div>
 
           <div class="settings">
-            <label for="field_many">Field Many</label>
+            <label for="field_many" class="type-label">Field Many</label>
             <v-input id="field_many" v-model="relation.field_many" type="text" class="value" />
           </div>
 
           <div class="settings">
-            <label for="collection_one">Collection One</label>
+            <label for="collection_one" class="type-label">Collection One</label>
             <v-input
               id="collection_one"
               v-model="relation.collection_one"
@@ -157,12 +157,12 @@
           </div>
 
           <div class="settings">
-            <label for="field_one">Field One</label>
+            <label for="field_one" class="type-label">Field One</label>
             <v-input id="field_one" v-model="relation.field_one" type="text" class="value" />
           </div>
 
           <div class="settings">
-            <label for="junction_field">Junction Field</label>
+            <label for="junction_field" class="type-label">Junction Field</label>
             <v-input
               id="junction_field"
               v-model="relation.junction_field"
@@ -173,12 +173,12 @@
         </div>
       </fieldset>
       <fieldset>
-        <legend>Misc.</legend>
+        <legend class="type-label">Misc.</legend>
 
         <div class="misc">
           <p>Toggle viewing between New and Edit</p>
           <v-checkbox id="new" v-model="newItem" value="newItem" class="checkbox" type="checkbox" />
-          <label for="new" class="inline">New item</label>
+          <label for="new" class="inline type-label">New item</label>
         </div>
       </fieldset>
     </form>
@@ -404,12 +404,14 @@ label {
 }
 
 fieldset {
-  border-top: 1px solid var(--blue-grey-200);
+  margin-top: 40px;
+  border-top: 1px solid var(--blue-grey-100);
 
   legend {
-    color: var(--blue-grey-400);
+    color: var(--blue-grey-200);
     padding: 10px 20px;
     text-align: center;
+    margin-bottom: 20px;
   }
 
   p {

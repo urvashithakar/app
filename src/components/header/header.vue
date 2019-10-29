@@ -8,7 +8,7 @@
       :icon="icon"
       :to="iconLink"
       :color="iconColor ? iconColor + '-light' : 'blue-grey-50'"
-      :icon-color="iconColor ? iconColor : 'blue-grey-400'"
+      :icon-color="iconColor ? iconColor : 'blue-grey-800'"
     />
     <div class="title" :class="{ 'has-breadcrumb': navBreadcrumb }">
       <ol v-if="navBreadcrumb" class="breadcrumb">
@@ -18,7 +18,7 @@
       </ol>
 
       <div class="flex">
-        <h1>{{ title || currentPage.name }}</h1>
+        <h1 class="type-title">{{ title || currentPage.name }}</h1>
         <slot name="title" />
       </div>
     </div>
@@ -199,11 +199,6 @@ body.info-wide-active .v-header {
     @media (min-width: 800px) {
       display: none;
     }
-  }
-
-  h1 {
-    color: var(--blue-grey-800);
-    font-size: 22px;
   }
 
   .breadcrumb {
