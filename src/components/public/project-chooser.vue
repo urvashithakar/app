@@ -1,5 +1,5 @@
 <template>
-  <div class="project-chooser">
+  <div v-if="projects.length > 1" class="project-chooser">
     <span class="preview">{{ currentProject.project_name }}</span>
     <select v-model="currentProjectIndex">
       <option v-for="(project, index) in projects" :key="index" :value="index">
