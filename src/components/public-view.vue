@@ -8,7 +8,10 @@
           src="../assets/logo-dark.svg"
         />
       </a>
-      <div class="content"><slot /></div>
+      <div class="content">
+        <h1 class="type-heading-large">{{ heading }}</h1>
+        <slot />
+      </div>
       <div class="notice"><slot name="notice" /></div>
     </div>
     <div class="art" :style="artStyles">
@@ -30,6 +33,12 @@ const defaults = {
 
 export default {
   name: "PublicView",
+  props: {
+    heading: {
+      type: String,
+      required: true
+    }
+  },
   computed: {
     ...mapGetters(["currentProject"]),
     artStyles() {
@@ -58,7 +67,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .public {
   display: flex;
 }
@@ -68,6 +77,7 @@ export default {
   max-width: 500px;
   width: 100%;
   height: 100%;
+  min-height: 700px;
   overflow-y: auto;
   position: relative;
   padding: 40px 80px;
@@ -75,6 +85,14 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+
+  h1 {
+    margin-bottom: 32px;
+
+    @media (min-height: 700px) {
+      margin-bottom: 60px;
+    }
+  }
 }
 
 .logo {

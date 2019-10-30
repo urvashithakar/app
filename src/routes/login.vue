@@ -1,6 +1,5 @@
 <template>
-  <PublicView>
-    <h1 class="type-heading-large">{{ $t("sign_in") }}</h1>
+  <PublicView :heading="$t('sign_in')">
     <form @submit.prevent="onSubmit">
       <project-chooser />
       <button v-if="currentProject.authenticated" type="submit">
