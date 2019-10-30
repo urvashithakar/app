@@ -11,6 +11,7 @@ import {
   LOADING_FINISHED,
   SET_PROJECTS
 } from "./mutation-types";
+import splitURL from "@/utils/split-url";
 
 export function latency({ commit }) {
   const start = performance.now();
@@ -113,8 +114,8 @@ export async function getProjects({ commit }) {
   const projects = await Promise.all(urls.map(fetchProjectInfo));
   commit(SET_PROJECTS, projects);
 
-  async function fetchProjectInfo(url) {
-    const response = await axios.get(url);
+  async function fetchProjectInfo(fullUrl) {
+    const response = await axios.get(fullUrl);
     const {
       project_name,
       project_logo,
@@ -124,14 +125,7 @@ export async function getProjects({ commit }) {
     } = response.data.data.api;
     const authenticated = response.data.public === undefined;
 
-    // NOTE: The app config has the URL as a single string, including project. However, the SDK needs
-    // URL and Project separated in order to work correctly. The following extracts the project from
-    // the URL.
-    if (url.endsWith("/") === false) url += "/";
-    const urlParts = url.split("/").filter(s => s);
-    const project = urlParts[urlParts.length - 1];
-    url = url.slice(0, -1);
-    url = url.substring(0, url.lastIndexOf("/"));
+    const { url, project } = splitURL(fullUrl);
 
     return {
       project_name,
@@ -142,10 +136,7 @@ export async function getProjects({ commit }) {
       url,
       project,
       authenticated,
-      version: null,
-      database: null,
-      requires2FA: null,
-      max_upload_size: null
+      requires2FA: null
     };
   }
 }
