@@ -179,6 +179,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// TODO: These styles should be extraced into their base components
+//       They're currently duplicated on forgot-password, setup-2fa, and install
+//       as well
 button {
   position: relative;
   background-color: var(--darkest-gray);
