@@ -115,15 +115,33 @@ export async function getProjects({ commit }) {
   commit(SET_PROJECTS, projects);
 
   async function fetchProjectInfo(fullUrl) {
-    const response = await axios.get(fullUrl);
-    const {
-      project_name,
-      project_logo,
-      project_color,
-      project_image,
-      project_icon
-    } = response.data.data.api;
-    const authenticated = response.data.public === undefined;
+    let project_name = "Directus";
+    let project_logo = null;
+    let project_color = "blue-grey-800";
+    let project_image = null;
+    let project_icon = null;
+    let authenticated = false;
+    let installed = true;
+    let error = null;
+
+    try {
+      const response = await axios.get(fullUrl);
+
+      project_name = response.data.data.api.project_name;
+      project_logo = response.data.data.api.project_logo;
+      project_color = response.data.data.api.project_color;
+      project_image = response.data.data.api.project_image;
+      project_icon = response.data.data.api.project_icon;
+      authenticated = response.data.public === undefined;
+    } catch (e) {
+      const { status } = error.response;
+
+      if (status === 503) {
+        installed = false;
+      } else {
+        error = e;
+      }
+    }
 
     const { url, project } = splitURL(fullUrl);
 
@@ -136,6 +154,8 @@ export async function getProjects({ commit }) {
       url,
       project,
       authenticated,
+      installed,
+      error,
       requires2FA: null
     };
   }

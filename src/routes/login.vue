@@ -2,9 +2,15 @@
   <PublicView :heading="$t('sign_in')">
     <form @submit.prevent="onSubmit">
       <project-chooser />
-      <button v-if="currentProject.authenticated" type="submit">
+      <button v-if="currentProject.authenticated === true" type="submit">
         {{ $t("continue_as", { name: firstName }) }}
       </button>
+      <template v-else-if="currentProject.installed === false">
+        <p>{{ $t("install_copy") }}</p>
+        <router-link to="/install">
+          {{ $t("install") }}
+        </router-link>
+      </template>
       <template v-else>
         <input v-model="email" type="email" :placeholder="$t('email')" required />
         <input v-model="password" type="password" :placeholder="$t('password')" required />
@@ -66,7 +72,18 @@ export default {
   },
   watch: {
     currentProjectIndex() {
-      this.fetchUserName();
+      if (this.currentProject.authenticated === true) {
+        this.fetchAuthenticatedUser();
+      } else {
+        this.fetchSSOProviders();
+      }
+    }
+  },
+  created() {
+    if (this.currentProject.authenticated === true) {
+      this.fetchAuthenticatedUser();
+    } else {
+      this.fetchSSOProviders();
     }
   },
   methods: {
@@ -155,25 +172,19 @@ export default {
         return this.login();
       }
     },
-    // Fetch the users name if logged in
-    async fetchUserName() {
-      this.firstName = null;
-      this.ssoProviders = [];
+    async fetchAuthenticatedUser() {
+      // this.firstName = null;
+      // const { data } = await this.$api.getMe({ fields: "first_name" });
+      // this.firstName = data.first_name;
+    },
 
-      this.$api.config.url = this.currentProject.url;
-      this.$api.config.project = this.currentProject.project;
-
-      if (this.currentProject.authenticated) {
-        const { data } = await this.$api.getMe({ fields: "first_name" });
-        this.firstName = data.first_name;
-      } else {
-        const { data } = await this.$api.getThirdPartyAuthProviders();
-        this.ssoProviders = data;
-      }
+    async fetchSSOProviders() {
+      // this.ssoProviders = [];
+      // this.$api.config.url = this.currentProject.url;
+      // this.$api.config.project = this.currentProject.project;
+      // const { data } = await this.$api.getThirdPartyAuthProviders();
+      // this.ssoProviders = data;
     }
-  },
-  created() {
-    this.fetchUserName();
   }
 };
 </script>

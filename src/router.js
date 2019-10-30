@@ -249,9 +249,7 @@ router.beforeEach(async (to, from, next) => {
   store.commit(TOGGLE_NAV, false);
   store.commit(TOGGLE_INFO, false);
 
-  if (store.state.projects === null) {
-    await store.dispatch("getProjects");
-  }
+  await store.dispatch("getProjects");
 
   if (to.path === "/setup-2fa") {
     return next();

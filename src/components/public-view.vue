@@ -1,6 +1,6 @@
 <template>
   <div class="public">
-    <div class="container">
+    <div class="container" :class="{ wide }">
       <a href="https://directus.io" target="_blank" class="logo">
         <img
           v-tooltip.right="{ classes: ['inverted'], content: version }"
@@ -42,12 +42,16 @@ export default {
     heading: {
       type: String,
       required: true
+    },
+    wide: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
     ...mapGetters(["currentProject"]),
     artStyles() {
-      if (this.project_image) {
+      if (this.project_image.full_url) {
         return { backgroundImage: `url(${this.project_image.full_url})` };
       } else {
         return { backgroundColor: `var(--${this.project_color})` };
@@ -90,6 +94,10 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+
+  &.wide {
+    max-width: 900px;
+  }
 
   .title {
     margin-bottom: 32px;
