@@ -52,7 +52,7 @@ export default {
       return this.currentProject.project_color || defaults.project_color;
     },
     project_image() {
-      return this.currentProject.project_image || defaults.project_image;
+      return this.currentProject.project_image.full_url || defaults.project_image;
     },
     project_logo() {
       return this.currentProject.project_logo || defaults.project_logo;
@@ -118,5 +118,7 @@ export default {
 
 .art {
   flex-grow: 1;
+  background-size: cover;
+  background-position: center center;
 }
 </style>

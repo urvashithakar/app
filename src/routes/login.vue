@@ -8,8 +8,12 @@
       <template v-else>
         <input v-model="email" type="email" :placeholder="$t('email')" required />
         <input v-model="password" type="password" :placeholder="$t('password')" required />
-        <router-link class="forgot" to="/forgot-password">{{ $t("forgot_password") }}</router-link>
-        <button type="submit">{{ $t("sign_in") }}</button>
+        <div class="buttons">
+          <button type="submit">{{ $t("sign_in") }}</button>
+          <router-link class="forgot" to="/forgot-password">
+            {{ $t("forgot_password") }}
+          </router-link>
+        </div>
       </template>
     </form>
     <sso :providers="ssoProviders" />
@@ -263,8 +267,9 @@ input {
   }
 }
 
-.forgot {
-  display: block;
-  text-align: right;
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 </style>
