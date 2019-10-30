@@ -1,5 +1,5 @@
 <template>
-  <ul class="sso">
+  <ul v-if="providers.length > 0" class="sso">
     <li v-for="provider in providers" :key="provider.name">
       <a :href="`${apiUrl}/auth/sso/${provider.name}`">
         <img :src="provider.icon" :alt="provider.name" />

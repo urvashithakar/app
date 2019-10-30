@@ -9,13 +9,18 @@
         />
       </a>
       <div class="content">
-        <h1 class="type-heading-large">{{ heading }}</h1>
+        <h1 class="title type-heading-large">{{ heading }}</h1>
         <slot />
       </div>
       <div class="notice"><slot name="notice" /></div>
     </div>
     <div class="art" :style="artStyles">
-      <img v-if="project_logo" :src="project_logo" :alt="project_name" />
+      <img
+        v-if="project_logo.full_url"
+        class="logo"
+        :src="project_logo.full_url"
+        :alt="project_name"
+      />
     </div>
   </div>
 </template>
@@ -26,8 +31,8 @@ import { mapGetters } from "vuex";
 
 const defaults = {
   project_color: "blue-grey-700",
-  project_image: null,
-  project_logo: null,
+  project_image: { full_url: null },
+  project_logo: { full_url: null },
   project_name: "Directus"
 };
 
@@ -43,7 +48,7 @@ export default {
     ...mapGetters(["currentProject"]),
     artStyles() {
       if (this.project_image) {
-        return { backgroundImage: `url(${this.project_image})` };
+        return { backgroundImage: `url(${this.project_image.full_url})` };
       } else {
         return { backgroundColor: `var(--${this.project_color})` };
       }
@@ -52,7 +57,7 @@ export default {
       return this.currentProject.project_color || defaults.project_color;
     },
     project_image() {
-      return this.currentProject.project_image.full_url || defaults.project_image;
+      return this.currentProject.project_image || defaults.project_image;
     },
     project_logo() {
       return this.currentProject.project_logo || defaults.project_logo;
@@ -86,39 +91,48 @@ export default {
   justify-content: center;
   align-items: flex-start;
 
-  h1 {
+  .title {
     margin-bottom: 32px;
 
     @media (min-height: 700px) {
       margin-bottom: 60px;
     }
   }
-}
 
-.logo {
-  position: absolute;
-  top: 40px;
-  left: 80px;
-  height: 40px;
-  user-select: none;
-  cursor: help;
-}
+  .logo {
+    position: absolute;
+    top: 40px;
+    left: 80px;
+    height: 40px;
+    user-select: none;
+    cursor: help;
+  }
 
-.content {
-  width: 100%;
-}
+  .content {
+    width: 100%;
+  }
 
-.notice {
-  position: absolute;
-  bottom: 40px;
-  left: 80px;
-  user-select: none;
-  pointer-events: none;
+  .notice {
+    position: absolute;
+    bottom: 40px;
+    left: 80px;
+    user-select: none;
+    pointer-events: none;
+  }
 }
 
 .art {
   flex-grow: 1;
   background-size: cover;
   background-position: center center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .logo {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+  }
 }
 </style>
