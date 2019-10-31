@@ -3,7 +3,7 @@
     <span
       class="progress-inner"
       :style="{
-        transform: props.value ? `scaleX(${props.value / $props.max})` : null
+        width: props.value ? `${(props.value / props.max) * 100}%` : null
       }"
     ></span>
   </div>
@@ -45,10 +45,12 @@ export default {
     background-color: var(--blue-grey-900);
     will-change: left, right;
     border-radius: inherit;
+    transition: width var(--fast) var(--transition);
   }
 
   &.indeterminate .progress-inner {
     animation: indeterminate 2.2s infinite;
+    transition: none;
   }
 }
 
