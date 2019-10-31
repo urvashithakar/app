@@ -1,7 +1,9 @@
 <template>
   <PublicView wide :heading="$t('create_project')">
     <form @submit.prevent="onSubmit">
-      <fieldset v-show="step === 0" class="step-1">
+      <public-stepper :steps="3" :current-step="step" />
+
+      <fieldset v-show="step === 1" class="step-1">
         <legend>Project Info</legend>
         <div class="field-grid">
           <div class="field">
@@ -30,7 +32,7 @@
         <button type="button" @click="step++">Next</button>
       </fieldset>
 
-      <fieldset v-show="step === 1" class="step-2">
+      <fieldset v-show="step === 2" class="step-2">
         <legend>Database Credentials</legend>
         <div class="field-grid">
           <div class="field">
@@ -60,7 +62,7 @@
       </fieldset>
     </form>
 
-    <div v-show="step === 2" class="step-3">
+    <div v-show="step === 3" class="step-3">
       <h2>All Set</h2>
     </div>
   </PublicView>
@@ -70,15 +72,17 @@
 import PublicView from "@/components/public-view";
 import axios from "axios";
 import { mapGetters } from "vuex";
+import PublicStepper from "@/components/public/stepper";
 
 export default {
   name: "Login",
   components: {
-    PublicView
+    PublicView,
+    PublicStepper
   },
   data() {
     return {
-      step: 0,
+      step: 1,
       project_name: "",
       project_key: "",
       user_email: "",

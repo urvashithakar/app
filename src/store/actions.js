@@ -134,7 +134,7 @@ export async function getProjects({ commit }) {
       project_icon = response.data.data.api.project_icon;
       authenticated = response.data.public === undefined;
     } catch (e) {
-      const { status } = error.response;
+      const { status } = e.response;
 
       if (status === 503) {
         installed = false;
