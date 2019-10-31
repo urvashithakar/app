@@ -1,9 +1,12 @@
 <template>
-  <PublicView :heading="$t('sign_in')">
+  <PublicView :heading="signingIn || fetchingData ? $t('signing_in') : $t('sign_in')">
     <form @submit.prevent="onSubmit">
       <project-chooser />
 
-      <v-progress v-if="signingIn || fetchingData" />
+      <template v-if="signingIn || fetchingData">
+        <v-progress />
+        <p>{{ currentProject.project_name }}</p>
+      </template>
 
       <template v-else-if="currentProject.installed === false">
         <p>{{ $t("install_copy") }}</p>
