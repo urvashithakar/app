@@ -2,31 +2,38 @@
   <PublicView :heading="$t('sign_in')">
     <form @submit.prevent="onSubmit">
       <project-chooser />
-      <button v-if="currentProject.authenticated === true" type="submit">
-        {{ $t("continue_as", { name: firstName }) }}
-      </button>
+
+      <v-progress v-if="signingIn || fetchingData" />
+
       <template v-else-if="currentProject.installed === false">
         <p>{{ $t("install_copy") }}</p>
         <router-link to="/install">
           {{ $t("install") }}
         </router-link>
       </template>
+
       <template v-else>
-        <input v-model="email" type="email" :placeholder="$t('email')" required />
-        <input v-model="password" type="password" :placeholder="$t('password')" required />
-        <div class="buttons">
-          <button type="submit">{{ $t("sign_in") }}</button>
-          <router-link class="forgot" to="/forgot-password">
-            {{ $t("forgot_password") }}
-          </router-link>
-        </div>
+        <button v-if="currentProject.authenticated === true" type="submit">
+          {{ $t("continue_as", { name: firstName }) }}
+        </button>
+
+        <template v-else>
+          <input v-model="email" type="email" :placeholder="$t('email')" required />
+          <input v-model="password" type="password" :placeholder="$t('password')" required />
+          <div class="buttons">
+            <button type="submit">{{ $t("sign_in") }}</button>
+            <router-link class="forgot" to="/forgot-password">
+              {{ $t("forgot_password") }}
+            </router-link>
+          </div>
+        </template>
       </template>
     </form>
     <sso :providers="ssoProviders" />
     <public-notice
       v-if="notice.text"
       slot="notice"
-      :loading="signingIn"
+      :loading="signingIn || fetchingData"
       :color="notice.color"
       :icon="notice.icon"
     >
@@ -57,6 +64,7 @@ export default {
       email: "",
       password: "",
       signingIn: false,
+      fetchingData: false,
       notice: {
         text: null,
         color: null,
@@ -88,28 +96,12 @@ export default {
   },
   methods: {
     ...mapMutations([UPDATE_PROJECT]),
-    async enterApp() {
-      this.notice = {
-        text: this.$t("fetching_data")
-      };
-
-      // This will fetch all the needed information about the project in order to run Directus
-      await hydrateStore();
-
-      // Default to /collections as homepage
-      let route = "/collections";
-
-      // If the last visited page is saved in the current user record, use that
-      if (this.$store.state.currentUser.last_page) {
-        route = this.$store.state.currentUser.last_page;
+    onSubmit() {
+      if (this.currentProject.authenticated) {
+        return this.enterApp();
+      } else {
+        return this.login();
       }
-
-      // In the case the URL contains a redirect query, use that instead
-      if (this.$route.query.redirect) {
-        route = this.$route.query.redirect;
-      }
-
-      this.$router.push(route);
     },
     login() {
       const { url, project } = this.currentProject;
@@ -165,25 +157,49 @@ export default {
         })
         .finally(() => (this.signingIn = false));
     },
-    onSubmit() {
-      if (this.currentProject.authenticated) {
-        return this.enterApp();
-      } else {
-        return this.login();
+    async enterApp() {
+      this.notice = {
+        text: this.$t("fetching_data")
+      };
+
+      this.fetchingData = true;
+
+      // This will fetch all the needed information about the project in order to run Directus
+      await hydrateStore();
+
+      // Default to /collections as homepage
+      let route = "/collections";
+
+      // If the last visited page is saved in the current user record, use that
+      if (this.$store.state.currentUser.last_page) {
+        route = this.$store.state.currentUser.last_page;
       }
+
+      // In the case the URL contains a redirect query, use that instead
+      if (this.$route.query.redirect) {
+        route = this.$route.query.redirect;
+      }
+
+      this.$router.push(route, () => {
+        // We only set the fetchingData flag to false when the page navigation is done
+        // This makes sure we don't show a flash of "authenticated" style login view
+        this.fetchingData = false;
+      });
     },
     async fetchAuthenticatedUser() {
-      // this.firstName = null;
-      // const { data } = await this.$api.getMe({ fields: "first_name" });
-      // this.firstName = data.first_name;
+      this.firstName = null;
+      this.$api.config.url = this.currentProject.url;
+      this.$api.config.project = this.currentProject.project;
+      const { data } = await this.$api.getMe({ fields: "first_name" });
+      this.firstName = data.first_name;
     },
 
     async fetchSSOProviders() {
-      // this.ssoProviders = [];
-      // this.$api.config.url = this.currentProject.url;
-      // this.$api.config.project = this.currentProject.project;
-      // const { data } = await this.$api.getThirdPartyAuthProviders();
-      // this.ssoProviders = data;
+      this.ssoProviders = [];
+      this.$api.config.url = this.currentProject.url;
+      this.$api.config.project = this.currentProject.project;
+      const { data } = await this.$api.getThirdPartyAuthProviders();
+      this.ssoProviders = data;
     }
   }
 };
@@ -201,7 +217,6 @@ button {
   color: var(--white);
   width: 100%;
   height: 60px;
-  max-width: 154px;
   padding: 18px 10px;
   font-size: 16px;
   font-weight: 400;
@@ -285,5 +300,10 @@ input {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  .forgot {
+    flex-shrink: 0;
+    margin-left: 24px;
+  }
 }
 </style>

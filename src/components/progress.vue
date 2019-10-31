@@ -1,9 +1,9 @@
-<template functional>
-  <div class="progress" :class="{ indeterminate: props.value === null }">
+<template>
+  <div class="progress" :class="{ indeterminate: value === null }">
     <span
       class="progress-inner"
       :style="{
-        width: props.value ? `${(props.value / props.max) * 100}%` : null
+        width: value ? `${(value / max) * 100}%` : null
       }"
     ></span>
   </div>
