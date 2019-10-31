@@ -64,6 +64,7 @@
 
     <div v-show="step === 3" class="step-3">
       <h2>All Set</h2>
+      <router-link to="/login">Login</router-link>
     </div>
   </PublicView>
 </template>
@@ -134,7 +135,7 @@ export default {
           iconMain: "check"
         });
 
-        this.step = 2;
+        this.step = 3;
       } catch (error) {
         this.error = error;
       } finally {
