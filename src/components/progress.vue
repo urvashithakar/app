@@ -1,0 +1,67 @@
+<template functional>
+  <div class="progress" :class="{ indeterminate: props.value === null }">
+    <span
+      class="progress-inner"
+      :style="{
+        transform: props.value ? `scaleX(${props.value / $props.max})` : null
+      }"
+    ></span>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "VProgress",
+  props: {
+    max: {
+      type: Number,
+      default: 100
+    },
+    value: {
+      type: Number,
+      required: false,
+      default: null
+    }
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+.progress {
+  width: 100%;
+  background-color: var(--blue-grey-200);
+  position: relative;
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+
+  .progress-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: auto;
+    height: inherit;
+    background-color: var(--blue-grey-900);
+    will-change: left, right;
+    border-radius: inherit;
+  }
+
+  &.indeterminate .progress-inner {
+    animation: indeterminate 2.2s infinite;
+  }
+}
+
+@keyframes indeterminate {
+  0%,
+  60% {
+    left: -90%;
+    right: 100%;
+  }
+
+  100% {
+    left: 100%;
+    right: -35%;
+  }
+}
+</style>
