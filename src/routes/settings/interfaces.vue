@@ -1,6 +1,6 @@
 <template>
   <div class="interfaces">
-    <v-header :breadcrumb="links" :icon-link="`/${currentProjectID}/settings`" :settings="true" />
+    <v-header :breadcrumb="links" :icon-link="`/${currentProjectID}/settings`" settings />
     <v-table :columns="columns" :items="items" link="__link" primary-key-field="id" />
   </div>
 </template>

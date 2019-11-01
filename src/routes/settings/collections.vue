@@ -1,10 +1,6 @@
 <template>
   <div class="collections">
-    <v-header
-      :breadcrumb="breadcrumb"
-      :settings="true"
-      :icon-link="`/${currentProjectID}/settings`"
-    >
+    <v-header :breadcrumb="breadcrumb" :icon-link="`/${currentProjectID}/settings`" settings>
       <template slot="buttons">
         <v-header-button key="add" icon="add" :label="$t('new')" @click="addNew = true" />
       </template>

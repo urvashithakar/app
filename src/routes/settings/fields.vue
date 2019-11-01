@@ -4,7 +4,7 @@
     <v-header
       :breadcrumb="breadcrumb"
       :icon-link="`/${currentProjectID}/settings/collections`"
-      :settings="true"
+      settings
     >
       <template slot="buttons">
         <v-header-button

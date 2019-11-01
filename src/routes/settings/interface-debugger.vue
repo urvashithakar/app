@@ -3,7 +3,7 @@
     <v-header
       :breadcrumb="links"
       :icon-link="`/${currentProjectID}/settings/interfaces`"
-      :settings="true"
+      settings
     />
 
     <label class="type-label">Dummy Label</label>
