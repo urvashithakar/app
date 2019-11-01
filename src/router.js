@@ -16,7 +16,6 @@ import Install from "./routes/install.vue";
 import NotFound from "./routes/not-found.vue";
 import Interfaces from "./routes/settings/interfaces.vue";
 import InterfaceDebugger from "./routes/settings/interface-debugger.vue";
-import Debug from "./routes/debug.vue";
 import Settings from "./routes/settings/settings.vue";
 import SettingsGlobal from "./routes/settings/global.vue";
 import SettingsCollections from "./routes/settings/collections.vue";
@@ -24,8 +23,6 @@ import SettingsFields from "./routes/settings/fields.vue";
 import SettingsRoles from "./routes/settings/roles.vue";
 import SettingsPermissions from "./routes/settings/permissions.vue";
 import PageExtension from "./routes/page-extension.vue";
-
-import ModalDebug from "./routes/modal-debug.vue";
 
 Vue.use(Router);
 
@@ -48,10 +45,6 @@ const router = new Router({
     }
   },
   routes: [
-    {
-      path: "/modals",
-      component: ModalDebug
-    },
     {
       path: "/",
       redirect: "/collections"
@@ -161,10 +154,6 @@ const router = new Router({
       path: "/collections/directus_activity/:primaryKey",
       component: Item,
       alias: "/activity/:primaryKey"
-    },
-    {
-      path: "/debug",
-      component: Debug
     },
     {
       path: "/settings",
