@@ -48,7 +48,7 @@
 <script>
 import { mapState } from "vuex";
 import VError from "./components/error.vue";
-import { TOGGLE_NAV } from "./store/mutation-types";
+import { TOGGLE_NAV, SET_CURRENT_PROJECT } from "./store/mutation-types";
 import VNavSidebar from "./components/sidebars/nav-sidebar/nav-sidebar.vue";
 import VNotification from "./components/notifications/notifications.vue";
 import { loadLanguageAsync, availableLanguages } from "./lang";
@@ -119,6 +119,8 @@ export default {
   created() {
     this.bodyClass();
 
+    this.preselectProject();
+
     const shouldLoadLocale =
       window.__DirectusConfig__ &&
       window.__DirectusConfig__.defaultLocale &&
@@ -184,6 +186,22 @@ export default {
       } else {
         document.body.classList.remove("info-wide-active");
         document.body.classList.remove("info-active");
+      }
+    },
+
+    preselectProject() {
+      if (this.$route.query.project) {
+        const projectIndex = this.$store.state.projects.findIndex(p => {
+          return p.project === this.$route.query.project;
+        });
+
+        if (projectIndex) {
+          this.$store.commit(SET_CURRENT_PROJECT, projectIndex);
+        }
+
+        const query = _.clone(this.$route.query);
+        delete query.project;
+        this.$router.replace({ query });
       }
     }
   }
