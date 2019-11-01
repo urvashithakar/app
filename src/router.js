@@ -47,19 +47,19 @@ const router = new Router({
   routes: [
     {
       path: "/",
-      redirect: "/collections"
+      redirect: "/:project/collections"
     },
     {
-      path: "/collections",
+      path: "/:project/collections",
       component: Collections
     },
     {
-      path: "/collections/:collection",
+      path: "/:project/collections/:collection",
       props: true,
       component: Items
     },
     {
-      path: "/collections/:collection/:primaryKey",
+      path: "/:project/collections/:collection/:primaryKey",
       props: true,
       component: Item,
       meta: {
@@ -72,7 +72,7 @@ const router = new Router({
       component: PageExtension
     },
     {
-      path: "/bookmarks/:collection/:bookmarkID",
+      path: "/:project/bookmarks/:collection/:bookmarkID",
       beforeEnter(to, from, next) {
         const { collection, bookmarkID } = to.params;
 
@@ -109,7 +109,7 @@ const router = new Router({
                 listing page in question). By adding this param, it forces the update.
                 The listing view will remove the query on load so it doesn't clutter the URL too much
                */
-              path: `/collections/${collection}?b=${bookmark.id}`
+              path: `/:project/collections/${collection}?b=${bookmark.id}`
             });
           })
           .catch(error =>
@@ -121,72 +121,72 @@ const router = new Router({
       }
     },
     {
-      path: "/files",
+      path: "/:project/files",
       component: FileLibrary
     },
     {
-      path: "/collections/directus_files/:primaryKey",
+      path: "/:project/collections/directus_files/:primaryKey",
       component: Item,
-      alias: "/files/:primaryKey",
+      alias: "/:project/files/:primaryKey",
       meta: {
         infoSidebarWidth: "wide"
       }
     },
     {
-      path: "/collections/directus_users",
+      path: "/:project/collections/directus_users",
       component: Items,
-      alias: "/users"
+      alias: "/:project/users"
     },
     {
-      path: "/collections/directus_users/:primaryKey",
+      path: "/:project/collections/directus_users/:primaryKey",
       component: Item,
-      alias: "/users/:primaryKey",
+      alias: "/:project/users/:primaryKey",
       meta: {
         infoSidebarWidth: "wide"
       }
     },
     {
-      path: "/collections/directus_activity",
+      path: "/:project/collections/directus_activity",
       component: Items,
-      alias: "/activity"
+      alias: "/:project/activity"
     },
     {
-      path: "/collections/directus_activity/:primaryKey",
+      path: "/:project/collections/directus_activity/:primaryKey",
       component: Item,
-      alias: "/activity/:primaryKey"
+      alias: "/:project/activity/:primaryKey"
     },
     {
-      path: "/settings",
+      path: "/:project/settings",
       component: Settings
     },
     {
-      path: "/settings/global",
+      path: "/:project/settings/global",
       component: SettingsGlobal
     },
     {
-      path: "/settings/collections",
+      path: "/:project/settings/collections",
       component: SettingsCollections
     },
     {
-      path: "/settings/collections/:collection",
+      path: "/:project/settings/collections/:collection",
       component: SettingsFields,
       props: true
     },
     {
-      path: "/settings/roles",
+      path: "/:project/settings/roles",
       component: SettingsRoles
     },
     {
-      path: "/settings/roles/:id",
+      path: "/:project/settings/roles/:id",
       component: SettingsPermissions,
       props: true
     },
     {
-      path: "/settings/interfaces",
+      path: "/:project/settings/interfaces",
       component: Interfaces
     },
     {
-      path: "/settings/interfaces/:id",
+      path: "/:project/settings/interfaces/:id",
       component: InterfaceDebugger,
       props: true
     },
