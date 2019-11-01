@@ -31,3 +31,7 @@ export function currentProject(state) {
   if (!state.projects) return null;
   return state.projects[state.currentProjectIndex];
 }
+
+export function currentProjectID(state, getters) {
+  return getters.currentProject.project;
+}
