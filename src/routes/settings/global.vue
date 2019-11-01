@@ -82,7 +82,7 @@ export default {
         .then(() => {
           this.saving = false;
           this.edits = {};
-          this.$router.push("/settings");
+          this.$router.push(`/${this.currentProjectID}/settings`);
           this.$notify({
             title: this.$t("settings_saved"),
             color: "green",

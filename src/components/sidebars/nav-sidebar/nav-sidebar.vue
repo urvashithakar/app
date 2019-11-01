@@ -52,7 +52,8 @@ import NavMenu from "./nav-menu.vue";
 import UserMenu from "./user-menu.vue";
 import NavBookmarks from "./nav-bookmarks.vue";
 import VBlocker from "../../blocker.vue";
-import { TOGGLE_NAV } from "../../../store/mutation-types";
+import { TOGGLE_NAV } from "@/store/mutation-types";
+import { mapGetters } from "vuex";
 
 export default {
   name: "NavSidebar",
@@ -65,6 +66,7 @@ export default {
     VBlocker
   },
   computed: {
+    ...mapGetters(["currentProjectID"]),
     permissions() {
       return this.$store.state.permissions;
     },
@@ -92,7 +94,7 @@ export default {
         });
     },
     projectName() {
-      return this.$store.state.auth.projectName;
+      return this.$store.getters.currentProject.project_name;
     },
     active() {
       return this.$store.state.sidebars.nav;
@@ -134,7 +136,7 @@ export default {
 
     linksCollections() {
       return this.collections.map(({ collection, icon }) => ({
-        path: `/collections/${collection}`,
+        path: `/${this.currentProjectID}/collections/${collection}`,
         name: this.$t(`collections-${collection}`),
         icon
       }));
@@ -178,7 +180,7 @@ export default {
           }
         })
         .then(() => {
-          this.$router.push(`/collections/${collection}`);
+          this.$router.push(`/${this.currentProjectID}/collections/${collection}`);
         });
     },
     disableNav() {

@@ -21,12 +21,32 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
-  props: ["week", "display", "date", "events"],
+  props: {
+    week: {
+      type: String,
+      required: true
+    },
+    display: {
+      type: String,
+      required: true
+    },
+    date: {
+      type: String,
+      required: true
+    },
+    events: {
+      type: Array,
+      required: true
+    }
+  },
   data() {
     return {};
   },
   computed: {
+    ...mapGetters(["currentProjectID"]),
     hidden() {
       return this.display == "hidden";
     },
@@ -66,13 +86,16 @@ export default {
   },
   methods: {
     goToItem(id) {
-      if (id !== -1) this.$router.push(`/collections/${this.$parent.$parent.collection}/${id}`);
+      if (id !== -1)
+        this.$router.push(
+          `/${this.currentProjectID}/collections/${this.$parent.$parent.collection}/${id}`
+        );
     }
   }
 };
 </script>
 
-<style lang="scss" type="scss" scoped>
+<style lang="scss" scoped>
 .today .header {
   padding: 5px 5px;
 }

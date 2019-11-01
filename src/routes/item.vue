@@ -13,7 +13,7 @@
   </div>
 
   <div v-else-if="fields === null">
-    <v-header :icon-link="`/collections`" />
+    <v-header :icon-link="`/${currentProjectID}/collections`" />
     <v-loader area="content" />
   </div>
 
@@ -79,7 +79,11 @@
         @revert="revertActivity = $event"
       />
 
-      <router-link v-if="canReadActivity" to="/activity" class="notifications">
+      <router-link
+        v-if="canReadActivity"
+        :to="`/${currentProjectID}/activity`"
+        class="notifications"
+      >
         <div class="preview">
           <v-icon name="notifications" color="blue-grey-300" />
           <span>{{ $t("notifications") }}</span>
@@ -180,6 +184,7 @@ import formatTitle from "@directus/format-title";
 import VNotFound from "./not-found.vue";
 import store from "../store/";
 import api from "../api";
+import { mapGetters } from "vuex";
 
 function getFieldsQuery(collection) {
   const fields = store.state.collections[collection].fields;
@@ -279,6 +284,7 @@ export default {
     };
   },
   computed: {
+    ...mapGetters(["currentProjectID"]),
     saveOptions() {
       if (this.singleItem) {
         return {};
@@ -320,7 +326,7 @@ export default {
         return [
           {
             name: this.$t("user_directory"),
-            path: "/users"
+            path: `/${this.currentProjectID}/users`
           },
           {
             name: crumbName,
@@ -333,7 +339,7 @@ export default {
         return [
           {
             name: this.$t("file_library"),
-            path: "/files"
+            path: `/${this.currentProjectID}/files`
           },
           {
             name: this.newItem ? this.$t("creating_item") : this.$t("editing_item"),
@@ -346,7 +352,7 @@ export default {
         return [
           {
             name: this.$t("collections"),
-            path: "/collections"
+            path: `/${this.currentProjectID}/collections`
           },
           {
             name: this.$t("editing_single", {
@@ -362,17 +368,17 @@ export default {
       if (this.collection.startsWith("directus_")) {
         breadcrumb.push({
           name: this.$helpers.formatTitle(this.collection.substr(9)),
-          path: `/${this.collection.substring(9)}`
+          path: `/${this.currentProjectID}/${this.collection.substring(9)}`
         });
       } else {
         breadcrumb.push(
           {
             name: this.$t("collections"),
-            path: "/collections"
+            path: `/${this.currentProjectID}/collections`
           },
           {
             name: this.$t(`collections-${this.collection}`),
-            path: `/collections/${this.collection}`
+            path: `/${this.currentProjectID}/collections/${this.collection}`
           }
         );
       }
@@ -558,7 +564,7 @@ export default {
     },
     notFound(notFound) {
       if (this.singleItem && notFound === true) {
-        this.$router.push(`/collections/${this.collection}/+`);
+        this.$router.push(`/${this.currentProjectID}/collections/${this.collection}/+`);
       }
     }
   },
@@ -623,7 +629,7 @@ export default {
           });
           this.confirmRemoveLoading = false;
           this.confirmRemove = false;
-          this.$router.push(`/collections/${this.collection}`);
+          this.$router.push(`/${this.currentProjectID}/collections/${this.collection}`);
         })
         .catch(error => {
           this.$store.dispatch("loadingFinished", id);
@@ -675,10 +681,14 @@ export default {
               iconMain: "check"
             });
             if (this.collection.startsWith("directus_")) {
-              return this.$router.push(`/${this.collection.substring(9)}/${pk}`);
+              return this.$router.push(
+                `/${this.currentProjectID}/${this.collection.substring(9)}/${pk}`
+              );
             }
 
-            return this.$router.push(`/collections/${this.collection}/${pk}`);
+            return this.$router.push(
+              `/${this.currentProjectID}/collections/${this.collection}/${pk}`
+            );
           })
           .catch(error => {
             this.$store.dispatch("loadingFinished", id);
@@ -714,10 +724,10 @@ export default {
 
           if (method === "leave") {
             if (this.collection.startsWith("directus_")) {
-              return this.$router.push(`/${this.collection.substring(9)}`);
+              return this.$router.push(`/${this.currentProjectID}/${this.collection.substring(9)}`);
             }
 
-            return this.$router.push(`/collections/${this.collection}`);
+            return this.$router.push(`/${this.currentProjectID}/collections/${this.collection}`);
           }
 
           if (method === "stay") {
@@ -725,7 +735,9 @@ export default {
 
             if (this.newItem) {
               const primaryKey = savedValues[this.primaryKeyField];
-              return this.$router.push(`/collections/${this.collection}/${primaryKey}`);
+              return this.$router.push(
+                `/${this.currentProjectID}/collections/${this.collection}/${primaryKey}`
+              );
             }
 
             this.$store.dispatch("startEditing", {
@@ -745,7 +757,7 @@ export default {
                 savedValues: {}
               });
             } else {
-              this.$router.push(`/collections/${this.collection}/+`);
+              this.$router.push(`/${this.currentProjectID}/collections/${this.collection}/+`);
             }
           }
         })

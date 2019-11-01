@@ -32,7 +32,7 @@
           icon="mode_edit"
           color="warning"
           :label="$t('batch')"
-          :to="`/collections/${collection}/${selection.join(',')}`"
+          :to="`/${currentProjectID}/collections/${collection}/${selection.join(',')}`"
         />
         <v-header-button
           v-if="selection.length"
@@ -139,9 +139,10 @@
 
 <script>
 import shortid from "shortid";
-import store from "../store/";
+import store from "@/store/";
 import VSearchFilter from "../components/search-filter/search-filter.vue";
 import VNotFound from "./not-found.vue";
+import { mapGetters } from "vuex";
 
 import api from "../api";
 
@@ -175,11 +176,12 @@ export default {
     };
   },
   computed: {
+    ...mapGetters(["currentProjectID"]),
     breadcrumb() {
       return [
         {
           name: this.$t("file_library"),
-          path: "/files"
+          path: `/${this.currentProjectID}/files`
         }
       ];
     },
@@ -424,7 +426,7 @@ export default {
     }
 
     if (collectionInfo && collectionInfo.single) {
-      return next(`/collections/${collection}/1`);
+      return next(`/${store.getters.currentProjectID}/collections/${collection}/1`);
     }
 
     const id = shortid.generate();
@@ -464,7 +466,7 @@ export default {
     }
 
     if (collectionInfo && collectionInfo.single) {
-      return next(`/collections/${collection}/1`);
+      return next(`/${store.getters.currentProjectID}/collections/${collection}/1`);
     }
 
     const id = this.$helpers.shortid.generate();

@@ -4,7 +4,7 @@
       :breadcrumb="[
         {
           name: $t('collections'),
-          path: '/collections'
+          path: `/${currentProjectID}/collections`
         }
       ]"
       icon="box"
@@ -29,6 +29,7 @@
 
 <script>
 import VError from "../components/error.vue";
+import { mapGetters } from "vuex";
 
 export default {
   name: "Collections",
@@ -41,6 +42,7 @@ export default {
     VError
   },
   computed: {
+    ...mapGetters(["currentProjectID"]),
     items() {
       if (this.collections == null) return [];
 
@@ -64,7 +66,7 @@ export default {
         .map(collection => ({
           ...collection,
           collection: this.$t(`collections-${collection.collection}`),
-          __link__: `/collections/${collection.collection}`
+          __link__: `/${this.currentProjectID}/collections/${collection.collection}`
         }));
     },
     fields() {

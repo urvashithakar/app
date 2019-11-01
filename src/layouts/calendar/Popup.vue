@@ -56,9 +56,24 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   components: {},
-  props: ["open", "parentdate", "parentevents"],
+  props: {
+    open: {
+      type: Boolean,
+      default: false
+    },
+    parentdate: {
+      type: Date,
+      required: true
+    },
+    parentevents: {
+      type: Array,
+      required: true
+    }
+  },
   data() {
     return {
       // The differend animations for the sidebar.
@@ -67,6 +82,7 @@ export default {
     };
   },
   computed: {
+    ...mapGetters(["currentProjectID"]),
     /*
      *   Array of days to display in the sidebar.
      */
@@ -112,7 +128,7 @@ export default {
     },
 
     goToItem(id) {
-      this.$router.push(`/collections/${this.$parent.collection}/${id}`);
+      this.$router.push(`/${this.currentProjectID}/collections/${this.$parent.collection}/${id}`);
     },
 
     changeDay(distance) {

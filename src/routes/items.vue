@@ -114,7 +114,11 @@
         @options="setViewOptions"
       />
 
-      <router-link v-if="canReadActivity" to="/activity" class="notifications">
+      <router-link
+        v-if="canReadActivity"
+        :to="`/${currentProjectID}/activity`"
+        class="notifications"
+      >
         <div class="preview">
           <v-icon name="notifications" color="blue-grey-300" />
           <span>{{ $t("notifications") }}</span>
@@ -148,6 +152,7 @@ import store from "../store/";
 import VSearchFilter from "../components/search-filter/search-filter.vue";
 import VCreateBookmark from "../components/bookmarks/create-bookmark.vue";
 import VNotFound from "./not-found.vue";
+import { mapGetters } from "vuex";
 
 import api from "../api";
 
@@ -174,6 +179,7 @@ export default {
     };
   },
   computed: {
+    ...mapGetters(["currentProjectID"]),
     activity() {
       return this.collection === "directus_activity";
     },
@@ -182,7 +188,7 @@ export default {
         return [
           {
             name: this.$t("user_directory"),
-            path: "/users"
+            path: `${this.currentProjectID}/users`
           }
         ];
       }
@@ -191,7 +197,7 @@ export default {
         return [
           {
             name: this.$t("file_library"),
-            path: "/files"
+            path: `/${this.currentProjectID}/files`
           }
         ];
       }
@@ -200,18 +206,18 @@ export default {
         return [
           {
             name: this.$helpers.formatTitle(this.collection.substr(9)),
-            path: `/${this.collection.substring(9)}`
+            path: `/${this.currentProjectID}/${this.collection.substring(9)}`
           }
         ];
       } else {
         return [
           {
             name: this.$t("collections"),
-            path: "/collections"
+            path: `/${this.currentProjectID}/collections`
           },
           {
             name: this.$t(`collections-${this.collection}`),
-            path: `/collections/${this.collection}`
+            path: `/${this.currentProjectID}/collections/${this.collection}`
           }
         ];
       }
@@ -229,7 +235,7 @@ export default {
       return filteredFields;
     },
     batchURL() {
-      return `/collections/${this.collection}/${this.selection
+      return `/${this.currentProjectID}/collections/${this.collection}/${this.selection
         .map(item => item[this.primaryKeyField])
         .join(",")}`;
     },
@@ -509,7 +515,7 @@ export default {
     keyBy: _.keyBy,
     editCollection() {
       if (!this.$store.state.currentUser.admin) return;
-      this.$router.push(`/settings/collections/${this.collection}`);
+      this.$router.push(`/${this.currentProjectID}/settings/collections/${this.collection}`);
     },
     closeBookmark() {
       this.bookmarkModal = false;
@@ -644,7 +650,7 @@ export default {
     if (collection === "directus_files") return next("/files");
 
     if (collectionInfo && collectionInfo.single) {
-      return next(`/collections/${collection}/1`);
+      return next(`/${store.getters.currentProjectID}/collections/${collection}/1`);
     }
 
     const id = shortid.generate();
@@ -682,7 +688,7 @@ export default {
     }
 
     if (collectionInfo && collectionInfo.single) {
-      return next(`/collections/${collection}/1`);
+      return next(`/${store.getters.currentProjectID}/collections/${collection}/1`);
     }
 
     const id = this.$helpers.shortid.generate();
