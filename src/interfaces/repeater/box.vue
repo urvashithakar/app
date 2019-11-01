@@ -60,14 +60,14 @@ export default {
 <style lang="scss" scoped>
 .box {
   transition: all var(--fast) var(--transition);
-  background-color: var(--off-white);
+  background-color: var(--input-background-color-alt);
   border-radius: var(--border-radius);
-  border: 2px solid var(--blue-grey-200);
+  border: 2px solid var(--input-border-color);
   overflow: hidden;
   margin: 12px 0;
 
   &:hover {
-    border-color: var(--blue-grey-300);
+    border-color: var(--input-border-color-hover);
   }
 
   &.closed {

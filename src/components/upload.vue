@@ -15,7 +15,7 @@
         <v-icon name="cloud_upload" />
       </div>
       <div class="info">
-        <p class="name">{{ $tc("drop_files", multiple ? 2 : 1) }}</p>
+        <p class="name type-heading-medium">{{ $tc("drop_files", multiple ? 2 : 1) }}</p>
         <p class="file-info no-wrap">
           {{
             $t("max_size", {
@@ -57,7 +57,7 @@
           :stroke="file.progress === 100 ? 0 : 2"
         />
         <div class="info">
-          <p class="name no-wrap">{{ file.name }}</p>
+          <p class="name type-heading-medium no-wrap">{{ file.name }}</p>
           <p class="file-info no-wrap">
             {{ file.size }}
             <span v-if="file.progress && file.progress !== 100" class="progress">
@@ -248,7 +248,7 @@ export default {
 <style lang="scss" scoped>
 .v-upload {
   position: relative;
-  background-color: var(--white);
+  background-color: var(--page-background-color);
   width: 100%;
   height: var(--width-medium);
 
@@ -343,56 +343,45 @@ input.select {
   user-select: none;
   transition: var(--fast) var(--transition);
   transition-property: border-color, color;
-  border: var(--input-border-width) dashed var(--blue-grey-200);
+  border: var(--input-border-width) dashed var(--input-border-color);
   border-radius: var(--border-radius);
 
   .icon i {
     font-size: 100px !important;
-    color: var(--blue-grey-200);
+    color: var(--input-border-color);
   }
 
   p {
     color: currentColor;
-
-    &:first-of-type {
-      font-size: 34px;
-      font-weight: 300;
-    }
   }
 
   .info {
     text-align: center;
-    color: var(--blue-grey-200);
+    color: var(--input-border-color);
   }
 
   .file-info {
     text-align: center;
-    color: var(--blue-grey-200);
-    margin-top: 8px;
+    color: var(--input-border-color);
+    margin-top: 4px;
   }
 
   .buttons > * {
-    color: var(--blue-grey-200);
+    color: var(--input-border-color);
 
     &:hover {
-      color: var(--blue-grey-600);
+      color: var(--page-text-color);
     }
   }
 
   .dragging & {
     transition: border-color var(--slow) var(--transition);
-    border-color: var(--blue-grey-900);
+    border-color: var(--input-background-color-active);
   }
 
   &.smaller {
     .icon i {
       font-size: 60px !important;
-    }
-
-    p {
-      &:first-of-type {
-        font-size: 22px;
-      }
     }
   }
 }

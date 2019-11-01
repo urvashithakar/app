@@ -56,7 +56,7 @@ export default {
   padding: 4px;
   display: flex;
   align-items: center;
-  background-color: var(--input-background-disabled);
+  background-color: var(--input-background-color-disabled);
 }
 .display-user {
   width: max-content;

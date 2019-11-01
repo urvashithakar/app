@@ -4,13 +4,14 @@
     <v-header
       :breadcrumb="breadcrumb"
       :icon-link="`/${currentProjectID}/settings/collections`"
-      icon-color="warning"
+      :settings="true"
     >
       <template slot="buttons">
         <v-header-button
           key="delete"
           icon="delete_outline"
-          color="blue-grey-400"
+          background-color="button-primary-background-color"
+          icon-color="button-primary-text-color"
           hover-color="danger"
           :label="$t('delete')"
           @click="confirmRemove = true"
@@ -18,7 +19,8 @@
         <v-header-button
           key="save"
           icon="check"
-          color="action"
+          background-color="button-primary-background-color"
+          icon-color="button-primary-text-color"
           :loading="saving"
           :disabled="Object.keys(edits).length === 0"
           :label="$t('save')"

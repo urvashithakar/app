@@ -1,10 +1,20 @@
 <template>
   <form @submit.prevent>
+    <label for="src" class="type-label">{{ $t("layouts-cards-src") }}</label>
+    <v-select
+      id="src"
+      :value="viewOptions.src || '__none__'"
+      :options="fileOptions"
+      icon="image"
+      @input="setOption('src', $event === '__none__' ? null : $event)"
+    ></v-select>
+
     <label for="title" class="type-label">{{ $t("layouts-cards-title") }}</label>
     <v-select
       id="title"
       :value="viewOptions.title || this.primaryKeyField"
       :options="titleFieldOptions"
+      icon="title"
       @input="setOption('title', $event === '__none__' ? null : $event)"
     ></v-select>
 
@@ -15,15 +25,8 @@
       id="subtitle"
       :value="viewOptions.subtitle || '__none__'"
       :options="fieldOptions"
+      icon="title"
       @input="setOption('subtitle', $event === '__none__' ? null : $event)"
-    ></v-select>
-
-    <label for="src" class="type-label">{{ $t("layouts-cards-src") }}</label>
-    <v-select
-      id="src"
-      :value="viewOptions.src || '__none__'"
-      :options="fileOptions"
-      @input="setOption('src', $event === '__none__' ? null : $event)"
     ></v-select>
 
     <label for="content" class="type-label">
@@ -33,11 +36,16 @@
       id="content"
       :value="viewOptions.content || '__none__'"
       :options="fieldOptions"
+      icon="title"
       @input="setOption('content', $event === '__none__' ? null : $event)"
     ></v-select>
 
     <label for="icon" class="type-label">Fallback Icon</label>
-    <v-input :value="viewOptions.icon || 'photo'" @input="setOption('icon', $event)"></v-input>
+    <v-input
+      :value="viewOptions.icon || 'photo'"
+      icon-left="broken_image"
+      @input="setOption('icon', $event)"
+    ></v-input>
   </form>
 </template>
 
@@ -93,10 +101,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-label {
-  margin-bottom: 10px;
-  &:not(:first-of-type) {
-    margin-top: 30px;
+.type-label {
+  margin-top: var(--input-vertical-spacing-sidebar);
+  margin-bottom: var(--input-label-margin);
+  &:first-of-type {
+    margin-top: 0;
   }
 }
 </style>

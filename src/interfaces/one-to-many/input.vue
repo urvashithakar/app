@@ -521,7 +521,7 @@ export default {
 
 <style lang="scss" scoped>
 .table {
-  background-color: var(--white);
+  background-color: var(--input-background-color);
   border: var(--input-border-width) solid var(--input-border-color);
   border-radius: var(--border-radius);
   border-spacing: 0;
@@ -530,7 +530,7 @@ export default {
 
   .header {
     height: var(--input-height);
-    border-bottom: 2px solid var(--blue-grey-50);
+    border-bottom: 2px solid var(--input-border-color);
 
     button {
       text-align: left;
@@ -581,7 +581,11 @@ export default {
       cursor: pointer;
       position: relative;
       height: 50px;
-      border-bottom: 2px solid var(--off-white);
+      border-bottom: 2px solid var(--input-background-color-alt);
+
+      &:last-of-type {
+        border-bottom: none;
+      }
 
       &:hover {
         background-color: var(--highlight);

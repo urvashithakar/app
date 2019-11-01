@@ -1,6 +1,6 @@
 <template>
   <div v-if="error">
-    <v-header :icon-link="`/${currentProjectID}/settings/roles`" icon-color="warning" />
+    <v-header :icon-link="`/${currentProjectID}/settings/roles`" settings />
     <v-error
       v-if="error"
       icon="error_outline"
@@ -11,18 +11,15 @@
   </div>
 
   <div v-else class="settings-permissions">
-    <v-header
-      :breadcrumb="breadcrumb"
-      :icon-link="`/${currentProjectID}/settings/roles`"
-      icon-color="warning"
-    >
+    <v-header :breadcrumb="breadcrumb" :icon-link="`/${currentProjectID}/settings/roles`" settings>
       <template slot="buttons">
         <v-header-button
           v-if="!isNew && !isSystem"
           :loading="removing"
           :label="$t('delete')"
           icon="delete_outline"
-          color="blue-grey-400"
+          background-color="button-primary-background-color"
+          icon-color="button-primary-text-color"
           hover-color="danger"
           @click="confirmRemove = true"
         />
@@ -31,7 +28,8 @@
           :loading="saving"
           :label="$t('save')"
           icon="check"
-          color="action"
+          background-color="button-primary-background-color"
+          icon-color="button-primary-text-color"
           @click="save"
         />
       </template>

@@ -64,6 +64,7 @@ export default {
   border-radius: var(--border-radius);
   width: 100%;
   max-width: var(--width-large);
+  background-color: var(--input-background-color);
 
   &:hover {
     transition: none;
@@ -77,12 +78,16 @@ export default {
     padding: 5px 10px;
     &:hover {
       transition: none;
-      background: var(--blue-grey-50)
-        linear-gradient(0deg, var(--blue-grey-50) 0%, var(--blue-grey-50) 100%);
+      background: var(--input-background-color-alt)
+        linear-gradient(
+          0deg,
+          var(--input-background-color-alt) 0%,
+          var(--input-background-color-alt) 100%
+        );
     }
     &:checked {
-      background: var(--blue-grey-100)
-        linear-gradient(0deg, var(--blue-grey-100) 0%, var(--blue-grey-100) 100%);
+      background: var(--input-border-color)
+        linear-gradient(0deg, var(--input-border-color) 0%, var(--input-border-color) 100%);
       position: relative;
       color: var(--white);
       -webkit-text-fill-color: var(--white);

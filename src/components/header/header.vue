@@ -7,8 +7,9 @@
       class="back"
       :icon="icon"
       :to="iconLink"
-      :color="iconColor ? iconColor + '-light' : 'blue-grey-50'"
-      :icon-color="iconColor ? iconColor : 'blue-grey-800'"
+      :background-color="settings ? 'warning-light' : 'button-secondary-background-color'"
+      :icon-color="settings ? 'warning' : 'button-secondary-text-color'"
+      outline
     />
     <div class="title" :class="{ 'has-breadcrumb': navBreadcrumb }">
       <ol v-if="navBreadcrumb" class="breadcrumb">
@@ -27,17 +28,15 @@
       v-if="infoToggle && !itemDetail"
       :label="$t('info')"
       icon="info"
-      no-background
-      icon-color="blue-grey-200"
+      outline
       @click="toggleInfo"
     />
     <v-header-button
       v-if="infoToggle && itemDetail"
       :label="$t('info')"
       icon="info"
-      no-background
+      outline
       class="info-mobile"
-      icon-color="blue-grey-200"
       @click="toggleInfo"
     />
     <slot name="buttons" />
@@ -74,9 +73,9 @@ export default {
       type: String,
       default: null
     },
-    iconColor: {
-      type: String,
-      default: undefined
+    settings: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -162,7 +161,7 @@ body.info-wide-active .v-header {
 
 <style scoped lang="scss">
 .v-header {
-  background-color: var(--white);
+  background-color: var(--page-background-color);
   position: fixed;
   width: 100%;
   right: 0;
@@ -211,18 +210,18 @@ body.info-wide-active .v-header {
 
     a {
       text-decoration: none;
-      color: var(--blue-grey-300);
+      color: var(--breadcrumb-text-color);
       transition: color var(--fast) var(--transition);
     }
 
     a:hover {
-      color: var(--blue-grey-600);
+      color: var(--page-text-color);
     }
   }
 
   .breadcrumb-item + .breadcrumb-item::before {
     content: "chevron_right";
-    color: var(--blue-grey-200);
+    color: var(--breadcrumb-glue-color);
     font-family: "Material Icons";
     font-weight: normal;
     font-style: normal;
@@ -250,7 +249,7 @@ body.info-wide-active .v-header {
 }
 
 .scrolled {
-  border-bottom: 2px solid var(--blue-grey-50);
+  border-bottom: 2px solid var(--sidebar-background-color);
   height: calc(4.286rem + 2px);
 }
 

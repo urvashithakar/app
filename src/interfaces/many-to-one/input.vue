@@ -241,7 +241,7 @@ button {
 
   &:hover {
     transition: none;
-    border-color: var(--blue-grey-300);
+    border-color: var(--input-border-color-hover);
   }
 }
 

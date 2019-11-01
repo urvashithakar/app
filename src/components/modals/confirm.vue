@@ -73,19 +73,18 @@ export default {
   padding: 0 20px 1px;
   height: 44px;
   min-width: 136px;
-  border: var(--input-border-width) solid var(--action);
-  border-color: var(--blue-grey-200);
-  color: var(--blue-grey-200);
+  // border: var(--input-border-width) solid var(--action);
+  // border-color: var(--button-secondary-background-color);
+  background-color: var(--button-secondary-background-color);
+  color: var(--button-secondary-text-color);
   margin-right: 20px;
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
-
-  color: var(--blue-grey-400);
   transition: color var(--fast) var(--transition);
 
   &:hover {
-    color: var(--blue-grey-800);
+    color: var(--button-secondary-text-color);
   }
 }
 </style>

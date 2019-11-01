@@ -6,6 +6,7 @@
     border: var(--input-border-width) solid var(--input-border-color);
     border-radius: var(--border-radius);
     color: var(--input-text-color);
+    background-color: var(--input-background-color);
     line-height: 18px;
     height: auto;
     width: 100%;
@@ -40,7 +41,7 @@
   }
 
   .CodeMirror-activeline-background {
-    background: var(--off-white);
+    background: var(--input-background-color-alt);
   }
 
   .CodeMirror pre {
@@ -48,8 +49,8 @@
   }
 
   .CodeMirror-gutters {
-    background-color: var(--off-white);
-    border-right: 2px solid var(--blue-grey-50);
+    background-color: var(--input-background-color-alt);
+    border-right: 2px solid var(--input-border-color);
   }
 
   .CodeMirror-linenumber {

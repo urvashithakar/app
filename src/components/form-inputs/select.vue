@@ -167,6 +167,7 @@ export default {
     transition: all var(--fast) var(--transition);
     background-color: var(--white);
     color: var(--input-text-color);
+    background-color: var(--input-background-color);
     height: var(--input-height);
     border: var(--input-border-width) solid var(--input-border-color);
     transition: var(--fast) var(--transition);
@@ -204,7 +205,7 @@ export default {
     z-index: +1;
 
     &::placeholder {
-      color: var(--blue-grey-200);
+      color: var(--input-placeholder-color);
     }
 
     &:-webkit-autofill {
@@ -221,7 +222,7 @@ export default {
   select:disabled ~ input,
   input:disabled + div,
   input:disabled {
-    background-color: var(--input-background-disabled);
+    background-color: var(--input-background-color-disabled);
     cursor: not-allowed;
   }
 
@@ -229,7 +230,7 @@ export default {
   select:hover:not(:disabled) ~ input,
   input:hover:not(:disabled) + div,
   input:hover:not(:disabled) {
-    border-color: var(--blue-grey-300);
+    border-color: var(--input-border-color-hover);
     transition: none;
   }
 
@@ -241,8 +242,7 @@ export default {
   select:hover:not(:disabled):focus ~ input,
   input:hover:not(:disabled):focus + div,
   input:hover:not(:disabled):focus {
-    color: var(--input-text-color);
-    border-color: var(--blue-grey-600);
+    border-color: var(--input-border-color-focus);
     outline: 0;
   }
 
@@ -279,7 +279,7 @@ export default {
   }
 
   .placeholder {
-    color: var(--blue-grey-200);
+    color: var(--input-placeholder-color);
     width: 100%;
     text-overflow: ellipsis;
     overflow: hidden;

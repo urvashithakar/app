@@ -33,13 +33,12 @@
         <details v-if="activity.action !== 'external' && activity.changes && activity.name">
           <summary class="title">
             <span class="name">{{ activity.name }}</span>
-            <v-timeago
+            <v-time-ago
               v-if="activity.date"
               v-tooltip="{
                 content: $d(activity.date, 'long'),
                 delay: { show: 1500, hide: 100 }
               }"
-              :auto-update="1"
               :datetime="activity.date"
               :locale="$i18n.locale"
               class="date"
@@ -60,13 +59,12 @@
         </details>
         <div v-else-if="activity.name" class="title">
           <span class="name">{{ activity.name }}</span>
-          <v-timeago
+          <v-time-ago
             v-if="activity.date"
             v-tooltip="{
               content: $d(activity.date, 'long'),
               delay: { show: 1500, hide: 100 }
             }"
-            :auto-update="1"
             :datetime="activity.date"
             :locale="$i18n.locale"
             class="date"
@@ -232,7 +230,7 @@ export default {
     top: 80px;
     bottom: 8px;
     width: 2px;
-    background-color: var(--blue-grey-100);
+    background-color: var(--input-border-color);
     z-index: -1;
   }
 
@@ -243,8 +241,8 @@ export default {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: var(--blue-grey-200);
-    // box-shadow: 0 0 0 5px var(--blue-grey-50);
+    background-color: var(--input-border-color);
+    // box-shadow: 0 0 0 2px var(--blue-grey-50);
     flex-shrink: 0;
 
     &.update {
@@ -257,7 +255,7 @@ export default {
       background-color: var(--success);
     }
     &.external {
-      background-color: var(--blue-grey-200);
+      background-color: var(--input-border-color);
     }
     &.upload {
       background-color: var(--purple-500);
@@ -275,11 +273,11 @@ export default {
 
     .name {
       font-weight: 500;
-      color: var(--blue-grey-800);
+      color: var(--heading-text-color);
     }
 
     .date {
-      color: var(--blue-grey-200);
+      color: var(--note-text-color);
       margin-left: 8px;
     }
 
@@ -345,8 +343,8 @@ export default {
 
     .comment {
       position: relative;
-      background-color: var(--white);
-      color: var(--blue-grey-600);
+      background-color: var(--sidebar-background-color-alt);
+      color: var(--sidebar-text-color);
       border-radius: var(--border-radius);
       padding: 8px 10px;
       display: inline-block;
@@ -362,7 +360,7 @@ export default {
         height: 0;
         border-style: solid;
         border-width: 0 8px 6px 8px;
-        border-color: transparent transparent var(--blue-grey-50) transparent;
+        border-color: transparent transparent var(--sidebar-background-color-alt) transparent;
       }
       a {
         color: var(--blue-grey-800);
@@ -437,17 +435,13 @@ export default {
     transition-property: color, opacity;
     font-weight: var(--weight-bold);
     opacity: 0;
-    color: var(--blue-grey-800);
-    background-color: var(--white);
+    color: var(--input-background-color-active);
+    background-color: var(--input-background-color);
     cursor: pointer;
-    &:hover {
-      color: var(--blue-grey-900);
-    }
 
     &[disabled] {
-      color: var(--blue-grey-200);
+      color: var(--input-border-color);
       cursor: not-allowed;
-      background-color: var(--white);
     }
   }
 

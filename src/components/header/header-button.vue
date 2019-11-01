@@ -16,18 +16,24 @@
     <component
       :is="disabled ? 'button' : to ? 'router-link' : 'button'"
       :style="{
-        backgroundColor: noBackground || disabled ? null : `var(--${color})`,
-        color: `var(--${color})`,
+        backgroundColor: outline || disabled ? null : `var(--${backgroundColor})`,
+        borderColor: `var(--${backgroundColor})`,
+        color: `var(--${backgroundColor})`,
         '--hover-color': hoverColor ? `var(--${hoverColor})` : null
       }"
-      :class="{ attention: alert, 'no-bg': noBackground, 'has-bg': hoverColor }"
+      :class="{ attention: alert, outline: outline, 'has-bg': hoverColor }"
       class="button"
       :disabled="disabled || loading"
       :to="to || null"
       @click="!to ? $emit('click', $event) : null"
     >
       <v-spinner v-if="loading" :size="24" line-fg-color="white" line-bg-color="transparent" />
-      <v-icon v-else :style="{ color: `var(--${iconColor})` }" :name="icon" />
+      <v-icon
+        v-else
+        :color="outline ? backgroundColor : iconColor"
+        :style="{ color: outline ? `var(--${backgroundColor})` : `var(--${iconColor})` }"
+        :name="icon"
+      />
     </component>
   </div>
 </template>
@@ -40,9 +46,9 @@ export default {
       type: String,
       required: true
     },
-    color: {
+    backgroundColor: {
       type: String,
-      default: "blue-grey-400"
+      default: "button-secondary-background-color"
     },
     hoverColor: {
       type: String,
@@ -50,7 +56,7 @@ export default {
     },
     iconColor: {
       type: String,
-      default: "white"
+      default: "button-secondary-text-color"
     },
     disabled: {
       type: Boolean,
@@ -68,7 +74,8 @@ export default {
       type: Boolean,
       default: false
     },
-    noBackground: {
+    // Outline should be used for navigation (non-action) only
+    outline: {
       type: Boolean,
       default: false
     },
@@ -128,6 +135,14 @@ a {
   cursor: pointer;
   text-decoration: none;
 
+  &.outline {
+    border: 2px solid var(--button-secondary-background-color);
+    background-color: transparent;
+    i {
+      color: var(--button-secondary-background-color);
+    }
+  }
+
   i {
     transition: 100ms var(--transition);
     color: var(--white);
@@ -150,8 +165,7 @@ a {
   }
 
   &:not([disabled]):active i {
-    transform: scale(0.9);
-    opacity: 0.8;
+    transform: scale(0.916);
   }
 
   &::after {
@@ -175,19 +189,11 @@ a {
   }
 }
 
-button.no-bg {
-  border: 2px solid var(--blue-grey-200);
-  background-color: transparent;
-  i {
-    color: var(--blue-grey-200);
-  }
-}
-
 button[disabled] {
-  background-color: var(--blue-grey-200) !important;
+  background-color: var(--input-background-color-disabled) !important;
   cursor: not-allowed;
   i {
-    color: var(--blue-grey-50) !important;
+    color: var(--input-text-color) !important;
   }
 }
 

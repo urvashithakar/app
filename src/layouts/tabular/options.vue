@@ -1,26 +1,24 @@
 <template>
   <form @submit.prevent>
-    <fieldset>
-      <legend class="type-label">{{ $t("layouts-tabular-fields") }}</legend>
-      <draggable v-model="sortList" direction="vertical" @end="sort">
-        <div
-          v-for="field in sortList"
-          :key="'tabular-layout-options-field-' + field.field"
-          class="draggable"
-        >
-          <v-checkbox
-            :id="'tabular-layout-options-field-' + field.field"
-            :key="field.field"
-            class="checkbox"
-            :label="field.name"
-            :value="field.field"
-            :checked="fieldsInUse.includes(field.field)"
-            @change="toggleField(field.field)"
-          ></v-checkbox>
-          <v-icon class="handle" name="drag_handle" />
-        </div>
-      </draggable>
-    </fieldset>
+    <label class="type-label">{{ $t("layouts-tabular-fields") }}</label>
+    <draggable v-model="sortList" direction="vertical" @end="sort">
+      <div
+        v-for="field in sortList"
+        :key="'tabular-layout-options-field-' + field.field"
+        class="draggable"
+      >
+        <v-checkbox
+          :id="'tabular-layout-options-field-' + field.field"
+          :key="field.field"
+          class="checkbox"
+          :label="field.name"
+          :value="field.field"
+          :checked="fieldsInUse.includes(field.field)"
+          @change="toggleField(field.field)"
+        ></v-checkbox>
+        <v-icon class="handle" name="drag_handle" />
+      </div>
+    </draggable>
     <label for="spacing" class="type-label">{{ $t("spacing") }}</label>
     <v-select
       id="spacing"
@@ -118,9 +116,12 @@ fieldset {
   padding: 8px 0 0 0;
 }
 
-label {
-  margin-bottom: 8px;
-  margin-top: 30px;
+.type-label {
+  margin-top: var(--input-vertical-spacing-sidebar);
+  margin-bottom: var(--input-label-margin);
+  &:first-of-type {
+    margin-top: 0;
+  }
 }
 
 .draggable {

@@ -1,6 +1,6 @@
 <template>
   <button
-    :class="[bg || 'no-bg', { fullwidth, loading }, color]"
+    :class="[bg || 'no-bg', { fullwidth, loading }, color, outline]"
     :type="type"
     :disabled="disabled || loading"
     class="form-button style-btn"
@@ -52,6 +52,10 @@ export default {
       type: String,
       default: "action",
       validator: value => ["action", "gray", "warning", "danger"].includes(value)
+    },
+    outline: {
+      type: Boolean,
+      default: false
     }
   }
 };
@@ -59,8 +63,8 @@ export default {
 
 <style lang="scss" scoped>
 button.action {
-  background-color: var(--blue-grey-800);
-  border-color: var(--blue-grey-800);
+  background-color: var(--button-primary-background-color);
+  border-color: var(--button-primary-background-color);
 
   &:hover:not(:disabled) {
     background-color: var(--blue-grey-900);

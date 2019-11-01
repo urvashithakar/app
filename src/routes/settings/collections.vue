@@ -2,17 +2,11 @@
   <div class="collections">
     <v-header
       :breadcrumb="breadcrumb"
-      icon-color="warning"
+      :settings="true"
       :icon-link="`/${currentProjectID}/settings`"
     >
       <template slot="buttons">
-        <v-header-button
-          key="add"
-          icon="add"
-          color="action"
-          :label="$t('new')"
-          @click="addNew = true"
-        />
+        <v-header-button key="add" icon="add" :label="$t('new')" @click="addNew = true" />
       </template>
     </v-header>
     <v-error
