@@ -29,6 +29,7 @@
 <script>
 import NavMenu from "./nav-menu.vue";
 import { UPDATE_PROJECT } from "@/store/mutation-types";
+import { mapGetters } from "vuex";
 
 export default {
   name: "UserMenu",
@@ -42,6 +43,7 @@ export default {
     };
   },
   computed: {
+    ...mapGetters(["currentProjectID"]),
     avatarURL() {
       if (this.$store.state.currentUser.avatar && this.$store.state.currentUser.avatar.data) {
         return this.$store.state.currentUser.avatar.data.full_url;
@@ -73,7 +75,7 @@ export default {
 
       if (this.$store.state.currentUser.admin === true) {
         links.push({
-          path: "/settings",
+          path: `/${this.currentProjectID}/settings`,
           name: this.$t("admin_settings"),
           target: "_self",
           icon: "settings",
@@ -90,7 +92,7 @@ export default {
 
       if (this.permissions.directus_files.read !== "none") {
         links.push({
-          path: "/files",
+          path: `/${this.currentProjectID}/files`,
           name: this.$t("file_library"),
           target: "_self",
           icon: "collections"
@@ -102,7 +104,7 @@ export default {
         this.permissions.directus_users.read !== "mine"
       ) {
         links.push({
-          path: "/users",
+          path: `/${this.currentProjectID}/users`,
           name: this.$t("user_directory"),
           target: "_self",
           icon: "people"
@@ -110,7 +112,7 @@ export default {
       }
 
       links.push({
-        path: `/users/${this.currentUserID}`,
+        path: `/${this.currentProjectID}/users/${this.currentUserID}`,
         name: this.$t("my_profile"),
         target: "_self",
         icon: "account_circle"
