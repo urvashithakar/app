@@ -1,7 +1,7 @@
 <template>
   <PublicView :heading="signingIn || fetchingData ? $t('signing_in') : $t('sign_in')">
     <form @submit.prevent="onSubmit">
-      <project-chooser />
+      <project-chooser v-if="(signingIn || fetchingData) === false" />
 
       <template v-if="signingIn || fetchingData">
         <v-progress />
@@ -171,7 +171,7 @@ export default {
       await hydrateStore();
 
       // Default to /collections as homepage
-      let route = "/collections";
+      let route = `/${this.currentProject.project}/collections`;
 
       // If the last visited page is saved in the current user record, use that
       if (this.$store.state.currentUser.last_page) {
