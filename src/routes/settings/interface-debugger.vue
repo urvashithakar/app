@@ -1,6 +1,10 @@
 <template>
   <div class="interface-debugger">
-    <v-header :breadcrumb="links" :icon-link="`/settings/interfaces`" icon-color="warning" />
+    <v-header
+      :breadcrumb="links"
+      :icon-link="`/${currentProjectID}/settings/interfaces`"
+      icon-color="warning"
+    />
 
     <label class="type-label">Dummy Label</label>
 
@@ -187,6 +191,7 @@
 
 <script>
 import mapping, { datatypes } from "../../type-map";
+import { mapGetters } from "vuex";
 
 export default {
   name: "InterfaceDebugger",
@@ -283,19 +288,20 @@ export default {
     };
   },
   computed: {
+    ...mapGetters(["currentProjectID"]),
     links() {
       return [
         {
           name: this.$t("settings"),
-          path: "/settings"
+          path: `/${this.currentProjectID}/settings`
         },
         {
           name: this.$t("interfaces"),
-          path: "/settings/interfaces"
+          path: `/${this.currentProjectID}/settings/interfaces`
         },
         {
           name: this.extension.name,
-          path: `/settings/interfaces/${this.id}`
+          path: `/${this.currentProjectID}/settings/interfaces/${this.id}`
         }
       ];
     },

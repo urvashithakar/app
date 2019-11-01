@@ -1,7 +1,11 @@
 <template>
   <not-found v-if="!collectionInfo" />
   <div v-else class="settings-fields">
-    <v-header :breadcrumb="breadcrumb" :icon-link="`/settings/collections`" icon-color="warning">
+    <v-header
+      :breadcrumb="breadcrumb"
+      :icon-link="`/${currentProjectID}/settings/collections`"
+      icon-color="warning"
+    >
       <template slot="buttons">
         <v-header-button
           key="delete"
@@ -133,6 +137,7 @@ import api from "../../api.js";
 import NotFound from "../not-found.vue";
 import VFieldSetup from "../../components/field-setup.vue";
 import VFieldDuplicate from "../../components/field-duplicate.vue";
+import { mapGetters } from "vuex";
 
 export default {
   name: "SettingsFields",
@@ -193,19 +198,20 @@ export default {
     };
   },
   computed: {
+    ...mapGetters(["currentProjectID"]),
     breadcrumb() {
       return [
         {
           name: this.$t("settings"),
-          path: "/settings"
+          path: `/${this.currentProjectID}/settings`
         },
         {
           name: this.$t("collections_and_fields"),
-          path: "/settings/collections"
+          path: `/${this.currentProjectID}/settings/collections`
         },
         {
           name: this.$t(`collections-${this.collection}`),
-          path: `/settings/collections/${this.collection}`
+          path: `/${this.currentProjectID}/settings/collections/${this.collection}`
         }
       ];
     },
@@ -261,7 +267,7 @@ export default {
             color: "green",
             iconMain: "check"
           });
-          this.$router.push("/settings/collections");
+          this.$router.push(`/${this.currentProjectID}/settings/collections`);
         })
         .catch(error => {
           this.$store.dispatch("loadingFinished", id);

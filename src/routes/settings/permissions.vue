@@ -1,6 +1,6 @@
 <template>
   <div v-if="error">
-    <v-header :icon-link="`/settings/roles`" icon-color="warning" />
+    <v-header :icon-link="`/${currentProjectID}/settings/roles`" icon-color="warning" />
     <v-error
       v-if="error"
       icon="error_outline"
@@ -11,7 +11,11 @@
   </div>
 
   <div v-else class="settings-permissions">
-    <v-header :breadcrumb="breadcrumb" icon-link="/settings/roles" icon-color="warning">
+    <v-header
+      :breadcrumb="breadcrumb"
+      :icon-link="`/${currentProjectID}/settings/roles`"
+      icon-color="warning"
+    >
       <template slot="buttons">
         <v-header-button
           v-if="!isNew && !isSystem"
@@ -73,6 +77,7 @@ import formatTitle from "@directus/format-title";
 import api from "../../api";
 import VPermissions from "../../components/permissions/permissions.vue";
 import { defaultNone } from "../../store/modules/permissions/defaults";
+import { mapGetters } from "vuex";
 
 export default {
   name: "SettingsPermissions",
@@ -111,6 +116,7 @@ export default {
     };
   },
   computed: {
+    ...mapGetters(["currentProjectID"]),
     isNew() {
       return this.$route.params.id === "+";
     },
@@ -134,16 +140,16 @@ export default {
         return [
           {
             name: this.$t("settings"),
-            path: "/settings",
+            path: `/${this.currentProjectID}/settings`,
             color: "warning"
           },
           {
             name: this.$t("roles"),
-            path: "/settings/roles"
+            path: `/${this.currentProjectID}/settings/roles`
           },
           {
             name: this.$t("creating_role"),
-            path: "/settings/roles/+"
+            path: `/${this.currentProjectID}/settings/roles/+`
           }
         ];
       }
@@ -151,15 +157,15 @@ export default {
       return [
         {
           name: this.$t("settings"),
-          path: "/settings"
+          path: `/${this.currentProjectID}/settings`
         },
         {
           name: this.$t("roles"),
-          path: "/settings/roles"
+          path: `/${this.currentProjectID}/settings/roles`
         },
         {
           name: this.$helpers.formatTitle(this.role.name),
-          path: `/settings/roles/${this.role.id}`
+          path: `/${this.currentProjectID}/settings/roles/${this.role.id}`
         }
       ];
     },
@@ -309,7 +315,7 @@ export default {
         .then(() => {
           this.$store.dispatch("loadingFinished", id);
           this.saving = false;
-          this.$router.push("/settings/roles");
+          this.$router.push(`/${this.currentProjectID}/settings/roles`);
           this.$store.dispatch("getCurrentUser");
         })
         .catch(error => {
@@ -427,7 +433,7 @@ export default {
         .then(() => {
           this.$store.dispatch("loadingFinished", id);
           this.removing = false;
-          this.$router.push("/settings/roles");
+          this.$router.push(`${this.currentProjectID}/settings/roles`);
         })
         .catch(error => {
           this.$store.dispatch("loadingFinished", id);

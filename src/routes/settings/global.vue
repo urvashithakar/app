@@ -1,6 +1,6 @@
 <template>
   <div class="settings-global">
-    <v-header :breadcrumb="links" :icon-link="`/settings`" icon-color="warning">
+    <v-header :breadcrumb="links" :icon-link="`/${currentProjectID}/settings`" icon-color="warning">
       <template slot="buttons">
         <v-header-button
           :disabled="!editing"
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 
 export default {
   name: "SettingsGlobal",
@@ -43,6 +43,7 @@ export default {
       settings: state => state.settings.values,
       fields: state => state.collections.directus_settings.fields
     }),
+    ...mapGetters(["currentProjectID"]),
     values() {
       return {
         ...this.settings,
@@ -53,11 +54,11 @@ export default {
       return [
         {
           name: this.$t("settings"),
-          path: "/settings"
+          path: `/${this.currentProjectID}/settings`
         },
         {
           name: this.$t("settings_global"),
-          path: "/settings/global"
+          path: `/${this.currentProjectID}/settings/global`
         }
       ];
     },

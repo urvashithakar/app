@@ -1,6 +1,10 @@
 <template>
   <div class="collections">
-    <v-header :breadcrumb="breadcrumb" icon-color="warning" icon-link="/settings">
+    <v-header
+      :breadcrumb="breadcrumb"
+      icon-color="warning"
+      :icon-link="`/${currentProjectID}/settings`"
+    >
       <template slot="buttons">
         <v-header-button
           key="add"
@@ -110,6 +114,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "SettingsCollections",
   metaInfo() {
@@ -134,6 +140,7 @@ export default {
     };
   },
   computed: {
+    ...mapGetters(["currentProjectID"]),
     items() {
       const collections = this.$store.state.collections || {};
 
@@ -142,18 +149,18 @@ export default {
         .map(collection => ({
           ...collection,
           name: this.$t(`collections-${collection.collection}`),
-          __link__: `/settings/collections/${collection.collection}`
+          __link__: `/${this.currentProjectID}/settings/collections/${collection.collection}`
         }));
     },
     breadcrumb() {
       return [
         {
           name: this.$t("settings"),
-          path: "/settings"
+          path: `/${this.currentProjectID}/settings`
         },
         {
           name: this.$t("collections_and_fields"),
-          path: "/settings/collections"
+          path: `/${this.currentProjectID}/settings/collections`
         }
       ];
     }
@@ -533,7 +540,7 @@ export default {
             fields: fieldsToDispatch
           });
           this.$store.dispatch("getPermissions");
-          this.$router.push(`/settings/collections/${this.newName}`);
+          this.$router.push(`/${this.currentProjectID}/settings/collections/${this.newName}`);
         })
         .catch(error => {
           this.adding = false;

@@ -9,7 +9,7 @@
             :title="$t('settings_global')"
             :subtitle="$tc('item_count', globalNum, { count: globalNum })"
             element="li"
-            to="/settings/global"
+            :to="`/${currentProjectID}/settings/global`"
             icon="public"
           />
 
@@ -17,7 +17,7 @@
             :title="$t('settings_collections_fields')"
             :subtitle="$tc('collection_count', collectionsNum, { count: collectionsNum })"
             element="li"
-            to="/settings/collections"
+            :to="`/${currentProjectID}/settings/collections`"
             icon="box"
           />
 
@@ -25,7 +25,7 @@
             :title="$t('settings_permissions')"
             :subtitle="roleCount"
             element="li"
-            to="/settings/roles"
+            :to="`/${currentProjectID}/settings/roles`"
             icon="group"
           />
 
@@ -47,7 +47,7 @@
             :title="$t('interfaces')"
             :subtitle="$tc('interface_count', interfaceCount, { count: interfaceCount })"
             element="li"
-            to="/settings/interfaces"
+            :to="`/${currentProjectID}/settings/interfaces`"
             icon="extension"
           />
 
@@ -55,7 +55,7 @@
             :title="$t('activity_log')"
             :subtitle="activityCount"
             element="li"
-            to="/activity"
+            :to="`/${currentProjectID}/activity`"
             icon="warning"
           />
 
@@ -156,7 +156,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["currentProject"]),
+    ...mapGetters(["currentProject", "currentProjectID"]),
     globalNum() {
       return Object.keys(this.$store.state.collections.directus_settings.fields).length;
     },
@@ -178,7 +178,7 @@ export default {
       return [
         {
           name: this.$t("settings"),
-          path: "/settings"
+          path: `/${this.currentProjectID}/settings`
         }
       ];
     }
