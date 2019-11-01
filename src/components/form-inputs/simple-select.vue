@@ -83,6 +83,7 @@ export default {
     align-items: center;
     padding-left: 10px;
     color: var(--input-text-color);
+    background-color: var(--input-background-color);
     font-size: 14px;
     font-weight: 400;
     line-height: 1.5;
@@ -111,20 +112,18 @@ export default {
   }
 
   select:hover + .preview {
-    border-color: var(--blue-grey-300);
+    border-color: var(--input-border-color-hover);
   }
 
   select:focus + .preview {
-    border-color: var(--blue-grey-600);
+    border-color: var(--input-border-color-focus);
   }
 
   select[disabled] {
     cursor: not-allowed;
 
     & + .preview {
-      background-color: var(--blue-grey-50);
-      border-color: var(--blue-grey-200);
-      color: var(--blue-grey-300);
+      background-color: var(--input-background-color-disabled);
     }
   }
 }

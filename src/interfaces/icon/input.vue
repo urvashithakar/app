@@ -76,7 +76,7 @@ export default {
   border-radius: var(--border-radius);
   background-color: white;
   padding: 10px;
-  background-color: var(--off-white);
+  background-color: var(--input-background-color-alt);
   border: var(--input-border-width) solid var(--input-border-color);
 
   .v-input {

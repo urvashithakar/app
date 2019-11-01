@@ -30,7 +30,9 @@
           v-if="selection.length > 1"
           key="edit"
           icon="mode_edit"
-          color="warning"
+          background-color="button-primary-background-color"
+          icon-color="button-primary-text-color"
+          hover-color="warning"
           :label="$t('batch')"
           :to="`/collections/${collection}/${selection.join(',')}`"
         />
@@ -38,14 +40,17 @@
           v-if="selection.length"
           key="delete"
           icon="delete_outline"
-          color="danger"
+          background-color="button-primary-background-color"
+          icon-color="button-primary-text-color"
+          hover-color="danger"
           :label="$t('delete')"
           @click="confirmRemove = true"
         />
         <v-header-button
           key="add"
           icon="add"
-          color="action"
+          background-color="button-primary-background-color"
+          icon-color="button-primary-text-color"
           :label="$t('new')"
           @click="newModal = true"
         />
@@ -491,8 +496,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-label.type-label {
-  padding-bottom: 8px;
+.type-label {
+  padding-bottom: var(--input-label-margin);
 }
 .bookmark {
   margin-left: 10px;

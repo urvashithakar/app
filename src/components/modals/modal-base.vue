@@ -75,7 +75,7 @@ aside {
   margin: 0 auto;
   width: 90%;
   max-width: 560px;
-  background-color: var(--white);
+  background-color: var(--modal-background-color);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   transition: inherit;

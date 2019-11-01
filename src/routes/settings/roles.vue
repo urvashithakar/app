@@ -1,11 +1,12 @@
 <template>
   <div class="settings-roles">
-    <v-header :breadcrumb="breadcrumb" icon-link="/settings" icon-color="warning">
+    <v-header :breadcrumb="breadcrumb" icon-link="/settings" settings="true">
       <template slot="buttons">
         <v-header-button
           key="add"
           icon="add"
-          color="action"
+          background-color="button-primary-background-color"
+          icon-color="button-primary-text-color"
           :label="$t('new')"
           @click="addNew = true"
         />

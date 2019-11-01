@@ -1,6 +1,6 @@
 <template>
   <div class="interface-debugger">
-    <v-header :breadcrumb="links" :icon-link="`/settings/interfaces`" icon-color="warning" />
+    <v-header :breadcrumb="links" :icon-link="`/settings/interfaces`" settings="true" />
 
     <label class="type-label">Dummy Label</label>
 
@@ -27,11 +27,10 @@
         <legend class="type-label">Output</legend>
 
         <label for="value" class="type-label">Value</label>
-        <p>The value saved into the database</p>
         <v-input id="value" v-model="value" type="text" class="value" />
+        <p class="type-note">The value saved into the database</p>
 
         <label class="type-label">Display</label>
-        <p>Appearance on the Items Page (eg: Tabular)</p>
         <div class="listing">
           <v-ext-display
             v-model="value"
@@ -47,6 +46,7 @@
             :relation="relation"
           />
         </div>
+        <p class="type-note">Appearance on the Items Page (eg: Tabular)</p>
       </fieldset>
       <fieldset>
         <legend class="type-label">Options</legend>
@@ -71,28 +71,27 @@
 
         <div class="settings">
           <label for="type" class="type-label">Type</label>
-          <p>Allowed datatypes this interface supports</p>
           <v-simple-select id="type" v-model="type" class="small">
             <option v-for="type in extension.types" :key="type" :value="type">
               {{ type }}
             </option>
           </v-simple-select>
+          <p class="type-note">Allowed datatypes this interface supports</p>
         </div>
 
         <div class="settings">
           <label for="length" class="type-label">Length</label>
-          <p>Database length for the column</p>
           <v-input id="length" v-model="length" type="number" class="length" :min="0" />
+          <p class="type-note">Database length for the column</p>
         </div>
 
         <div class="settings">
           <label for="collection" class="type-label">Collection</label>
-          <p>The parent collection for this field</p>
           <v-input id="collection" v-model="collection" class="value" />
+          <p class="type-note">The parent collection for this field</p>
         </div>
 
         <div class="settings">
-          <p>Toggle the readonly/disabled state</p>
           <v-checkbox
             id="readonly"
             v-model="readonly"
@@ -101,10 +100,10 @@
             type="checkbox"
           />
           <label for="readonly" class="inline type-label">Read only</label>
+          <p class="type-note">Toggle the readonly/disabled state</p>
         </div>
 
         <div class="settings">
-          <p>Toggle the required state</p>
           <v-checkbox
             id="required"
             v-model="required"
@@ -113,10 +112,10 @@
             type="checkbox"
           />
           <label for="required" class="inline type-label">Required</label>
+          <p class="type-note">Toggle the required state</p>
         </div>
 
         <div class="settings">
-          <p>Toggle the loading state (Beta)</p>
           <v-checkbox
             id="loading"
             v-model="loading"
@@ -125,6 +124,7 @@
             type="checkbox"
           />
           <label for="loading" class="inline type-label">Loading</label>
+          <p class="type-note">Toggle the loading state (Beta)</p>
         </div>
       </fieldset>
       <fieldset>
@@ -176,9 +176,9 @@
         <legend class="type-label">Misc.</legend>
 
         <div class="misc">
-          <p>Toggle viewing between New and Edit</p>
           <v-checkbox id="new" v-model="newItem" value="newItem" class="checkbox" type="checkbox" />
           <label for="new" class="inline type-label">New item</label>
+          <p class="type-note">Toggle viewing between New and Edit</p>
         </div>
       </fieldset>
     </form>
@@ -368,25 +368,34 @@ export default {
   padding: var(--page-padding);
 }
 
+form {
+  margin-top: var(--input-vertical-spacing);
+}
+
+label.type-label {
+  margin-top: var(--input-vertical-spacing);
+  margin-bottom: var(--input-label-margin);
+}
+
+.type-note {
+  margin-top: var(--input-note-margin);
+}
+
 .checkbox {
   width: auto;
   display: inline-block;
   vertical-align: middle;
-  padding-right: 5px;
 }
 
 .interface {
-  margin-bottom: 40px;
   max-width: 100%;
 }
 
 .value {
-  margin-bottom: 20px;
   max-width: 300px;
 }
 
 .listing {
-  margin-bottom: 40px;
   max-width: 100%;
 }
 
@@ -399,19 +408,18 @@ export default {
 }
 
 label {
-  margin-bottom: 10px;
+  margin-bottom: var(--input-label-margin);
   width: max-content;
 }
 
 fieldset {
-  margin-top: 40px;
-  border-top: 1px solid var(--blue-grey-100);
+  border-top: 2px solid var(--blue-grey-50);
+  margin: 40px 0;
 
   legend {
     color: var(--blue-grey-200);
     padding: 10px 20px;
     text-align: center;
-    margin-bottom: 20px;
   }
 
   p {
@@ -419,12 +427,6 @@ fieldset {
     padding-bottom: 10px;
     font-style: italic;
     max-width: 460px;
-  }
-
-  .settings,
-  .options,
-  .misc {
-    margin-bottom: 40px;
   }
 }
 

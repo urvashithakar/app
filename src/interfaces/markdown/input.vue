@@ -78,7 +78,7 @@ export default {
     border-radius: var(--border-radius) var(--border-radius) 0 0;
     border: var(--input-border-width) solid var(--input-border-color);
     border-bottom: none;
-    background-color: var(--off-white);
+    background-color: var(--input-background-color-alt);
     width: 100%;
     span {
       transition: color var(--fast) var(--transition);
@@ -86,15 +86,14 @@ export default {
       padding: 10px 16px 10px 12px;
       line-height: 20px;
       &:hover {
-        color: var(--blue-grey-900);
+        //
       }
       &.active {
         font-weight: 500;
         border-radius: var(--border-radius) var(--border-radius) 0 0;
         border: var(--input-border-width) solid var(--input-border-color);
         border-bottom: none;
-        color: var(--blue-grey-900);
-        background-color: var(--white);
+        background-color: var(--input-background-color);
         margin: -2px;
         z-index: 1;
       }
@@ -117,14 +116,14 @@ export default {
   .textarea {
     font-family: "Roboto Mono", monospace;
     &:hover ~ .toolbar span.active {
-      border-color: var(--blue-grey-400);
+      border-color: var(--input-border-color-hover);
     }
     &:focus ~ .toolbar span.active {
-      border-color: var(--blue-grey-900);
+      border-color: var(--input-border-color-focus);
     }
   }
   .preview {
-    background-color: var(--white);
+    background-color: var(--input-background-color);
     padding: 10px;
     border: var(--input-border-width) solid var(--input-border-color);
   }

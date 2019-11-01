@@ -95,6 +95,7 @@ textarea {
   border: var(--input-border-width) solid var(--input-border-color);
   border-radius: var(--border-radius);
   color: var(--input-text-color);
+  background-color: var(--input-background-color);
   transition: var(--fast) var(--transition);
   transition-property: color, border-color;
 
@@ -111,7 +112,7 @@ textarea {
   }
 
   &:read-only {
-    background-color: var(--input-background-disabled);
+    background-color: var(--input-background-color-disabled);
     cursor: not-allowed;
     &:focus {
       border-color: var(--input-border-color-focus);

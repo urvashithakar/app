@@ -1,7 +1,8 @@
 <template>
   <form @submit.prevent>
-    <label for="spacing" class="type-label required">
+    <label for="spacing" class="type-label">
       {{ $t("layouts-timeline-date") }}
+      <v-icon class="required" name="star" color="input-required-color" sup />
     </label>
     <v-select
       id="spacing"
@@ -11,8 +12,9 @@
       icon="today"
       @input="setOption('date', $event)"
     ></v-select>
-    <label for="spacing" class="type-label required">
+    <label for="spacing" class="type-label">
       {{ $t("layouts-timeline-title") }}
+      <v-icon class="required" name="star" color="input-required-color" sup />
     </label>
     <v-input
       id="spacing"
@@ -21,8 +23,9 @@
       :options="textOptions"
       @input="setOption('title', $event)"
     ></v-input>
-    <label for="spacing" class="type-label required">
+    <label for="spacing" class="type-label">
       {{ $t("layouts-timeline-content") }}
+      <v-icon class="required" name="star" color="input-required-color" sup />
     </label>
     <v-select
       id="spacing"
@@ -117,20 +120,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-label {
-  margin-bottom: 10px;
-  margin-top: 30px;
-}
-
-.required::after {
-  content: "required";
-  margin: 0 5px;
-  padding: 0px 4px 1px;
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--white);
-  background-color: var(--warning);
-  border-radius: var(--border-radius);
-  text-transform: uppercase;
+.type-label {
+  margin-top: var(--input-vertical-spacing-sidebar);
+  margin-bottom: var(--input-label-margin);
+  &:first-of-type {
+    margin-top: 0;
+  }
 }
 </style>

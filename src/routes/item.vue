@@ -36,7 +36,8 @@
         <v-header-button
           v-if="!newItem && !singleItem && permission.delete !== 'none'"
           icon="delete_outline"
-          color="blue-grey-400"
+          background-color="button-primary-background-color"
+          icon-color="button-primary-text-color"
           hover-color="danger"
           :label="$t('delete')"
           @click="confirmRemove = true"
@@ -48,7 +49,8 @@
           :loading="saving"
           :label="$t('save')"
           icon="check"
-          color="action"
+          background-color="button-primary-background-color"
+          icon-color="button-primary-text-color"
           hover-color="success"
           @click="confirmBatchSave = true"
         />
@@ -60,7 +62,8 @@
           :label="$t('save')"
           :options="saveOptions"
           icon="check"
-          color="action"
+          background-color="button-primary-background-color"
+          icon-color="button-primary-text-color"
           hover-color="success"
           @click="singleItem ? save('stay') : save('leave')"
           @input="save"
@@ -81,7 +84,7 @@
 
       <router-link v-if="canReadActivity" to="/activity" class="notifications">
         <div class="preview">
-          <v-icon name="notifications" color="blue-grey-300" />
+          <v-icon name="notifications" color="sidebar-text-color" />
           <span>{{ $t("notifications") }}</span>
         </div>
       </router-link>
@@ -1081,8 +1084,8 @@ export default {
   right: 0;
   text-decoration: none;
   padding: 20px;
-  background-color: #dde3e6;
-  color: var(--blue-grey-800);
+  background-color: var(--sidebar-background-color-alt);
+  color: var(--sidebar-text-color);
   display: block;
 
   .preview {

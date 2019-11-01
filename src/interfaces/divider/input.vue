@@ -26,7 +26,7 @@ export default {
     left: 50%;
     transform: translateX(-50%);
 
-    color: var(--blue-grey-800);
+    color: var(--heading-text-color);
     font-size: 16px;
     line-height: 18px;
     background-color: var(--body-background);
@@ -43,7 +43,7 @@ export default {
   hr {
     border: 0;
     background: none;
-    border-bottom: 2px solid var(--blue-grey-50);
+    border-bottom: 2px solid var(--input-border-color);
   }
 }
 
@@ -52,7 +52,7 @@ export default {
   padding-top: 6px;
   padding-bottom: 20px;
   h2 {
-    color: var(--blue-grey-800);
+    color: var(--heading-text-color);
     font-size: 22px;
     line-height: 28px;
     font-weight: 400;
@@ -66,7 +66,7 @@ export default {
   hr {
     border: 0;
     background: none;
-    border-bottom: 2px solid var(--blue-grey-50);
+    border-bottom: 2px solid var(--input-border-color);
   }
 }
 
@@ -75,7 +75,7 @@ export default {
   padding-top: 6px;
   padding-bottom: 20px;
   h2 {
-    color: var(--blue-grey-800);
+    color: var(--heading-text-color);
     font-size: 28px;
     line-height: 32px;
     font-weight: 300;
@@ -89,7 +89,7 @@ export default {
   hr {
     border: 0;
     background: none;
-    border-bottom: 2px solid var(--blue-grey-50);
+    border-bottom: 2px solid var(--input-border-color);
   }
 }
 </style>

@@ -210,7 +210,7 @@ body.info-wide-active {
 
 <style lang="scss" scoped>
 .page-root {
-  background-color: var(--white);
+  background-color: var(--page-background-color);
 }
 .error {
   position: fixed;

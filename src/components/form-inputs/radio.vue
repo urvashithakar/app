@@ -106,6 +106,6 @@ input:disabled + label {
 
 input:checked + label::before {
   content: "radio_button_checked";
-  color: var(--blue-grey-900);
+  color: var(--input-background-color-active);
 }
 </style>

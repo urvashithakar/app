@@ -120,9 +120,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-label {
-  margin-bottom: 10px;
-  margin-top: 30px;
+.type-label {
+  margin-top: var(--input-vertical-spacing-sidebar);
+  margin-bottom: var(--input-label-margin);
+  &:first-of-type {
+    margin-top: 0;
+  }
 }
 
 .required::after {

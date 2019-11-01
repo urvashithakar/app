@@ -262,19 +262,118 @@
 
   // App specific colors
 
+  --page-text-color: var(--blue-grey-600);
+  --page-background-color: var(--white);
+
+  --sidebar-background-color: var(--blue-grey-50);
+  --sidebar-background-color-alt: #dde3e6; // rgba(var(--blue-grey-200), 0.5);
+  --sidebar-text-color: var(--blue-grey-700);
+
+  --button-primary-background-color: var(--blue-grey-800);
+  --button-primary-text-color: var(--white);
+  --button-secondary-background-color: var(--blue-grey-100);
+  --button-secondary-text-color: var(--blue-grey-600);
+
+  --breadcrumb-text-color: var(--blue-grey-300);
+  --breadcrumb-glue-color: var(--blue-grey-100);
+
+  --modal-background-color: var(--white);
+
+  --tooltip-background-color: var(--blue-grey-900);
+  --tooltip-text-color: var(--white);
+
+  --card-background-color: var(--blue-grey-100);
+
+  --table-head-border-color: var(--blue-grey-50);
+  --table-row-border-color: var(--off-white);
+
   --input-text-color: var(--blue-grey-600);
   --input-icon-color: var(--blue-grey-200);
   --input-placeholder-color: var(--blue-grey-200);
   --input-border-color: var(--blue-grey-100);
   --input-border-color-hover: var(--blue-grey-300);
   --input-border-color-focus: var(--blue-grey-600);
-  --input-background-disabled: var(--blue-grey-50);
+  --input-background-color: var(--white);
+  --input-background-color-alt: var(--blue-grey-50);
+  --input-background-color-alt-hover: var(--blue-grey-100);
+  --input-background-color-disabled: var(--blue-grey-50);
+  --input-background-color-active: var(--blue-grey-800);
+  --input-text-color-active: var(--white);
+  --input-required-color: var(--blue-grey-200);
+
+  --heading-text-color: var(--blue-grey-800);
+  --note-text-color: var(--blue-grey-300);
+
+  --input-vertical-spacing: 40px;
+  --input-vertical-spacing-sidebar: 30px;
+  --input-label-margin: 8px;
+  --input-note-margin: 4px;
 
   --empty-value: var(--blue-grey-100);
 
   --body-background: #fff;
   --off-white: #f9fafa;
   --highlight: var(--off-white);
+
+  // Dark Mode
+  @media (prefers-color-scheme: dark) {
+
+  --page-text-color: var(--blue-grey-100);
+  --page-background-color: var(--blue-grey-900);
+
+  --sidebar-background-color: var(--blue-grey-800);
+  --sidebar-background-color-alt: var(--blue-grey-700);
+  --sidebar-text-color: var(--blue-grey-50);
+
+  --button-primary-background-color: var(--blue);
+  --button-primary-text-color: var(--white);
+  --button-secondary-background-color: var(--blue-grey-600);
+  --button-secondary-text-color: var(--blue-grey-100);
+
+  --breadcrumb-text-color: var(--blue-grey-600);
+  --breadcrumb-glue-color: var(--blue-grey-800);
+
+  --modal-background-color: var(--blue-grey-800);
+
+  --tooltip-background-color: var(--blue-grey-100);
+  --tooltip-text-color: var(--blue-grey-800);
+
+  --card-background-color: var(--blue-grey-800);
+
+  --table-head-border-color: var(--blue-grey-700);
+  --table-row-border-color: var(--blue-grey-800);
+
+  --input-text-color: var(--blue-grey-100);
+  --input-icon-color: var(--blue-grey-600);
+  --input-placeholder-color: var(--blue-grey-600);
+  --input-border-color: var(--blue-grey-700);
+  --input-border-color-hover: var(--blue-grey-600);
+  --input-border-color-focus: var(--blue-grey-400);
+  --input-background-color: var(--blue-grey-900);
+  --input-background-color-alt: var(--blue-grey-800);
+  --input-background-color-alt-hover: var(--blue-grey-700);
+  --input-background-color-disabled: var(--blue-grey-800);
+  --input-background-color-active: var(--blue);
+  --input-text-color-active: var(--white);
+  --input-required-color: var(--blue-grey-200);
+
+  --heading-text-color: var(--white);
+  --note-text-color: var(--blue-grey-600);
+
+  --input-vertical-spacing: 40px;
+  --input-vertical-spacing-sidebar: 30px;
+  --input-label-margin: 8px;
+  --input-note-margin: 4px;
+
+  --empty-value: var(--blue-grey-100);
+
+  --body-background: #fff;
+  --off-white: #f9fafa;
+  --highlight: var(--blue-grey-800);
+
+  }
+
+  // Diretus Colors
 
   --accent-light: var(--blue-50);
   --action-light: var(--blue-grey-50);

@@ -113,6 +113,6 @@ label {
 
 input:checked + label .checkbox,
 input:checked + label:hover:not(:disabled) .checkbox {
-  color: var(--input-border-color-focus);
+  color: var(--input-background-color-active);
 }
 </style>

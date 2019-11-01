@@ -21,7 +21,6 @@
               v-else-if="section.include && section.include === 'collections'"
               :key="section.id"
               class="menu-section"
-              :title="$t('collections')"
               :links="linksCollections"
             />
             <nav-menu
@@ -197,8 +196,8 @@ aside {
   z-index: 30;
   width: 100%;
   max-width: 80%;
-  background-color: var(--blue-grey-50);
-  color: var(--blue-grey-800);
+  background-color: var(--sidebar-background-color);
+  color: var(--sidebar-text-color);
 
   transform: translateX(-100%);
   visibility: hidden;
@@ -250,7 +249,7 @@ aside {
 }
 
 .menu-section + .menu-section {
-  border-top: 2px solid var(--blue-grey-100);
+  border-top: 2px solid var(--sidebar-background-color-alt);
   padding-top: 20px;
 }
 </style>

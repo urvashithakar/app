@@ -545,6 +545,10 @@ export default {
   position: relative;
 }
 
+fieldset {
+  padding: 0;
+}
+
 .collapse {
   position: absolute;
   top: 10px;
@@ -561,16 +565,16 @@ export default {
 }
 
 .modal-content {
-  padding: 20px;
+  padding: var(--input-vertical-spacing) 20px;
 
   fieldset:not(:last-of-type) {
-    margin-bottom: 20px;
+    margin-bottom: var(--input-vertical-spacing);
   }
 
-  legend {
+  legend.type-label {
     margin: 0;
     padding: 0;
-    margin-bottom: 5px;
+    margin-bottom: var(--input-label-margin);
   }
 
   p {

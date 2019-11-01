@@ -129,19 +129,19 @@ export default {
   }
 }
 .rating-empty {
-  color: var(--blue-grey-50);
+  color: var(--input-background-color-alt);
   &:after {
     content: "star";
   }
 }
 .rating-half {
-  color: var(--blue-grey-800);
+  color: var(--amber);
   &:after {
     content: "star_half";
   }
 }
 .rating-full {
-  color: var(--blue-grey-800);
+  color: var(--amber);
   &:after {
     content: "star";
   }

@@ -138,7 +138,7 @@ export default {
   transform: translateY(calc(100% - var(--header-height)));
   transition: transform var(--medium) var(--transition-out);
   will-change: transform;
-  background-color: var(--blue-grey-50);
+  background-color: var(--sidebar-background-color);
 
   &:hover,
   .user-is-tabbing &:focus,
@@ -157,7 +157,7 @@ export default {
     z-index: +1;
     display: flex;
     align-items: center;
-    background-color: #dde3e6;
+    background-color: var(--sidebar-background-color-alt);
     margin-left: -20px;
     margin-right: -20px;
 
@@ -169,7 +169,8 @@ export default {
     > i {
       position: absolute;
       right: 10px;
-      color: var(--blue-grey-300);
+      color: var(--sidebar-text-color);
+      transition: all var(--fast) var(--transition);
     }
   }
   .warning {
@@ -179,19 +180,12 @@ export default {
     }
   }
 
-  .warning:hover {
-    a,
-    i {
-      color: var(--warning-dark);
-    }
-  }
-
   .icon {
     width: 20px;
     height: 22px;
     margin-right: 16px;
-    color: var(--blue-grey-800);
-    fill: var(--blue-grey-800);
+    color: var(--sidebar-text-color);
+    fill: var(--sidebar-text-color);
 
     /* Forces left-alignment of material-icons */
     display: inline-flex;
@@ -212,7 +206,7 @@ export default {
 
   .sign-out:hover,
   .user-is-tabbing .sign-out:focus {
-    background-color: #dde3e6; // rgba(var(--blue-grey-200), 0.5);
+    background-color: var(--sidebar-background-color-alt);
     border-radius: var(--border-radius);
 
     .icon {
@@ -228,7 +222,7 @@ export default {
 
 hr {
   border: 0;
-  border-top: 2px solid var(--blue-grey-200);
+  border-top: 2px solid var(--sidebar-background-color-alt);
   margin-bottom: 10px;
 }
 </style>

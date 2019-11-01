@@ -162,7 +162,7 @@ export default {
 <style lang="scss" scoped>
 .form {
   --column-width: 300px;
-  --gap-width: 40px 32px;
+  --gap-width: var(--input-vertical-spacing) 32px;
 
   @media (min-width: 1000px) {
     display: grid;

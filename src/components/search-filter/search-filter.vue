@@ -2,10 +2,9 @@
   <div ref="searchFilter" :class="{ open }" class="search-filter">
     <v-header-button
       class="toggle"
-      icon-color="blue-grey-200"
       :alert="hasFilters"
       icon="filter_list"
-      no-background
+      outline
       @click="open = !open"
     >
       Filter
@@ -351,6 +350,7 @@ export default {
       transition: var(--fast) var(--transition);
       transition-property: color, border-color, padding, border-radius;
       color: var(--input-text-color);
+      background-color: var(--input-background-color);
 
       &::placeholder {
         color: var(--input-placeholder-color);
@@ -427,7 +427,7 @@ export default {
           position: absolute;
           top: -3%;
           right: -3%;
-          border: 2px solid var(--white);
+          border: 2px solid var(--input-background-color);
           transform: scale(0);
           transition: transform var(--fast) var(--transition-out);
         }

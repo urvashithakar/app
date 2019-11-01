@@ -8,6 +8,7 @@ import VCard from "./components/card/card.vue";
 import VDetails from "./components/details.vue";
 import VNotice from "./components/notice.vue";
 import VTable from "./components/table/table.vue";
+import VTimeAgo from "./components/time-ago.vue";
 
 // Extensions
 import VExtInput from "./components/extension/interface/input/input.vue";
@@ -99,6 +100,7 @@ Vue.component("v-card", VCard);
 Vue.component("v-details", VDetails);
 Vue.component("v-notice", VNotice);
 Vue.component("v-table", VTable);
+Vue.component("v-time-ago", VTimeAgo);
 
 Vue.component("v-upload", VUpload);
 Vue.component("v-progress-ring", VProgressRing);

@@ -210,10 +210,10 @@ Theme: Solid | Default
     border-bottom: none;
     border-left: none;
     margin-right: 2px;
-    background-color: var(--blue-grey-50);
-    color: var(--blue-grey-600);
+    background-color: var(--input-background-color-alt);
+    color: var(--input-text-color);
     &:hover {
-      background-color: var(--blue-grey-100);
+      background-color: var(--input-background-color-alt-hover);
     }
   }
 
@@ -230,8 +230,8 @@ Theme: Solid | Default
       }
       &:checked {
         + .button-group-button {
-          background-color: var(--blue-grey-800);
-          color: var(--white);
+          background-color: var(--input-background-color-active);
+          color: var(--input-text-color-active);
         }
       }
       /**
