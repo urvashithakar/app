@@ -33,7 +33,7 @@ export default {
   position: relative;
   width: 100%;
   margin-top: 10px;
-  border-top: 2px solid var(--blue-grey-50);
+  border-top: 2px solid var(--input-border-color);
   padding-top: 40px;
   margin-bottom: 80px;
 
@@ -43,7 +43,7 @@ export default {
     font-weight: 400;
     transition: var(--fast) var(--transition);
     margin-top: -16px;
-    background-color: var(--body-background);
+    background-color: var(--page-background-color);
     display: inline-block;
     position: absolute;
     top: 4px;

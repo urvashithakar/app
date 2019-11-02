@@ -67,18 +67,18 @@ input {
   }
   label {
     transition: all var(--fast) var(--transition);
-    color: var(--blue-grey-400);
+    color: var(--input-text-color);
     padding: 0.5rem 0 0.5rem 0;
   }
-  &:hover label {
-    color: var(--blue-grey-800);
-  }
-  input:checked + label {
-    color: var(--blue-grey-900);
-  }
-  input:disabled + label {
-    color: var(--blue-grey-300);
-  }
+  // &:hover label {
+  //   color: var(--blue-grey-800);
+  // }
+  // input:checked + label {
+  //   color: var(--input-text-color);
+  // }
+  // input:disabled + label {
+  //   color: var(--blue-grey-300);
+  // }
   input:disabled {
     cursor: not-allowed;
   }
@@ -94,7 +94,7 @@ input {
   }
 
   &.on span {
-    color: var(--blue-grey-800);
+    // color: var(--blue-grey-800);
   }
 }
 </style>

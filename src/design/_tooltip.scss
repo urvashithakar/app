@@ -2,7 +2,7 @@
   display: block !important;
   z-index: 10000;
   border-radius: var(--border-radius);
-  background: var(--blue-grey-900);
+  background: var(--tooltip-background-color);
 
   &.popover {
     background: var(--white);
@@ -12,7 +12,7 @@
 
   & .tooltip-inner {
     padding: 5px 10px 6px;
-    color: var(--white);
+    color: var(--tooltip-text-color);
   }
 
   & .popover-inner {
@@ -26,7 +26,7 @@
     border-style: solid;
     position: absolute;
     margin: 5px;
-    border-color: var(--blue-grey-900);
+    border-color: var(--tooltip-background-color);
   }
 
   &.inverted {

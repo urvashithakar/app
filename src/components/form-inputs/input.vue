@@ -195,6 +195,7 @@ export default {
     border: var(--input-border-width) solid var(--input-border-color);
     border-radius: var(--border-radius);
     color: var(--input-text-color);
+    background-color: var(--input-background-color);
     padding: 10px;
     font-size: 1rem;
     line-height: 1.5;
@@ -244,7 +245,7 @@ export default {
     }
 
     &:read-only {
-      background-color: var(--input-background-disabled);
+      background-color: var(--input-background-color-disabled);
       border-color: var(--input-border-color);
       cursor: not-allowed;
       outline: none;
@@ -262,9 +263,9 @@ export default {
     transform: translateY(-50%);
     opacity: 0;
     transition: var(--fast) var(--transition);
-    color: var(--blue-grey-300);
+    color: var(--input-icon-color);
     padding-left: 4px;
-    background-color: white;
+    background-color: var(--input-background-color);
   }
 
   input.charactercount:focus {
@@ -287,12 +288,12 @@ export default {
   &.icon-right i {
     position: absolute;
     top: 50%;
-    color: var(--blue-grey-200);
+    color: var(--input-icon-color);
     transform: translateY(-50%);
     font-size: 24px;
 
     &.accent {
-      color: var(--blue-grey-900);
+      color: var(--input-background-color-active);
     }
 
     &.success {

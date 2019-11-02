@@ -132,7 +132,7 @@ export default {
 }
 
 .drag-handle {
-  color: var(--blue-grey-100);
+  color: var(--input-border-color);
   cursor: grab;
 }
 

@@ -466,7 +466,7 @@ export default {
   display: flex;
   align-items: center;
   padding: 0;
-  border-bottom: 2px solid var(--off-white);
+  border-bottom: 2px solid var(--table-row-border-color);
   box-sizing: content-box;
 }
 
@@ -476,8 +476,8 @@ export default {
   left: 0;
   top: 0;
   z-index: +1;
-  background-color: var(--white);
-  border-color: var(--blue-grey-50);
+  background-color: var(--page-background-color);
+  border-color: var(--table-head-border-color);
   transition: box-shadow var(--fast) var(--transition-out);
 
   &.shadow {
@@ -509,7 +509,7 @@ export default {
 }
 
 .drag-handle-line {
-  background-color: var(--blue-grey-50);
+  background-color: var(--input-border-color);
   width: 2px;
   height: 60%;
   transition: background-color var(--fast) var(--transition);
@@ -526,7 +526,7 @@ export default {
 
 .row {
   opacity: 1;
-  background-color: var(--white);
+  background-color: var(--page-background-color);
   box-sizing: border-box;
 }
 
@@ -621,7 +621,7 @@ export default {
 
 .body .manual-sort {
   cursor: not-allowed;
-  color: var(--input-background-disabled);
+  color: var(--input-background-color-disabled);
 
   &.active {
     cursor: grab;

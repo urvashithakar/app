@@ -89,8 +89,8 @@ export default {
   .input {
     transition: border-color var(--fast) var(--transition);
     padding: 12px 0 0;
-    border-radius: 4px;
-    background-color: var(--white);
+    border-radius: 2px;
+    background-color: var(--input-background-color);
 
     flex-grow: 1;
     flex-shrink: 0;
@@ -106,21 +106,23 @@ export default {
   }
 
   .track-wrapper {
-    height: 4px;
+    height: 2px;
     width: 100%;
-    border-radius: 4px;
+    border-radius: 2px;
     pointer-events: none;
     user-select: none;
     position: relative;
+    background-color: var(--input-border-color);
 
     .track-fill {
       position: absolute;
       background-color: var(--input-text-color);
-      border-radius: 4px;
+      border-radius: 2px;
       width: 100%;
       height: 100%;
       left: 0;
       width: 0;
+      z-index: 2;
     }
   }
 
@@ -134,7 +136,7 @@ export default {
     appearance: none;
     -webkit-appearance: none;
     width: 100%;
-    height: 4px;
+    height: 2px;
 
     &::-webkit-slider-runnable-track {
       height: 2px;
@@ -155,7 +157,7 @@ export default {
       background: var(--input-text-color);
       margin-top: -6px;
       cursor: ew-resize;
-      box-shadow: 0 0 0 2px var(--white);
+      box-shadow: 0 0 0 4px var(--input-background-color);
       z-index: +1;
       position: relative;
     }
@@ -171,7 +173,7 @@ export default {
       background: var(--input-text-color);
       margin-top: -6px;
       cursor: ew-resize;
-      box-shadow: 0 0 0 2px var(--white);
+      box-shadow: 0 0 0 2px var(--input-background-color);
       z-index: +1;
       position: relative;
     }
@@ -196,7 +198,7 @@ export default {
     text-align: center;
     transform: translateX(-50%);
     color: var(--input-text-color);
-    background-color: var(--blue-grey-50);
+    background-color: var(--input-background-color-alt);
     border-radius: var(--border-radius);
     padding: 4px 8px;
     opacity: 0;
@@ -211,7 +213,7 @@ export default {
       height: 10px;
       border-radius: var(--border-radius);
       transform: translateX(-50%) rotate(45deg);
-      background-color: var(--blue-grey-50);
+      background-color: var(--input-background-color-alt);
     }
     &.output-shown {
       opacity: 1;

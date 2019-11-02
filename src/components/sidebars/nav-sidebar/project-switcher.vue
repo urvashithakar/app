@@ -99,7 +99,7 @@ export default {
   margin: 0 -20px 20px;
   padding: 0 30px;
   position: relative;
-  background-color: #dde3e6; // rgba(var(--blue-grey-200), 0.5);
+  background-color: var(--sidebar-background-color-alt);
 
   &:hover {
     .chevron {
@@ -129,19 +129,11 @@ export default {
     }
 
     svg {
-      fill: var(--blue-grey-900);
+      fill: var(--sidebar-text-color);
     }
 
     i {
-      color: var(--blue-grey-900);
-    }
-
-    svg {
-      fill: var(--blue-grey-800);
-    }
-
-    i {
-      color: var(--blue-grey-300);
+      color: var(--sidebar-text-color);
     }
 
     &.has-error {
@@ -164,8 +156,8 @@ export default {
     width: 21px;
     height: 24px;
     margin-right: 21px;
-    color: var(--blue-grey-800);
-    fill: var(--blue-grey-800);
+    color: var(--sidebar-text-color);
+    fill: var(--sidebar-text-color);
   }
 
   .project-name {
@@ -175,7 +167,7 @@ export default {
   .chevron {
     position: absolute;
     right: 10px;
-    color: var(--blue-grey-400);
+    color: var(--sidebar-text-color);
     opacity: 0;
     transition: all var(--fast) var(--transition);
   }

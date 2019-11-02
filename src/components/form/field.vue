@@ -1,6 +1,6 @@
 <template>
   <div :data-collection="collection" :data-field="field.field">
-    <div v-if="showLabel" class="name type-label">
+    <div v-if="showLabel" class="type-label">
       <v-contextual-menu
         v-if="field.readonly === false"
         class="field-action"
@@ -14,7 +14,7 @@
           v-if="field.required !== false"
           class="required"
           name="star"
-          color="blue-grey-200"
+          color="input-required-color"
           sup
         />
         <v-icon name="arrow_drop_down" icon-style="outline" size="18" class="dropdown" />
@@ -67,7 +67,7 @@
         "
       />
     </div>
-    <div v-if="field.note" class="note type-note" v-html="$helpers.snarkdown(field.note)"></div>
+    <div v-if="field.note" class="type-note" v-html="$helpers.snarkdown(field.note)"></div>
   </div>
 </template>
 
@@ -205,12 +205,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.note {
-  margin-top: 8px;
+.type-note {
+  margin-top: var(--input-note-margin);
 }
 
-.name {
-  margin-bottom: 10px;
+.type-label {
+  margin-bottom: var(--input-label-margin);
 }
 
 .required {

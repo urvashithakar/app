@@ -1,6 +1,6 @@
 <template>
   <div class="settings">
-    <v-header :breadcrumb="links" icon="settings" icon-color="warning" />
+    <v-header :breadcrumb="links" icon="settings" settings="true" />
 
     <v-details :title="$t('settings_project')" type="break" open>
       <nav>

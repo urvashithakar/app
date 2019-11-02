@@ -91,7 +91,7 @@ export default {
     },
     color: {
       type: String,
-      default: "blue-grey-100"
+      default: "card-background-color"
     },
     src: {
       type: String,
@@ -368,7 +368,7 @@ export default {
       left: 0;
       top: 0;
       opacity: 0;
-      background-image: linear-gradient(-180deg, #263238 4%, rgba(38, 50, 56, 0) 100%);
+      background-image: linear-gradient(-180deg, #263238 10%, rgba(38, 50, 56, 0) 100%);
       transition: opacity var(--fast) var(--transition);
     }
 
@@ -392,7 +392,7 @@ export default {
       }
 
       .header::before {
-        opacity: 0.2;
+        opacity: 0.3;
       }
     }
 

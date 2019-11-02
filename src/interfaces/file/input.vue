@@ -8,7 +8,7 @@
       :src="src"
       :icon="icon"
       :href="href"
-      color="blue-grey-900"
+      color="black"
       :options="{
         deselect: {
           text: $t('deselect'),
@@ -76,7 +76,7 @@
           <div class="search">
             <v-input
               type="search"
-              :placeholder="$t('search')"
+              :placeholder="$t('search_for_item')"
               class="search-input"
               @input="onSearchInput"
             />
@@ -272,7 +272,7 @@ button {
 }
 
 .search-input {
-  border-bottom: 2px solid var(--blue-grey-50);
+  border-bottom: 2px solid var(--input-border-color);
   &::v-deep input {
     border-radius: 0;
     border: none;
@@ -280,7 +280,7 @@ button {
     height: var(--header-height);
 
     &::placeholder {
-      color: var(--blue-grey-600);
+      color: var(--input-placeholder-color);
     }
   }
 }

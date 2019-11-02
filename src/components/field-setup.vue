@@ -78,8 +78,9 @@
       </template>
       <form class="schema" @submit.prevent>
         <div class="name">
-          <label class="type-label">
-            {{ $t("name") }}*
+          <label>
+            <span class="type-label">{{ $t("name") }}</span>
+            <v-icon class="required" name="star" color="input-required-color" sup />
             <v-input
               v-model="field"
               type="text"
@@ -90,13 +91,13 @@
               :icon-right-color="iconToShow.color"
               :icon-right-tooltip="iconToShow.tooltip"
             />
-            <p class="small-text">
+            <p class="type-note">
               {{ $t("display_name") }}:
               <b>{{ $helpers.formatTitle(field || "...") }}</b>
             </p>
           </label>
-          <label class="type-label">
-            {{ $t("default_value") }}
+          <label>
+            <span class="type-label">{{ $t("default_value") }}</span>
             <v-input
               v-model="default_value"
               type="text"
@@ -105,8 +106,8 @@
             />
           </label>
         </div>
-        <label class="type-label">
-          {{ $t("note") }}
+        <label>
+          <span class="type-label">{{ $t("note") }}</span>
           <v-input v-model="note" type="text" :placeholder="$t('add_note')" />
         </label>
 
@@ -124,8 +125,8 @@
         <details class="advanced" :open="existing">
           <summary>{{ $t("advanced_options") }}</summary>
           <div class="advanced-form">
-            <label class="type-label">
-              {{ $t("field_type") }}
+            <label>
+              <span class="type-label">{{ $t("field_type") }}</span>
               <v-simple-select v-model="type">
                 <option
                   v-for="typeOption in availableFieldTypes"
@@ -136,14 +137,16 @@
                   {{ $helpers.formatTitle(typeOption) }}
                 </option>
               </v-simple-select>
-              <small class="description">{{ fieldTypeDescription }}</small>
+              <small class="type-note">{{ fieldTypeDescription }}</small>
             </label>
-            <label class="type-label">
-              {{
-                $t("db_datatype", {
-                  db: $helpers.formatTitle(databaseVendor)
-                })
-              }}
+            <label>
+              <span class="type-label">
+                {{
+                  $t("db_datatype", {
+                    db: $helpers.formatTitle(databaseVendor)
+                  })
+                }}
+              </span>
               <v-simple-select v-model="datatype">
                 <option
                   v-for="typeOption in availableDatatypes"
@@ -154,12 +157,12 @@
                   {{ typeOption }}
                 </option>
               </v-simple-select>
-              <small class="description">
+              <small class="type-note">
                 {{ selectedDatatypeInfo && $t(selectedDatatypeInfo.description) }}
               </small>
             </label>
-            <label class="type-label">
-              {{ $t("length") }}
+            <label>
+              <span class="type-label">{{ $t("length") }}</span>
               <v-input
                 :type="selectedDatatypeInfo && selectedDatatypeInfo.decimal ? 'string' : 'number'"
                 :value="lengthDisabled ? null : length"
@@ -168,8 +171,8 @@
                 @input="length = $event"
               />
             </label>
-            <label class="type-label">
-              {{ $t("validation") }}
+            <label>
+              <span class="type-label">{{ $t("validation") }}</span>
               <v-input v-model="validation" type="text" :placeholder="$t('regex')" />
             </label>
             <label
@@ -1522,20 +1525,16 @@ p {
   margin-bottom: 40px;
 }
 
-.small-text {
-  margin-top: 4px;
-  font-style: italic;
-  font-size: 12px;
-  line-height: 1.5em;
-  color: var(--blue-grey-300);
+.type-note {
+  margin-top: var(--input-note-margin);
   & b {
-    font-weight: 600;
+    font-weight: var(--weight-bold);
   }
 }
 
 .note {
   display: block;
-  margin-top: 4px;
+  margin-top: var(--input-note-margin);
 }
 
 .interfaces {
@@ -1617,14 +1616,9 @@ form.schema {
     grid-gap: 32px 32px;
     grid-template-columns: 1fr 1fr;
 
-    .description {
+    .type-note {
       display: inline-block;
-      margin-top: 4px;
-      font-style: italic;
-      font-size: 12px;
-      line-height: 1.5em;
-      font-weight: 500;
-      color: var(--blue-grey-300);
+      margin-top: var(--input-note-margin);
     }
 
     .toggle {
@@ -1653,7 +1647,7 @@ form.schema {
 form.options {
   margin-top: 30px;
   label {
-    margin-bottom: 8px;
+    margin-bottom: var(--input-label-margin);
   }
   div.options {
     margin-bottom: 30px;
@@ -1722,9 +1716,8 @@ details {
 }
 
 .required {
-  color: var(--blue-grey-900);
+  color: var(--input-required-color);
   vertical-align: super;
-  font-size: 7px !important;
 }
 
 .single {
@@ -1849,7 +1842,7 @@ details {
 }
 
 label {
-  margin-bottom: 8px;
+  margin-bottom: var(--input-label-margin);
 }
 
 hr {

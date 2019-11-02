@@ -33,15 +33,15 @@
           v-if="this.$store.state.currentUser.admin"
           :label="$t('settings')"
           icon="settings"
-          icon-color="blue-grey-200"
-          no-background
+          outline
           @click="editCollection()"
         />
         <v-header-button
           v-if="editButton && !activity"
           key="edit"
           icon="mode_edit"
-          color="blue-grey-400"
+          background-color="button-primary-background-color"
+          icon-color="button-primary-text-color"
           hover-color="warning"
           :disabled="!editButtonEnabled"
           :label="$t('batch')"
@@ -51,7 +51,8 @@
           v-if="deleteButton && !activity"
           key="delete"
           icon="delete_outline"
-          color="blue-grey-400"
+          background-color="button-primary-background-color"
+          icon-color="button-primary-text-color"
           hover-color="danger"
           :disabled="!deleteButtonEnabled"
           :label="$t('delete')"
@@ -61,7 +62,8 @@
           v-if="addButton && !activity"
           key="add"
           icon="add"
-          color="action"
+          background-color="button-primary-background-color"
+          icon-color="button-primary-text-color"
           :label="$t('new')"
           :to="`/collections/${collection}/+`"
         />
@@ -94,9 +96,9 @@
             </option>
           </select>
           <div class="preview">
-            <v-icon :name="layoutIcons[viewType]" color="blue-grey-800" />
+            <v-icon :name="layoutIcons[viewType]" color="sidebar-text-color" />
             <span>{{ layoutNames[viewType] }}</span>
-            <v-icon name="expand_more" color="blue-grey-300" />
+            <v-icon name="expand_more" color="sidebar-text-color" />
           </div>
         </div>
       </template>
@@ -120,7 +122,7 @@
         class="notifications"
       >
         <div class="preview">
-          <v-icon name="notifications" color="blue-grey-300" />
+          <v-icon name="notifications" color="sidebar-text-color" />
           <span>{{ $t("notifications") }}</span>
         </div>
       </router-link>
@@ -744,8 +746,8 @@ export default {
 .notifications {
   margin: -20px;
   padding: 20px;
-  background-color: #dde3e6;
-  color: var(--blue-grey-800);
+  background-color: var(--sidebar-background-color-alt);
+  color: var(--sidebar-text-color);
   position: relative;
   display: block;
 
@@ -780,7 +782,31 @@ export default {
   width: var(--info-sidebar-width);
   bottom: 0;
   right: 0;
-  margin: 0;
   text-decoration: none;
+  padding: 20px;
+  margin: 0;
+  background-color: var(--sidebar-background-color-alt);
+  color: var(--sidebar-text-color);
+  display: block;
+
+  .preview {
+    display: flex;
+    align-items: center;
+
+    span {
+      flex-grow: 1;
+      margin-left: 10px;
+    }
+  }
+
+  select {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+  }
 }
 </style>

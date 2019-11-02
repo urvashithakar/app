@@ -72,10 +72,10 @@
       </v-card>
       <v-card
         v-if="lazyLoading"
-        color="blue-grey-600"
         icon="hourglass_empty"
         opacity="half"
         :title="$t('loading_more')"
+        :subtitle="$t('one_moment')"
       ></v-card>
     </div>
 
@@ -203,12 +203,11 @@ export default {
 .layout-cards {
   overflow: auto;
   height: 100%;
-  margin-top: 20px;
   max-height: calc(100vh - var(--header-height));
 }
 
 .toolbar {
-  background-color: var(--white);
+  background-color: var(--page-background-color);
   width: 100%;
   position: sticky;
   top: 0;
@@ -218,7 +217,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  border-bottom: 2px solid var(--blue-grey-50);
+  border-bottom: 2px solid var(--sidebar-background-color);
 }
 
 .sort-select {
@@ -237,7 +236,7 @@ export default {
     -moz-appearance: none;
     appearance: none;
     vertical-align: middle;
-    background-color: var(--blue-grey-50);
+    background-color: var(--input-background-color-alt);
     border-radius: var(--border-radius);
     border: 0;
     overflow: hidden;

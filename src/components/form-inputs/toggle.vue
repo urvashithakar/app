@@ -69,8 +69,8 @@ input {
   }
 
   &.active::after {
-    border: 2px solid var(--blue-grey-800);
-    background-color: var(--blue-grey-800);
+    border: 2px solid var(--input-background-color-active);
+    background-color: var(--input-background-color-active);
   }
 }
 
@@ -86,16 +86,16 @@ input {
   transition: transform var(--fast) var(--transition);
 
   &.active {
-    background-color: var(--white);
+    background-color: var(--input-text-color-active);
     transform: translateX(16px);
   }
 }
 
 input:disabled ~ .switch {
-  background-color: var(--blue-grey-50);
+  background-color: var(--input-background-color-disabled);
 
   &::after {
-    background-color: var(--blue-grey-200);
+    background-color: var(--input-background-color-disabled);
   }
 }
 </style>

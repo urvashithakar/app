@@ -1,13 +1,14 @@
 <template>
   <div class="settings-global">
-    <v-header :breadcrumb="links" :icon-link="`/${currentProjectID}/settings`" icon-color="warning">
+    <v-header :breadcrumb="links" :icon-link="`/${currentProjectID}/settings`" settings>
       <template slot="buttons">
         <v-header-button
           :disabled="!editing"
           :loading="saving"
           :label="$t('save')"
           icon="check"
-          color="action"
+          background-color="button-primary-background-color"
+          icon-color="button-primary-text-color"
           @click="save('leave')"
         />
       </template>
