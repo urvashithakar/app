@@ -653,7 +653,7 @@ export default {
     if (collection === "directus_files") return next("/files");
 
     if (collectionInfo && collectionInfo.single) {
-      return next(`/${store.getters.currentProjectKey}/collections/${collection}/1`);
+      return next(`/${store.state.currentProjectKey}/collections/${collection}/1`);
     }
 
     const id = shortid.generate();
@@ -691,7 +691,7 @@ export default {
     }
 
     if (collectionInfo && collectionInfo.single) {
-      return next(`/${store.getters.currentProjectKey}/collections/${collection}/1`);
+      return next(`/${store.state.currentProjectKey}/collections/${collection}/1`);
     }
 
     const id = this.$helpers.shortid.generate();
