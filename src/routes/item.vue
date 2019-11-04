@@ -13,7 +13,7 @@
   </div>
 
   <div v-else-if="fields === null">
-    <v-header :icon-link="`/${currentProjectID}/collections`" />
+    <v-header :icon-link="`/${currentProjectKey}/collections`" />
     <v-loader area="content" />
   </div>
 
@@ -84,7 +84,7 @@
 
       <router-link
         v-if="canReadActivity"
-        :to="`/${currentProjectID}/activity`"
+        :to="`/${currentProjectKey}/activity`"
         class="notifications"
       >
         <div class="preview">
@@ -187,7 +187,7 @@ import formatTitle from "@directus/format-title";
 import VNotFound from "./not-found.vue";
 import store from "../store/";
 import api from "../api";
-import { mapGetters } from "vuex";
+import { mapState } from "vuex";
 
 function getFieldsQuery(collection) {
   const fields = store.state.collections[collection].fields;
@@ -287,7 +287,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["currentProjectID"]),
+    ...mapState(["currentProjectKey"]),
     saveOptions() {
       if (this.singleItem) {
         return {};
@@ -329,7 +329,7 @@ export default {
         return [
           {
             name: this.$t("user_directory"),
-            path: `/${this.currentProjectID}/users`
+            path: `/${this.currentProjectKey}/users`
           },
           {
             name: crumbName,
@@ -342,7 +342,7 @@ export default {
         return [
           {
             name: this.$t("file_library"),
-            path: `/${this.currentProjectID}/files`
+            path: `/${this.currentProjectKey}/files`
           },
           {
             name: this.newItem ? this.$t("creating_item") : this.$t("editing_item"),
@@ -355,7 +355,7 @@ export default {
         return [
           {
             name: this.$t("collections"),
-            path: `/${this.currentProjectID}/collections`
+            path: `/${this.currentProjectKey}/collections`
           },
           {
             name: this.$t("editing_single", {
@@ -371,17 +371,17 @@ export default {
       if (this.collection.startsWith("directus_")) {
         breadcrumb.push({
           name: this.$helpers.formatTitle(this.collection.substr(9)),
-          path: `/${this.currentProjectID}/${this.collection.substring(9)}`
+          path: `/${this.currentProjectKey}/${this.collection.substring(9)}`
         });
       } else {
         breadcrumb.push(
           {
             name: this.$t("collections"),
-            path: `/${this.currentProjectID}/collections`
+            path: `/${this.currentProjectKey}/collections`
           },
           {
             name: this.$t(`collections-${this.collection}`),
-            path: `/${this.currentProjectID}/collections/${this.collection}`
+            path: `/${this.currentProjectKey}/collections/${this.collection}`
           }
         );
       }
@@ -567,7 +567,7 @@ export default {
     },
     notFound(notFound) {
       if (this.singleItem && notFound === true) {
-        this.$router.push(`/${this.currentProjectID}/collections/${this.collection}/+`);
+        this.$router.push(`/${this.currentProjectKey}/collections/${this.collection}/+`);
       }
     }
   },
@@ -632,7 +632,7 @@ export default {
           });
           this.confirmRemoveLoading = false;
           this.confirmRemove = false;
-          this.$router.push(`/${this.currentProjectID}/collections/${this.collection}`);
+          this.$router.push(`/${this.currentProjectKey}/collections/${this.collection}`);
         })
         .catch(error => {
           this.$store.dispatch("loadingFinished", id);
@@ -685,12 +685,12 @@ export default {
             });
             if (this.collection.startsWith("directus_")) {
               return this.$router.push(
-                `/${this.currentProjectID}/${this.collection.substring(9)}/${pk}`
+                `/${this.currentProjectKey}/${this.collection.substring(9)}/${pk}`
               );
             }
 
             return this.$router.push(
-              `/${this.currentProjectID}/collections/${this.collection}/${pk}`
+              `/${this.currentProjectKey}/collections/${this.collection}/${pk}`
             );
           })
           .catch(error => {
@@ -727,10 +727,12 @@ export default {
 
           if (method === "leave") {
             if (this.collection.startsWith("directus_")) {
-              return this.$router.push(`/${this.currentProjectID}/${this.collection.substring(9)}`);
+              return this.$router.push(
+                `/${this.currentProjectKey}/${this.collection.substring(9)}`
+              );
             }
 
-            return this.$router.push(`/${this.currentProjectID}/collections/${this.collection}`);
+            return this.$router.push(`/${this.currentProjectKey}/collections/${this.collection}`);
           }
 
           if (method === "stay") {
@@ -739,7 +741,7 @@ export default {
             if (this.newItem) {
               const primaryKey = savedValues[this.primaryKeyField];
               return this.$router.push(
-                `/${this.currentProjectID}/collections/${this.collection}/${primaryKey}`
+                `/${this.currentProjectKey}/collections/${this.collection}/${primaryKey}`
               );
             }
 
@@ -760,7 +762,7 @@ export default {
                 savedValues: {}
               });
             } else {
-              this.$router.push(`/${this.currentProjectID}/collections/${this.collection}/+`);
+              this.$router.push(`/${this.currentProjectKey}/collections/${this.collection}/+`);
             }
           }
         })

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="userInfo" @click.stop="$router.push(`/${currentProjectID}/users/` + userInfo.id)">
+  <div v-if="userInfo" @click.stop="$router.push(`/${currentProjectKey}/users/` + userInfo.id)">
     <v-avatar
       v-if="options.display !== 'name'"
       v-tooltip="options.display === 'avatar' ? displayValue : null"
@@ -17,12 +17,12 @@
 
 <script>
 import mixin from "@directus/extension-toolkit/mixins/interface";
-import { mapGetters } from "vuex";
+import { mapState } from "vuex";
 
 export default {
   mixins: [mixin],
   computed: {
-    ...mapGetters(["currentProjectID"]),
+    ...mapState(["currentProjectKey"]),
     userInfo() {
       if (!this.value) return null;
 

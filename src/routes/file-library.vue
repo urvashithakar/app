@@ -34,7 +34,7 @@
           icon-color="button-primary-text-color"
           hover-color="warning"
           :label="$t('batch')"
-          :to="`/${currentProjectID}/collections/${collection}/${selection.join(',')}`"
+          :to="`/${currentProjectKey}/collections/${collection}/${selection.join(',')}`"
         />
         <v-header-button
           v-if="selection.length"
@@ -147,7 +147,7 @@ import shortid from "shortid";
 import store from "@/store/";
 import VSearchFilter from "../components/search-filter/search-filter.vue";
 import VNotFound from "./not-found.vue";
-import { mapGetters } from "vuex";
+import { mapState } from "vuex";
 
 import api from "../api";
 
@@ -181,12 +181,12 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["currentProjectID"]),
+    ...mapState(["currentProjectKey"]),
     breadcrumb() {
       return [
         {
           name: this.$t("file_library"),
-          path: `/${this.currentProjectID}/files`
+          path: `/${this.currentProjectKey}/files`
         }
       ];
     },
@@ -431,7 +431,7 @@ export default {
     }
 
     if (collectionInfo && collectionInfo.single) {
-      return next(`/${store.getters.currentProjectID}/collections/${collection}/1`);
+      return next(`/${store.state.currentProjectKey}/collections/${collection}/1`);
     }
 
     const id = shortid.generate();
@@ -471,7 +471,7 @@ export default {
     }
 
     if (collectionInfo && collectionInfo.single) {
-      return next(`/${store.getters.currentProjectID}/collections/${collection}/1`);
+      return next(`/${store.state.currentProjectKey}/collections/${collection}/1`);
     }
 
     const id = this.$helpers.shortid.generate();

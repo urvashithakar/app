@@ -1,6 +1,6 @@
 <template>
   <div class="settings-roles">
-    <v-header :breadcrumb="breadcrumb" :icon-link="`/${this.currentProjectID}/settings`" settings>
+    <v-header :breadcrumb="breadcrumb" :icon-link="`/${this.currentProjectKey}/settings`" settings>
       <template slot="buttons">
         <v-header-button
           key="add"
@@ -31,7 +31,7 @@
 
 <script>
 import api from "../../api";
-import { mapGetters } from "vuex";
+import { mapState } from "vuex";
 
 export default {
   name: "SettingsRoles",
@@ -50,23 +50,23 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["currentProjectID"]),
+    ...mapState(["currentProjectKey"]),
     breadcrumb() {
       return [
         {
           name: this.$t("settings"),
-          path: `/${this.currentProjectID}/settings`
+          path: `/${this.currentProjectKey}/settings`
         },
         {
           name: this.$t("roles"),
-          path: `/${this.currentProjectID}/settings/roles`
+          path: `/${this.currentProjectKey}/settings/roles`
         }
       ];
     },
     items() {
       return this.roles.map(role => ({
         ...role,
-        __link__: `/${this.currentProjectID}/settings/roles/${role.id}`
+        __link__: `/${this.currentProjectKey}/settings/roles/${role.id}`
       }));
     },
     fields() {
@@ -115,7 +115,7 @@ export default {
         .then(res => res.data)
         .then(role => {
           this.$store.dispatch("loadingFinished", id);
-          this.$router.push(`/${this.currentProjectID}/settings/roles/${role.id}`);
+          this.$router.push(`/${this.currentProjectKey}/settings/roles/${role.id}`);
         })
         .catch(error => {
           this.adding = false;

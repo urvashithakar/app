@@ -119,7 +119,7 @@
 
       <router-link
         v-if="canReadActivity"
-        :to="`/${currentProjectID}/activity`"
+        :to="`/${currentProjectKey}/activity`"
         class="notifications"
       >
         <div class="preview">
@@ -155,7 +155,7 @@ import store from "../store/";
 import VSearchFilter from "../components/search-filter/search-filter.vue";
 import VCreateBookmark from "../components/bookmarks/create-bookmark.vue";
 import VNotFound from "./not-found.vue";
-import { mapGetters } from "vuex";
+import { mapState } from "vuex";
 
 import api from "../api";
 
@@ -182,7 +182,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["currentProjectID"]),
+    ...mapState(["currentProjectKey"]),
     activity() {
       return this.collection === "directus_activity";
     },
@@ -191,7 +191,7 @@ export default {
         return [
           {
             name: this.$t("user_directory"),
-            path: `${this.currentProjectID}/users`
+            path: `${this.currentProjectKey}/users`
           }
         ];
       }
@@ -200,7 +200,7 @@ export default {
         return [
           {
             name: this.$t("file_library"),
-            path: `/${this.currentProjectID}/files`
+            path: `/${this.currentProjectKey}/files`
           }
         ];
       }
@@ -209,18 +209,18 @@ export default {
         return [
           {
             name: this.$helpers.formatTitle(this.collection.substr(9)),
-            path: `/${this.currentProjectID}/${this.collection.substring(9)}`
+            path: `/${this.currentProjectKey}/${this.collection.substring(9)}`
           }
         ];
       } else {
         return [
           {
             name: this.$t("collections"),
-            path: `/${this.currentProjectID}/collections`
+            path: `/${this.currentProjectKey}/collections`
           },
           {
             name: this.$t(`collections-${this.collection}`),
-            path: `/${this.currentProjectID}/collections/${this.collection}`
+            path: `/${this.currentProjectKey}/collections/${this.collection}`
           }
         ];
       }
@@ -238,7 +238,7 @@ export default {
       return filteredFields;
     },
     batchURL() {
-      return `/${this.currentProjectID}/collections/${this.collection}/${this.selection
+      return `/${this.currentProjectKey}/collections/${this.collection}/${this.selection
         .map(item => item[this.primaryKeyField])
         .join(",")}`;
     },
@@ -518,7 +518,7 @@ export default {
     keyBy: _.keyBy,
     editCollection() {
       if (!this.$store.state.currentUser.admin) return;
-      this.$router.push(`/${this.currentProjectID}/settings/collections/${this.collection}`);
+      this.$router.push(`/${this.currentProjectKey}/settings/collections/${this.collection}`);
     },
     closeBookmark() {
       this.bookmarkModal = false;
@@ -653,7 +653,7 @@ export default {
     if (collection === "directus_files") return next("/files");
 
     if (collectionInfo && collectionInfo.single) {
-      return next(`/${store.getters.currentProjectID}/collections/${collection}/1`);
+      return next(`/${store.getters.currentProjectKey}/collections/${collection}/1`);
     }
 
     const id = shortid.generate();
@@ -691,7 +691,7 @@ export default {
     }
 
     if (collectionInfo && collectionInfo.single) {
-      return next(`/${store.getters.currentProjectID}/collections/${collection}/1`);
+      return next(`/${store.getters.currentProjectKey}/collections/${collection}/1`);
     }
 
     const id = this.$helpers.shortid.generate();
