@@ -128,7 +128,6 @@ export default {
       db_user: "",
       db_password: "",
       db_name: "",
-      installing: false,
       error: null
     };
   },
@@ -137,8 +136,34 @@ export default {
   },
   methods: {
     async onSubmit() {
-      this.installing = true;
+      if (this.step === 1) {
+        this.step = 2;
+        return;
+      }
+
       this.step = 3;
+
+      // We want the install to at least take 3 seconds before being done, to make the user feel like
+      // the installer is actually doing things. This will make sure 3 seconds have passed before we
+      // go to the confirmation of done.
+      const next = () => {
+        this.$notify({
+          title: this.$t("api_installed"),
+          color: "green",
+          iconMain: "check"
+        });
+
+        this.step = 4;
+      };
+
+      let installReady = false;
+      let timeReady = false;
+
+      setTimeout(() => {
+        timeReady = true;
+
+        if (installReady && timeReady) next();
+      }, 4000);
 
       const {
         project_name,
@@ -165,18 +190,14 @@ export default {
           db_name
         });
 
-        this.$notify({
-          title: this.$t("api_installed"),
-          color: "green",
-          iconMain: "check"
-        });
+        installReady = true;
 
-        this.step = 4;
+        if (installReady && timeReady) {
+          next();
+        }
       } catch (error) {
         this.error = error;
         this.step = 2;
-      } finally {
-        this.installing = false;
       }
     }
   }

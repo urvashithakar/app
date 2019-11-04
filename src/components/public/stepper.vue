@@ -1,11 +1,6 @@
 <template>
   <div class="public-stepper">
-    <div
-      class="progress-line"
-      :style="{
-        transform: `scaleX(${(1 / (steps - 1)) * (currentStep - 1)})`
-      }"
-    ></div>
+    <div class="progress-line" :style="lineStyles"></div>
     <span
       v-for="step in steps"
       :key="step"
@@ -31,6 +26,14 @@ export default {
     steps: {
       type: Number,
       default: 1
+    }
+  },
+  computed: {
+    lineStyles() {
+      return {
+        transform: `scaleX(${(1 / (this.steps - 1)) *
+          ((this.currentStep > this.steps ? this.steps : this.currentStep) - 1)})`
+      };
     }
   }
 };
