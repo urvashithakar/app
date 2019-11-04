@@ -227,9 +227,9 @@ export default {
     },
     async fetchAuthenticatedUser() {
       this.firstName = null;
-      this.latName = null;
+      this.lastName = null;
       this.$api.config.project = this.currentProjectKey;
-      const { data } = await this.$api.getMe({ fields: "first_name,last_name" });
+      const { data } = await this.$api.getMe({ fields: ["first_name", "last_name"] });
       this.firstName = data.first_name;
       this.lastName = data.last_name;
     },
