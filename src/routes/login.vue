@@ -231,8 +231,6 @@ export default {
       this.ssoProviders = [];
       this.$api.config.url = this.apiRootPath;
       this.$api.config.project = this.currentProjectKey;
-
-      console.log(this.$api.config.url);
       const { data } = await this.$api.getThirdPartyAuthProviders();
       this.ssoProviders = data;
     }
