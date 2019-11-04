@@ -59,19 +59,19 @@ export default {
       }
     },
     project_color() {
-      if (this.currentProject.status !== "successful") return;
+      if (this.currentProject.status !== "successful") return defaults.project_color;
       return this.currentProject.data.project_color || defaults.project_color;
     },
     project_image() {
-      if (this.currentProject.status !== "successful") return;
+      if (this.currentProject.status !== "successful") return defaults.project_image;
       return this.currentProject.data.project_image || defaults.project_image;
     },
     project_logo() {
-      if (this.currentProject.status !== "successful") return;
+      if (this.currentProject.status !== "successful") return defaults.project_logo;
       return this.currentProject.data.project_logo || defaults.project_logo;
     },
     project_name() {
-      if (this.currentProject.status !== "successful") return;
+      if (this.currentProject.status !== "successful") return defaults.project_name;
       return this.currentProject.data.project_name || defaults.project_name;
     },
     version() {
