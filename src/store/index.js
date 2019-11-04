@@ -41,7 +41,7 @@ const store = new Vuex.Store({
   plugins: [
     createPersistedState({
       key: "directus-app",
-      paths: ["currentProject"],
+      paths: ["currentProjectKey"],
       storage: window.sessionStorage
     })
   ]
