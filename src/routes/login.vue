@@ -94,7 +94,7 @@ export default {
       signingIn: false,
       fetchingData: false,
       notice: {
-        text: "Not Authenticated",
+        text: this.$t("not_authenticated"),
         color: "blue-grey-100",
         icon: "lock_outline"
       },
