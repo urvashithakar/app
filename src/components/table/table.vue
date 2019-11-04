@@ -536,7 +536,7 @@ export default {
 }
 
 .dragging .row.link:hover {
-  background-color: var(--white);
+  background-color: var(--page-background-color);
 }
 
 .row.selected {
@@ -659,11 +659,11 @@ export default {
 
 @keyframes bounce {
   from {
-    border-color: var(--off-white);
+    border-color: var(--table-row-border-color);
   }
 
   to {
-    border-color: var(--blue-grey-50);
+    border-color: var(--table-head-border-color);
   }
 }
 

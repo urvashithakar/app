@@ -723,7 +723,7 @@ export default {
 
   i {
     transition: color var(--fast) var(--transition);
-    color: var(--blue-grey-300);
+    color: var(--input-border-color);
     font-size: 24px;
     height: 20px;
     transform: translateY(-1px); // Vertical alignment of icon
@@ -731,7 +731,7 @@ export default {
 
   &:hover {
     i {
-      color: var(--blue-grey-800);
+      color: var(--input-border-color-hover);
     }
   }
 }
@@ -739,7 +739,7 @@ export default {
 .bookmark.active {
   opacity: 1;
   i {
-    color: var(--accent);
+    color: var(--input-background-color-active);
   }
 }
 

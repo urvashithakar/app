@@ -211,7 +211,7 @@ export default {
   &:not(.disabled):hover,
   &:not(.disabled).selected {
     .header:not(.big-image) {
-      background-color: var(--blue-grey-600) !important;
+      background-color: var(--card-background-color-hover) !important;
     }
   }
 
@@ -219,6 +219,7 @@ export default {
     transition: all var(--fast) var(--transition);
     height: 136px;
     border-radius: var(--border-radius);
+    background-color: var(--card-background-color);
     overflow: hidden;
     display: grid;
     grid-template-columns: 1;
@@ -273,7 +274,7 @@ export default {
 
     .icon {
       font-size: 64px;
-      color: var(--white);
+      color: var(--card-text-color);
       text-align: center;
     }
 
@@ -307,9 +308,13 @@ export default {
     cursor: not-allowed;
 
     & .header {
-      & .icon,
+      & .icon {
+        color: var(--card-text-color-disabled) !important;
+      }
       & .custom-icon {
-        opacity: 0.3;
+        svg {
+          fill: var(--card-text-color-disabled) !important;
+        }
       }
     }
   }
@@ -339,13 +344,13 @@ export default {
     margin-bottom: 2px;
   }
   .subtitle {
-    color: var(--blue-grey-300);
+    color: var(--note-text-color);
     font-size: 13px;
   }
 
   .content {
     font-size: 11px;
-    color: var(--blue-grey-400);
+    color: var(--note-text-color);
     max-height: 114px; // 8 lines of text
     overflow: hidden;
     margin-top: 10px;
