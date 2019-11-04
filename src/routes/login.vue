@@ -108,11 +108,14 @@ export default {
     ...mapState(["currentProjectKey", "apiRootPath"])
   },
   watch: {
-    currentProjectKey() {
-      if (this.currentProject.data.authenticated === true) {
-        this.fetchAuthenticatedUser();
-      } else {
-        this.fetchSSOProviders();
+    currentProjectKey: {
+      deep: true,
+      handler() {
+        if (this.currentProject.data.authenticated === true) {
+          this.fetchAuthenticatedUser();
+        } else {
+          this.fetchSSOProviders();
+        }
       }
     }
   },
