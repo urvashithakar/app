@@ -58,6 +58,12 @@
             <label class="type-label" for="db_name">Database Name</label>
             <input id="db_name" v-model="db_name" name="db_name" type="text" />
           </div>
+          <div class="field">
+            <label class="type-label" for="db_type">Database Type</label>
+            <div class="select">
+              <input id="db_type" name="db_type" type="text" value="MySQL" disabled />
+            </div>
+          </div>
         </div>
 
         <div class="buttons">
@@ -128,6 +134,7 @@ export default {
       db_user: "",
       db_password: "",
       db_name: "",
+      installing: false,
       error: null
     };
   },
@@ -260,6 +267,18 @@ button {
   }
 }
 
+.select {
+  position: relative;
+  &:after {
+    content: "arrow_drop_down";
+    font-family: var(--family-icon);
+    position: absolute;
+    right: 12px;
+    top: 8px;
+    color: var(--input-icon-color);
+  }
+}
+
 input {
   position: relative;
   width: 100%;
@@ -268,7 +287,9 @@ input {
   font-size: 16px;
   border: 2px solid var(--blue-grey-100);
   width: 100%;
+  height: 64px;
   padding: 20px 10px;
+  background-color: var(--input-background-color);
   color: var(--darker-gray);
   transition: border-color var(--fast) var(--transition);
   border-radius: var(--border-radius);
@@ -294,6 +315,7 @@ input {
 
   &[disabled] {
     cursor: not-allowed;
+    background-color: var(--input-background-color-disabled);
   }
 
   &:focus {
