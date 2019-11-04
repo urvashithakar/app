@@ -51,6 +51,7 @@ export default {
   computed: {
     ...mapGetters(["currentProject"]),
     artStyles() {
+      if (this.currentProject.status !== "successful") return;
       if (this.project_image.full_url) {
         return { backgroundImage: `url(${this.project_image.full_url})` };
       } else {
@@ -58,16 +59,20 @@ export default {
       }
     },
     project_color() {
-      return this.currentProject.project_color || defaults.project_color;
+      if (this.currentProject.status !== "successful") return;
+      return this.currentProject.data.project_color || defaults.project_color;
     },
     project_image() {
-      return this.currentProject.project_image || defaults.project_image;
+      if (this.currentProject.status !== "successful") return;
+      return this.currentProject.data.project_image || defaults.project_image;
     },
     project_logo() {
-      return this.currentProject.project_logo || defaults.project_logo;
+      if (this.currentProject.status !== "successful") return;
+      return this.currentProject.data.project_logo || defaults.project_logo;
     },
     project_name() {
-      return this.currentProject.project_name || defaults.project_name;
+      if (this.currentProject.status !== "successful") return;
+      return this.currentProject.data.project_name || defaults.project_name;
     },
     version() {
       return `Directus v${version}`;
