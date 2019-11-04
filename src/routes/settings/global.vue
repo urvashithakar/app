@@ -1,6 +1,6 @@
 <template>
   <div class="settings-global">
-    <v-header :breadcrumb="links" :icon-link="`/${currentProjectID}/settings`" settings>
+    <v-header :breadcrumb="links" :icon-link="`/${currentProjectKey}/settings`" settings>
       <template slot="buttons">
         <v-header-button
           :disabled="!editing"
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from "vuex";
+import { mapState } from "vuex";
 
 export default {
   name: "SettingsGlobal",
@@ -42,9 +42,9 @@ export default {
   computed: {
     ...mapState({
       settings: state => state.settings.values,
-      fields: state => state.collections.directus_settings.fields
+      fields: state => state.collections.directus_settings.fields,
+      currentProjectKey: state => state.currentProjectKey
     }),
-    ...mapGetters(["currentProjectID"]),
     values() {
       return {
         ...this.settings,
@@ -55,11 +55,11 @@ export default {
       return [
         {
           name: this.$t("settings"),
-          path: `/${this.currentProjectID}/settings`
+          path: `/${this.currentProjectKey}/settings`
         },
         {
           name: this.$t("settings_global"),
-          path: `/${this.currentProjectID}/settings/global`
+          path: `/${this.currentProjectKey}/settings/global`
         }
       ];
     },
@@ -83,7 +83,7 @@ export default {
         .then(() => {
           this.saving = false;
           this.edits = {};
-          this.$router.push(`/${this.currentProjectID}/settings`);
+          this.$router.push(`/${this.currentProjectKey}/settings`);
           this.$notify({
             title: this.$t("settings_saved"),
             color: "green",

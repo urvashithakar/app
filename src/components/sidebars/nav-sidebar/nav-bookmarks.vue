@@ -5,7 +5,7 @@
         <li v-for="bookmark in bookmarks" :key="bookmark.id" class="bookmark">
           <router-link
             class="no-wrap"
-            :to="`/${currentProjectID}/bookmarks/${bookmark.collection}/${bookmark.id}`"
+            :to="`/${currentProjectKey}/bookmarks/${bookmark.collection}/${bookmark.id}`"
           >
             <v-icon name="bookmark_outline" class="icon" />
             {{ bookmark.title }}
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapState } from "vuex";
 
 export default {
   name: "NavBookmarks",
@@ -51,7 +51,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["currentProjectID"]),
+    ...mapState(["currentProjectKey"]),
     isUserAdmin() {
       return this.$store.state.currentUser.admin;
     },

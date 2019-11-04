@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapState } from "vuex";
 
 export default {
   components: {},
@@ -82,7 +82,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["currentProjectID"]),
+    ...mapState(["currentProjectKey"]),
     /*
      *   Array of days to display in the sidebar.
      */
@@ -128,7 +128,7 @@ export default {
     },
 
     goToItem(id) {
-      this.$router.push(`/${this.currentProjectID}/collections/${this.$parent.collection}/${id}`);
+      this.$router.push(`/${this.currentProjectKey}/collections/${this.$parent.collection}/${id}`);
     },
 
     changeDay(distance) {

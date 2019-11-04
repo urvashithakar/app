@@ -1,6 +1,6 @@
 <template>
   <div class="collections">
-    <v-header :breadcrumb="breadcrumb" :icon-link="`/${currentProjectID}/settings`" settings>
+    <v-header :breadcrumb="breadcrumb" :icon-link="`/${currentProjectKey}/settings`" settings>
       <template slot="buttons">
         <v-header-button key="add" icon="add" :label="$t('new')" @click="addNew = true" />
       </template>
@@ -106,7 +106,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapState } from "vuex";
 
 export default {
   name: "SettingsCollections",
@@ -132,7 +132,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["currentProjectID"]),
+    ...mapState(["currentProjectKey"]),
     items() {
       const collections = this.$store.state.collections || {};
 
@@ -141,18 +141,18 @@ export default {
         .map(collection => ({
           ...collection,
           name: this.$t(`collections-${collection.collection}`),
-          __link__: `/${this.currentProjectID}/settings/collections/${collection.collection}`
+          __link__: `/${this.currentProjectKey}/settings/collections/${collection.collection}`
         }));
     },
     breadcrumb() {
       return [
         {
           name: this.$t("settings"),
-          path: `/${this.currentProjectID}/settings`
+          path: `/${this.currentProjectKey}/settings`
         },
         {
           name: this.$t("collections_and_fields"),
-          path: `/${this.currentProjectID}/settings/collections`
+          path: `/${this.currentProjectKey}/settings/collections`
         }
       ];
     }
@@ -532,7 +532,7 @@ export default {
             fields: fieldsToDispatch
           });
           this.$store.dispatch("getPermissions");
-          this.$router.push(`/${this.currentProjectID}/settings/collections/${this.newName}`);
+          this.$router.push(`/${this.currentProjectKey}/settings/collections/${this.newName}`);
         })
         .catch(error => {
           this.adding = false;

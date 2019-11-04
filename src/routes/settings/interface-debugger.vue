@@ -2,7 +2,7 @@
   <div class="interface-debugger">
     <v-header
       :breadcrumb="links"
-      :icon-link="`/${currentProjectID}/settings/interfaces`"
+      :icon-link="`/${currentProjectKey}/settings/interfaces`"
       settings
     />
 
@@ -191,7 +191,7 @@
 
 <script>
 import mapping, { datatypes } from "../../type-map";
-import { mapGetters } from "vuex";
+import { mapState } from "vuex";
 
 export default {
   name: "InterfaceDebugger",
@@ -288,20 +288,20 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["currentProjectID"]),
+    ...mapState(["currentProjectKey"]),
     links() {
       return [
         {
           name: this.$t("settings"),
-          path: `/${this.currentProjectID}/settings`
+          path: `/${this.currentProjectKey}/settings`
         },
         {
           name: this.$t("interfaces"),
-          path: `/${this.currentProjectID}/settings/interfaces`
+          path: `/${this.currentProjectKey}/settings/interfaces`
         },
         {
           name: this.extension.name,
-          path: `/${this.currentProjectID}/settings/interfaces/${this.id}`
+          path: `/${this.currentProjectKey}/settings/interfaces/${this.id}`
         }
       ];
     },

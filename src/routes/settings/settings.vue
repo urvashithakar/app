@@ -9,7 +9,7 @@
             :title="$t('settings_global')"
             :subtitle="$tc('item_count', globalNum, { count: globalNum })"
             element="li"
-            :to="`/${currentProjectID}/settings/global`"
+            :to="`/${currentProjectKey}/settings/global`"
             icon="public"
           />
 
@@ -17,7 +17,7 @@
             :title="$t('settings_collections_fields')"
             :subtitle="$tc('collection_count', collectionsNum, { count: collectionsNum })"
             element="li"
-            :to="`/${currentProjectID}/settings/collections`"
+            :to="`/${currentProjectKey}/settings/collections`"
             icon="box"
           />
 
@@ -25,7 +25,7 @@
             :title="$t('settings_permissions')"
             :subtitle="roleCount"
             element="li"
-            :to="`/${currentProjectID}/settings/roles`"
+            :to="`/${currentProjectKey}/settings/roles`"
             icon="group"
           />
 
@@ -47,7 +47,7 @@
             :title="$t('interfaces')"
             :subtitle="$tc('interface_count', interfaceCount, { count: interfaceCount })"
             element="li"
-            :to="`/${currentProjectID}/settings/interfaces`"
+            :to="`/${currentProjectKey}/settings/interfaces`"
             icon="extension"
           />
 
@@ -55,7 +55,7 @@
             :title="$t('activity_log')"
             :subtitle="activityCount"
             element="li"
-            :to="`/${currentProjectID}/activity`"
+            :to="`/${currentProjectKey}/activity`"
             icon="warning"
           />
 
@@ -135,7 +135,7 @@
 <script>
 import { version } from "../../../package.json";
 import VSignal from "../../components/signal.vue";
-import { mapGetters } from "vuex";
+import { mapGetters, mapState } from "vuex";
 
 export default {
   name: "Settings",
@@ -156,7 +156,8 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["currentProject", "currentProjectID"]),
+    ...mapGetters(["currentProject"]),
+    ...mapState(["currentProjectKey"]),
     globalNum() {
       return Object.keys(this.$store.state.collections.directus_settings.fields).length;
     },
@@ -178,7 +179,7 @@ export default {
       return [
         {
           name: this.$t("settings"),
-          path: `/${this.currentProjectID}/settings`
+          path: `/${this.currentProjectKey}/settings`
         }
       ];
     }

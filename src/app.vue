@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from "vuex";
+import { mapState } from "vuex";
 import VError from "./components/error.vue";
 import { TOGGLE_NAV, SET_CURRENT_PROJECT } from "./store/mutation-types";
 import VNavSidebar from "./components/sidebars/nav-sidebar/nav-sidebar.vue";
@@ -76,9 +76,9 @@ export default {
           .getPropertyValue("--brand")
           .trim(),
       infoActive: state => state.sidebars.info,
-      projects: state => state.projects
+      projects: state => state.projects,
+      currentProjectKey: state => state.currentProjectKey
     }),
-    ...mapGetters(["currentProjectID"]),
     publicRoute() {
       return this.$route.meta.publicRoute || false;
     },
@@ -168,7 +168,7 @@ export default {
     },
     keepEditing() {
       this.$router.push(
-        `/${this.currentProjectID}/collections/${this.$store.state.edits.collection}/${this.$store.state.edits.primaryKey}`
+        `/${this.currentProjectKey}/collections/${this.$store.state.edits.collection}/${this.$store.state.edits.primaryKey}`
       );
     },
     discardChanges() {

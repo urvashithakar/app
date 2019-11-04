@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapState } from "vuex";
 
 export default {
   props: {
@@ -46,7 +46,7 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(["currentProjectID"]),
+    ...mapState(["currentProjectKey"]),
     hidden() {
       return this.display == "hidden";
     },
@@ -88,7 +88,7 @@ export default {
     goToItem(id) {
       if (id !== -1)
         this.$router.push(
-          `/${this.currentProjectID}/collections/${this.$parent.$parent.collection}/${id}`
+          `/${this.currentProjectKey}/collections/${this.$parent.$parent.collection}/${id}`
         );
     }
   }
