@@ -126,7 +126,7 @@ export default {
       this.confirmSignOutLoading = true;
       await this.$api.logout();
       this.$store.commit(UPDATE_PROJECT, {
-        index: this.$store.state.currentProjectIndex,
+        key: this.$store.state.currentProjectKey,
         data: {
           authenticated: false
         }
