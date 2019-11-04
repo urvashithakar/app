@@ -82,7 +82,7 @@ export default {
 }
 
 .container {
-  background-color: var(--white);
+  background-color: var(--public-background-color);
   box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.25);
   max-width: 500px;
   width: 100%;
