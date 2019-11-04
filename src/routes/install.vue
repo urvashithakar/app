@@ -199,6 +199,12 @@ export default {
         }
       } catch (error) {
         this.error = error;
+
+        this.$events.emit("error", {
+          notify: error.response.data.error.message,
+          error
+        });
+
         this.step = 2;
       }
     }
