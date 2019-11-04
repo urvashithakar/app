@@ -257,7 +257,7 @@ form {
 }
 
 .button,
-button {
+button:not(.secondary) {
   position: relative;
   background-color: var(--button-primary-background-color);
   border: 2px solid var(--button-primary-background-color);
