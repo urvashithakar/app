@@ -11,9 +11,9 @@ import {
   TOGGLE_INFO,
   LOADING_START,
   LOADING_FINISHED,
-  SET_PROJECTS,
   SET_CURRENT_PROJECT,
-  UPDATE_PROJECT
+  UPDATE_PROJECT,
+  SET_PROJECT_STATUS
 } from "./mutation-types";
 import Vue from "vue";
 
@@ -77,18 +77,27 @@ const mutations = {
     state.queue = state.queue.filter(req => req.id !== id);
   },
 
-  [SET_PROJECTS](state, projects) {
-    state.projects = projects;
+  [SET_CURRENT_PROJECT](state, key) {
+    state.currentProjectKey = key;
   },
 
-  [SET_CURRENT_PROJECT](state, index) {
-    state.currentProjectIndex = index;
-  },
-
-  [UPDATE_PROJECT](state, { index, data }) {
+  [UPDATE_PROJECT](state, { key, data, error }) {
+    const index = state.projects.findIndex(p => p.key === key);
     Vue.set(state.projects, index, {
       ...state.projects[index],
-      ...data
+      data: {
+        ...state.projects[index].data,
+        ...(data || {})
+      },
+      error: error || null
+    });
+  },
+
+  [SET_PROJECT_STATUS](state, { key, status }) {
+    const index = state.projects.findIndex(p => p.key === key);
+    Vue.set(state.projects, index, {
+      ...state.projects[index],
+      status
     });
   }
 };

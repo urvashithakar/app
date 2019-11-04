@@ -75,7 +75,8 @@ export default {
         getComputedStyle(document.documentElement)
           .getPropertyValue("--brand")
           .trim(),
-      infoActive: state => state.sidebars.info
+      infoActive: state => state.sidebars.info,
+      projects: state => state.projects
     }),
     ...mapGetters(["currentProjectID"]),
     publicRoute() {
@@ -192,12 +193,16 @@ export default {
 
     preselectProject() {
       if (this.$route.query.project) {
-        const projectIndex = this.$store.state.projects.findIndex(p => {
-          return p.project === this.$route.query.project;
+        let exists = false;
+
+        this.projects.forEach(p => {
+          if (p.key === this.$route.query.project) {
+            exists = true;
+          }
         });
 
-        if (projectIndex) {
-          this.$store.commit(SET_CURRENT_PROJECT, projectIndex);
+        if (exists) {
+          this.$store.commit(SET_CURRENT_PROJECT, this.$route.query.project);
         }
 
         const query = _.clone(this.$route.query);

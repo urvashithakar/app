@@ -2,12 +2,22 @@
   <div v-if="projects.length > 1" class="project-chooser">
     <span v-tooltip.right="{ classes: ['inverted'], content: 'API URL' }" class="preview">
       <v-icon class="icon signal" color="input-text-color" name="signal_wifi_4_bar" />
-      {{ currentProject.project_name }}
+      <template v-if="currentProject.status === 'successful'">
+        {{ currentProject.data.project_name }}
+      </template>
+      <template v-else>
+        {{ currentProjectKey }}
+      </template>
       <v-icon class="icon dropdown" color="input-text-color" name="arrow_drop_down" />
     </span>
-    <select v-model="currentProjectIndex">
-      <option v-for="(project, index) in projects" :key="index" :value="index">
-        {{ project.project_name }}
+    <select v-model="currentProjectKey">
+      <option v-for="project in projects" :key="project.key" :value="project.key">
+        <template v-if="project.status === 'successful'">
+          {{ project.data.project_name }}
+        </template>
+        <template v-else>
+          {{ project.key }}
+        </template>
       </option>
     </select>
   </div>
@@ -22,9 +32,9 @@ export default {
   computed: {
     ...mapGetters(["currentProject"]),
     ...mapState(["projects"]),
-    currentProjectIndex: {
+    currentProjectKey: {
       get() {
-        return this.$store.state.currentProjectIndex;
+        return this.$store.state.currentProjectKey;
       },
       set(value) {
         this.$store.commit(SET_CURRENT_PROJECT, value);

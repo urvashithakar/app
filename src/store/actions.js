@@ -9,9 +9,9 @@ import {
   DELETE_BOOKMARK,
   LOADING_START,
   LOADING_FINISHED,
-  SET_PROJECTS
+  SET_PROJECT_STATUS,
+  UPDATE_PROJECT
 } from "./mutation-types";
-import splitURL from "@/utils/split-url";
 
 export function latency({ commit }) {
   const start = performance.now();
@@ -109,54 +109,40 @@ export function loadingFinished({ commit }, id) {
   commit(LOADING_FINISHED, id);
 }
 
-export async function getProjects({ commit }) {
-  const urls = Object.keys(window.__DirectusConfig__.api);
-  const projects = await Promise.all(urls.map(fetchProjectInfo));
-  commit(SET_PROJECTS, projects);
+export async function getProjects({ commit, state }) {
+  const apiRootPath = state.apiRootPath;
+  const projects = state.projects;
 
-  async function fetchProjectInfo(fullUrl) {
-    let project_name = "Directus";
-    let project_logo = null;
-    let project_color = "blue-grey-800";
-    let project_image = null;
-    let project_icon = null;
-    let authenticated = false;
-    let installed = true;
-    let error = null;
+  projects.forEach(async project => {
+    const url = apiRootPath + project.key + "/";
+    commit(SET_PROJECT_STATUS, { key: project.key, status: "loading" });
 
     try {
-      const response = await axios.get(fullUrl);
+      const response = await axios.get(url);
+      const {
+        project_name,
+        project_logo,
+        project_color,
+        project_image,
+        project_icon
+      } = response.data.data.api;
+      const authenticated = response.data.public === undefined;
 
-      project_name = response.data.data.api.project_name;
-      project_logo = response.data.data.api.project_logo;
-      project_color = response.data.data.api.project_color;
-      project_image = response.data.data.api.project_image;
-      project_icon = response.data.data.api.project_icon;
-      authenticated = response.data.public === undefined;
-    } catch (e) {
-      const { status } = e.response;
-
-      if (status === 503) {
-        installed = false;
-      } else {
-        error = e;
-      }
+      commit(UPDATE_PROJECT, {
+        key: project.key,
+        data: {
+          project_name,
+          project_logo,
+          project_color,
+          project_image,
+          project_icon,
+          authenticated
+        }
+      });
+      commit(SET_PROJECT_STATUS, { key: project.key, status: "successful" });
+    } catch (error) {
+      commit(UPDATE_PROJECT, { key: project.key, error });
+      commit(SET_PROJECT_STATUS, { key: project.key, status: "failed" });
     }
-
-    const { url, project } = splitURL(fullUrl);
-
-    return {
-      project_name,
-      project_logo,
-      project_color,
-      project_image,
-      project_icon,
-      url,
-      project,
-      authenticated,
-      installed,
-      error,
-      requires2FA: null
-    };
-  }
+  });
 }

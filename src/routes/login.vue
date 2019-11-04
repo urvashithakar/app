@@ -8,6 +8,8 @@
         <p>{{ currentProject.project_name }}</p>
       </template>
 
+      <!--
+      TODO: base this on global API installed flag coming from /projects
       <template v-else-if="currentProject.installed === false">
         <p>{{ $t("install_copy") }}</p>
         <div class="buttons">
@@ -16,9 +18,24 @@
           </router-link>
         </div>
       </template>
+      -->
+
+      <template v-else-if="currentProject.status === 'failed'">
+        Something is wrong with this project
+        <!-- TODO: use v-error here -->
+      </template>
+
+      <template v-else-if="currentProject.status === 'loading'">
+        Loading project info
+        <!-- TODO: add spinner -->
+      </template>
 
       <template v-else>
-        <div v-if="currentProject.authenticated === true">
+        <div
+          v-if="
+            currentProject.status === 'successful' && currentProject.data.authenticated === true
+          "
+        >
           <p>
             <b>{{ firstName }} {{ lastName }}</b>
             {{ $t("continue_as") }}
@@ -88,11 +105,11 @@ export default {
   },
   computed: {
     ...mapGetters(["currentProject"]),
-    ...mapState(["currentProjectIndex"])
+    ...mapState(["currentProjectKey", "apiRootPath"])
   },
   watch: {
-    currentProjectIndex() {
-      if (this.currentProject.authenticated === true) {
+    currentProjectKey() {
+      if (this.currentProject.data.authenticated === true) {
         this.fetchAuthenticatedUser();
       } else {
         this.fetchSSOProviders();
@@ -100,7 +117,10 @@ export default {
     }
   },
   created() {
-    if (this.currentProject.authenticated === true) {
+    if (
+      this.currentProject.status === "successful" &&
+      this.currentProject.data.authenticated === true
+    ) {
       this.fetchAuthenticatedUser();
     } else {
       this.fetchSSOProviders();
@@ -109,14 +129,13 @@ export default {
   methods: {
     ...mapMutations([UPDATE_PROJECT]),
     onSubmit() {
-      if (this.currentProject.authenticated) {
+      if (this.currentProject.data.authenticated) {
         return this.enterApp();
       } else {
         return this.login();
       }
     },
     login() {
-      const { url, project } = this.currentProject;
       const { email, password } = this;
       this.signingIn = true;
 
@@ -128,8 +147,8 @@ export default {
 
       this.$api
         .login({
-          url,
-          project,
+          url: this.apiRootPath,
+          project: this.currentProjectKey,
           email,
           password,
           mode: "cookie"
@@ -140,7 +159,7 @@ export default {
           const { max_upload_size } = projectInfo.server;
 
           this[UPDATE_PROJECT]({
-            index: this.currentProjectIndex,
+            key: this.currentProjectKey,
             data: {
               requires2FA,
               version,
@@ -180,7 +199,7 @@ export default {
       await hydrateStore();
 
       // Default to /collections as homepage
-      let route = `/${this.currentProject.project}/collections`;
+      let route = `/${this.currentProjectKey}/collections`;
 
       // If the last visited page is saved in the current user record, use that
       if (this.$store.state.currentUser.last_page) {
@@ -201,8 +220,8 @@ export default {
     async fetchAuthenticatedUser() {
       this.firstName = null;
       this.latName = null;
-      this.$api.config.url = this.currentProject.url;
-      this.$api.config.project = this.currentProject.project;
+      this.$api.config.url = this.apiRootPath;
+      this.$api.config.project = this.currentProjectKey;
       const { data } = await this.$api.getMe({ fields: "first_name,last_name" });
       this.firstName = data.first_name;
       this.lastName = data.last_name;
@@ -210,8 +229,10 @@ export default {
 
     async fetchSSOProviders() {
       this.ssoProviders = [];
-      this.$api.config.url = this.currentProject.url;
-      this.$api.config.project = this.currentProject.project;
+      this.$api.config.url = this.apiRootPath;
+      this.$api.config.project = this.currentProjectKey;
+
+      console.log(this.$api.config.url);
       const { data } = await this.$api.getThirdPartyAuthProviders();
       this.ssoProviders = data;
     }

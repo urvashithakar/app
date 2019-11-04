@@ -33,7 +33,7 @@ const base =
 
 const router = new Router({
   mode: "hash",
-  base: base || "/",
+  base: base,
   // Make sure that the page is scrolled to the top on navigation
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
