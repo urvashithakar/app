@@ -47,10 +47,6 @@ const router = new Router({
   },
   routes: [
     {
-      path: "/",
-      redirect: "/:project/collections"
-    },
-    {
       path: "/:project/collections",
       component: Collections
     },
@@ -234,6 +230,8 @@ const router = new Router({
 });
 
 router.beforeEach(async (to, from, next) => {
+  const publicRoute = to.matched.some(record => record.meta.publicRoute);
+
   store.commit(TOGGLE_NAV, false);
   store.commit(TOGGLE_INFO, false);
 
@@ -245,12 +243,25 @@ router.beforeEach(async (to, from, next) => {
 
     if (loggedIn) {
       await hydrateStore();
-    } else {
-      return next("/login");
     }
   }
 
-  return next();
+  if (publicRoute) return next();
+
+  const loggedIn = store.getters.currentProject.data.authenticated;
+
+  if (loggedIn) {
+    return next();
+  }
+
+  if (to.fullPath === "/") {
+    return next({ path: "/login" });
+  }
+
+  return next({
+    path: "/login",
+    query: { redirect: to.fullPath }
+  });
 });
 
 router.afterEach(to => {
