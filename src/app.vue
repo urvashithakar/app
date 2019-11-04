@@ -23,6 +23,7 @@
 
   <div
     v-else-if="localeLoaded && !publicRoute"
+    class="private"
     :style="{
       '--brand': `var(--${color})`
     }"
