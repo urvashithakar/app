@@ -94,11 +94,11 @@ export default {
   top: -1px;
   left: 0px;
   font-size: 16px;
-  color: var(--white);
+  color: var(--page-background-color);
 }
 
 .none {
-  border-color: var(--blue-grey-200);
+  border-color: var(--input-icon-color);
 }
 
 .mine {

@@ -153,7 +153,7 @@ export default {
   margin-bottom: 40px;
 }
 .v-permissions {
-  background-color: var(--white);
+  background-color: var(--page-background-color);
   border-radius: var(--border-radius);
   border: var(--input-border-width) solid var(--input-border-color);
   max-width: 632px;
@@ -174,14 +174,14 @@ export default {
         position: absolute;
         transform: rotate(45deg);
         font-size: 18px;
-        color: var(--blue-grey-200);
+        color: var(--input-icon-color);
       }
       & .cell:first-child {
         padding-left: 2rem;
       }
     }
     &:not(.sub) {
-      border-top: 1px solid var(--blue-grey-50);
+      border-top: var(--input-border-width) solid var(--table-row-border-color);
     }
   }
   ::v-deep .cell {
@@ -200,7 +200,7 @@ export default {
     }
   }
   .border {
-    border-top: 1px solid var(--blue-grey-50);
+    border-top: var(--input-border-width) solid var(--table-row-border-color);
   }
   &.loading {
     padding: 300px 0;

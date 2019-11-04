@@ -35,7 +35,7 @@
       </template>
     </v-header>
 
-    <label>{{ $t("permissions") }}</label>
+    <label class="type-label">{{ $t("permissions") }}</label>
     <v-notice v-if="isAdmin" color="warning" class="admin-note">
       {{ $t("permissions_admin") }}
     </v-notice>
@@ -541,12 +541,7 @@ export default {
 }
 
 label {
-  margin-bottom: 10px;
-  text-transform: none;
-  color: var(--blue-grey-800);
-  font-size: 1.2rem;
-  line-height: 1.1;
-  font-weight: 400;
+  margin-bottom: var(--input-label-margin);
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;

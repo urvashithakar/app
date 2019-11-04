@@ -555,12 +555,12 @@ fieldset {
   right: 3px;
 
   i {
-    color: var(--blue-grey-200);
+    color: var(--input-icon-color);
     transition: color var(--fast) var(--transition);
   }
 
   &:hover i {
-    color: var(--blue-grey-900);
+    color: var(--input-text-color);
   }
 }
 
@@ -583,7 +583,7 @@ fieldset {
 }
 
 .mixed {
-  color: var(--blue-grey-200);
+  color: var(--empty-value);
 }
 
 .limited {
@@ -591,7 +591,7 @@ fieldset {
 }
 
 .block {
-  color: var(--blue-grey-50);
+  color: var(--input-border-color);
 }
 
 .set-all {
