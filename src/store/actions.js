@@ -109,40 +109,42 @@ export function loadingFinished({ commit }, id) {
   commit(LOADING_FINISHED, id);
 }
 
-export async function getProjects({ commit, state }) {
+export function getProjects({ commit, state }) {
   const apiRootPath = state.apiRootPath;
   const projects = state.projects;
 
-  projects.forEach(async project => {
-    const url = apiRootPath + project.key + "/";
-    commit(SET_PROJECT_STATUS, { key: project.key, status: "loading" });
+  return Promise.allSettled(
+    projects.map(async project => {
+      const url = apiRootPath + project.key + "/";
+      commit(SET_PROJECT_STATUS, { key: project.key, status: "loading" });
 
-    try {
-      const response = await axios.get(url);
-      const {
-        project_name,
-        project_logo,
-        project_color,
-        project_image,
-        project_icon
-      } = response.data.data.api;
-      const authenticated = response.data.public === undefined;
-
-      commit(UPDATE_PROJECT, {
-        key: project.key,
-        data: {
+      try {
+        const response = await axios.get(url);
+        const {
           project_name,
           project_logo,
           project_color,
           project_image,
-          project_icon,
-          authenticated
-        }
-      });
-      commit(SET_PROJECT_STATUS, { key: project.key, status: "successful" });
-    } catch (error) {
-      commit(UPDATE_PROJECT, { key: project.key, error });
-      commit(SET_PROJECT_STATUS, { key: project.key, status: "failed" });
-    }
-  });
+          project_icon
+        } = response.data.data.api;
+        const authenticated = response.data.public === undefined;
+
+        commit(UPDATE_PROJECT, {
+          key: project.key,
+          data: {
+            project_name,
+            project_logo,
+            project_color,
+            project_image,
+            project_icon,
+            authenticated
+          }
+        });
+        commit(SET_PROJECT_STATUS, { key: project.key, status: "successful" });
+      } catch (error) {
+        commit(UPDATE_PROJECT, { key: project.key, error });
+        commit(SET_PROJECT_STATUS, { key: project.key, status: "failed" });
+      }
+    })
+  );
 }

@@ -23,6 +23,7 @@ import SettingsFields from "./routes/settings/fields.vue";
 import SettingsRoles from "./routes/settings/roles.vue";
 import SettingsPermissions from "./routes/settings/permissions.vue";
 import PageExtension from "./routes/page-extension.vue";
+import hydrateStore from "@/hydrate";
 
 Vue.use(Router);
 
@@ -233,41 +234,23 @@ const router = new Router({
 });
 
 router.beforeEach(async (to, from, next) => {
-  const publicRoute = to.matched.some(record => record.meta.publicRoute);
-
   store.commit(TOGGLE_NAV, false);
   store.commit(TOGGLE_INFO, false);
 
-  await store.dispatch("getProjects");
+  // This runs on first load
+  if (store.state.projects.length > 0 && store.state.projects[0].status === null) {
+    await store.dispatch("getProjects");
 
-  if (to.path === "/setup-2fa") {
-    return next();
+    const loggedIn = store.getters.currentProject.data.authenticated;
+
+    if (loggedIn) {
+      await hydrateStore();
+    } else {
+      return next("/login");
+    }
   }
 
-  if (publicRoute) {
-    return next();
-  }
-
-  let loggedIn = false;
-
-  try {
-    const currentProject = await api.projectInfo();
-    loggedIn = currentProject.data.public !== true;
-  } catch {}
-
-  if (loggedIn) return next();
-
-  //This check prevents the default redirect query parameter which is "/collections"
-  if (from.fullPath === "/" && to.redirectedFrom === "/") {
-    return next({ path: "/login" });
-  }
-
-  //If user tried to open the private route and not logged in.
-  //Save the path in query as to 'redirect'
-  return next({
-    path: "/login",
-    query: { redirect: to.fullPath }
-  });
+  return next();
 });
 
 router.afterEach(to => {
