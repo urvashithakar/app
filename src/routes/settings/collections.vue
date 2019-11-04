@@ -622,13 +622,13 @@ export default {
 }
 
 .table {
-  background-color: var(--white);
+  background-color: var(--page-background-color);
   position: relative;
 
   .row {
     display: flex;
     align-items: center;
-    border-bottom: 2px solid var(--off-white);
+    border-bottom: 2px solid var(--table-row-border-color);
     box-sizing: content-box;
     height: 48px;
   }
@@ -656,7 +656,7 @@ export default {
 
     .row {
       height: 100%;
-      border-bottom: 2px solid var(--blue-grey-50);
+      border-bottom: 2px solid var(--table-head-border-color);
     }
   }
 
@@ -678,8 +678,8 @@ export default {
     border: 0;
 
     &.managed {
-      background-color: var(--blue-grey-50);
-      color: var(--blue-grey-300);
+      background-color: var(--button-tertiary-background-color);
+      color: var(--button-tertiary-text-color);
 
       &:hover {
         background-color: var(--danger);
@@ -688,12 +688,12 @@ export default {
     }
 
     &.not-managed {
-      background-color: var(--blue-grey-800);
-      color: var(--white);
+      background-color: var(--button-primary-background-color);
+      color: var(--button-primary-text-color);
 
       &:hover {
-        background-color: var(--blue-grey-900);
-        color: var(--white);
+        background-color: var(--button-primary-background-color-hover);
+        color: var(--button-primary-text-color);
       }
     }
   }

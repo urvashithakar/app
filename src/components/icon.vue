@@ -50,10 +50,11 @@ export default {
         // These values are the recommended MD icon sizes. Any alternate size will render the icons
         // fuzzy. See https://google.github.io/material-design-icons/#sizing
         // .... except for 16, but we need that size for inside of checkboxes (permissions)
-        const valid = [16, 18, 24, 36, 48].includes(numberValue);
+        // .... except for 12, but we need that size for sort direction arrow (tables)
+        const valid = [12, 16, 18, 24, 36, 48].includes(numberValue);
 
         if (!valid) {
-          console.warn("[v-icon]: Icon size has to be 18, 24, 36, or 48.");
+          console.warn("[v-icon]: Icon size has to be 12, 18, 24, 36, or 48.");
         }
 
         return valid;

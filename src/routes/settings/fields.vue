@@ -29,7 +29,7 @@
       </template>
     </v-header>
 
-    <label class="label">{{ $t("fields") }}</label>
+    <label class="type-label">{{ $t("fields") }}</label>
     <v-notice color="warning" icon="warning">{{ $t("fields_are_saved_instantly") }}</v-notice>
     <div class="table">
       <div class="header">
@@ -628,7 +628,7 @@ h2 {
 }
 
 .table {
-  background-color: var(--white);
+  background-color: var(--page-background-color);
   border: var(--input-border-width) solid var(--input-border-color);
   border-radius: var(--border-radius);
   border-spacing: 0;
@@ -637,7 +637,7 @@ h2 {
   margin: 10px 0 20px;
 
   .header {
-    border-bottom: 2px solid var(--blue-grey-50);
+    border-bottom: 2px solid var(--table-head-border-color);
     height: 60px;
     .row {
       height: 60px;
@@ -672,24 +672,20 @@ h2 {
   .dragging .sortable-chosen,
   .sortable-chosen:active {
     background-color: var(--highlight) !important;
-    color: var(--blue-grey-900);
-
-    .manual-sort {
-      color: var(--blue-grey-900);
-    }
   }
 
   .body {
-    &.dragging .row:hover {
-      background-color: var(--white);
+    .dragging .row.link:hover {
+      background-color: var(--page-background-color);
     }
 
     .row {
       cursor: pointer;
       position: relative;
       height: 48px;
-      border-bottom: 2px solid var(--off-white);
+      border-bottom: 2px solid var(--table-row-border-color);
 
+      &.inner,
       &:last-of-type {
         border-bottom: none;
       }
@@ -702,10 +698,10 @@ h2 {
     .drag {
       user-select: none;
       cursor: -webkit-grab;
-      color: var(--blue-grey-200);
+      color: var(--input-border-color);
 
       &:hover {
-        color: var(--blue-grey-600);
+        color: var(--input-border-color-hover);
       }
     }
   }
@@ -735,19 +731,15 @@ h2 {
 }
 
 em.note {
-  color: var(--blue-grey-200);
-  margin-top: 4px;
-  margin-bottom: 40px;
+  color: var(--note-text-color);
+  margin-top: var(--input-note-margin);
+  margin-bottom: var(--input-vertical-spacing);
   display: block;
 }
 
-label.label {
-  margin-bottom: 10px;
+label.type-label {
+  margin-bottom: var(--input-label-margin);
   text-transform: none;
-  color: var(--blue-grey-800);
-  font-size: 1.2rem;
-  line-height: 1.1;
-  font-weight: 400;
 }
 
 .ctx-menu {
