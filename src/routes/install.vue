@@ -68,6 +68,14 @@
     </form>
 
     <div v-show="step === 3" class="step-3">
+      <h2 class="type-title">Doing things...</h2>
+      <v-progress />
+      <p>
+        Busy busy busy busy busy busy busy busy busy
+      </p>
+    </div>
+
+    <div v-show="step === 4" class="step-4">
       <h2 class="type-title">All Set</h2>
       <div class="progress-bar"></div>
       <p>
@@ -93,7 +101,7 @@
 import PublicView from "@/components/public-view";
 import PublicNotice from "@/components/public/notice";
 import axios from "axios";
-import { mapGetters } from "vuex";
+import { mapState } from "vuex";
 import PublicStepper from "@/components/public/stepper";
 
 export default {
@@ -125,11 +133,12 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["currentProject"])
+    ...mapState(["apiRootPath"])
   },
   methods: {
     async onSubmit() {
       this.installing = true;
+      this.step = 3;
 
       const {
         project_name,
@@ -144,7 +153,7 @@ export default {
       } = this;
 
       try {
-        await axios.post(this.currentProject.url + "/projects", {
+        await axios.post(this.apiRootPath + "projects", {
           project_name,
           project_key,
           user_email,
@@ -162,9 +171,10 @@ export default {
           iconMain: "check"
         });
 
-        this.step = 3;
+        this.step = 4;
       } catch (error) {
         this.error = error;
+        this.step = 2;
       } finally {
         this.installing = false;
       }
