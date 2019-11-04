@@ -30,7 +30,7 @@ import { version } from "../../package.json";
 import { mapGetters } from "vuex";
 
 const defaults = {
-  project_color: "blue-grey-700",
+  project_color: "project-background-color",
   project_image: { full_url: null },
   project_logo: { full_url: null },
   project_name: "Directus"
@@ -83,6 +83,7 @@ export default {
 
 .container {
   background-color: var(--white);
+  box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.25);
   max-width: 500px;
   width: 100%;
   height: 100%;
@@ -96,15 +97,7 @@ export default {
   align-items: flex-start;
 
   &.wide {
-    max-width: 900px;
-  }
-
-  .title {
-    margin-bottom: 32px;
-
-    @media (min-height: 700px) {
-      margin-bottom: 60px;
-    }
+    max-width: 872px;
   }
 
   .logo {
@@ -130,6 +123,7 @@ export default {
 }
 
 .art {
+  transition: all var(--fast) var(--transition);
   flex-grow: 1;
   background-size: cover;
   background-position: center center;

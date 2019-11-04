@@ -15,7 +15,7 @@
       }"
       class="step"
     >
-      <v-icon v-if="currentStep > step" color="white" size="16" name="check" />
+      <v-icon v-if="currentStep > step" color="white" size="18" name="check" />
     </span>
   </div>
 </template>
@@ -43,6 +43,8 @@ export default {
   position: relative;
   align-items: center;
   justify-content: space-between;
+  margin-left: 8px; // Compensate for box-shadow
+  margin-right: 8px;
 
   &::before,
   .progress-line {
@@ -54,7 +56,7 @@ export default {
     width: 100%;
     left: 0;
     top: calc(50% - 1px);
-    background-color: var(--blue-grey-300);
+    background-color: var(--blue-grey-100);
     z-index: 1;
   }
 
@@ -67,7 +69,7 @@ export default {
     display: inline-block;
     width: 8px;
     height: 8px;
-    box-shadow: 0 0 0 4px var(--white), 0 0 0 6px var(--blue-grey-300);
+    box-shadow: 0 0 0 4px var(--white), 0 0 0 6px var(--blue-grey-100);
     background-color: var(--white);
     border-radius: 50%;
     position: relative;

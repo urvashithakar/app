@@ -1,6 +1,10 @@
 <template>
   <div v-if="projects.length > 1" class="project-chooser">
-    <span class="preview">{{ currentProject.project_name }}</span>
+    <span v-tooltip.right="{ classes: ['inverted'], content: 'API URL' }" class="preview">
+      <v-icon class="icon signal" color="input-text-color" name="signal_wifi_4_bar" />
+      {{ currentProject.project_name }}
+      <v-icon class="icon dropdown" color="input-text-color" name="arrow_drop_down" />
+    </span>
     <select v-model="currentProjectIndex">
       <option v-for="(project, index) in projects" :key="index" :value="index">
         {{ project.project_name }}
@@ -32,23 +36,47 @@ export default {
 
 <style lang="scss" scoped>
 .project-chooser {
-  border: 2px solid var(--blue-grey-100);
+  border: 2px solid var(--input-border-color);
   width: 100%;
   padding: 20px 10px;
   margin-bottom: 32px;
-  color: var(--blue-grey-400);
+  color: var(--input-text-color);
   transition: border-color var(--fast) var(--transition);
   border-radius: var(--border-radius);
   position: relative;
 
   &:hover {
-    border-color: var(--blue-grey-400);
+    border-color: var(--input-border-color-hover);
+  }
+
+  &:focus {
+    border-color: var(--input-border-color-focus);
   }
 
   .preview {
+    display: inline-block;
     position: relative;
+    font-size: 16px;
     transition: color var(--fast) var(--transition);
-    color: var(--blue-gray-800);
+    color: var(--input-text-color);
+    width: 100%;
+    padding: 0 36px;
+
+    .signal {
+      position: absolute;
+      left: 0;
+      top: calc(50% - 13px);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .dropdown {
+      position: absolute;
+      right: 0;
+      top: calc(50% - 13px);
+      user-select: none;
+      pointer-events: none;
+    }
   }
 
   select {

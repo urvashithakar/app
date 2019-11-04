@@ -6,6 +6,7 @@
       :type="inputType"
       :readonly="!newItem"
       :value="value"
+      :monospace="options.monospace"
       @input="$emit('input', $event)"
     ></v-input>
     <span v-if="!newItem" class="immutable">

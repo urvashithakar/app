@@ -91,33 +91,29 @@ export default {
     summary {
       margin: 20px 2px 5px;
       cursor: pointer;
-      color: var(--blue-grey-400);
-
-      &:hover {
-        color: var(--blue-grey-900);
-      }
+      color: var(--page-text-color);
     }
   }
 
   button {
     padding: 0.5em;
     transition: color var(--fast) var(--transition);
-    color: var(--blue-grey-300);
+    color: var(--input-icon-color);
     max-width: 37px;
 
     &.active {
-      color: var(--blue-grey-900);
+      color: var(--input-text-color);
     }
 
     &:hover {
       transition: none;
-      color: var(--blue-grey-800);
+      color: var(--input-text-color);
     }
   }
   button[disabled="disabled"] {
     &:hover {
       cursor: not-allowed;
-      color: var(--blue-grey-200);
+      color: var(--input-icon-color);
     }
   }
 }

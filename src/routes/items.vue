@@ -33,7 +33,8 @@
           v-if="this.$store.state.currentUser.admin"
           :label="$t('settings')"
           icon="settings"
-          outline
+          icon-color="button-tertiary-text-color"
+          background-color="button-tertiary-background-color"
           @click="editCollection()"
         />
         <v-header-button
@@ -51,8 +52,8 @@
           v-if="deleteButton && !activity"
           key="delete"
           icon="delete_outline"
-          background-color="button-primary-background-color"
           icon-color="button-primary-text-color"
+          background-color="button-primary-background-color"
           hover-color="danger"
           :disabled="!deleteButtonEnabled"
           :label="$t('delete')"
@@ -62,8 +63,8 @@
           v-if="addButton && !activity"
           key="add"
           icon="add"
-          background-color="button-primary-background-color"
           icon-color="button-primary-text-color"
+          background-color="button-primary-background-color"
           :label="$t('new')"
           :to="`/collections/${collection}/+`"
         />

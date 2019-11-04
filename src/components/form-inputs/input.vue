@@ -7,7 +7,7 @@
       :id="id"
       ref="input"
       v-mask="mask"
-      :class="{ charactercount }"
+      :class="{ charactercount, monospace }"
       :type="type"
       :autocomplete="autocomplete"
       :max="max"
@@ -31,7 +31,8 @@
       v-else
       :id="id"
       ref="input"
-      :class="{ charactercount }"
+      class="test"
+      :class="{ charactercount, monospace }"
       :type="type"
       :autocomplete="autocomplete"
       :max="max"
@@ -170,6 +171,10 @@ export default {
     mask: {
       type: [String, Array, Boolean],
       default: null
+    },
+    monospace: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -203,6 +208,10 @@ export default {
     transition: var(--fast) var(--transition);
     transition-property: color, border-color, padding;
     height: var(--input-height);
+
+    &.monospace {
+      font-family: var(--family-monospace);
+    }
 
     &[type="date"] {
       -webkit-appearance: none;

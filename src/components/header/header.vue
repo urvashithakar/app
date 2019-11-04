@@ -7,9 +7,8 @@
       class="back"
       :icon="icon"
       :to="iconLink"
-      :background-color="settings ? 'warning-light' : 'button-secondary-background-color'"
-      :icon-color="settings ? 'warning' : 'button-secondary-text-color'"
-      outline
+      :icon-color="settings ? 'warning' : 'button-tertiary-text-color'"
+      :background-color="settings ? 'warning-light' : 'button-tertiary-background-color'"
     />
     <div class="title" :class="{ 'has-breadcrumb': navBreadcrumb }">
       <ol v-if="navBreadcrumb" class="breadcrumb">
@@ -28,14 +27,16 @@
       v-if="infoToggle && !itemDetail"
       :label="$t('info')"
       icon="info"
-      outline
+      icon-color="button-tertiary-text-color"
+      background-color="button-tertiary-background-color"
       @click="toggleInfo"
     />
     <v-header-button
       v-if="infoToggle && itemDetail"
       :label="$t('info')"
       icon="info"
-      outline
+      icon-color="button-tertiary-text-color"
+      background-color="button-tertiary-background-color"
       class="info-mobile"
       @click="toggleInfo"
     />

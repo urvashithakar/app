@@ -42,6 +42,12 @@
       "comment": "$t:format_comment",
       "interface": "toggle",
       "default": false
+    },
+    "monospace": {
+      "name": "$t:monospace",
+      "comment": "$t:monospace_comment",
+      "interface": "toggle",
+      "default": false
     }
   },
   "translation": {
@@ -59,6 +65,8 @@
       "icon_right_comment": "Choose an optional icon to display on the right of the input",
       "format": "Pretty Output",
       "format_comment": "Convert the value to title case",
+      "monospace": "Monospace",
+      "monospace_comment": "Use a monospace font",
       "auto": "Automatic",
       "small": "Small",
       "medium": "Medium",

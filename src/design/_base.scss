@@ -47,6 +47,7 @@ body {
 
 .type-heading-large {
   font-size: 48px;
+  line-height: 52px;
   font-weight: 300;
   color: var(--heading-text-color);
 }
@@ -118,13 +119,6 @@ fieldset {
 }
 
 // TODO: Get rid of the old font classes below once the places they're used are cleaned up
-
-.style-btn {
-  color: var(--white);
-  font-size: 16px;
-  line-height: 19px;
-  font-weight: 500;
-}
 
 .x-small {
   max-width: var(--width-x-small);

@@ -28,12 +28,7 @@
       @click="!to ? $emit('click', $event) : null"
     >
       <v-spinner v-if="loading" :size="24" line-fg-color="white" line-bg-color="transparent" />
-      <v-icon
-        v-else
-        :color="outline ? backgroundColor : iconColor"
-        :style="{ color: outline ? `var(--${backgroundColor})` : `var(--${iconColor})` }"
-        :name="icon"
-      />
+      <v-icon v-else :color="iconColor" :style="{ color: `var(--${iconColor})` }" :name="icon" />
     </component>
   </div>
 </template>

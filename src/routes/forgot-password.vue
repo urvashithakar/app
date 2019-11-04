@@ -1,11 +1,11 @@
 <template>
-  <PublicView :heading="$t('forgot_password')">
+  <PublicView :heading="$t('reset_password')">
     <project-chooser />
     <form @submit.prevent="onSubmit">
       <input v-model="email" type="email" :placeholder="$t('email')" />
       <div class="buttons">
-        <button type="submit">{{ $t("reset_password") }}</button>
-        <router-link to="/login">{{ $t("sign_in") }}</router-link>
+        <button type="submit">{{ $t("reset") }}</button>
+        <router-link to="/login" class="secondary">{{ $t("sign_in") }}</router-link>
       </div>
     </form>
     <public-notice
@@ -68,6 +68,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.project-chooser {
+  margin-top: 32px;
+
+  @media (min-height: 800px) {
+    margin-top: 52px;
+  }
+}
+
 button {
   position: relative;
   background-color: var(--darkest-gray);
@@ -160,5 +168,11 @@ input {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 8px;
+  .secondary {
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--input-placeholder-color);
+  }
 }
 </style>

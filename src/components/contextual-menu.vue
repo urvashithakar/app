@@ -77,31 +77,32 @@ export default {
   align-items: center;
 
   i {
-    color: var(--blue-grey-200);
+    color: var(--input-border-color);
     transition: color var(--fast) var(--transition);
   }
 
   &:hover i {
-    color: var(--blue-grey-600);
+    color: var(--input-border-color-hover);
     transition: none;
   }
 
   &.disabled {
-    color: var(--blue-grey-200);
+    cursor: not-allowed;
+    color: var(--input-background-color-disabled);
     &:hover i {
-      color: var(--blue-grey-200);
+      color: var(--input-background-color-disabled);
     }
   }
 }
 .ctx-menu {
   list-style: none;
-  padding: 0;
+  padding: 4px;
   width: var(--width-small);
   li {
     display: block;
   }
   i {
-    color: var(--blue-grey-400);
+    color: var(--popover-text-color);
     margin-right: 8px;
     transition: color var(--fast) var(--transition);
   }
@@ -109,33 +110,32 @@ export default {
     display: flex;
     align-items: center;
     padding: 4px 8px;
-    color: var(--blue-grey-600);
+    color: var(--popover-text-color);
     width: 100%;
     height: 100%;
     transition: color var(--fast) var(--transition);
 
     &.disabled {
-      color: var(--blue-grey-200);
+      color: var(--popover-text-color-disabled);
       cursor: not-allowed;
       i {
-        color: var(--blue-grey-200);
+        color: var(--popover-text-color-disabled);
       }
 
       &:hover {
         background-color: transparent;
-        color: var(--blue-grey-200);
+        color: var(--popover-text-color-disabled);
         i {
-          color: var(--blue-grey-200);
+          color: var(--popover-text-color-disabled);
         }
       }
     }
 
     &:hover {
-      background-color: var(--highlight);
-      color: var(--blue-grey-900);
+      color: var(--popover-text-color-hover);
       transition: none;
       i {
-        color: var(--blue-grey-900);
+        color: var(--popover-text-color-hover);
         transition: none;
       }
     }

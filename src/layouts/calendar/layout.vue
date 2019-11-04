@@ -41,7 +41,7 @@
       <div id="header-end">
         <div
           id="today"
-          class="button style-btn"
+          class="button"
           :class="{ hidden: monthDistance == 0 }"
           @click="resetMonth()"
         >

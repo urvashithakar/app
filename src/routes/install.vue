@@ -4,7 +4,7 @@
       <public-stepper class="stepper" :steps="3" :current-step="step" />
 
       <fieldset v-show="step === 1" class="step-1">
-        <legend class="type-heading-small">Project Info</legend>
+        <legend class="type-title">Project Info</legend>
         <div class="field-grid">
           <div class="field">
             <label class="type-label" for="project_name">Project Name</label>
@@ -29,11 +29,14 @@
           </div>
         </div>
 
-        <button type="button" @click="step++">Next</button>
+        <div class="buttons">
+          <router-link to="/login" class="secondary">Cancel</router-link>
+          <button type="button" @click="step++">Next</button>
+        </div>
       </fieldset>
 
       <fieldset v-show="step === 2" class="step-2">
-        <legend class="type-heading-small">Database Credentials</legend>
+        <legend class="type-title">Database Credentials</legend>
         <div class="field-grid">
           <div class="field">
             <label class="type-label" for="db_host">Host</label>
@@ -44,33 +47,51 @@
             <input id="db_port" v-model="db_port" name="db_port" type="number" />
           </div>
           <div class="field">
-            <label class="type-label" for="db_user">User</label>
+            <label class="type-label" for="db_user">Database User</label>
             <input id="db_user" v-model="db_user" name="db_user" type="text" />
           </div>
           <div class="field">
-            <label class="type-label" for="db_password">Password</label>
+            <label class="type-label" for="db_password">Database Password</label>
             <input id="db_password" v-model="db_password" name="db_password" type="password" />
           </div>
           <div class="field">
-            <label class="type-label" for="db_name">Name</label>
+            <label class="type-label" for="db_name">Database Name</label>
             <input id="db_name" v-model="db_name" name="db_name" type="text" />
           </div>
         </div>
 
-        <button type="button" @click="step--">Back</button>
-        <button type="submit">Install</button>
+        <div class="buttons">
+          <span class="secondary" @click="step--">Back</span>
+          <button type="submit">Install</button>
+        </div>
       </fieldset>
     </form>
 
     <div v-show="step === 3" class="step-3">
-      <h2>All Set</h2>
-      <router-link to="/login">Login</router-link>
+      <h2 class="type-title">All Set</h2>
+      <div class="progress-bar"></div>
+      <p>
+        The project has successfully been created. You can now sign in to the App with the admin
+        credentials you entered.
+      </p>
+      <router-link to="/login" class="button">{{ $t("sign_in") }}</router-link>
     </div>
+
+    <public-notice
+      v-if="notice.text"
+      slot="notice"
+      :loading="false"
+      :color="notice.color"
+      :icon="notice.icon"
+    >
+      {{ notice.text }}
+    </public-notice>
   </PublicView>
 </template>
 
 <script>
 import PublicView from "@/components/public-view";
+import PublicNotice from "@/components/public/notice";
 import axios from "axios";
 import { mapGetters } from "vuex";
 import PublicStepper from "@/components/public/stepper";
@@ -79,6 +100,7 @@ export default {
   name: "Login",
   components: {
     PublicView,
+    PublicNotice,
     PublicStepper
   },
   data() {
@@ -89,6 +111,11 @@ export default {
       user_email: "",
       user_password: "",
       db_host: "localhost",
+      notice: {
+        text: "Project Not Configured",
+        color: "blue-grey-100",
+        icon: "outlined_flag"
+      },
       db_port: 3306,
       db_user: "",
       db_password: "",
@@ -149,18 +176,23 @@ export default {
 <style lang="scss" scoped>
 // NOTE: These button and input styles are copied from login.vue and should be extracted to a base component
 
+.button,
 button {
   position: relative;
-  background-color: var(--darkest-gray);
-  border: 2px solid var(--darkest-gray);
+  background-color: var(--button-primary-background-color);
+  border: 2px solid var(--button-primary-background-color);
   border-radius: var(--border-radius);
-  color: var(--white);
-  width: 100%;
+  color: var(--button-primary-text-color);
   height: 60px;
-  padding: 18px 10px;
+  padding: 18px 20px;
+  width: 100%;
+  max-width: 154px;
   font-size: 16px;
   font-weight: 400;
   transition: background-color var(--fast) var(--transition);
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
 
   &[disabled] {
     cursor: not-allowed;
@@ -192,7 +224,7 @@ button {
 input {
   position: relative;
   width: 100%;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
   border: 0;
   font-size: 16px;
   border: 2px solid var(--blue-grey-100);
@@ -201,6 +233,7 @@ input {
   color: var(--darker-gray);
   transition: border-color var(--fast) var(--transition);
   border-radius: var(--border-radius);
+  font-family: var(--family-monospace);
 
   &::placeholder {
     color: var(--light-gray);
@@ -238,14 +271,50 @@ input {
 
 ///////////////////////////////////
 
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  .secondary {
+    text-decoration: none;
+    color: var(--input-placeholder-color);
+    cursor: pointer;
+    &:hover {
+      color: var(--page-text-color);
+    }
+  }
+}
+
+p {
+  font-size: 16px;
+  line-height: 26px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  color: var(--blue-grey-300);
+}
+
+form {
+  margin-top: 4px;
+
+  @media (min-height: 800px) {
+    margin-top: 20px;
+  }
+}
+
+legend {
+  margin-bottom: 20px;
+}
+
 .stepper {
+  margin-bottom: 80px;
   max-width: 320px;
 }
 
 .field-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 8px 24px;
+  grid-gap: 8px 32px;
 }
 
 label {

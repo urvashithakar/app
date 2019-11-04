@@ -1,5 +1,5 @@
 <template>
-  <div class="progress" :class="{ indeterminate: value === null }">
+  <div class="progress" :class="[value === null ? 'indeterminate' : 'determinate']">
     <span
       class="progress-inner"
       :style="{
@@ -29,41 +29,58 @@ export default {
 <style lang="scss" scoped>
 .progress {
   width: 100%;
-  background-color: var(--blue-grey-200);
+  background-color: var(--progress-background-color);
   position: relative;
-  height: 6px;
-  border-radius: 3px;
+  height: 4px;
+  border-radius: var(--border-radius);
   overflow: hidden;
 
-  .progress-inner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: auto;
-    height: inherit;
-    background-color: var(--blue-grey-900);
-    will-change: left, right;
-    border-radius: inherit;
-    transition: width var(--fast) var(--transition);
+  &.determinate {
+    .progress-inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: auto;
+      height: inherit;
+      background-color: var(--progress-background-color-accent);
+      border-radius: var(--border-radius);
+      will-change: left, right;
+      border-radius: inherit;
+      transition: width var(--fast) var(--transition);
+    }
   }
 
-  &.indeterminate .progress-inner {
-    animation: indeterminate 2.2s infinite;
-    transition: none;
+  &.indeterminate {
+    display: flex;
+    height: 4px;
+    width: 100%;
+    .progress-inner {
+      width: 100%;
+      height: 4px;
+      background-color: var(--progress-background-color-accent);
+      border-radius: var(--border-radius);
+      animation: indeterminate 2s infinite; // cubic-bezier(0.4, 0.1, 0.2, 1)
+      transition: none;
+    }
   }
 }
 
 @keyframes indeterminate {
-  0%,
-  60% {
-    left: -90%;
-    right: 100%;
+  0% {
+    margin-left: 0px;
+    margin-right: 100%;
+    animation-timing-function: cubic-bezier(0.1, 0.6, 0.9, 0.5);
   }
-
+  50% {
+    margin-left: 25%;
+    margin-right: 0%;
+    animation-timing-function: cubic-bezier(0.4, 0.1, 0.2, 0.9);
+  }
   100% {
-    left: 100%;
-    right: -35%;
+    margin-left: 100%;
+    margin-right: 0;
+    animation-timing-function: cubic-bezier(0.1, 0.6, 0.9, 0.5);
   }
 }
 </style>

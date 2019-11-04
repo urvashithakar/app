@@ -73,10 +73,9 @@ export default {
   padding: 0 20px 1px;
   height: 44px;
   min-width: 136px;
-  // border: var(--input-border-width) solid var(--action);
-  // border-color: var(--button-secondary-background-color);
-  background-color: var(--button-secondary-background-color);
-  color: var(--button-secondary-text-color);
+  border: var(--input-border-width) solid var(--button-tertiary-background-color);
+  // background-color: var(--button-secondary-background-color);
+  color: var(--button-tertiary-text-color);
   margin-right: 20px;
   font-weight: 500;
   font-size: 16px;
@@ -84,7 +83,7 @@ export default {
   transition: color var(--fast) var(--transition);
 
   &:hover {
-    color: var(--button-secondary-text-color);
+    color: var(--button-tertiary-text-color-hover);
   }
 }
 </style>

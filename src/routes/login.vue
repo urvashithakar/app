@@ -10,22 +10,30 @@
 
       <template v-else-if="currentProject.installed === false">
         <p>{{ $t("install_copy") }}</p>
-        <router-link to="/install">
-          {{ $t("install") }}
-        </router-link>
+        <div class="buttons">
+          <router-link to="/install" class="button">
+            {{ $t("install") }}
+          </router-link>
+        </div>
       </template>
 
       <template v-else>
-        <button v-if="currentProject.authenticated === true" type="submit">
-          {{ $t("continue_as", { name: firstName }) }}
-        </button>
-
+        <div v-if="currentProject.authenticated === true">
+          <p>
+            <b>{{ firstName }} {{ lastName }}</b>
+            {{ $t("continue_as") }}
+          </p>
+          <div class="buttons">
+            <span class="secondary">{{ $t("sign_out") }}</span>
+            <button type="submit">{{ $t("continue") }}</button>
+          </div>
+        </div>
         <template v-else>
           <input v-model="email" type="email" :placeholder="$t('email')" required />
           <input v-model="password" type="password" :placeholder="$t('password')" required />
           <div class="buttons">
             <button type="submit">{{ $t("sign_in") }}</button>
-            <router-link class="forgot" to="/forgot-password">
+            <router-link class="secondary" to="/forgot-password">
               {{ $t("forgot_password") }}
             </router-link>
           </div>
@@ -69,11 +77,12 @@ export default {
       signingIn: false,
       fetchingData: false,
       notice: {
-        text: null,
-        color: null,
-        icon: null
+        text: "Not Authenticated",
+        color: "blue-grey-100",
+        icon: "lock_outline"
       },
       firstName: null,
+      lastName: null,
       ssoProviders: []
     };
   },
@@ -191,10 +200,12 @@ export default {
     },
     async fetchAuthenticatedUser() {
       this.firstName = null;
+      this.latName = null;
       this.$api.config.url = this.currentProject.url;
       this.$api.config.project = this.currentProject.project;
-      const { data } = await this.$api.getMe({ fields: "first_name" });
+      const { data } = await this.$api.getMe({ fields: "first_name,last_name" });
       this.firstName = data.first_name;
+      this.lastName = data.last_name;
     },
 
     async fetchSSOProviders() {
@@ -212,18 +223,31 @@ export default {
 // TODO: These styles should be extraced into their base components
 //       They're currently duplicated on forgot-password, setup-2fa, and install
 //       as well
+form {
+  margin-top: 32px;
+
+  @media (min-height: 800px) {
+    margin-top: 52px;
+  }
+}
+
+.button,
 button {
   position: relative;
-  background-color: var(--darkest-gray);
-  border: 2px solid var(--darkest-gray);
+  background-color: var(--button-primary-background-color);
+  border: 2px solid var(--button-primary-background-color);
   border-radius: var(--border-radius);
-  color: var(--white);
-  width: 100%;
+  color: var(--button-primary-text-color);
   height: 60px;
-  padding: 18px 10px;
+  padding: 18px 20px;
+  width: 100%;
+  max-width: 154px;
   font-size: 16px;
   font-weight: 400;
   transition: background-color var(--fast) var(--transition);
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
 
   &[disabled] {
     cursor: not-allowed;
@@ -252,34 +276,46 @@ button {
   }
 }
 
+p {
+  font-size: 16px;
+  line-height: 26px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  color: var(--blue-grey-300);
+  b {
+    font-weight: var(--weight-bold);
+    color: var(--page-text-color);
+  }
+}
+
 input {
   position: relative;
   width: 100%;
   margin-bottom: 32px;
   border: 0;
   font-size: 16px;
-  border: 2px solid var(--blue-grey-100);
+  border: 2px solid var(--input-border-color);
   width: 100%;
   padding: 20px 10px;
-  color: var(--darker-gray);
+  color: var(--input-text-color);
   transition: border-color var(--fast) var(--transition);
   border-radius: var(--border-radius);
 
   &::placeholder {
-    color: var(--light-gray);
+    color: var(--input-placeholder-color);
   }
 
   &:-webkit-autofill {
-    color: var(--darker-gray) !important;
-    -webkit-text-fill-color: var(--darker-gray);
+    color: var(--input-text-color) !important;
+    -webkit-text-fill-color: var(--input-text-color);
     -webkit-box-shadow: 0 0 0px 1000px var(--white) inset;
   }
 
   &:hover:not([disabled]) {
     transition: none;
-    border-color: var(--gray);
+    border-color: var(--input-border-color-hover);
     &:focus {
-      border-color: var(--darker-gray);
+      border-color: var(--input-border-color-focus);
     }
   }
 
@@ -289,11 +325,11 @@ input {
 
   &:focus {
     outline: 0;
-    border-color: var(--darker-gray);
+    border-color: var(--input-border-color-focus);
 
     &:-webkit-autofill {
-      color: var(--darker-gray) !important;
-      -webkit-text-fill-color: var(--darker-gray);
+      color: var(--input-text-color) !important;
+      -webkit-text-fill-color: var(--input-text-color);
       -webkit-box-shadow: 0 0 0px 1000px var(--white) inset;
     }
   }
@@ -303,10 +339,18 @@ input {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 8px;
 
-  .forgot {
+  .secondary {
+    transition: all var(--fast) var(--transition);
     flex-shrink: 0;
-    margin-left: 24px;
+    // margin-left: 24px; // Not when on left ("continue as")
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--input-placeholder-color);
+    &:hover {
+      color: var(--page-text-color);
+    }
   }
 }
 </style>

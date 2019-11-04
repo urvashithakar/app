@@ -1,9 +1,8 @@
 <template>
   <button
-    :class="[bg || 'no-bg', { fullwidth, loading }, color, outline]"
+    :class="[bg || 'no-bg', { fullwidth, loading, small }, color, outline]"
     :type="type"
     :disabled="disabled || loading"
-    class="form-button style-btn"
     @click.prevent.stop="$emit('click')"
   >
     <v-icon v-if="icon && !loading" :name="icon" class="icon" />
@@ -24,6 +23,10 @@ export default {
   name: "VButton",
   props: {
     fullwidth: {
+      type: Boolean,
+      default: false
+    },
+    small: {
       type: Boolean,
       default: false
     },
@@ -67,14 +70,14 @@ button.action {
   border-color: var(--button-primary-background-color);
 
   &:hover:not(:disabled) {
-    background-color: var(--blue-grey-900);
-    border-color: var(--blue-grey-900);
+    background-color: var(--button-primary-background-color-hover);
+    border-color: var(--button-primary-background-color-hover);
   }
 }
 
 button.gray {
-  background-color: var(--blue-grey-50);
-  border-color: var(--blue-grey-50);
+  background-color: var(--button-tertiary-background-color);
+  border-color: var(--button-tertiary-background-color);
 
   &:hover:not(:disabled) {
     background-color: var(--blue-grey-200);
@@ -119,10 +122,18 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--white);
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 500;
   padding: 0 20px 1px;
   height: 44px;
   min-width: 136px;
   border: var(--input-border-width) solid var(--action);
+
+  &.small {
+    font-size: inherit;
+  }
 
   &:disabled:not(.loading) {
     background-color: var(--blue-grey-50);

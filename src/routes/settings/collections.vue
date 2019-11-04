@@ -31,6 +31,7 @@
           <v-button
             v-if="collection.managed"
             class="managed"
+            small
             :loading="toManage.includes(collection.collection)"
             @click="toggleManage(collection)"
           >
@@ -39,6 +40,7 @@
           <v-button
             v-else
             class="not-managed"
+            small
             :loading="toManage.includes(collection.collection)"
             @click="toggleManage(collection)"
           >
@@ -671,12 +673,8 @@ export default {
     padding: 5px 10px;
     position: absolute;
     right: 0;
-
     min-width: auto;
     height: auto;
-    font-size: 14px;
-    line-height: 1.3;
-    font-weight: 200;
     border: 0;
 
     &.managed {
