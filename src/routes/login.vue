@@ -41,7 +41,7 @@
             {{ $t("continue_as") }}
           </p>
           <div class="buttons">
-            <span class="secondary">{{ $t("sign_out") }}</span>
+            <button type="button" class="secondary" @click="logout">{{ $t("sign_out") }}</button>
             <button type="submit">{{ $t("continue") }}</button>
           </div>
         </div>
@@ -147,7 +147,6 @@ export default {
 
       this.$api
         .login({
-          url: this.apiRootPath,
           project: this.currentProjectKey,
           email,
           password,
@@ -188,6 +187,15 @@ export default {
         })
         .finally(() => (this.signingIn = false));
     },
+    async logout() {
+      await this.$api.logout();
+      this.$store.commit(UPDATE_PROJECT, {
+        key: this.$store.state.currentProjectKey,
+        data: {
+          authenticated: false
+        }
+      });
+    },
     async enterApp() {
       this.notice = {
         text: this.$t("fetching_data")
@@ -220,7 +228,6 @@ export default {
     async fetchAuthenticatedUser() {
       this.firstName = null;
       this.latName = null;
-      this.$api.config.url = this.apiRootPath;
       this.$api.config.project = this.currentProjectKey;
       const { data } = await this.$api.getMe({ fields: "first_name,last_name" });
       this.firstName = data.first_name;
@@ -229,7 +236,6 @@ export default {
 
     async fetchSSOProviders() {
       this.ssoProviders = [];
-      this.$api.config.url = this.apiRootPath;
       this.$api.config.project = this.currentProjectKey;
       const { data } = await this.$api.getThirdPartyAuthProviders();
       this.ssoProviders = data;
