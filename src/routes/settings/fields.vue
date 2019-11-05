@@ -263,9 +263,7 @@ export default {
           this.$store.dispatch("loadingFinished", id);
           this.$store.dispatch("removeCollection", this.collection);
           this.$notify({
-            title: this.$t("collection_removed", {
-              collection: this.$helpers.formatTitle(this.collection)
-            }),
+            title: this.$t("collection_removed"),
             color: "green",
             iconMain: "check"
           });
@@ -289,9 +287,7 @@ export default {
         .updateCollection(this.collection, this.edits)
         .then(() => {
           this.$notify({
-            title: this.$t("collection_updated", {
-              collection: this.$helpers.formatTitle(this.collection)
-            }),
+            title: this.$t("collection_updated"),
             color: "green",
             iconMain: "check"
           });
