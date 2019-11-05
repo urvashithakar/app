@@ -39,7 +39,7 @@ export default {
 
   summary {
     font-size: 18px;
-    color: var(--blue-grey-300);
+    color: var(--note-text-color);
     font-weight: 400;
     transition: var(--fast) var(--transition);
     margin-top: -16px;
@@ -55,7 +55,7 @@ export default {
       display: inline-block;
       font-family: "Material Icons";
       font-size: 18px;
-      color: var(--blue-grey-300);
+      color: var(--input-icon-color);
       font-style: normal;
       font-weight: normal;
       letter-spacing: normal;
@@ -79,9 +79,9 @@ export default {
 
     &:hover,
     .user-is-tabbing &:focus {
-      color: var(--blue-grey-800);
+      color: var(--page-text-color);
       &::after {
-        color: var(--blue-grey-800);
+        color: var(--page-text-color);
       }
     }
   }
@@ -89,7 +89,7 @@ export default {
   &.group {
     padding: 0px;
     border: none;
-    border-top: 2px solid var(--blue-grey-50);
+    border-top: 2px solid var(--input-border-color);
 
     // &[open] {
     //   padding: 20px 0;

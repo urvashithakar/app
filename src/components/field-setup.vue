@@ -1629,16 +1629,8 @@ form.schema {
       cursor: pointer;
       width: max-content;
 
-      &:not(.disabled):hover {
-        color: var(--blue-grey-900);
-      }
-
       > *:first-child {
         margin-right: 10px;
-      }
-
-      &.disabled {
-        color: var(--blue-grey-300);
       }
     }
   }

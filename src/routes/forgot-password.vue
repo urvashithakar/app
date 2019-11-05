@@ -39,9 +39,9 @@ export default {
       email: "",
       resetting: false,
       notice: {
-        text: "",
-        color: "grey",
-        icon: "warning"
+        text: this.$t("not_authenticated"),
+        color: "blue-grey-100",
+        icon: "lock_outline"
       }
     };
   },
