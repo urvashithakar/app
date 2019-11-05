@@ -230,6 +230,10 @@ body.info-active {
 body.info-wide-active {
   padding-right: 284px;
 }
+
+body.public > div {
+  height: 100%;
+}
 </style>
 
 <style lang="scss" scoped>
@@ -251,9 +255,5 @@ body.info-wide-active {
 .try-again {
   position: absolute;
   bottom: 40px;
-}
-
-.public {
-  height: 100%;
 }
 </style>

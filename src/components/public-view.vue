@@ -84,6 +84,7 @@ export default {
 <style lang="scss" scoped>
 .public {
   display: flex;
+  height: 100%;
 }
 
 .container {
