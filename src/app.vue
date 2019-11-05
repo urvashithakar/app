@@ -160,8 +160,12 @@ export default {
     bodyClass() {
       if (this.publicRoute) {
         document.body.classList.add("no-padding");
+        document.body.classList.remove("private");
+        document.body.classList.add("public");
       } else {
         document.body.classList.remove("no-padding");
+        document.body.classList.add("private");
+        document.body.classList.remove("public");
       }
 
       this.toggleInfoSidebarBodyClass();

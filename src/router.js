@@ -228,14 +228,6 @@ router.beforeEach(async (to, from, next) => {
   store.commit(TOGGLE_NAV, false);
   store.commit(TOGGLE_INFO, false);
 
-  if (publicRoute) {
-    document.body.classList.remove("private");
-    document.body.classList.add("public");
-  } else {
-    document.body.classList.add("private");
-    document.body.classList.remove("public");
-  }
-
   // This runs on first load
   if (store.state.projects.length > 0 && store.state.projects[0].status === null) {
     await store.dispatch("getProjects");
