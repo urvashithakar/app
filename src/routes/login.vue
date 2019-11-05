@@ -312,7 +312,7 @@ p {
   color: var(--blue-grey-300);
   b {
     font-weight: var(--weight-bold);
-    color: var(--public-text-color);
+    color: var(--page-text-color);
   }
 }
 
