@@ -54,7 +54,7 @@ export default {
     margin-top: -2px;
   }
   &.gray {
-    background-color: var(--blue-grey-50);
+    background-color: var(--sidebar-background-color);
   }
   &.warning {
     color: var(--warning);
