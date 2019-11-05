@@ -19,6 +19,7 @@
               v-for="field in visibleFields"
               :key="field.field"
               type="button"
+              class="type-table-head"
               @click="changeSort(field.field)"
             >
               {{ $helpers.formatTitle(field.field) }}
@@ -499,7 +500,7 @@ export default {
 
 <style lang="scss" scoped>
 .table {
-  background-color: var(--white);
+  background-color: var(--page-background-color);
   border: var(--input-border-width) solid var(--input-border-color);
   border-radius: var(--border-radius);
   border-spacing: 0;
@@ -508,22 +509,16 @@ export default {
 
   .header {
     height: var(--input-height);
-    border-bottom: 2px solid var(--blue-grey-50);
+    border-bottom: 2px solid var(--table-head-border-color);
 
     button {
       text-align: left;
-      font-weight: 500;
       transition: color var(--fast) var(--transition);
-
-      &:hover {
-        transition: none;
-        color: var(--blue-grey-800);
-      }
     }
 
     i {
       vertical-align: top;
-      color: var(--blue-grey-300);
+      color: var(--input-icon-color);
     }
   }
 
@@ -560,7 +555,7 @@ export default {
       cursor: pointer;
       position: relative;
       height: 50px;
-      border-bottom: 2px solid var(--off-white);
+      border-bottom: 2px solid var(--table-row-border-color);
 
       &:hover {
         background-color: var(--highlight);
@@ -571,7 +566,7 @@ export default {
       }
 
       button {
-        color: var(--blue-grey-200);
+        color: var(--input-icon-color);
         transition: color var(--fast) var(--transition);
 
         &:hover {
@@ -590,7 +585,7 @@ export default {
     flex-basis: 36px !important;
 
     &.disabled i {
-      color: var(--blue-grey-50);
+      color: var(--input-background-color-disabled);
       cursor: not-allowed;
     }
   }

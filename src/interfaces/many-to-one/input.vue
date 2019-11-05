@@ -259,9 +259,9 @@ button {
   left: 0;
   top: 0;
   z-index: 2;
-  background-color: var(--white);
+  background-color: var(--page-background-color);
   &-input {
-    border-bottom: 1px solid var(--blue-grey-50);
+    border-bottom: 1px solid var(--modal-header-background-color);
     padding: 12px;
 
     & >>> input {
@@ -271,7 +271,7 @@ button {
       height: var(--header-height);
 
       &::placeholder {
-        color: var(--blue-grey-300);
+        color: var(--input-placeholder-color);
       }
     }
   }
