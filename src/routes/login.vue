@@ -163,6 +163,7 @@ export default {
           this[UPDATE_PROJECT]({
             key: this.currentProjectKey,
             data: {
+              authenticated: true,
               requires2FA,
               version,
               database,
