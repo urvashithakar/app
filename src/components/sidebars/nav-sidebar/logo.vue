@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "VLogo",
   data() {
@@ -14,18 +16,19 @@ export default {
     };
   },
   computed: {
+    ...mapGetters(["currentProject"]),
     customLogoPath() {
       if (this.customLogoExists) {
-        return this.$store.state.settings.values.logo.data.full_url;
+        return this.currentProject.data.project_logo.full_url;
       } else {
         return null;
       }
     },
     customLogoExists() {
-      return Boolean(this.$store.state.settings.values.logo);
+      return Boolean(this.currentProject.data.project_logo);
     },
     projectName() {
-      return this.$store.state.auth.projectName;
+      return this.currentProject.data.project_name;
     },
     queueContainsItems() {
       return this.$store.state.queue.length !== 0;
