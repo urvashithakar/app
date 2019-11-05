@@ -12,6 +12,7 @@ so the aria label is used — but that is based on locale. */
   content: "format_bold";
   display: inline-block;
   font-family: "Material Icons";
+  font-feature-settings: "liga";
   font-size: 24px;
   margin-top: 4px;
   color: var(--input-text-color);
@@ -25,6 +26,7 @@ so the aria label is used — but that is based on locale. */
   content: "format_italic";
   display: inline-block;
   font-family: "Material Icons";
+  font-feature-settings: "liga";
   font-size: 24px;
   margin-top: 4px;
   color: var(--input-text-color);
@@ -38,6 +40,7 @@ so the aria label is used — but that is based on locale. */
   content: "format_underlined";
   display: inline-block;
   font-family: "Material Icons";
+  font-feature-settings: "liga";
   font-size: 24px;
   margin-top: 4px;
   color: var(--input-text-color);
@@ -51,6 +54,7 @@ so the aria label is used — but that is based on locale. */
   content: "insert_link";
   display: inline-block;
   font-family: "Material Icons";
+  font-feature-settings: "liga";
   font-size: 24px;
   margin-top: 4px;
   color: var(--input-text-color);
