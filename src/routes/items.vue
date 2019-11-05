@@ -66,7 +66,7 @@
           icon-color="button-primary-text-color"
           background-color="button-primary-background-color"
           :label="$t('new')"
-          :to="`/collections/${collection}/+`"
+          :to="`/${currentProjectKey}/collections/${collection}/+`"
         />
       </template>
     </v-header>

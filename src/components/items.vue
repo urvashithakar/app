@@ -60,6 +60,7 @@
 
 <script>
 import formatFilters from "../helpers/format-filters";
+import { mapState } from "vuex";
 
 export default {
   name: "VItems",
@@ -111,6 +112,7 @@ export default {
     };
   },
   computed: {
+    ...mapState(["currentProjectKey"]),
     allSelected() {
       const primaryKeys = this.items.data.map(item => item[this.primaryKeyField]).sort();
       const selection = [...this.selection];
@@ -230,8 +232,12 @@ export default {
             this.items.data = res.data.map(item => ({
               ...item,
               __link__: this.collection.startsWith("directus_")
-                ? `/${this.collection.substr(9)}/${item[this.primaryKeyField]}`
-                : `/collections/${this.collection}/${item[this.primaryKeyField]}`
+                ? `/${this.currentProjectKey}/${this.collection.substr(9)}/${
+                    item[this.primaryKeyField]
+                  }`
+                : `/${this.currentProjectKey}/collections/${this.collection}/${
+                    item[this.primaryKeyField]
+                  }`
             }));
           } else {
             this.items.data = res.data;
