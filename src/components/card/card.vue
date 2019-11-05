@@ -16,7 +16,10 @@
         v-if="src || icon || $slots.icon"
         :style="{ backgroundColor: `var(--${color})` }"
         class="header"
-        :class="{ 'big-image': bigImage && src && !error }"
+        :class="{
+          'big-image': bigImage && src && !error,
+          'medium-image': mediumImage && src && !error
+        }"
       >
         <button v-if="selectable" type="button" class="select" @click.stop="$emit('select')">
           <v-icon :name="selectionIcon" />
@@ -147,6 +150,10 @@ export default {
     bigImage: {
       type: Boolean,
       default: false
+    },
+    mediumImage: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -230,6 +237,10 @@ export default {
 
     &.big-image {
       height: 400px;
+    }
+
+    &.medium-image {
+      height: 300px;
     }
 
     &.small {
