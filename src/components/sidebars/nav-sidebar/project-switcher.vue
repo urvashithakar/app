@@ -1,43 +1,40 @@
 <template>
-  <div
-    class="project-switcher"
-    :class="{
-      'is-active': $store.state.auth.projectName !== selectionName || !$store.state.auth.project,
-      'has-error': !$store.state.auth.project
-    }"
-  >
+  <div class="project-switcher">
     <div
       v-tooltip.left="{
-        content:
-          (!!$store.state.auth.url ? $store.state.auth.url : 'No connection') +
-          `<br>${$t('latency')}: ${
-            !!$store.state.auth.url
-              ? $n(Math.round($store.state.latency[$store.state.latency.length - 1].latency))
-              : ' - '
-          }ms`,
+        content: tooltipContent,
         boundariesElement: 'body'
       }"
       class="content"
       :class="{
-        slow: $store.getters.signalStrength === 1,
-        disconnected: $store.getters.signalStrength === 0
+        slow: signalStrength === 1,
+        disconnected: signalStrength === 0
       }"
     >
       <v-signal class="icon" />
       <span class="no-wrap project-name">
-        {{ selectionName ? selectionName : $store.state.auth.projectName }}
+        <template v-if="currentProject.status === 'successful'">
+          {{ currentProject.data.project_name }}
+        </template>
+        <template v-else>
+          {{ currentProjectKey }}
+        </template>
       </span>
-      <v-icon v-if="Object.keys(urls).length > 1" class="chevron" name="expand_more" />
-      <select v-if="Object.keys(urls).length > 1" :value="currentUrl" @change.prevent="changeUrl">
+      <v-icon v-if="projects.length > 1" class="chevron" name="expand_more" />
+      <select v-if="projects.length > 1" v-model="currentProjectKey">
         <option
-          v-for="(name, url) in urls"
-          :key="name + url"
-          :name="name"
-          :value="url"
-          :selected="url === currentUrl || url + '/' === currentUrl"
-          @click="changeUrl"
+          v-for="project in projects"
+          :key="project.key"
+          :name="project.key"
+          :value="project.key"
+          :selected="currentProjectKey === project.key"
         >
-          {{ name }}
+          <template v-if="project.status === 'successful'">
+            {{ project.data.project_name }}
+          </template>
+          <template v-else>
+            {{ project.key }}
+          </template>
         </option>
       </select>
     </div>
@@ -45,6 +42,8 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from "vuex";
+import { SET_CURRENT_PROJECT } from "@/store/mutation-types";
 import VSignal from "../../signal.vue";
 
 export default {
@@ -52,39 +51,31 @@ export default {
   components: {
     VSignal
   },
-  data() {
-    return {
-      active: false,
-      selectionUrl: null,
-      selectionName: ""
-    };
-  },
   computed: {
-    urls() {
-      return _.mapKeys(window.__DirectusConfig__.api, (val, key) =>
-        key.endsWith("/") === false ? key + "/" : key
-      );
+    ...mapState(["projects", "apiRootPath", "latency"]),
+    ...mapGetters(["currentProject", "signalStrength"]),
+    currentProjectKey: {
+      get() {
+        return this.$store.state.currentProjectKey;
+      },
+      set(value) {
+        this.$store.commit(SET_CURRENT_PROJECT, value);
+      }
     },
-    currentUrl() {
-      return this.$store.state.auth.url + "/" + this.$store.state.auth.project + "/";
-    }
-  },
-  methods: {
-    changeUrl(event) {
-      const newUrl = event.target.value;
-      const newName = window.__DirectusConfig__.api[newUrl]
-        ? window.__DirectusConfig__.api[newUrl]
-        : this.$store.state.auth.projectName;
+    apiURL() {
+      return window.location.origin + this.apiRootPath + this.currentProjectKey;
+    },
+    tooltipContent() {
+      let latency = this.latency[this.latency.length - 1].latency;
+      latency = Math.round(latency);
+      latency = this.$n(latency);
 
-      this.selectionUrl = newUrl;
-      this.selectionName = newName;
+      let content = this.apiURL;
+      content += "<br>";
+      content += this.$t("latency") + ":";
+      content += ` ${latency}ms`;
 
-      this.$store
-        .dispatch("switchProject", {
-          projectName: newName,
-          url: newUrl
-        })
-        .then(() => this.$store.dispatch("changeAPI", newUrl));
+      return content;
     }
   }
 };
@@ -134,20 +125,6 @@ export default {
 
     i {
       color: var(--sidebar-text-color);
-    }
-
-    &.has-error {
-      > div {
-        svg {
-          fill: var(--red);
-        }
-      }
-      span {
-        color: var(--red);
-        + i {
-          color: var(--red);
-        }
-      }
     }
   }
 

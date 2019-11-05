@@ -8,7 +8,7 @@
         <v-logo class="logo" />
 
         <section class="content">
-          <!-- <project-switcher /> -->
+          <project-switcher />
 
           <template v-for="section in navStructure">
             <nav-bookmarks
@@ -46,7 +46,7 @@
 </template>
 <script>
 import VLogo from "./logo.vue";
-// import ProjectSwitcher from "./project-switcher.vue";
+import ProjectSwitcher from "./project-switcher.vue";
 import NavMenu from "./nav-menu.vue";
 import UserMenu from "./user-menu.vue";
 import NavBookmarks from "./nav-bookmarks.vue";
@@ -58,7 +58,7 @@ export default {
   name: "NavSidebar",
   components: {
     VLogo,
-    // ProjectSwitcher,
+    ProjectSwitcher,
     NavMenu,
     UserMenu,
     NavBookmarks,
