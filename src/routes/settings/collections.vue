@@ -2,7 +2,14 @@
   <div class="collections">
     <v-header :breadcrumb="breadcrumb" :icon-link="`/${currentProjectKey}/settings`" settings>
       <template slot="buttons">
-        <v-header-button key="add" icon="add" :label="$t('new')" @click="addNew = true" />
+        <v-header-button
+          key="add"
+          icon="add"
+          :label="$t('new')"
+          icon-color="button-primary-text-color"
+          background-color="button-primary-background-color"
+          @click="addNew = true"
+        />
       </template>
     </v-header>
     <v-error
@@ -15,6 +22,9 @@
     <div v-else class="table">
       <div class="header">
         <div class="row">
+          <div class="cell icon type-table-head">
+            <v-icon name="box" size="24" color="input-icon-color" />
+          </div>
           <div class="cell type-table-head">{{ $t("collection") }}</div>
           <div class="cell note type-table-head">{{ $t("note") }}</div>
         </div>
@@ -26,6 +36,9 @@
           class="row"
           :to="collection.__link__"
         >
+          <div class="cell icon">
+            <v-icon :name="collection.icon || 'box'" size="24" color="input-icon-color" />
+          </div>
           <div class="cell">{{ collection.name }}</div>
           <div class="cell note">{{ collection.note }}</div>
           <v-button
@@ -55,7 +68,7 @@
         v-model="newName"
         safe
         :confirm-text="$t('create')"
-        :message="$t('create_collection')"
+        :title="$t('create_collection')"
         :placeholder="$t('enter_collection_name')"
         :loading="adding"
         @cancel="addNew = false"
@@ -640,6 +653,9 @@ export default {
     position: relative;
     overflow: hidden;
     max-height: 100%;
+    &.icon {
+      flex-basis: 40px;
+    }
     &.note {
       flex-grow: 1;
       padding-right: 120px;
@@ -716,16 +732,8 @@ export default {
       cursor: pointer;
       width: max-content;
 
-      &:not(.disabled):hover {
-        color: var(--blue-grey-900);
-      }
-
       > *:first-child {
         margin-right: 10px;
-      }
-
-      &.disabled {
-        color: var(--blue-grey-300);
       }
     }
   }
