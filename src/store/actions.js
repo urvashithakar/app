@@ -131,9 +131,9 @@ export async function setCurrentProject({ commit, dispatch, state }, key) {
   if (privateRoute) {
     const newProject = state.projects.find(p => p.key === key);
     const authenticated = newProject.data.authenticated;
+    commit(RESET);
 
     if (authenticated) {
-      commit(RESET);
       await dispatch("getProjects");
       await hydrateStore();
 
