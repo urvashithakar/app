@@ -1,5 +1,9 @@
 import api from "../api";
 import axios from "axios";
+import router from "@/router";
+import { resetState } from "@/store/";
+import hydrateStore from "@/hydrate";
+
 import {
   LATENCY,
   SET_CURRENT_USER,
@@ -110,8 +114,17 @@ export function loadingFinished({ commit }, id) {
   commit(LOADING_FINISHED, id);
 }
 
-export function setCurrentProject({ commit }, key) {
+export async function setCurrentProject({ commit, dispatch }, key) {
   api.config.project = key;
+
+  const privateRoute = router.currentRoute.meta.publicRoute !== true;
+
+  if (privateRoute) {
+    resetState();
+    await dispatch("getProjects");
+    await hydrateStore();
+  }
+
   commit(SET_CURRENT_PROJECT, key);
 }
 
