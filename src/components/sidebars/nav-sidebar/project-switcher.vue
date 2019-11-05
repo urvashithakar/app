@@ -43,7 +43,6 @@
 
 <script>
 import { mapState, mapGetters } from "vuex";
-import { SET_CURRENT_PROJECT } from "@/store/mutation-types";
 import VSignal from "../../signal.vue";
 
 export default {
@@ -59,7 +58,7 @@ export default {
         return this.$store.state.currentProjectKey;
       },
       set(value) {
-        this.$store.commit(SET_CURRENT_PROJECT, value);
+        this.$store.dispatch("setCurrentProject", value);
       }
     },
     apiURL() {

@@ -3,7 +3,8 @@ import store from "@/store";
 
 const client = new SDK({
   mode: "cookie",
-  url: store.state.apiRootPath
+  url: store.state.apiRootPath,
+  project: store.state.currentProjectKey
 });
 
 export default client;

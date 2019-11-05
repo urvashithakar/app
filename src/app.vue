@@ -48,7 +48,7 @@
 <script>
 import { mapState } from "vuex";
 import VError from "./components/error.vue";
-import { TOGGLE_NAV, SET_CURRENT_PROJECT } from "./store/mutation-types";
+import { TOGGLE_NAV } from "./store/mutation-types";
 import VNavSidebar from "./components/sidebars/nav-sidebar/nav-sidebar.vue";
 import VNotification from "./components/notifications/notifications.vue";
 import { loadLanguageAsync, availableLanguages } from "./lang";
@@ -202,7 +202,7 @@ export default {
         });
 
         if (exists) {
-          this.$store.commit(SET_CURRENT_PROJECT, this.$route.query.project);
+          this.$store.dispatch("setCurrentProject", this.$route.query.project);
         }
 
         const query = _.clone(this.$route.query);

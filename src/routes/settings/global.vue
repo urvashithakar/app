@@ -83,6 +83,11 @@ export default {
         .then(() => {
           this.saving = false;
           this.edits = {};
+
+          // Update the current project's info in the store when saving settings, this makes sure
+          // the logo / name in the top left etc will update
+          this.$store.dispatch("updateProjectInfo", this.currentProjectKey);
+
           this.$router.push(`/${this.currentProjectKey}/settings`);
           this.$notify({
             title: this.$t("settings_saved"),

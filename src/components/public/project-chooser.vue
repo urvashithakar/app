@@ -24,7 +24,6 @@
 </template>
 
 <script>
-import { SET_CURRENT_PROJECT } from "@/store/mutation-types";
 import { mapState, mapGetters } from "vuex";
 
 export default {
@@ -37,7 +36,7 @@ export default {
         return this.$store.state.currentProjectKey;
       },
       set(value) {
-        this.$store.commit(SET_CURRENT_PROJECT, value);
+        this.$store.dispatch("setCurrentProject", value);
       }
     }
   }

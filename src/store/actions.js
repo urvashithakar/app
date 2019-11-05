@@ -10,7 +10,8 @@ import {
   LOADING_START,
   LOADING_FINISHED,
   SET_PROJECT_STATUS,
-  UPDATE_PROJECT
+  UPDATE_PROJECT,
+  SET_CURRENT_PROJECT
 } from "./mutation-types";
 
 export function latency({ commit }) {
@@ -109,42 +110,49 @@ export function loadingFinished({ commit }, id) {
   commit(LOADING_FINISHED, id);
 }
 
-export function getProjects({ commit, state }) {
+export function setCurrentProject({ commit }, key) {
+  api.config.project = key;
+  commit(SET_CURRENT_PROJECT, key);
+}
+
+export async function updateProjectInfo({ commit, state }, key) {
   const apiRootPath = state.apiRootPath;
+  const url = apiRootPath + key + "/";
+  commit(SET_PROJECT_STATUS, { key: key, status: "loading" });
+
+  try {
+    const response = await axios.get(url);
+    const {
+      project_name,
+      project_logo,
+      project_color,
+      project_image,
+      project_icon
+    } = response.data.data.api;
+    const authenticated = response.data.public === undefined;
+
+    commit(UPDATE_PROJECT, {
+      key: key,
+      data: {
+        project_name,
+        project_logo,
+        project_color,
+        project_image,
+        project_icon,
+        authenticated
+      }
+    });
+    commit(SET_PROJECT_STATUS, { key: key, status: "successful" });
+  } catch (error) {
+    commit(UPDATE_PROJECT, { key: key, error });
+    commit(SET_PROJECT_STATUS, { key: key, status: "failed" });
+  }
+}
+
+export function getProjects({ state, dispatch }) {
   const projects = state.projects;
 
   return Promise.allSettled(
-    projects.map(async project => {
-      const url = apiRootPath + project.key + "/";
-      commit(SET_PROJECT_STATUS, { key: project.key, status: "loading" });
-
-      try {
-        const response = await axios.get(url);
-        const {
-          project_name,
-          project_logo,
-          project_color,
-          project_image,
-          project_icon
-        } = response.data.data.api;
-        const authenticated = response.data.public === undefined;
-
-        commit(UPDATE_PROJECT, {
-          key: project.key,
-          data: {
-            project_name,
-            project_logo,
-            project_color,
-            project_image,
-            project_icon,
-            authenticated
-          }
-        });
-        commit(SET_PROJECT_STATUS, { key: project.key, status: "successful" });
-      } catch (error) {
-        commit(UPDATE_PROJECT, { key: project.key, error });
-        commit(SET_PROJECT_STATUS, { key: project.key, status: "failed" });
-      }
-    })
+    projects.map(p => p.key).map(key => dispatch("updateProjectInfo", key))
   );
 }
