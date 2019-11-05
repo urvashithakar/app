@@ -146,7 +146,7 @@ export default {
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: var(--blue-grey-900);
+  background-color: var(--modal-smoke-color);
   opacity: 0.9;
 
   &.pointer {
@@ -168,9 +168,8 @@ export default {
   margin: 0 auto;
   width: 90%;
   max-width: 690px;
-  background-color: var(--white);
+  background-color: var(--modal-background-color);
   border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
   transition: inherit;
   pointer-events: painted;
   cursor: default;
@@ -206,7 +205,7 @@ export default {
     position: sticky;
     top: 0;
     height: 64px;
-    background-color: var(--blue-grey-50);
+    background-color: var(--modal-header-background-color);
   }
 
   .body {
@@ -214,7 +213,7 @@ export default {
     -webkit-overflow-scrolling: touch;
     max-height: 70vh;
     position: relative;
-    background-color: var(--body-background);
+    background-color: var(--modal-background-color);
 
     .tab {
       height: 100%;
@@ -223,7 +222,7 @@ export default {
   }
 
   .footer {
-    border-top: 2px solid var(--blue-grey-50);
+    border-top: 2px solid var(--modal-header-background-color);
     height: 64px;
   }
 
