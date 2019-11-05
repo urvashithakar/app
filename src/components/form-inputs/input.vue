@@ -259,7 +259,6 @@ export default {
       cursor: not-allowed;
       outline: none;
       &:focus {
-        color: var(--blue-grey-400);
         border-color: var(--input-border-color);
       }
     }

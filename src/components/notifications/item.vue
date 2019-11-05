@@ -65,32 +65,32 @@ export default {
   align-items: center;
   min-height: 64px;
   width: 100%;
-  border: var(--input-border-width) solid var(--blue-grey-50);
+  border: var(--input-border-width) solid var(--input-background-color);
   border-radius: 5px;
   margin-bottom: 12px;
   padding: 10px;
-  background-color: var(--white);
+  background-color: var(--page-background-color);
   &.red {
     .title {
-      color: var(--red-500);
+      color: var(--red);
     }
   }
 
   &.green {
     .title {
-      color: var(--green-500);
+      color: var(--green);
     }
   }
 
   &.amber {
     .title {
-      color: var(--amber-500);
+      color: var(--amber);
     }
   }
 
   &.blue {
     .title {
-      color: var(--blue-500);
+      color: var(--blue);
     }
   }
 }
@@ -103,19 +103,19 @@ export default {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background-color: var(--blue-grey-200);
+  background-color: var(--input-icon-color);
 }
 
 .icon-right {
   width: 24px;
   height: 24px;
   margin-left: auto;
-  color: var(--blue-grey-200);
+  color: var(--input-icon-color);
   transition: color var(--fast) var(--transition);
   cursor: pointer;
 
   &:hover {
-    color: var(--blue-grey-600);
+    color: var(--page-text-color);
   }
 }
 
@@ -124,11 +124,11 @@ export default {
   padding-right: 10px;
   .title {
     font-size: var(--size-2);
-    color: var(--blue-grey-800);
+    color: var(--heading-text-color);
   }
 
   .details {
-    color: var(--blue-grey-300);
+    color: var(--note-text-color);
   }
 }
 </style>
