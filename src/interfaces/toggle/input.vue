@@ -87,6 +87,7 @@ input {
 .toggle {
   display: flex;
   align-items: center;
+  height: 44px;
 
   span {
     margin-left: 4px;
