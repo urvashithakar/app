@@ -124,6 +124,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   &:after {
     font-family: "Material Icons";
+    font-feature-settings: "liga";
     font-size: 36px;
     line-height: 1;
   }

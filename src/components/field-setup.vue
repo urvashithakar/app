@@ -1668,7 +1668,7 @@ details {
     left: 50%;
     top: -22px;
     transform: translateX(-50%);
-    background-color: var(--body-background);
+    background-color: var(--page-background-color);
     color: var(--blue-grey-300);
     font-size: 1.2rem;
     line-height: 1.1;

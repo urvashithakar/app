@@ -100,6 +100,7 @@ export default {
         right: 10px;
         top: 50%;
         transform: translateY(-54%);
+        font-feature-settings: "liga";
       }
     }
   }

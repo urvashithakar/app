@@ -19,7 +19,7 @@
           icon: 'delete'
         }
       }"
-      big-image
+      medium-image
       @deselect="$emit('input', null)"
       @remove="removeFile"
     ></v-card>

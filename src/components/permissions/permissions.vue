@@ -168,13 +168,16 @@ export default {
     padding: 10px;
     height: 40px;
     &.sub {
+      position: relative;
       &::before {
         content: "call_missed_outgoing";
         font-family: "Material Icons";
         position: absolute;
+        top: 8px;
         transform: rotate(45deg);
         font-size: 18px;
         color: var(--input-icon-color);
+        font-feature-settings: "liga";
       }
       & .cell:first-child {
         padding-left: 2rem;
@@ -185,15 +188,17 @@ export default {
     }
   }
   ::v-deep .cell {
-    flex-basis: 44px;
+    flex-basis: 36px;
     &:first-child {
-      flex-grow: 2;
+      flex-basis: 220px;
+      max-width: 220px;
+      overflow: hidden;
     }
     &:nth-last-child(3) {
-      flex-basis: 50px;
+      flex-basis: 52px;
     }
     &:nth-last-child(2) {
-      flex-basis: 90px;
+      flex-basis: 92px;
     }
     &:last-child {
       flex-basis: 100px;

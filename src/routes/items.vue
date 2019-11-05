@@ -191,7 +191,7 @@ export default {
         return [
           {
             name: this.$t("user_directory"),
-            path: `${this.currentProjectKey}/users`
+            path: `/${this.currentProjectKey}/users`
           }
         ];
       }
