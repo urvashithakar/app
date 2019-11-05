@@ -1,7 +1,7 @@
 <template>
   <div v-if="projects.length > 1" class="project-chooser">
     <span v-tooltip.right="{ classes: ['inverted'], content: 'API URL' }" class="preview">
-      <v-icon class="icon signal" color="input-text-color" name="signal_wifi_4_bar" />
+      <v-signal class="signal" />
       <template v-if="currentProject.status === 'successful'">
         {{ currentProject.data.project_name }}
       </template>
@@ -25,9 +25,13 @@
 
 <script>
 import { mapState, mapGetters } from "vuex";
+import VSignal from "@/components/signal";
 
 export default {
   name: "ProjectChooser",
+  components: {
+    VSignal
+  },
   computed: {
     ...mapGetters(["currentProject"]),
     ...mapState(["projects"]),
@@ -77,6 +81,10 @@ export default {
       top: calc(50% - 13px);
       user-select: none;
       pointer-events: none;
+      width: 21px;
+      height: 24px;
+      color: var(--input-text-color);
+      fill: var(--input-text-color);
     }
 
     .dropdown {

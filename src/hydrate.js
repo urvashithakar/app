@@ -8,7 +8,6 @@ import { version } from "../package.json";
 export default function hydrateStore() {
   return (
     Promise.all([
-      store.dispatch("latency"),
       store.dispatch("getCurrentUser"),
       store.dispatch("getCollections"),
       store.dispatch("getSettings"),
