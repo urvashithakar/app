@@ -297,7 +297,7 @@ export default {
             collection: this.collection,
             edits: this.edits
           });
-          this.$router.push("/settings/collections");
+          this.$router.push(`/${this.currentProjectKey}/settings/collections`);
         })
         .catch(error => {
           this.saving = false;
