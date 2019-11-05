@@ -23,12 +23,15 @@ Vue.use(Vuex);
 const debug = process.env.NODE_ENV !== "production"; // eslint-disable-line no-undef
 
 const store = new Vuex.Store({
-  state: initialState,
+  state: _.clone(initialState),
   actions,
   getters,
   mutations: {
     [RESET](state) {
       Object.keys(initialState).forEach(key => {
+        // don't reset the currentprojectkey flag, that's saved / restored from
+        // vuex-persistedstate
+        if (key === "currentProjectKey") return;
         state[key] = initialState[key];
       });
     },

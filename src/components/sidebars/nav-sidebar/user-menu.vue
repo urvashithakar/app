@@ -28,7 +28,7 @@
 
 <script>
 import NavMenu from "./nav-menu.vue";
-import { UPDATE_PROJECT } from "@/store/mutation-types";
+import { RESET, UPDATE_PROJECT } from "@/store/mutation-types";
 import { mapState } from "vuex";
 
 export default {
@@ -131,6 +131,9 @@ export default {
           authenticated: false
         }
       });
+
+      this.$store.commit(RESET);
+      await this.$store.dispatch("getProjects");
       this.$router.push("/login");
       this.confirmSignOutLoading = false;
     }
