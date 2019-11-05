@@ -220,10 +220,9 @@ export default {
   padding: 20px;
   color: var(--blue-grey-900);
   transform-origin: top;
-  box-shadow: var(--box-shadow);
   border-bottom: 2px solid var(--input-border-color);
   border-radius: 0 0 var(--border-radius) var(--border-radius);
-  background-color: var(--off-white);
+  background-color: var(--input-background-color-alt);
 
   @media (min-width: 800px) {
     left: var(--nav-sidebar-width);
