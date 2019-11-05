@@ -52,7 +52,7 @@ export default {
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: var(--blue-grey-900);
+  background-color: var(--modal-smoke-color);
   opacity: 0.9;
   cursor: pointer;
 
@@ -77,7 +77,6 @@ aside {
   max-width: 560px;
   background-color: var(--modal-background-color);
   border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
   transition: inherit;
   pointer-events: painted;
   cursor: default;
