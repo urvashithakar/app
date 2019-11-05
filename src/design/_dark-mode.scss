@@ -1,11 +1,6 @@
 // Dark Mode
 @media (prefers-color-scheme: dark) {
-  :root {
-    --page-text-color: var(--blue-grey-100);
-    --page-background-color: var(--blue-grey-900);
-  }
-
-  .private {
+  body.private {
     --page-text-color: var(--blue-grey-100);
     --page-background-color: var(--blue-grey-900);
 

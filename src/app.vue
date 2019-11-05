@@ -23,7 +23,6 @@
 
   <div
     v-else-if="localeLoaded && !publicRoute"
-    class="private"
     :style="{
       '--brand': `var(--${color})`
     }"
@@ -40,7 +39,7 @@
     <v-notification />
   </div>
 
-  <div v-else-if="localeLoaded" class="public">
+  <div v-else-if="localeLoaded">
     <router-view />
     <v-notification />
   </div>
