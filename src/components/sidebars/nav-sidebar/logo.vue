@@ -18,14 +18,11 @@ export default {
   computed: {
     ...mapGetters(["currentProject"]),
     customLogoPath() {
-      if (this.customLogoExists) {
+      if (this.currentProject.data.project_logo) {
         return this.currentProject.data.project_logo.full_url;
       } else {
         return null;
       }
-    },
-    customLogoExists() {
-      return Boolean(this.currentProject.data.project_logo);
     },
     projectName() {
       return this.currentProject.data.project_name;
@@ -53,27 +50,20 @@ export default {
 
 <style lang="scss" scoped>
 .v-logo {
-  height: var(--header-height);
   background-color: var(--brand);
-  padding: 12px;
-  display: grid;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
+  width: 64px;
+  height: 64px;
+  padding: 12px;
 
   > * {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  .logo {
-    background-image: url("../../../assets/sprite.svg");
-    background-size: 882px;
-    background-position: 0%;
-    width: 59px;
-    height: 48px;
-    margin: 0 auto;
   }
 
   .running {

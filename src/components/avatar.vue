@@ -72,7 +72,6 @@ export default {
 }
 
 .wrapper {
-  border-radius: var(--border-radius);
   background-color: var(--card-background-color);
   height: 100%;
   width: 100%;

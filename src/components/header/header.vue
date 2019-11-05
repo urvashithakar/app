@@ -167,7 +167,7 @@ body.info-wide-active .v-header {
   width: 100%;
   right: 0;
   top: 0;
-  height: 4.286rem;
+  height: var(--header-height);
   color: var(--black);
   display: flex;
   align-items: center;

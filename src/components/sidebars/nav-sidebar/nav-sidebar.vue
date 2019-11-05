@@ -5,9 +5,9 @@
       <aside :class="{ active }">
         <button class="a11y-close" @click="disableNav">Close nav</button>
 
-        <v-logo class="logo" />
+        <module-bar />
 
-        <section class="content">
+        <section class="main-bar">
           <project-switcher />
 
           <template v-for="section in navStructure">
@@ -39,30 +39,27 @@
             />
           </template>
         </section>
-        <user-menu />
       </aside>
     </transition>
   </div>
 </template>
 <script>
-import VLogo from "./logo.vue";
 import ProjectSwitcher from "./project-switcher.vue";
 import NavMenu from "./nav-menu.vue";
-import UserMenu from "./user-menu.vue";
 import NavBookmarks from "./nav-bookmarks.vue";
 import VBlocker from "../../blocker.vue";
 import { TOGGLE_NAV } from "@/store/mutation-types";
 import { mapState } from "vuex";
+import ModuleBar from "./module-bar";
 
 export default {
   name: "NavSidebar",
   components: {
-    VLogo,
     ProjectSwitcher,
     NavMenu,
-    UserMenu,
     NavBookmarks,
-    VBlocker
+    VBlocker,
+    ModuleBar
   },
   computed: {
     ...mapState(["currentProjectKey"]),
@@ -200,6 +197,7 @@ aside {
   max-width: 80%;
   background-color: var(--sidebar-background-color);
   color: var(--sidebar-text-color);
+  display: flex;
 
   transform: translateX(-100%);
   visibility: hidden;
@@ -241,13 +239,15 @@ aside {
   }
 }
 
-.content {
+.main-bar {
   position: relative;
   padding: 20px;
   padding-top: 0;
   height: calc(100% - var(--header-height) - var(--header-height));
   overflow: auto;
   -webkit-overflow-scrolling: touch;
+  flex-basis: 220px;
+  flex-shrink: 0;
 }
 
 .menu-section + .menu-section {
