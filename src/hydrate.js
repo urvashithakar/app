@@ -2,7 +2,6 @@ import axios from "axios";
 import store from "./store/";
 import { loadLanguageAsync, availableLanguages } from "./lang/";
 import { STORE_HYDRATED, HYDRATING_FAILED } from "./store/mutation-types";
-import { startPolling } from "./polling";
 import startIdleTracking from "./idle";
 import { version } from "../package.json";
 
@@ -28,7 +27,6 @@ export default function hydrateStore() {
         }
       })
       .then(() => {
-        startPolling();
         startIdleTracking(store);
       })
       .then(() => {

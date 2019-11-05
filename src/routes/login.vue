@@ -232,7 +232,6 @@ export default {
     async fetchAuthenticatedUser() {
       this.firstName = null;
       this.lastName = null;
-      this.$api.config.project = this.currentProjectKey;
       const { data } = await this.$api.getMe({ fields: ["first_name", "last_name"] });
       this.firstName = data.first_name;
       this.lastName = data.last_name;
@@ -240,7 +239,6 @@ export default {
 
     async fetchSSOProviders() {
       this.ssoProviders = [];
-      this.$api.config.project = this.currentProjectKey;
       const { data } = await this.$api.getThirdPartyAuthProviders();
       this.ssoProviders = data;
     }

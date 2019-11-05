@@ -14,6 +14,7 @@ import "./design/main.scss";
 import "./globals";
 import "./helpers/handle-focus";
 import "./helpers/handle-drag";
+import { startPolling } from "@/latency";
 
 // import "./registerServiceWorker";
 import App from "./app.vue";
@@ -76,3 +77,6 @@ new Vue({
 }).$mount("#app");
 
 store.watch(state => state.currentUser.locale, locale => loadLanguageAsync(locale));
+store.watch(state => state.currentProjectKey, key => (api.config.project = key));
+
+startPolling();

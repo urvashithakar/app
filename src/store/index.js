@@ -28,10 +28,11 @@ const store = new Vuex.Store({
   getters,
   mutations: {
     [RESET](state) {
+      // Some parts of the state are system wide and don't have to / shouldn't be reset
+      const protectedKeys = ["latency", "currentProjectKey"];
+
       Object.keys(initialState).forEach(key => {
-        // don't reset the currentprojectkey flag, that's saved / restored from
-        // vuex-persistedstate
-        if (key === "currentProjectKey") return;
+        if (protectedKeys.includes(key)) return;
         state[key] = initialState[key];
       });
     },
