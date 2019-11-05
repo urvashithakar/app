@@ -33,10 +33,17 @@
     --breadcrumb-text-color: var(--blue-grey-600);
     --breadcrumb-glue-color: var(--blue-grey-800);
 
-    --modal-background-color: var(--blue-grey-800);
+    --modal-header-background-color: #1c232a; //1c252a;
+    --modal-background-color: var(--blue-grey-900);
+    --modal-smoke-color: var(--blue-grey-800);
 
     --tooltip-background-color: var(--blue-grey-100);
     --tooltip-text-color: var(--blue-grey-800);
+
+    --popover-background-color: var(--page-background-color);
+    --popover-text-color: var(--blue-grey-100);
+    --popover-text-color-hover: var(--blue);
+    --popover-text-color-disabled: var(--blue-grey-600);
 
     --card-background-color: var(--blue-grey-800);
     --card-background-color-hover: var(--blue-grey-700);
