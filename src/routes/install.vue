@@ -1,6 +1,6 @@
 <template>
   <PublicView wide :heading="$t('create_project')">
-    <form @submit.prevent="onSubmit">
+    <form @submit.prevent="step = 2">
       <public-stepper class="stepper" :steps="3" :current-step="step" />
 
       <fieldset v-show="step === 1" class="step-1">
@@ -13,6 +13,7 @@
               v-model="project_name"
               name="project_name"
               type="text"
+              required
               @input="syncKey"
             />
           </div>
@@ -20,57 +21,67 @@
             <label class="type-label" for="project_key">Project Key</label>
             <input
               id="project_key"
-              pattern="[A-Za-z0-9_-]"
               :value="project_key"
               name="project_key"
               type="text"
+              required
               @input="setProjectKey"
-              @blur="setProjectKey"
             />
           </div>
           <div class="field">
             <label class="type-label" for="user_email">Admin Email</label>
-            <input id="user_email" v-model="user_email" name="user_email" type="email" />
+            <input id="user_email" v-model="user_email" name="user_email" type="email" required />
           </div>
           <div class="field">
             <label class="type-label" for="user_password">Admin Password</label>
             <input
               id="user_password"
               v-model="user_password"
+              class="password"
               name="user_password"
-              type="password"
+              type="text"
+              required
             />
           </div>
         </div>
 
         <div class="buttons">
           <router-link to="/login" class="secondary">Cancel</router-link>
-          <button type="button" @click="step++">Next</button>
+          <button type="submit">Next</button>
         </div>
       </fieldset>
+    </form>
 
+    <form @submit.prevent="onSubmit">
       <fieldset v-show="step === 2" class="step-2">
         <legend class="type-title">Database Credentials</legend>
         <div class="field-grid">
           <div class="field">
             <label class="type-label" for="db_host">Host</label>
-            <input id="db_host" v-model="db_host" name="db_host" type="text" />
+            <input id="db_host" v-model="db_host" name="db_host" type="text" required />
           </div>
           <div class="field">
             <label class="type-label" for="db_port">Port</label>
-            <input id="db_port" v-model="db_port" name="db_port" type="number" />
+            <input id="db_port" v-model="db_port" name="db_port" type="number" required />
           </div>
           <div class="field">
             <label class="type-label" for="db_user">Database User</label>
-            <input id="db_user" v-model="db_user" name="db_user" type="text" />
+            <input id="db_user" v-model="db_user" name="db_user" type="text" required />
           </div>
           <div class="field">
             <label class="type-label" for="db_password">Database Password</label>
-            <input id="db_password" v-model="db_password" name="db_password" type="password" />
+            <input
+              id="db_password"
+              v-model="db_password"
+              class="password"
+              name="db_password"
+              type="password"
+              required
+            />
           </div>
           <div class="field">
             <label class="type-label" for="db_name">Database Name</label>
-            <input id="db_name" v-model="db_name" name="db_name" type="text" />
+            <input id="db_name" v-model="db_name" name="db_name" type="text" required />
           </div>
           <div class="field">
             <label class="type-label" for="db_type">Database Type</label>
@@ -406,5 +417,14 @@ legend {
 
 label {
   margin-bottom: 8px;
+}
+
+// There is no way to currently disable the browser from offering to save the password. We do not want the user to be
+// bothered by the browser asking to save the database password. This is the only way to hack around it. By using text
+// instead of password for type, we can trick the browser into thinking this is in fact not a password 🤦
+.password {
+  -moz-text-security: disc;
+  -webkit-text-security: disc;
+  text-security: disc;
 }
 </style>
