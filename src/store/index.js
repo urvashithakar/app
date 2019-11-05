@@ -12,20 +12,28 @@ import relations from "./modules/relations";
 import serverInfo from "./modules/server-info";
 import notifications from "./modules/notifications";
 
-import state from "./state";
+import initialState from "./state";
 import * as actions from "./actions";
 import * as getters from "./getters";
 import mutations from "./mutations";
+import { RESET } from "./mutation-types";
 
 Vue.use(Vuex);
 
 const debug = process.env.NODE_ENV !== "production"; // eslint-disable-line no-undef
 
 const store = new Vuex.Store({
-  state,
+  state: initialState,
   actions,
   getters,
-  mutations,
+  mutations: {
+    [RESET](state) {
+      Object.keys(initialState).forEach(key => {
+        state[key] = initialState[key];
+      });
+    },
+    ...mutations
+  },
   strict: debug,
   modules: {
     collections,
@@ -47,15 +55,4 @@ const store = new Vuex.Store({
   ]
 });
 
-// Make a clone of the current Vuex state without the reactivity
-const initialStateCopy = JSON.parse(JSON.stringify(store.state));
-
 export default store;
-
-export function resetState() {
-  // the store.replaceState method will make the passed in object reactive.
-  // This will make a clone to modify, so the original initialStateCopy stays
-  // as-is
-  const newState = JSON.parse(JSON.stringify(initialStateCopy));
-  store.replaceState(newState);
-}

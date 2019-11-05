@@ -1,3 +1,6 @@
+// Reset store
+export const RESET = "🔥 Reset State";
+
 // Auth
 export const LOGIN_PENDING = "🔒 Login Pending";
 export const LOGIN_SUCCESS = "🔒✅ Login Successful";
@@ -79,3 +82,7 @@ export const REMOVE_NOTIFICATION = "💬❌ Remove Notification";
 export const SET_CURRENT_PROJECT = "🌟 Set Current Project";
 export const UPDATE_PROJECT = "🌟 Update Project";
 export const SET_PROJECT_STATUS = "🌟 Set Status";
+
+// Settings
+export const SET_SETTINGS = "⚙️ Set Settings";
+export const SET_SETTING = "⚙️ Set Setting";

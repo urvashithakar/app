@@ -216,13 +216,6 @@ const router = new Router({
       }
     },
     {
-      path: "/logout",
-      beforeEnter(to, from, next) {
-        store.dispatch("logout");
-        next("/login");
-      }
-    },
-    {
       path: "*",
       component: NotFound
     }

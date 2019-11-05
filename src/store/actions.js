@@ -1,10 +1,10 @@
 import api from "../api";
 import axios from "axios";
 import router from "@/router";
-import { resetState } from "@/store/";
 import hydrateStore from "@/hydrate";
 
 import {
+  RESET,
   LATENCY,
   SET_CURRENT_USER,
   UPDATE_CURRENT_USER,
@@ -53,7 +53,16 @@ export function latency({ commit }) {
 export function getCurrentUser({ commit }) {
   return api
     .getMe({
-      fields: ["id", "avatar.*", "email", "first_name", "last_name", "locale", "roles.*.*"]
+      fields: [
+        "id",
+        "avatar.*",
+        "email",
+        "first_name",
+        "last_name",
+        "locale",
+        "roles.*.*",
+        "last_page"
+      ]
     })
     .then(res => res.data)
     .then(userInfo => {
@@ -114,15 +123,32 @@ export function loadingFinished({ commit }, id) {
   commit(LOADING_FINISHED, id);
 }
 
-export async function setCurrentProject({ commit, dispatch }, key) {
+export async function setCurrentProject({ commit, dispatch, state }, key) {
   api.config.project = key;
 
   const privateRoute = router.currentRoute.meta.publicRoute !== true;
 
   if (privateRoute) {
-    resetState();
-    await dispatch("getProjects");
-    await hydrateStore();
+    const newProject = state.projects.find(p => p.key === key);
+    const authenticated = newProject.data.authenticated;
+
+    if (authenticated) {
+      commit(RESET);
+      await dispatch("getProjects");
+      await hydrateStore();
+
+      // Default to /collections as homepage
+      let route = `/${key}/collections`;
+
+      // If the last visited page is saved in the current user record, use that
+      if (state.currentUser.last_page) {
+        route = state.currentUser.last_page;
+      }
+
+      router.push(route);
+    } else {
+      router.push("/login");
+    }
   }
 
   commit(SET_CURRENT_PROJECT, key);
