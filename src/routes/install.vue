@@ -8,11 +8,25 @@
         <div class="field-grid">
           <div class="field">
             <label class="type-label" for="project_name">Project Name</label>
-            <input id="project_name" v-model="project_name" name="project_name" type="text" />
+            <input
+              id="project_name"
+              v-model="project_name"
+              name="project_name"
+              type="text"
+              @input="syncKey"
+            />
           </div>
           <div class="field">
             <label class="type-label" for="project_key">Project Key</label>
-            <input id="project_key" v-model="project_key" name="project_key" type="text" />
+            <input
+              id="project_key"
+              pattern="[A-Za-z0-9_-]"
+              :value="project_key"
+              name="project_key"
+              type="text"
+              @input="setProjectKey"
+              @blur="setProjectKey"
+            />
           </div>
           <div class="field">
             <label class="type-label" for="user_email">Admin Email</label>
@@ -109,6 +123,7 @@ import PublicNotice from "@/components/public/notice";
 import axios from "axios";
 import { mapState } from "vuex";
 import PublicStepper from "@/components/public/stepper";
+import slug from "slug";
 
 export default {
   name: "Login",
@@ -135,7 +150,8 @@ export default {
       db_password: "",
       db_name: "",
       installing: false,
-      error: null
+      error: null,
+      manualKey: false
     };
   },
   computed: {
@@ -214,6 +230,16 @@ export default {
 
         this.step = 2;
       }
+    },
+    syncKey() {
+      if (this.manualKey === false) {
+        this.project_key = slug(this.project_name);
+      }
+    },
+    setProjectKey(event) {
+      if (this.manualKey === false) this.manualKey = true;
+      const value = slug(event.target.value);
+      this.project_key = value;
     }
   }
 };
