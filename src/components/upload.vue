@@ -253,7 +253,7 @@ export default {
   height: var(--width-medium);
 
   &.disabled {
-    background-color: var(--body-background);
+    background-color: var(--page-background-color);
     cursor: not-allowed;
   }
 }

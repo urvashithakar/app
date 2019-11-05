@@ -295,7 +295,7 @@ export default {
       padding: 0;
     }
     table tr:nth-child(2n) {
-      background-color: var(--body-background);
+      background-color: var(--page-background-color);
     }
     table tr th {
       font-weight: bold;
@@ -330,7 +330,7 @@ export default {
       padding: 0 5px;
       white-space: nowrap;
       border: 1px solid var(--blue-grey-50);
-      background-color: var(--body-background);
+      background-color: var(--page-background-color);
       border-radius: var(--border-radius);
     }
     pre code {
@@ -341,7 +341,7 @@ export default {
       background: transparent;
     }
     .highlight pre {
-      background-color: var(--body-background);
+      background-color: var(--page-background-color);
       border: 1px solid var(--blue-grey-50);
       font-size: 13px;
       line-height: 19px;
@@ -351,7 +351,7 @@ export default {
     }
     pre {
       font-family: "Roboto Mono", mono;
-      background-color: var(--body-background);
+      background-color: var(--page-background-color);
       border: 1px solid var(--blue-grey-50);
       font-size: 13px;
       line-height: 19px;

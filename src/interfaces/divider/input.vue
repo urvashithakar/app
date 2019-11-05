@@ -29,7 +29,7 @@ export default {
     color: var(--heading-text-color);
     font-size: 16px;
     line-height: 18px;
-    background-color: var(--body-background);
+    background-color: var(--page-background-color);
     padding: 0 12px;
   }
   p {

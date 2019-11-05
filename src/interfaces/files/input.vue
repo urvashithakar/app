@@ -642,7 +642,7 @@ export default {
 
 .edit-modal-body {
   padding: 30px 30px 60px 30px;
-  background-color: var(--body-background);
+  background-color: var(--page-background-color);
   .form {
     grid-template-columns:
       [start] minmax(0, var(--column-width)) [half] minmax(0, var(--column-width))
@@ -656,6 +656,6 @@ export default {
 
 .upload-modal-body {
   padding: 30px;
-  background-color: var(--body-background);
+  background-color: var(--page-background-color);
 }
 </style>
