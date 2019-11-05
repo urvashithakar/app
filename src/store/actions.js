@@ -17,8 +17,8 @@ export function latency({ commit }) {
   const start = performance.now();
   const now = Date.now();
 
-  api.api
-    .request("get", "/server/ping", {}, {}, true)
+  api
+    .ping()
     .then(() => {
       const end = performance.now();
       const delta = end - start;
