@@ -1,17 +1,28 @@
 <template>
   <div class="v-permissions-row" :class="{ 'system-row': system }">
     <div v-if="!statuses" class="row">
-      <div class="cell">
-        <span v-tooltip="permissionName" :class="{ system }">
+      <div class="cell collection-title">
+        <span v-tooltip="permissionName" :class="{ system }" class="name">
           {{ $helpers.formatTitle(system ? permissionName.substring(9) : permissionName) }}
         </span>
         <span class="set-all">
-          <button type="button" @click.prevent="setAll(true)">
-            {{ $t("all") }}
+          <button class="on" type="button" @click.prevent="setAll(true)">
+            <v-icon
+              v-tooltip="$t('turn_all_on')"
+              class="icon"
+              name="done"
+              size="12"
+              color="success"
+            />
           </button>
-          /
-          <button type="button" @click.prevent="setAll(false)">
-            {{ $t("none") }}
+          <button class="off" type="button" @click.prevent="setAll(false)">
+            <v-icon
+              v-tooltip="$t('turn_all_off')"
+              class="icon"
+              name="block"
+              size="12"
+              color="danger"
+            />
           </button>
         </span>
       </div>
@@ -70,17 +81,16 @@
       <div class="cell"><span class="mixed">--</span></div>
     </div>
     <div v-else class="row">
-      <div class="cell">
-        <span v-tooltip="permissionName" :class="{ system }">
+      <div class="cell collection-title">
+        <span v-tooltip="permissionName" :class="{ system }" class="name">
           {{ $helpers.formatTitle(system ? permissionName.substring(9) : permissionName) }}
         </span>
         <span class="set-all">
-          <button type="button" @click.prevent="setAll(true)">
-            {{ $t("all") }}
+          <button class="on" type="button" @click.prevent="setAll(true)">
+            <v-icon class="icon" name="done" size="12" color="success" />
           </button>
-          /
-          <button type="button" @click.prevent="setAll(false)">
-            {{ $t("none") }}
+          <button class="off" type="button" @click.prevent="setAll(false)">
+            <v-icon class="icon" name="block" size="12" color="danger" />
           </button>
         </span>
       </div>
@@ -594,16 +604,30 @@ fieldset {
   color: var(--input-border-color);
 }
 
-.set-all {
-  opacity: 0;
-  font-size: 12px;
-  font-weight: 600;
-  margin-left: 5px;
-  color: var(--blue-grey-300);
-  transition: opacity var(--fast) var(--transition);
+.collection-title {
+  position: relative;
+  margin-right: 4px;
+  .name {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+  .set-all {
+    position: absolute;
+    top: -4px;
+    right: 4px;
+    opacity: 0;
+    padding: 4px 4px 4px 16px;
+    background-color: var(--page-background-color);
+    background: linear-gradient(90deg, transparent 0%, var(--page-background-color) 25%);
+    transition: opacity var(--fast) var(--transition);
 
-  button {
-    transition: color var(--fast) var(--transition);
+    button {
+      transition: color var(--fast) var(--transition);
+      margin-left: 8px;
+    }
   }
 }
 

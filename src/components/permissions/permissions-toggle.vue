@@ -6,7 +6,7 @@
       <v-icon v-else-if="value === 'role'" class="icon" name="group" size="16" />
       <v-icon v-else-if="value === 'full'" class="icon" name="check" size="16" />
       <v-icon v-else-if="value === 'read'" class="icon" name="remove_red_eye" size="16" />
-      <v-icon v-else-if="value === 'create'" class="icon" name="add" size="16" />
+      <v-icon v-else-if="value === 'create'" class="icon" name="add" size="18" />
       <v-icon v-else-if="value === 'update'" class="icon" name="edit" size="16" />
       <v-icon v-else-if="value === 'always'" class="icon" name="announcement" size="16" />
       <v-icon v-else-if="value === 'indeterminate'" class="icon" name="remove" size="16" />
@@ -25,7 +25,7 @@
             <v-icon v-else-if="option === 'role'" class="icon" name="group" size="16" />
             <v-icon v-else-if="option === 'full'" class="icon" name="check" size="16" />
             <v-icon v-else-if="option === 'read'" class="icon" name="remove_red_eye" size="16" />
-            <v-icon v-else-if="option === 'create'" class="icon" name="add" size="16" />
+            <v-icon v-else-if="option === 'create'" class="icon" name="add" size="18" />
             <v-icon v-else-if="option === 'update'" class="icon" name="edit" size="16" />
             <v-icon v-else-if="option === 'always'" class="icon" name="announcement" size="16" />
           </div>
@@ -92,7 +92,7 @@ export default {
 .icon {
   position: relative;
   top: -1px;
-  left: 0px;
+  left: 0;
   font-size: 16px;
   color: var(--page-background-color);
 }
