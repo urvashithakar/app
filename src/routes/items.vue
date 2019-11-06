@@ -710,7 +710,7 @@ export default {
 <style lang="scss" scoped>
 .bookmark,
 .settings {
-  margin-left: 5px;
+  margin-left: 8px;
   position: relative;
 
   i {

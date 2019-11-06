@@ -502,23 +502,23 @@ export default {
   padding-bottom: var(--input-label-margin);
 }
 .bookmark {
-  margin-left: 10px;
-  opacity: 0.4;
+  margin-left: 8px;
   transition: opacity var(--fast) var(--transition);
+  color: var(--input-border-color);
   position: relative;
   &:hover {
-    opacity: 1;
+    color: var(--input-border-color-hover);
   }
   i {
     font-size: 24px;
     height: 20px;
-    transform: translateY(-3px); // Vertical alignment of icon
+    transform: translateY(-1px); // Vertical alignment of icon
   }
 }
 .bookmark.active {
   opacity: 1;
   i {
-    color: var(--accent);
+    color: var(--input-background-color-active);
   }
 }
 .bookmark-name {
