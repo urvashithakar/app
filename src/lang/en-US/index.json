@@ -13,6 +13,7 @@
   "advanced_options": "Advanced options",
   "all": "All",
   "allowed_status_options": "Allowed Status Options",
+  "all_set": "All set!",
   "almost_done_copy": "Every interface can be tailored to your needs. Below are the options available for this field.",
   "almost_done_options": "Almost Done! Now just review the interface options below.",
   "api_installed": "API Successfully Installed",
@@ -20,6 +21,7 @@
   "asc": "asc",
   "auto_generate": "Auto-Generate",
   "auto_generated": "Automatically generated...",
+  "back": "Back",
   "batch": "Batch",
   "batch_delete": "Batch Delete",
   "batch_delete_confirm": "No items have been selected | Are you sure you want to delete this item? This action can not be undone. | Are you sure you want to delete these {count} items? This action can not be undone.",
@@ -231,6 +233,8 @@
   "initial_schema_copy": "Choose from existing database architectures or start fresh. You can always extend and tweak this later.",
   "install": "Install",
   "install_copy": "This project has not been setup yet. If you are an administrator you can create it now by clicking on the button below.",
+  "install_busy_copy": "Thank you. One moment while we create your database, import your schema, and add a new config file for this API.",
+  "install_all_set_copy": "The project has successfully been created. You can now sign in to the App with the admin credentials you entered.",
   "intelligent_defaults": "Advanced options lets you configure how data will be stored in the database and tweak additional app settings.",
   "interface": "Interface",
   "interface_count": "No Interfaces | One Interface | {count} Interfaces",
@@ -462,6 +466,7 @@
     "sunday": "Sunday"
   },
   "welcome": "Welcome",
+  "wrapping_up": "Wrapping Up",
   "writable_fields": "Writable Fields",
   "writable_fields_copy": "Select the fields that the user can edit",
   "yes": "Yes"

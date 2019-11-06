@@ -4,10 +4,10 @@
       <public-stepper class="stepper" :steps="3" :current-step="step" />
 
       <fieldset v-show="step === 1" class="step-1">
-        <legend class="type-title">Project Info</legend>
+        <legend class="type-title">{{ $t("project_info") }}</legend>
         <div class="field-grid">
           <div class="field">
-            <label class="type-label" for="project_name">Project Name</label>
+            <label class="type-label" for="project_name">{{ $t("project_name") }}</label>
             <input
               id="project_name"
               v-model="project_name"
@@ -18,7 +18,7 @@
             />
           </div>
           <div class="field">
-            <label class="type-label" for="project_key">Project Key</label>
+            <label class="type-label" for="project_key">{{ $t("project_key") }}</label>
             <input
               id="project_key"
               :value="project_key"
@@ -29,11 +29,11 @@
             />
           </div>
           <div class="field">
-            <label class="type-label" for="user_email">Admin Email</label>
+            <label class="type-label" for="user_email">{{ $t("admin_email") }}</label>
             <input id="user_email" v-model="user_email" name="user_email" type="email" required />
           </div>
           <div class="field">
-            <label class="type-label" for="user_password">Admin Password</label>
+            <label class="type-label" for="user_password">{{ $t("admin_password") }}</label>
             <input
               id="user_password"
               v-model="user_password"
@@ -46,30 +46,30 @@
         </div>
 
         <div class="buttons">
-          <router-link to="/login" class="secondary">Cancel</router-link>
-          <button type="submit">Next</button>
+          <router-link to="/login" class="secondary">{{ $t("cancel") }}</router-link>
+          <button type="submit">{{ $t("next") }}</button>
         </div>
       </fieldset>
     </form>
 
     <form @submit.prevent="onSubmit">
       <fieldset v-show="step === 2" class="step-2">
-        <legend class="type-title">Database Credentials</legend>
+        <legend class="type-title">{{ $t("database_connection") }}</legend>
         <div class="field-grid">
           <div class="field">
-            <label class="type-label" for="db_host">Host</label>
+            <label class="type-label" for="db_host">{{ $t("db_host") }}</label>
             <input id="db_host" v-model="db_host" name="db_host" type="text" required />
           </div>
           <div class="field">
-            <label class="type-label" for="db_port">Port</label>
+            <label class="type-label" for="db_port">{{ $t("db_post") }}</label>
             <input id="db_port" v-model="db_port" name="db_port" type="number" required />
           </div>
           <div class="field">
-            <label class="type-label" for="db_user">Database User</label>
+            <label class="type-label" for="db_user">{{ $t("db_user") }}</label>
             <input id="db_user" v-model="db_user" name="db_user" type="text" required />
           </div>
           <div class="field">
-            <label class="type-label" for="db_password">Database Password</label>
+            <label class="type-label" for="db_password">{{ $t("db_password") }}</label>
             <input
               id="db_password"
               v-model="db_password"
@@ -80,11 +80,11 @@
             />
           </div>
           <div class="field">
-            <label class="type-label" for="db_name">Database Name</label>
+            <label class="type-label" for="db_name">{{ $t("db_name") }}</label>
             <input id="db_name" v-model="db_name" name="db_name" type="text" required />
           </div>
           <div class="field">
-            <label class="type-label" for="db_type">Database Type</label>
+            <label class="type-label" for="db_type">{{ $t("db_type") }}</label>
             <div class="select">
               <input id="db_type" name="db_type" type="text" value="MySQL" disabled />
             </div>
@@ -92,27 +92,24 @@
         </div>
 
         <div class="buttons">
-          <span class="secondary" @click="step--">Back</span>
-          <button type="submit">Install</button>
+          <span class="secondary" @click="step--">{{ $t("back") }}</span>
+          <button type="submit">{{ $t("install") }}</button>
         </div>
       </fieldset>
     </form>
 
     <div v-show="step === 3" class="step-3">
-      <h2 class="type-title">Doing things...</h2>
+      <h2 class="type-title">{{ $t("wrapping_up") }}</h2>
       <v-progress />
       <p>
-        Busy busy busy busy busy busy busy busy busy
+        {{ $t("install_busy_copy") }}
       </p>
     </div>
 
     <div v-show="step === 4" class="step-4">
-      <h2 class="type-title">All Set</h2>
+      <h2 class="type-title">{{ $t("all_set") }}</h2>
       <div class="progress-bar"></div>
-      <p>
-        The project has successfully been created. You can now sign in to the App with the admin
-        credentials you entered.
-      </p>
+      <p>{{ $t("install_all_set_copy") }}</p>
       <router-link to="/login" class="button">{{ $t("sign_in") }}</router-link>
     </div>
 
