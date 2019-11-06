@@ -60,11 +60,12 @@ export default {
       const valueNames = {};
       const children = Array.from(selectElement.querySelectorAll("option"));
 
-      children.forEach(element => {
-        valueNames[element.value] = element.innerText;
+      this.$nextTick(() => {
+        children.forEach(element => {
+          valueNames[element.value] = element.innerText;
+        });
+        this.valueNames = valueNames;
       });
-
-      this.valueNames = valueNames;
     }
   }
 };
