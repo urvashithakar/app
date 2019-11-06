@@ -251,7 +251,7 @@ body.info-wide-active .v-header {
 
 .scrolled {
   border-bottom: 2px solid var(--sidebar-background-color);
-  height: calc(4.286rem + 2px);
+  height: calc(var(--header-height) + 2px);
 }
 
 .info-mobile {
