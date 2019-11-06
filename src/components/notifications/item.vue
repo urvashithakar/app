@@ -65,7 +65,7 @@ export default {
   align-items: center;
   min-height: 64px;
   width: 100%;
-  border: var(--input-border-width) solid var(--input-background-color);
+  border: var(--input-border-width) solid var(--input-border-color);
   border-radius: 5px;
   margin-bottom: 12px;
   padding: 10px;

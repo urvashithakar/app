@@ -12,6 +12,8 @@
     --button-primary-background-color: var(--blue);
     --button-primary-text-color: var(--white);
     --button-primary-background-color-hover: var(--blue-700);
+    --button-primary-background-color-disabled: var(--blue-grey-700);
+    --button-primary-text-color-disabled: var(--blue-grey-300);
 
     // Alternate buttons
     --button-secondary-background-color: var(--blue-grey-600);
@@ -31,6 +33,9 @@
     --modal-header-background-color: #1c232a; //1c252a;
     --modal-background-color: var(--blue-grey-900);
     --modal-smoke-color: var(--blue-grey-800);
+    --modal-tab-text-color: var(--blue-grey-600);
+    --modal-tab-text-color-active: var(--white);
+    --modal-tab-text-color-disabled: var(--blue-grey-400);
 
     --tooltip-background-color: var(--blue-grey-100);
     --tooltip-text-color: var(--blue-grey-800);

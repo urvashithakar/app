@@ -126,11 +126,11 @@ export default {
 }
 
 .cancel {
-  color: var(--blue-grey-400);
+  color: var(--button-tertiary-text-color);
   transition: color var(--fast) var(--transition);
 
   &:hover {
-    color: var(--blue-grey-800);
+    color: var(--button-tertiary-text-color-hover);
   }
 }
 </style>

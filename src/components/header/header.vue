@@ -162,18 +162,28 @@ body.info-wide-active .v-header {
 
 <style scoped lang="scss">
 .v-header {
+  transition: all var(--fast) var(--transition);
   background-color: var(--page-background-color);
   position: fixed;
   width: 100%;
   right: 0;
   top: 0;
-  height: var(--header-height);
+  height: 76px;
+  padding-top: 32px;
+  padding-left: 32px;
+  padding-right: 32px;
   color: var(--black);
   display: flex;
   align-items: center;
   z-index: 20;
-  padding-left: 32px;
-  padding-right: 32px;
+
+  &.scrolled {
+    height: 66px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--sidebar-background-color);
+    // height: calc(var(--header-height) + 2px);
+  }
 
   @media (min-width: 800px) {
     padding-left: calc(var(--nav-sidebar-width) + 32px);
@@ -249,11 +259,6 @@ body.info-wide-active .v-header {
   }
 }
 
-.scrolled {
-  border-bottom: 2px solid var(--sidebar-background-color);
-  height: calc(var(--header-height) + 2px);
-}
-
 .info-mobile {
   @media (min-width: 1235px) {
     visibility: hidden;
@@ -263,6 +268,6 @@ body.info-wide-active .v-header {
 
 <style>
 body {
-  padding-top: var(--header-height);
+  padding-top: var(--header-height-expanded);
 }
 </style>

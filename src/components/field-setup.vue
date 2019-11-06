@@ -1544,8 +1544,6 @@ p {
 
   article {
     display: block;
-    background-color: var(--white);
-    box-shadow: var(--box-shadow);
     flex-basis: 160px;
     flex-shrink: 0;
     overflow: hidden;
@@ -1553,25 +1551,35 @@ p {
     cursor: pointer;
 
     .header {
-      background-color: var(--blue-grey-200);
+      background-color: var(--card-background-color);
       border-radius: var(--border-radius);
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 20px 0;
       transition: background-color var(--fast) var(--transition-out);
+      i {
+        color: var(--card-text-color-disabled) !important;
+      }
     }
 
     &.active {
       .header {
-        background-color: var(--blue-grey-900);
+        background-color: var(--card-background-color-hover);
+        color: var(--card-text-color);
         transition: background-color var(--fast) var(--transition-in);
+        i {
+          color: var(--card-text-color) !important;
+        }
       }
     }
 
     &:hover {
       .header {
-        background-color: var(--blue-grey-400);
+        background-color: var(--card-background-color-hover);
+        i {
+          color: var(--card-text-color) !important;
+        }
       }
     }
 
@@ -1587,8 +1595,7 @@ p {
     }
 
     p {
-      color: var(--blue-grey-200);
-      font-size: 13px;
+      color: var(--note-text-color);
     }
   }
 }
@@ -1652,27 +1659,23 @@ form.options {
 details {
   position: relative;
   margin-top: 60px;
-  border-top: 2px solid var(--blue-grey-50);
+  border-top: 2px solid var(--input-border-color);
   padding-top: 40px;
   padding-bottom: 32px;
   summary {
-    position: absolute;
-    left: 50%;
-    top: -22px;
-    transform: translateX(-50%);
-    background-color: var(--page-background-color);
-    color: var(--blue-grey-300);
-    font-size: 1.2rem;
-    line-height: 1.1;
+    font-size: 18px;
+    color: var(--note-text-color);
     font-weight: 400;
-    padding: 10px 20px;
-    text-align: center;
+    transition: var(--fast) var(--transition);
+    margin-top: -16px;
+    background-color: var(--page-background-color);
+    display: inline-block;
+    position: absolute;
+    top: 4px;
     cursor: pointer;
-    text-align: center;
-    text-transform: capitalize;
 
     &:hover {
-      color: var(--blue-grey-800);
+      color: var(--page-text-color);
     }
 
     &::-webkit-details-marker {
@@ -1681,19 +1684,26 @@ details {
 
     &::after {
       content: "unfold_more";
+      direction: ltr;
+      display: inline-block;
       font-family: "Material Icons";
       font-size: 18px;
-      margin-left: 2px;
-      vertical-align: -19%;
-      font-weight: normal;
+      color: var(--input-icon-color);
       font-style: normal;
-      display: inline-block;
+      font-weight: normal;
+      letter-spacing: normal;
       line-height: 1;
       text-transform: none;
-      letter-spacing: normal;
-      word-wrap: normal;
       white-space: nowrap;
-      font-feature-settings: "liga";
+      word-wrap: normal;
+      -webkit-font-feature-settings: "liga";
+      -webkit-font-smoothing: antialiased;
+      transition: var(--fast) var(--transition);
+      width: 28px;
+      height: 24px;
+      margin-left: 6px;
+      margin-top: 2px;
+      float: right;
     }
   }
 

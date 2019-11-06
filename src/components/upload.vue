@@ -396,7 +396,7 @@ input.select {
   }
 
   .dropzone {
-    background-color: var(--blue-grey-900);
+    background-color: var(--input-background-color);
     border-top-left-radius: var(--border-radius);
     border-top-right-radius: var(--border-radius);
     padding: 10px 20px;
@@ -470,7 +470,7 @@ input.select {
 
   li {
     padding: 10px 0;
-    background-color: var(--white);
+    background-color: var(--input-background-color);
 
     &:not(:last-of-type) {
       border-bottom: 1px solid var(--blue-grey-50);

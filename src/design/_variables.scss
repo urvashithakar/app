@@ -19,6 +19,7 @@
 
   --nav-sidebar-width: 284px;
   --header-height: 64px;
+  --header-height-expanded: 76px; // 44px + 32px
   --info-sidebar-width: 284px;
 
   --page-padding-bottom: 100px;
@@ -274,6 +275,8 @@
   --button-primary-background-color: var(--blue-grey-900);
   --button-primary-text-color: var(--white);
   --button-primary-background-color-hover: var(--blue-grey-800);
+  --button-primary-background-color-disabled: var(--blue-grey-50);
+  --button-primary-text-color-disabled: var(--blue-grey-300);
 
   // Alternate buttons
   --button-secondary-background-color: var(--blue-grey-100);
@@ -293,6 +296,9 @@
   --modal-header-background-color: var(--blue-grey-50);
   --modal-background-color: var(--white);
   --modal-smoke-color: var(--blue-grey-900);
+  --modal-tab-text-color: var(--blue-grey-400);
+  --modal-tab-text-color-active: var(--blue-grey-900);
+  --modal-tab-text-color-disabled: var(--blue-grey-200);
 
   --tooltip-background-color: var(--blue-grey-900);
   --tooltip-text-color: var(--white);
