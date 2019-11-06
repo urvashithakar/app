@@ -39,11 +39,28 @@
       </router-link>
     </template>
     <div class="spacer" />
-    <button class="sign-out" type="button" @click="confirmSignOut = true">
+
+    <router-link
+      v-tooltip.left="{
+        content: $t('my_profile'),
+        boundariesElement: 'body'
+      }"
+      class="edit-user"
+      :to="`/${currentProjectKey}/users/${currentUser.id}`"
+    >
       <v-avatar :src="avatarURL" :alt="fullName" :size="64" class="avatar" />
-      <div class="hover">
-        <v-icon name="power_settings_new" />
-      </div>
+    </router-link>
+
+    <button
+      v-tooltip.left="{
+        content: $t('sign_out'),
+        boundariesElement: 'body'
+      }"
+      class="sign-out"
+      type="button"
+      @click="confirmSignOut = true"
+    >
+      <v-icon name="logout" color="blue-grey-400" />
     </button>
 
     <portal v-if="confirmSignOut" to="modal">
@@ -169,6 +186,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  position: relative;
 }
 
 .link {
@@ -207,41 +225,43 @@ export default {
   flex-grow: 1;
 }
 
-.sign-out {
+.edit-user {
+  width: 64px;
+  height: 64px;
   position: relative;
+  z-index: 2;
 
-  &::after,
-  .hover {
+  // Overlay
+  &::after {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-  }
-
-  &::after {
     content: "";
     background-color: var(--blue-grey-900);
     opacity: 0.5;
     z-index: 1;
   }
+}
 
-  .hover {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: var(--fast) var(--transition);
-    transition-property: opacity, transform;
-  }
+.sign-out {
+  z-index: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 64px;
+  left: 0;
+  width: 64px;
+  height: 64px;
+  transform: translateY(64px);
+  transition: transform var(--fast) var(--transition);
+}
 
-  &:hover {
-    .hover {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+.edit-user:hover + .sign-out,
+.sign-out:hover {
+  transform: translateY(0px);
 }
 </style>
