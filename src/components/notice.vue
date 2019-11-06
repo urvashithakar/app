@@ -56,6 +56,10 @@ export default {
   &.gray {
     background-color: var(--sidebar-background-color);
   }
+  &.danger {
+    color: var(--danger);
+    background-color: var(--danger-light);
+  }
   &.warning {
     color: var(--warning);
     background-color: var(--warning-light);

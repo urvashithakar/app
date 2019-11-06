@@ -12,7 +12,7 @@
         <h1 class="title type-heading-large">{{ heading }}</h1>
         <slot />
       </div>
-      <div class="notice"><slot name="notice" /></div>
+      <div class="public-view-notice"><slot name="notice" /></div>
     </div>
     <div class="art" :style="artStyles">
       <img
@@ -51,27 +51,26 @@ export default {
   computed: {
     ...mapGetters(["currentProject"]),
     artStyles() {
-      if (this.currentProject.status !== "successful") return;
-      if (this.project_image.full_url) {
-        return { backgroundImage: `url(${this.project_image.full_url})` };
-      } else {
+      if (this.currentProject?.status !== "successful" || !this.project_image.full_url) {
         return { backgroundColor: `var(--${this.project_color})` };
       }
+
+      return { backgroundImage: `url(${this.project_image.full_url})` };
     },
     project_color() {
-      if (this.currentProject.status !== "successful") return defaults.project_color;
+      if (this.currentProject?.status !== "successful") return defaults.project_color;
       return this.currentProject.data.project_color || defaults.project_color;
     },
     project_image() {
-      if (this.currentProject.status !== "successful") return defaults.project_image;
+      if (this.currentProject?.status !== "successful") return defaults.project_image;
       return this.currentProject.data.project_image || defaults.project_image;
     },
     project_logo() {
-      if (this.currentProject.status !== "successful") return defaults.project_logo;
+      if (this.currentProject?.status !== "successful") return defaults.project_logo;
       return this.currentProject.data.project_logo || defaults.project_logo;
     },
     project_name() {
-      if (this.currentProject.status !== "successful") return defaults.project_name;
+      if (this.currentProject?.status !== "successful") return defaults.project_name;
       return this.currentProject.data.project_name || defaults.project_name;
     },
     version() {
@@ -119,7 +118,7 @@ export default {
     width: 100%;
   }
 
-  .notice {
+  .public-view-notice {
     position: absolute;
     bottom: 40px;
     left: 80px;

@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import createPersistedState from "vuex-persistedstate";
+import api from "@/api";
 
 import extensions from "./modules/extensions";
 import collections from "./modules/collections";
@@ -54,7 +55,10 @@ const store = new Vuex.Store({
     createPersistedState({
       key: "directus-app",
       paths: ["currentProjectKey"],
-      storage: window.sessionStorage
+      storage: window.sessionStorage,
+      rehydrated: store => {
+        api.config.project = store.state.currentProjectKey;
+      }
     })
   ]
 });

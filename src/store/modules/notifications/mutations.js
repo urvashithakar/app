@@ -1,11 +1,8 @@
 import { RESET, PUSH_NOTIFICATION, REMOVE_NOTIFICATION } from "../../mutation-types";
-import { initialState } from "./";
 
 const mutations = {
   [RESET](state) {
-    Object.keys(initialState).forEach(key => {
-      state[key] = initialState[key];
-    });
+    state.queue = [];
   },
   [PUSH_NOTIFICATION](state, data) {
     state.queue.push(data);

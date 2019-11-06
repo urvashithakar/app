@@ -13,7 +13,8 @@ import {
   LOADING_FINISHED,
   SET_CURRENT_PROJECT,
   UPDATE_PROJECT,
-  SET_PROJECT_STATUS
+  SET_PROJECT_STATUS,
+  INIT_PROJECTS
 } from "./mutation-types";
 import Vue from "vue";
 
@@ -99,6 +100,10 @@ const mutations = {
       ...state.projects[index],
       status
     });
+  },
+
+  [INIT_PROJECTS](state, projects) {
+    state.projects = projects;
   }
 };
 

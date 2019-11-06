@@ -1,9 +1,15 @@
 <template>
   <PublicView wide :heading="$t('create_project')">
-    <form @submit.prevent="step = 2">
-      <public-stepper class="stepper" :steps="3" :current-step="step" />
+    <public-stepper class="stepper" :steps="4" :current-step="step" />
 
-      <fieldset v-show="step === 1" class="step-1">
+    <div v-show="step === 1" class="step-1">
+      <h1>Welcome to Directus</h1>
+      <p>Isn't this awesome?</p>
+      <button type="button" @click="step = 2">{{ $t("next") }}</button>
+    </div>
+
+    <form v-show="step === 2" class="step-2" @submit.prevent="step = 3">
+      <fieldset>
         <legend class="type-title">{{ $t("project_info") }}</legend>
         <div class="field-grid">
           <div class="field">
@@ -18,11 +24,11 @@
             />
           </div>
           <div class="field">
-            <label class="type-label" for="project_key">{{ $t("project_key") }}</label>
+            <label class="type-label" for="project">{{ $t("project_key") }}</label>
             <input
-              id="project_key"
-              :value="project_key"
-              name="project_key"
+              id="project"
+              :value="project"
+              name="project"
               type="text"
               required
               @input="setProjectKey"
@@ -46,14 +52,14 @@
         </div>
 
         <div class="buttons">
-          <router-link to="/login" class="secondary">{{ $t("cancel") }}</router-link>
+          <span class="secondary" @click="step--">{{ $t("back") }}</span>
           <button type="submit">{{ $t("next") }}</button>
         </div>
       </fieldset>
     </form>
 
-    <form @submit.prevent="onSubmit">
-      <fieldset v-show="step === 2" class="step-2">
+    <form v-show="step === 3" class="step-3" @submit.prevent="onSubmit">
+      <fieldset>
         <legend class="type-title">{{ $t("database_connection") }}</legend>
         <div class="field-grid">
           <div class="field">
@@ -98,7 +104,7 @@
       </fieldset>
     </form>
 
-    <div v-show="step === 3" class="step-3">
+    <div v-show="step === 4" class="step-4">
       <h2 class="type-title">{{ $t("wrapping_up") }}</h2>
       <v-progress />
       <p>
@@ -106,7 +112,7 @@
       </p>
     </div>
 
-    <div v-show="step === 4" class="step-4">
+    <div v-show="step === 5" class="step-5">
       <h2 class="type-title">{{ $t("all_set") }}</h2>
       <div class="progress-bar"></div>
       <p>{{ $t("install_all_set_copy") }}</p>
@@ -129,7 +135,7 @@
 import PublicView from "@/components/public-view";
 import PublicNotice from "@/components/public/notice";
 import axios from "axios";
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 import PublicStepper from "@/components/public/stepper";
 import slug from "slug";
 
@@ -144,12 +150,12 @@ export default {
     return {
       step: 1,
       project_name: "",
-      project_key: "",
+      project: "",
       user_email: "",
       user_password: "",
       db_host: "localhost",
       notice: {
-        text: "Project Not Configured",
+        text: this.$t("project_not_configured"),
         color: "blue-grey-100",
         icon: "outlined_flag"
       },
@@ -166,15 +172,16 @@ export default {
     ...mapState(["apiRootPath"])
   },
   methods: {
+    ...mapActions(["getProjects"]),
     async onSubmit() {
       // When you hit enter on the first page, we don't want to submit the install data, instead
       // we go to the second page
-      if (this.step === 1) {
-        this.step = 2;
+      if (this.step === 2) {
+        this.step = 3;
         return;
       }
 
-      this.step = 3;
+      this.step = 4;
 
       // We want the install to at least take 3 seconds before being done, to make the user feel like
       // the installer is actually doing things. This will make sure 3 seconds have passed before we
@@ -186,7 +193,7 @@ export default {
           iconMain: "check"
         });
 
-        this.step = 4;
+        this.step = 5;
       };
 
       let installReady = false;
@@ -200,7 +207,7 @@ export default {
 
       const {
         project_name,
-        project_key,
+        project,
         user_email,
         user_password,
         db_host,
@@ -213,7 +220,7 @@ export default {
       try {
         await axios.post(this.apiRootPath + "projects", {
           project_name,
-          project_key,
+          project,
           user_email,
           user_password,
           db_host,
@@ -222,6 +229,9 @@ export default {
           db_password,
           db_name
         });
+
+        // Refetch projects to make sure store is up to date with new project
+        await this.getProjects();
 
         installReady = true;
 
@@ -236,18 +246,18 @@ export default {
           error
         });
 
-        this.step = 2;
+        this.step = 3;
       }
     },
     syncKey() {
       if (this.manualKey === false) {
-        this.project_key = slug(this.project_name);
+        this.project = slug(this.project_name);
       }
     },
     setProjectKey(event) {
       if (this.manualKey === false) this.manualKey = true;
       const value = slug(event.target.value);
-      this.project_key = value;
+      this.project = value;
     }
   }
 };
@@ -389,7 +399,7 @@ p {
   color: var(--blue-grey-300);
 }
 
-form {
+.stepper {
   margin-top: 4px;
 
   @media (min-height: 800px) {

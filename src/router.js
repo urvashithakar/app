@@ -225,23 +225,30 @@ const router = new Router({
 router.beforeEach(async (to, from, next) => {
   const publicRoute = to.matched.some(record => record.meta.publicRoute);
 
-  store.commit(TOGGLE_NAV, false);
-  store.commit(TOGGLE_INFO, false);
+  if (store.state.sidebars.nav === true) {
+    store.commit(TOGGLE_NAV, false);
+  }
+
+  if (store.state.sidebars.info === true) {
+    store.commit(TOGGLE_INFO, false);
+  }
 
   // This runs on first load
-  if (store.state.projects.length > 0 && store.state.projects[0].status === null) {
+  if (store.state.projects === null) {
     await store.dispatch("getProjects");
-
-    const loggedIn = store.getters.currentProject.data.authenticated;
-
-    if (loggedIn) {
-      await hydrateStore();
-    }
   }
 
   if (publicRoute) return next();
 
+  // It's false when there aren't any projects installed (no private ones either)
+  if (store.state.projects === false) {
+    return next("/install");
+  }
+
   const loggedIn = store.getters.currentProject.data.authenticated;
+  if (loggedIn && store.state.hydrated === false) {
+    await hydrateStore();
+  }
 
   if (loggedIn) {
     return next();

@@ -15,7 +15,8 @@ import {
   LOADING_FINISHED,
   SET_PROJECT_STATUS,
   UPDATE_PROJECT,
-  SET_CURRENT_PROJECT
+  SET_CURRENT_PROJECT,
+  INIT_PROJECTS
 } from "./mutation-types";
 
 export function latency({ commit }) {
@@ -128,13 +129,14 @@ export async function setCurrentProject({ commit, dispatch, state }, key) {
 
   const privateRoute = router.currentRoute.meta.publicRoute !== true;
 
+  await dispatch("getProjects");
+
   if (privateRoute) {
     const newProject = state.projects.find(p => p.key === key);
     const authenticated = newProject.data.authenticated;
     commit(RESET);
 
     if (authenticated) {
-      await dispatch("getProjects");
       await hydrateStore();
 
       // Default to /collections as homepage
@@ -188,10 +190,37 @@ export async function updateProjectInfo({ commit, state }, key) {
   }
 }
 
-export function getProjects({ state, dispatch }) {
-  const projects = state.projects;
+export async function getProjects({ state, dispatch, commit }) {
+  const apiRootPath = state.apiRootPath;
+  const url = apiRootPath + "server/projects";
 
-  return Promise.allSettled(
-    projects.map(p => p.key).map(key => dispatch("updateProjectInfo", key))
-  );
+  try {
+    const response = await axios.get(url);
+    const projectKeys = response.data.data;
+
+    const projects = projectKeys.map(key => ({
+      key,
+      status: null,
+      data: null,
+      error: null
+    }));
+
+    commit(INIT_PROJECTS, projects);
+
+    if (projects.length > 0 && state.currentProjectKey === null) {
+      dispatch("setCurrentProject", projects[0].key);
+    }
+
+    return Promise.allSettled(
+      projects.map(p => p.key).map(key => dispatch("updateProjectInfo", key))
+    );
+  } catch (error) {
+    const errorCode = error.response?.data.error.code;
+
+    if (errorCode === 14) {
+      return commit(INIT_PROJECTS, false);
+    }
+
+    console.error(error);
+  }
 }

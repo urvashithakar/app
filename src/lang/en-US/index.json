@@ -362,6 +362,7 @@
   "project_info_copy": "Below are a few questions about your project, including the credentials of your first administrator.",
   "project_key": "Project Key",
   "project_name": "Project Name",
+  "project_not_configured": "Project Not Configured",
   "read": "Read",
   "readable_fields": "Readable Fields",
   "readable_fields_copy": "Select the fields that the user can view",

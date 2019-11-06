@@ -8,26 +8,10 @@
         <p>{{ currentProject.project_name }}</p>
       </template>
 
-      <!--
-      TODO: base this on global API installed flag coming from /projects
-      <template v-else-if="currentProject.installed === false">
-        <p>{{ $t("install_copy") }}</p>
-        <div class="buttons">
-          <router-link to="/install" class="button">
-            {{ $t("install") }}
-          </router-link>
-        </div>
-      </template>
-      -->
-
       <template v-else-if="currentProject.status === 'failed'">
         Something is wrong with this project
         <!-- TODO: use v-error here -->
-      </template>
-
-      <template v-else-if="currentProject.status === 'loading'">
-        Loading project info
-        <!-- TODO: add spinner -->
+        <v-notice icon="error" color="danger">{{ readableError }}</v-notice>
       </template>
 
       <template v-else>
@@ -105,7 +89,14 @@ export default {
   },
   computed: {
     ...mapGetters(["currentProject"]),
-    ...mapState(["currentProjectKey", "apiRootPath"])
+    ...mapState(["currentProjectKey", "apiRootPath"]),
+    readableError() {
+      if (this.currentProject.status !== "failed") return null;
+      return (
+        this.currentProject.error.response?.data?.error?.message ||
+        this.currentProject.error.message
+      );
+    }
   },
   watch: {
     currentProjectKey: {
@@ -236,7 +227,6 @@ export default {
       this.firstName = data.first_name;
       this.lastName = data.last_name;
     },
-
     async fetchSSOProviders() {
       this.ssoProviders = [];
       const { data } = await this.$api.getThirdPartyAuthProviders();
