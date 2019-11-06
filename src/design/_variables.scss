@@ -342,6 +342,13 @@
   --off-white: #f9fafa;
   --highlight: var(--off-white);
 
+  // Module bar is same for both themes
+
+  --module-background-color: var(--blue-grey-900);
+  --module-text-color: var(--blue-grey-400);
+  --module-background-color-active: #13181A;
+  --module-text-color-active: var(--white);
+
   // Public pages are shared across light/dark themes
 
   --project-background-color: var(--blue-grey-900);

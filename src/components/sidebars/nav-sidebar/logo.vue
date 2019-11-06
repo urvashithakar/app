@@ -66,6 +66,18 @@ export default {
     object-fit: contain;
   }
 
+  .logo {
+    background-image: url("../../../assets/sprite.svg");
+    background-size: 747px 40px;
+    background-position: 0% 0%;
+    width: 50px;
+    height: 40px;
+    margin: 0 auto;
+    position: absolute;
+    top: 16px;
+    left: 9px;
+  }
+
   .running {
     animation: 560ms run steps(14) infinite;
   }

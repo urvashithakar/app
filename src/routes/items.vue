@@ -30,14 +30,6 @@
       />
       <template slot="buttons">
         <v-header-button
-          v-if="this.$store.state.currentUser.admin"
-          :label="$t('settings')"
-          icon="settings"
-          icon-color="button-tertiary-text-color"
-          background-color="button-tertiary-background-color"
-          @click="editCollection()"
-        />
-        <v-header-button
           v-if="editButton && !activity"
           key="edit"
           icon="mode_edit"

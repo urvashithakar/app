@@ -10,6 +10,7 @@
           boundariesElement: 'body'
         }"
         class="link"
+        :class="singleModule.class"
         :href="singleModule.url"
         target="__blank"
       >
@@ -27,6 +28,7 @@
           boundariesElement: 'body'
         }"
         class="link"
+        :class="singleModule.class"
         :to="singleModule.url"
       >
         <v-icon
@@ -114,7 +116,7 @@ export default {
           url: `/${this.currentProjectKey}/settings`,
           name: this.$t("admin_settings"),
           icon: "settings",
-          color: "warning"
+          class: "settings"
         });
       }
 
@@ -148,13 +150,22 @@ export default {
 };
 </script>
 
+<style lang="scss">
+.module-bar .router-link-active .icon.custom svg {
+  fill: var(--module-text-color-active) !important;
+}
+.module-bar .link:hover .icon.custom svg {
+  fill: var(--module-text-color-active) !important;
+}
+</style>
+
 <style lang="scss" scoped>
 .module-bar {
   width: 64px;
   flex-basis: 64px;
   flex-shrink: 0;
   height: 100%;
-  background-color: var(--blue-grey-900);
+  background-color: var(--module-background-color);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -170,12 +181,24 @@ export default {
   margin: 0;
   padding: 0;
 
+  &:hover .icon {
+    color: var(--module-text-color-active) !important;
+    fill: var(--module-text-color-active) !important;
+  }
+
+  &.settings {
+    &:hover .icon {
+      color: var(--warning) !important;
+      fill: var(--warning) !important;
+    }
+  }
+
   &.router-link-active {
-    background-color: var(--black);
+    background-color: var(--module-background-color-active);
 
     .icon {
-      color: var(--white) !important;
-      fill: var(--white) !important;
+      color: var(--module-text-color-active) !important;
+      fill: var(--module-text-color-active) !important;
     }
   }
 }
