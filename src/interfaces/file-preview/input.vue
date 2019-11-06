@@ -302,7 +302,7 @@ export default {
 .image {
   position: relative;
   width: 100%;
-  background-color: var(--blue-grey-800);
+  background-color: var(--black);
   text-align: center;
   border-radius: var(--border-radius);
   overflow: hidden;
@@ -377,7 +377,7 @@ export default {
   z-index: 1;
   width: 40px;
   height: 40px;
-  background-color: var(--white);
+  background-color: var(--page-background-color);
   border-radius: var(--border-radius);
   padding: 8px;
   opacity: 0;

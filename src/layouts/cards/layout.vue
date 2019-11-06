@@ -203,7 +203,7 @@ export default {
 .layout-cards {
   overflow: auto;
   height: 100%;
-  max-height: calc(100vh - var(--header-height));
+  max-height: calc(100vh - var(--header-height-expanded));
 }
 
 .toolbar {

@@ -48,7 +48,18 @@
       class="edit-user"
       :to="`/${currentProjectKey}/users/${currentUser.id}`"
     >
-      <v-avatar :src="avatarURL" :alt="fullName" :size="64" class="avatar" />
+      <v-avatar
+        v-if="avatarURL"
+        :src="avatarURL"
+        :alt="fullName"
+        :size="64"
+        class="avatar"
+        background-color="module-background-color-active"
+        hover
+      />
+      <div class="no-avatar">
+        <v-icon name="person" color="blue-grey-400" />
+      </div>
     </router-link>
 
     <button
@@ -225,6 +236,12 @@ export default {
   flex-grow: 1;
 }
 
+.no-avatar {
+  width: 64px;
+  height: 64px;
+  display: flex;
+}
+
 .edit-user {
   width: 64px;
   height: 64px;
@@ -233,6 +250,7 @@ export default {
 
   // Overlay
   &::after {
+    transition: all var(--fast) var(--transition);
     position: absolute;
     top: 0;
     left: 0;
@@ -240,8 +258,18 @@ export default {
     height: 100%;
     content: "";
     background-color: var(--blue-grey-900);
-    opacity: 0.5;
+    opacity: 0;
     z-index: 1;
+    pointer-events: none;
+  }
+
+  &:hover {
+    &::after {
+      opacity: 0;
+    }
+    i {
+      color: var(--white) !important;
+    }
   }
 }
 
@@ -258,6 +286,12 @@ export default {
   height: 64px;
   transform: translateY(64px);
   transition: transform var(--fast) var(--transition);
+  background-color: var(--module-background-color-active);
+  &:hover {
+    i {
+      color: var(--white) !important;
+    }
+  }
 }
 
 .edit-user:hover + .sign-out,

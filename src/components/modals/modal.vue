@@ -228,10 +228,10 @@ export default {
 
   button:not(.confirm) {
     transition: var(--fast) var(--transition);
-    color: var(--blue-grey-300);
+    color: var(--modal-tab-text-color);
 
     &:hover {
-      color: var(--blue-grey-600);
+      color: var(--modal-tab-text-color-active);
     }
   }
 }
@@ -261,10 +261,10 @@ export default {
   padding: 0;
   list-style: none;
   justify-content: center;
-  border-bottom: 2px solid var(--blue-grey-50);
+  border-bottom: 2px solid var(--modal-header-background-color);
   position: sticky;
   top: 0;
-  background-color: var(--white);
+  background-color: var(--modal-background-color);
   z-index: +1;
 
   button {
@@ -274,8 +274,7 @@ export default {
     flex-basis: 120px;
     height: 48px;
     position: relative;
-    color: var(--blue-grey-400);
-
+    color: var(--modal-tab-text-color);
     text-decoration: none;
     text-transform: uppercase;
     font-size: 12px;
@@ -283,7 +282,7 @@ export default {
     position: relative;
 
     &:hover {
-      color: var(--blue-grey-800);
+      color: var(--modal-tab-text-color-active);
     }
 
     &::after {
@@ -293,16 +292,16 @@ export default {
       position: absolute;
       height: 2px;
       bottom: -2px;
-      background-color: var(--blue-grey-900);
+      background-color: var(--modal-tab-text-color-active);
       transform: scaleY(0);
       transition: transform var(--fast) var(--transition-out);
     }
 
     &.active {
-      color: var(--blue-grey-800);
+      color: var(--modal-tab-text-color-active);
 
       &:hover {
-        color: var(--blue-grey-900);
+        color: var(--modal-tab-text-color-active);
       }
 
       &::after {
@@ -312,10 +311,10 @@ export default {
     }
 
     &[disabled] {
-      color: var(--blue-grey-200);
+      color: var(--modal-tab-text-color-disabled);
       cursor: not-allowed;
       &:hover {
-        color: var(--blue-grey-200);
+        color: var(--modal-tab-text-color-disabled);
       }
     }
   }

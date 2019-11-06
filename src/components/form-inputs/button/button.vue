@@ -136,9 +136,9 @@ button {
   }
 
   &:disabled:not(.loading) {
-    background-color: var(--blue-grey-50);
-    border: var(--input-border-width) solid var(--blue-grey-50);
-    color: var(--blue-grey-300);
+    background-color: var(--button-primary-background-color-disabled);
+    border: var(--input-border-width) solid var(--button-primary-background-color-disabled);
+    color: var(--button-primary-text-color-disabled);
     cursor: not-allowed;
   }
 
