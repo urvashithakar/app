@@ -125,16 +125,16 @@ export function loadingFinished({ commit }, id) {
 }
 
 export async function setCurrentProject({ commit, dispatch, state }, key) {
-  api.config.project = key;
+  commit(SET_CURRENT_PROJECT, key);
 
   const privateRoute = router.currentRoute.meta.publicRoute !== true;
 
-  await dispatch("getProjects");
-
   if (privateRoute) {
+    commit(RESET);
+    await dispatch("getProjects");
+
     const newProject = state.projects.find(p => p.key === key);
     const authenticated = newProject.data.authenticated;
-    commit(RESET);
 
     if (authenticated) {
       await hydrateStore();
@@ -152,8 +152,6 @@ export async function setCurrentProject({ commit, dispatch, state }, key) {
       router.push("/login");
     }
   }
-
-  commit(SET_CURRENT_PROJECT, key);
 }
 
 export async function updateProjectInfo({ commit, state }, key) {
@@ -191,28 +189,31 @@ export async function updateProjectInfo({ commit, state }, key) {
 }
 
 export async function getProjects({ state, dispatch, commit }) {
-  const apiRootPath = state.apiRootPath;
-  const url = apiRootPath + "server/projects";
-
   try {
-    const response = await axios.get(url);
-    const projectKeys = response.data.data;
+    let projects;
 
-    const projects = projectKeys.map(key => ({
-      key,
-      status: null,
-      data: null,
-      error: null
-    }));
+    if (state.projects === null) {
+      const apiRootPath = state.apiRootPath;
+      const url = apiRootPath + "server/projects";
+      const response = await axios.get(url);
+      const projectKeys = response.data.data;
 
-    commit(INIT_PROJECTS, projects);
+      projects = projectKeys.map(key => ({
+        key,
+        status: null,
+        data: null,
+        error: null
+      }));
 
-    if (projects.length > 0 && state.currentProjectKey === null) {
-      dispatch("setCurrentProject", projects[0].key);
+      commit(INIT_PROJECTS, projects);
+    }
+
+    if (state.projects.length > 0 && state.currentProjectKey === null) {
+      dispatch("setCurrentProject", state.projects[0].key);
     }
 
     return Promise.allSettled(
-      projects.map(p => p.key).map(key => dispatch("updateProjectInfo", key))
+      state.projects.map(p => p.key).map(key => dispatch("updateProjectInfo", key))
     );
   } catch (error) {
     const errorCode = error.response?.data.error.code;

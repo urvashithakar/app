@@ -246,7 +246,14 @@ router.beforeEach(async (to, from, next) => {
   }
 
   const loggedIn = store.getters.currentProject.data.authenticated;
-  if (loggedIn && store.state.hydrated === false) {
+
+  // Make sure the project reloads when the user manually changes the project in the URL
+  // This will also happen when a user clicks a link from an external source
+  if (from.params.project && from.params.project !== to.params.project) {
+    if (to.params.project !== store.state.currentProjectKey) {
+      await store.dispatch("setCurrentProject", to.params.project);
+    }
+  } else if (loggedIn && store.state.hydrated === false) {
     await hydrateStore();
   }
 

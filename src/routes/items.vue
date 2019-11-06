@@ -5,7 +5,7 @@
       info-toggle
       :item-detail="false"
       :breadcrumb="breadcrumb"
-      :icon="collectionInfo.icon || 'box'"
+      :icon="(collectionInfo && collectionInfo.icon) || 'box'"
       :title="currentBookmark && currentBookmark.title"
     >
       <template slot="title">

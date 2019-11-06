@@ -30,7 +30,7 @@ const store = new Vuex.Store({
   mutations: {
     [RESET](state) {
       // Some parts of the state are system wide and don't have to / shouldn't be reset
-      const protectedKeys = ["latency", "currentProjectKey"];
+      const protectedKeys = ["latency", "currentProjectKey", "projects"];
 
       Object.keys(initialState).forEach(key => {
         if (protectedKeys.includes(key)) return;
