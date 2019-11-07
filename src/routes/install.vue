@@ -1,6 +1,6 @@
 <template>
   <PublicView wide :heading="$t('create_project')">
-    <public-stepper class="stepper" :steps="4" :current-step="step" />
+    <public-stepper class="stepper" :steps="5" :current-step="step" />
 
     <div v-show="step === 1" class="step-1">
       <template v-if="firstInstall">
@@ -16,7 +16,11 @@
       <button type="button" @click="step = 2">{{ $t("next") }}</button>
     </div>
 
-    <form v-show="step === 2" class="step-2" @submit.prevent="step = 3">
+    <div v-show="step === 2" class="step-2">
+      <button type="button" @click="step = 3">{{ $t("next") }}</button>
+    </div>
+
+    <form v-show="step === 3" class="step-3" @submit.prevent="step = 4">
       <fieldset>
         <legend class="type-title">{{ $t("project_info") }}</legend>
         <div class="field-grid">
@@ -67,7 +71,7 @@
       </fieldset>
     </form>
 
-    <form v-show="step === 3" class="step-3" @submit.prevent="onSubmit">
+    <form v-show="step === 4" class="step-4" @submit.prevent="onSubmit">
       <fieldset>
         <legend class="type-title">{{ $t("database_connection") }}</legend>
         <div class="field-grid">
@@ -113,7 +117,7 @@
       </fieldset>
     </form>
 
-    <div v-show="step === 4" class="step-4">
+    <div v-show="step === 5" class="step-5">
       <h2 class="type-title">{{ $t("wrapping_up") }}</h2>
       <v-progress />
       <p>
@@ -121,7 +125,7 @@
       </p>
     </div>
 
-    <div v-show="step === 5" class="step-5">
+    <div v-show="step === 6" class="step-6">
       <h2 class="type-title">{{ $t("all_set") }}</h2>
       <div class="progress-bar"></div>
       <p>{{ $t("install_all_set_copy") }}</p>
@@ -205,12 +209,12 @@ export default {
     async onSubmit() {
       // When you hit enter on the first page, we don't want to submit the install data, instead
       // we go to the second page
-      if (this.step === 2) {
-        this.step = 3;
+      if (this.step === 3) {
+        this.step = 4;
         return;
       }
 
-      this.step = 4;
+      this.step = 5;
 
       // We want the install to at least take 3 seconds before being done, to make the user feel like
       // the installer is actually doing things. This will make sure 3 seconds have passed before we
@@ -222,7 +226,7 @@ export default {
           iconMain: "check"
         });
 
-        this.step = 5;
+        this.step = 6;
       };
 
       let installReady = false;
@@ -277,7 +281,7 @@ export default {
           error
         });
 
-        this.step = 3;
+        this.step = 4;
       }
     },
     syncKey() {

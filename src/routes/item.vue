@@ -870,7 +870,7 @@ export default {
       store.dispatch("loadingStart", { id });
       const currentUser = this.$store.state.currentUser;
 
-      this.$api
+      this.$api.api
         .post("/activity/comment", {
           collection: this.collection,
           item: this.primaryKey,
