@@ -44,6 +44,7 @@ h3 {
 
 .icon {
   margin-right: 15px;
+  vertical-align: -8px;
 }
 
 a {
