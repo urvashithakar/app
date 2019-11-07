@@ -241,12 +241,16 @@ export default {
   width: 64px;
   height: 64px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--module-background-color-active);
 }
 
 .edit-user {
   width: 64px;
   height: 64px;
   position: relative;
+  text-decoration: none;
   z-index: 2;
 
   // Overlay
