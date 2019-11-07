@@ -31,6 +31,9 @@
         >
           <template v-if="project.status === 'successful'">
             {{ project.data.project_name }}
+            <template v-if="project.data.authenticated === true">
+              &#8226;
+            </template>
           </template>
           <template v-else>
             {{ project.key }}
