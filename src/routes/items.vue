@@ -654,7 +654,6 @@ export default {
     return api
       .getMyListingPreferences(collection)
       .then(preferences => {
-        console.log(preferences);
         store.dispatch("loadingFinished", id);
         next(vm => {
           vm.$data.preferences = preferences;
