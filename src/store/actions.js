@@ -163,10 +163,10 @@ export async function updateProjectInfo({ commit, state }, key) {
     const response = await axios.get(url);
     const {
       project_name,
-      project_logo,
+      project_foreground,
       project_color,
-      project_image,
-      project_icon
+      project_background,
+      project_logo
     } = response.data.data.api;
     const authenticated = response.data.public === undefined;
 
@@ -174,10 +174,10 @@ export async function updateProjectInfo({ commit, state }, key) {
       key: key,
       data: {
         project_name,
-        project_logo,
+        project_foreground,
         project_color,
-        project_image,
-        project_icon,
+        project_background,
+        project_logo,
         authenticated
       }
     });

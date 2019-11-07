@@ -16,9 +16,9 @@
     </div>
     <div class="art" :style="artStyles">
       <img
-        v-if="project_logo.full_url"
+        v-if="project_foreground.full_url"
         class="logo"
-        :src="project_logo.full_url"
+        :src="project_foreground.full_url"
         :alt="project_name"
       />
     </div>
@@ -31,8 +31,8 @@ import { mapGetters } from "vuex";
 
 const defaults = {
   project_color: "project-background-color",
-  project_image: { full_url: null },
-  project_logo: { full_url: null },
+  project_background: { full_url: null },
+  project_foreground: { full_url: null },
   project_name: "Directus"
 };
 
@@ -51,23 +51,23 @@ export default {
   computed: {
     ...mapGetters(["currentProject"]),
     artStyles() {
-      if (this.currentProject?.status !== "successful" || !this.project_image.full_url) {
+      if (this.currentProject?.status !== "successful" || !this.project_background.full_url) {
         return { backgroundColor: `var(--${this.project_color})` };
       }
 
-      return { backgroundImage: `url(${this.project_image.full_url})` };
+      return { backgroundImage: `url(${this.project_background.full_url})` };
     },
     project_color() {
       if (this.currentProject?.status !== "successful") return defaults.project_color;
       return this.currentProject.data.project_color || defaults.project_color;
     },
-    project_image() {
-      if (this.currentProject?.status !== "successful") return defaults.project_image;
-      return this.currentProject.data.project_image || defaults.project_image;
+    project_background() {
+      if (this.currentProject?.status !== "successful") return defaults.project_background;
+      return this.currentProject.data.project_background || defaults.project_background;
     },
-    project_logo() {
-      if (this.currentProject?.status !== "successful") return defaults.project_logo;
-      return this.currentProject.data.project_logo || defaults.project_logo;
+    project_foreground() {
+      if (this.currentProject?.status !== "successful") return defaults.project_foreground;
+      return this.currentProject.data.project_foreground || defaults.project_foreground;
     },
     project_name() {
       if (this.currentProject?.status !== "successful") return defaults.project_name;
