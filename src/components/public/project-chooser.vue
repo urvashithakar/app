@@ -13,13 +13,10 @@
     <select v-model="currentProjectKey">
       <option v-for="project in projects" :key="project.key" :value="project.key">
         <template v-if="project.status === 'successful'">
-          <template v-if="project.data.authenticated === true">
-            &#9679;
-          </template>
-          <template v-else>
-            &#9675;
-          </template>
           {{ project.data.project_name }}
+          <template v-if="project.data.authenticated === true">
+            &#8226;
+          </template>
         </template>
         <template v-else>
           {{ project.key }}

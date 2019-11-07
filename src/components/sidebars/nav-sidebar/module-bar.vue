@@ -262,8 +262,8 @@ export default {
     width: 100%;
     height: 100%;
     content: "";
-    background-color: var(--blue-grey-900);
-    opacity: 0;
+    background-color: var(--module-background-color);
+    opacity: 0.5;
     z-index: 1;
     pointer-events: none;
   }
