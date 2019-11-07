@@ -204,6 +204,7 @@ export default {
   width: 64px;
   height: 64px;
   display: flex;
+  flex-shrink: 0;
   justify-content: center;
   align-items: center;
   text-decoration: none;
