@@ -31,6 +31,7 @@
               name="project"
               type="text"
               required
+              pattern="^[a-z_-]+$"
               @input="setProjectKey"
             />
           </div>
@@ -269,12 +270,12 @@ export default {
     },
     syncKey() {
       if (this.manualKey === false) {
-        this.project = slug(this.project_name);
+        this.project = slug(this.project_name, { lower: true });
       }
     },
     setProjectKey(event) {
       if (this.manualKey === false) this.manualKey = true;
-      const value = slug(event.target.value);
+      const value = slug(event.target.value, { lower: true });
       this.project = value;
     },
     async goToLogin() {
