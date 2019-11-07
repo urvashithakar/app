@@ -132,6 +132,6 @@ export default {
 
 <style lang="scss" scoped>
 .settings-roles {
-  padding: 0 32px var(--page-padding-bottom);
+  padding: var(--page-padding) var(--page-padding) var(--page-padding-bottom);
 }
 </style>
