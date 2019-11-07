@@ -117,6 +117,9 @@
       <h2 class="type-title">{{ $t("all_set") }}</h2>
       <div class="progress-bar"></div>
       <p>{{ $t("install_all_set_copy") }}</p>
+      <p v-if="firstInstall">
+        {{ $t("install_all_set_super_admin_password", { super_admin_token }) }}
+      </p>
       <button type="button" class="button" @click="goToLogin">{{ $t("sign_in") }}</button>
     </div>
 
@@ -183,7 +186,7 @@ export default {
   methods: {
     ...mapActions(["getProjects"]),
     generateMasterPassword() {
-      const sections = 4;
+      const sections = 2;
       let password = "";
       for (let i = 0; i <= sections; i++) {
         password += shortid.generate();

@@ -212,6 +212,14 @@ export async function getProjects({ state, dispatch, commit }) {
       dispatch("setCurrentProject", state.projects[0].key);
     }
 
+    // If the project that the user last logged into no longer exists, reset to the first possible project
+    if (
+      state.projects.length > 0 &&
+      state.projects.map(p => p.key).includes(state.currentProjectKey) === false
+    ) {
+      dispatch("setCurrentProject", state.projects[0].key);
+    }
+
     return Promise.allSettled(
       state.projects.map(p => p.key).map(key => dispatch("updateProjectInfo", key))
     );
