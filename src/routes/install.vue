@@ -3,8 +3,16 @@
     <public-stepper class="stepper" :steps="4" :current-step="step" />
 
     <div v-show="step === 1" class="step-1">
-      <h1>Welcome to Directus</h1>
-      <p>Isn't this awesome?</p>
+      <template v-if="firstInstall">
+        <h1>Welcome to Directus</h1>
+        <p>Isn't this awesome?</p>
+      </template>
+      <template v-else>
+        <h1>Add new project</h1>
+        <p>Enter your super admin password to continue</p>
+        <input v-model="super_admin_token" type="text" />
+      </template>
+
       <button type="button" @click="step = 2">{{ $t("next") }}</button>
     </div>
 
@@ -171,7 +179,8 @@ export default {
       installing: false,
       error: null,
       manualKey: false,
-      super_admin_token: ""
+      super_admin_token: "",
+      adminTokenValid: false
     };
   },
   created() {
