@@ -215,10 +215,12 @@ export default {
     user-select: none;
   }
 
-  &:not(.disabled):hover,
-  &:not(.disabled).selected {
-    .header:not(.big-image) {
-      background-color: var(--card-background-color-hover) !important;
+  &.link {
+    &:not(.disabled):hover,
+    &:not(.disabled).selected {
+      .header:not(.big-image) {
+        background-color: var(--card-background-color-hover) !important;
+      }
     }
   }
 
