@@ -21,7 +21,7 @@
     <v-header
       :breadcrumb="breadcrumb"
       :info-toggle="!newItem && !batch && !activityDetail"
-      :icon-link="singleItem ? null : `/collections/${collection}`"
+      :icon-link="singleItem ? null : `/${currentProjectKey}/collections/${collection}`"
       :icon="singleItem ? collectionInfo.icon || 'box' : 'arrow_back'"
       item-detail
     >
