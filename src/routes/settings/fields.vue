@@ -533,7 +533,7 @@ export default {
       const id = this.$helpers.shortid.generate();
       this.$store.dispatch("loadingStart", { id });
 
-      this.$api
+      this.$api.api
         .patch(`/fields/${this.collection}`, fieldUpdates, {
           activity_skip: 1
         })
