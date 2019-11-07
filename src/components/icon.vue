@@ -122,6 +122,7 @@ i {
   white-space: nowrap;
   font-feature-settings: "liga";
   vertical-align: middle;
+  transition: all var(--fast) var(--transition);
 }
 
 i.outline {
