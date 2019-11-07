@@ -36,8 +36,8 @@
         <v-header-button
           v-if="!newItem && !singleItem && permission.delete !== 'none'"
           icon="delete_outline"
-          background-color="danger"
           icon-color="white"
+          background-color="danger"
           hover-color="danger-dark"
           :label="$t('delete')"
           @click="confirmRemove = true"
@@ -49,9 +49,9 @@
           :loading="saving"
           :label="$t('save')"
           icon="check"
-          background-color="button-primary-background-color"
           icon-color="button-primary-text-color"
-          hover-color="success"
+          background-color="button-primary-background-color"
+          hover-color="button-primary-background-color-hover"
           @click="confirmBatchSave = true"
         />
 
@@ -62,9 +62,9 @@
           :label="$t('save')"
           :options="saveOptions"
           icon="check"
-          background-color="button-primary-background-color"
           icon-color="button-primary-text-color"
-          hover-color="success"
+          background-color="button-primary-background-color"
+          hover-color="button-primary-background-color-hover"
           @click="singleItem ? save('stay') : save('leave')"
           @input="save"
         />
