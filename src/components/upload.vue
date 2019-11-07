@@ -57,7 +57,7 @@
           :stroke="file.progress === 100 ? 0 : 2"
         />
         <div class="info">
-          <p class="name type-heading-medium no-wrap">{{ file.name }}</p>
+          <p class="name type-heading-small no-wrap">{{ file.name }}</p>
           <p class="file-info no-wrap">
             {{ file.size }}
             <span v-if="file.progress && file.progress !== 100" class="progress">
@@ -348,7 +348,7 @@ input.select {
 
   .icon i {
     font-size: 100px !important;
-    color: var(--input-border-color);
+    color: var(--input-icon-color);
   }
 
   p {
@@ -396,12 +396,12 @@ input.select {
   }
 
   .dropzone {
-    background-color: var(--input-background-color);
+    background-color: var(--input-border-color);
     border-top-left-radius: var(--border-radius);
     border-top-right-radius: var(--border-radius);
     padding: 10px 20px;
     padding-right: 50px;
-    border: var(--input-border-width) solid var(--blue-grey-900);
+    border: var(--input-border-width) solid var(--input-border-color);
     color: var(--white);
     flex-shrink: 0;
 
@@ -447,7 +447,7 @@ input.select {
 
   ol {
     flex-grow: 1;
-    border: var(--input-border-width) dashed var(--blue-grey-200);
+    border: var(--input-border-width) dashed var(--input-border-color);
     border-top: 0;
     border-bottom-left-radius: var(--border-radius);
     border-bottom-right-radius: var(--border-radius);
