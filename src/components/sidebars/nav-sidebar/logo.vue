@@ -75,7 +75,7 @@ export default {
     margin: 0 auto;
     position: absolute;
     top: 16px;
-    left: 9px;
+    left: 8px;
   }
 
   .running {
