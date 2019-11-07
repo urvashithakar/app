@@ -1,7 +1,7 @@
 <template>
   <div class="interface-2fa-value">
     <v-notice v-if="tfa_secret" icon="info" class="qr-info">
-      Scan this code in your authenticator app
+      {{ $t("scan_in_authenticator") }}
     </v-notice>
     <qr-code
       v-if="tfa_secret"
@@ -36,7 +36,7 @@ export default {
     getToken() {
       this.loading = true;
 
-      this.$api
+      this.$api.api
         .get("/utils/2fa_secret")
         .then(res => res["2fa_secret"])
         .then(token => {

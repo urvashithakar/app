@@ -14,6 +14,11 @@
         <v-notice icon="error" color="danger">{{ readableError }}</v-notice>
       </template>
 
+      <template v-else-if="needs2fa === true">
+        <p>Enter one time password</p>
+        <otp-input @input="onOTPInput" />
+      </template>
+
       <template v-else>
         <div
           v-if="
@@ -62,6 +67,7 @@ import ProjectChooser from "@/components/public/project-chooser";
 import { mapState, mapGetters, mapMutations } from "vuex";
 import { UPDATE_PROJECT } from "@/store/mutation-types";
 import hydrateStore from "@/hydrate";
+import OtpInput from "@/components/public/otp-input";
 
 export default {
   name: "Login",
@@ -69,12 +75,14 @@ export default {
     PublicView,
     PublicNotice,
     ProjectChooser,
-    Sso
+    Sso,
+    OtpInput
   },
   data() {
     return {
       email: "",
       password: "",
+      otp: "",
       signingIn: false,
       fetchingData: false,
       notice: {
@@ -84,7 +92,8 @@ export default {
       },
       firstName: null,
       lastName: null,
-      ssoProviders: []
+      ssoProviders: [],
+      needs2fa: false
     };
   },
   computed: {
@@ -139,13 +148,19 @@ export default {
         icon: null
       };
 
+      const credentials = {
+        project: this.currentProjectKey,
+        email,
+        password,
+        mode: "cookie"
+      };
+
+      if (this.otp && this.otp.length === 6) {
+        credentials.otp = this.otp;
+      }
+
       this.$api
-        .login({
-          project: this.currentProjectKey,
-          email,
-          password,
-          mode: "cookie"
-        })
+        .login(credentials)
         .then(async () => {
           const { data: projectInfo } = await this.$api.api.get("/");
           const { requires2FA, version, database } = projectInfo.api;
@@ -166,7 +181,15 @@ export default {
         })
         .catch(error => {
           const { code } = error;
-          if (code) {
+          if (+code === 111) {
+            this.needs2fa = true;
+
+            this.notice = {
+              text: this.$t(`errors.${code}`),
+              color: "blue-grey-100",
+              icon: "lock_outline"
+            };
+          } else if (code) {
             this.notice = {
               text: this.$t(`errors.${code}`),
               color: "warning",
@@ -231,6 +254,11 @@ export default {
       this.ssoProviders = [];
       const { data } = await this.$api.getThirdPartyAuthProviders();
       this.ssoProviders = data;
+    },
+    onOTPInput(value) {
+      this.otp = value;
+      console.log(value);
+      this.login();
     }
   }
 };

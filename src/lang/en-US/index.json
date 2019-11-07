@@ -163,6 +163,7 @@
     "103": "User inactive",
     "106": "Wrong username and/or password",
     "107": "User not found",
+    "111": "Enter One-Time Password",
     "112": "Wrong OTP",
     "114": "Wrong username and/or password",
     "-1": "Couldn't reach API"
@@ -395,6 +396,7 @@
   "save_and_stay": "Save and Stay",
   "save_as_bookmark": "Save as Bookmark",
   "save_as_copy": "Save as Copy",
+  "scan_in_authenticator": "Scan this code in your authenticator app",
   "schema": "Schema",
   "search": "Search",
   "search_for_item": "Search for an item...",
