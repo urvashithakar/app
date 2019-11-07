@@ -31,6 +31,7 @@
               name="project"
               type="text"
               required
+              pattern="^[a-z_-]+$"
               @input="setProjectKey"
             />
           </div>
@@ -63,11 +64,11 @@
         <legend class="type-title">{{ $t("database_connection") }}</legend>
         <div class="field-grid">
           <div class="field">
-            <label class="type-label" for="db_host">{{ $t("db_host") }}</label>
+            <label class="type-label" for="db_host">{{ $t("host") }}</label>
             <input id="db_host" v-model="db_host" name="db_host" type="text" required />
           </div>
           <div class="field">
-            <label class="type-label" for="db_port">{{ $t("db_post") }}</label>
+            <label class="type-label" for="db_port">{{ $t("port") }}</label>
             <input id="db_port" v-model="db_port" name="db_port" type="number" required />
           </div>
           <div class="field">
@@ -116,7 +117,7 @@
       <h2 class="type-title">{{ $t("all_set") }}</h2>
       <div class="progress-bar"></div>
       <p>{{ $t("install_all_set_copy") }}</p>
-      <router-link to="/login" class="button">{{ $t("sign_in") }}</router-link>
+      <button type="button" class="button" @click="goToLogin">{{ $t("sign_in") }}</button>
     </div>
 
     <public-notice
@@ -138,9 +139,10 @@ import axios from "axios";
 import { mapState, mapActions } from "vuex";
 import PublicStepper from "@/components/public/stepper";
 import slug from "slug";
+import shortid from "shortid";
 
 export default {
-  name: "Login",
+  name: "Install",
   components: {
     PublicView,
     PublicNotice,
@@ -165,14 +167,29 @@ export default {
       db_name: "",
       installing: false,
       error: null,
-      manualKey: false
+      manualKey: false,
+      super_admin_token: ""
     };
   },
+  created() {
+    this.testValue = "rijk";
+  },
   computed: {
-    ...mapState(["apiRootPath"])
+    ...mapState(["apiRootPath", "projects"]),
+    firstInstall() {
+      return this.projects === false;
+    }
   },
   methods: {
     ...mapActions(["getProjects"]),
+    generateMasterPassword() {
+      const sections = 4;
+      let password = "";
+      for (let i = 0; i <= sections; i++) {
+        password += shortid.generate();
+      }
+      return password;
+    },
     async onSubmit() {
       // When you hit enter on the first page, we don't want to submit the install data, instead
       // we go to the second page
@@ -218,6 +235,10 @@ export default {
       } = this;
 
       try {
+        if (this.firstInstall === true) {
+          this.super_admin_token = this.generateMasterPassword();
+        }
+
         await axios.post(this.apiRootPath + "projects", {
           project_name,
           project,
@@ -227,11 +248,9 @@ export default {
           db_port,
           db_user,
           db_password,
-          db_name
+          db_name,
+          super_admin_token: this.super_admin_token
         });
-
-        // Refetch projects to make sure store is up to date with new project
-        await this.getProjects();
 
         installReady = true;
 
@@ -251,13 +270,18 @@ export default {
     },
     syncKey() {
       if (this.manualKey === false) {
-        this.project = slug(this.project_name);
+        this.project = slug(this.project_name, { lower: true });
       }
     },
     setProjectKey(event) {
       if (this.manualKey === false) this.manualKey = true;
-      const value = slug(event.target.value);
+      const value = slug(event.target.value, { lower: true });
       this.project = value;
+    },
+    async goToLogin() {
+      await this.getProjects();
+
+      this.$router.push("/login", { query: { project: this.project } });
     }
   }
 };
