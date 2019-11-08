@@ -81,17 +81,6 @@
         @input="postComment"
         @revert="revertActivity = $event"
       />
-
-      <router-link
-        v-if="canReadActivity"
-        :to="`/${currentProjectKey}/activity`"
-        class="notifications"
-      >
-        <div class="preview">
-          <v-icon name="notifications" color="sidebar-text-color" />
-          <span>{{ $t("notifications") }}</span>
-        </div>
-      </router-link>
     </v-info-sidebar>
 
     <v-form
@@ -515,9 +504,6 @@ export default {
     },
     permissions() {
       return this.$store.state.permissions;
-    },
-    canReadActivity() {
-      return this.permissions.directus_activity.read !== "none";
     },
     readonly() {
       return this.permission.update === "none";
@@ -1089,37 +1075,5 @@ export default {
 
 .activity {
   margin-bottom: 64px;
-}
-
-.notifications {
-  position: fixed;
-  width: var(--info-sidebar-width);
-  bottom: 0;
-  right: 0;
-  text-decoration: none;
-  padding: 20px;
-  background-color: var(--sidebar-background-color-alt);
-  color: var(--sidebar-text-color);
-  display: block;
-
-  .preview {
-    display: flex;
-    align-items: center;
-
-    span {
-      flex-grow: 1;
-      margin-left: 10px;
-    }
-  }
-
-  select {
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    cursor: pointer;
-  }
 }
 </style>

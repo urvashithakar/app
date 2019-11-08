@@ -4,6 +4,16 @@
     <aside v-if="active" class="info-sidebar" :class="{ wide }">
       <div class="system"><slot name="system" /></div>
       <slot />
+      <router-link
+        v-if="canReadActivity"
+        :to="`/${currentProjectKey}/activity`"
+        class="notifications"
+      >
+        <div class="preview">
+          <v-icon name="notifications" color="sidebar-text-color" />
+          <span>{{ $t("notifications") }}</span>
+        </div>
+      </router-link>
     </aside>
   </div>
 </template>
@@ -11,6 +21,7 @@
 <script>
 import VBlocker from "../blocker.vue";
 import { TOGGLE_INFO } from "../../store/mutation-types";
+import { mapState } from "vuex";
 
 export default {
   name: "InfoSidebar",
@@ -28,8 +39,15 @@ export default {
     }
   },
   computed: {
+    ...mapState(["currentProjectKey"]),
     active() {
       return this.$store.state.sidebars.info;
+    },
+    canReadActivity() {
+      return this.permissions.directus_activity.read !== "none";
+    },
+    permissions() {
+      return this.$store.state.permissions;
     }
   },
   created() {
@@ -85,6 +103,29 @@ export default {
 .blocker-info {
   @media (min-width: 1235px) {
     display: none;
+  }
+}
+
+.notifications {
+  position: fixed;
+  width: var(--info-sidebar-width);
+  bottom: 0;
+  right: 0;
+  text-decoration: none;
+  padding: 20px;
+  margin: 0;
+  background-color: var(--sidebar-background-color-alt);
+  color: var(--sidebar-text-color);
+  display: block;
+
+  .preview {
+    display: flex;
+    align-items: center;
+
+    span {
+      flex-grow: 1;
+      margin-left: 10px;
+    }
   }
 }
 </style>
