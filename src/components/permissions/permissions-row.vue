@@ -11,7 +11,7 @@
               v-tooltip="$t('turn_all_on')"
               class="icon"
               name="done"
-              size="12"
+              size="18"
               color="success"
             />
           </button>
@@ -20,7 +20,7 @@
               v-tooltip="$t('turn_all_off')"
               class="icon"
               name="block"
-              size="12"
+              size="18"
               color="danger"
             />
           </button>
@@ -87,10 +87,22 @@
         </span>
         <span class="set-all">
           <button class="on" type="button" @click.prevent="setAll(true)">
-            <v-icon class="icon" name="done" size="12" color="success" />
+            <v-icon
+              v-tooltip="$t('turn_all_on')"
+              class="icon"
+              name="done"
+              size="18"
+              color="success"
+            />
           </button>
           <button class="off" type="button" @click.prevent="setAll(false)">
-            <v-icon class="icon" name="block" size="12" color="danger" />
+            <v-icon
+              v-tooltip="$t('turn_all_off')"
+              class="icon"
+              name="block"
+              size="18"
+              color="danger"
+            />
           </button>
         </span>
       </div>
@@ -626,7 +638,7 @@ fieldset {
 
     button {
       transition: color var(--fast) var(--transition);
-      margin-left: 8px;
+      margin-left: 4px;
     }
   }
 }
