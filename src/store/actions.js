@@ -192,7 +192,7 @@ export async function getProjects({ state, dispatch, commit }) {
   try {
     let projects;
 
-    if (state.projects === null) {
+    if (state.projects === null || state.projects === false) {
       const apiRootPath = state.apiRootPath;
       const url = apiRootPath + "server/projects";
       const response = await axios.get(url);
