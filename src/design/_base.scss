@@ -182,16 +182,3 @@ fieldset {
 input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 30px white inset;
 }
-
-.directus {
-   &::before {
-    content: '';
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: var(--header-height);
-    left: 0;
-    top: 0;
-    background-color: var(--blue-grey-900);
-  }
-}
