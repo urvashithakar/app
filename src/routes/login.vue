@@ -200,8 +200,6 @@ export default {
           this.signingIn = false;
           const code = response.info?.code;
 
-          console.log(code);
-
           if (code === 111) {
             this.needs2fa = true;
 
