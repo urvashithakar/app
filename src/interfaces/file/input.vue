@@ -8,6 +8,7 @@
       :src="src"
       :icon="icon"
       :href="href"
+      text-background
       color="black"
       :options="{
         deselect: {
@@ -124,7 +125,10 @@ export default {
       if (!this.image) return "";
 
       return (
-        this.image.filename.split(".").pop() +
+        this.image.filename
+          .split(".")
+          .pop()
+          .toUpperCase() +
         " • " +
         this.$d(new Date(this.image.uploaded_on), "short")
       );
@@ -132,13 +136,7 @@ export default {
     subtitleExtra() {
       // Image ? -> display dimensions and formatted filesize
       return this.image.type && this.image.type.startsWith("image")
-        ? " • " +
-            this.image.width +
-            " x " +
-            this.image.height +
-            " (" +
-            formatSize(this.image.filesize) +
-            ")"
+        ? " • " + formatSize(this.image.filesize)
         : null;
     },
     src() {
@@ -258,13 +256,12 @@ export default {
 <style lang="scss" scoped>
 .card,
 .uploader {
-  margin-bottom: 20px;
   width: 100%;
   max-width: var(--width-x-large);
 }
 
 .uploader {
-  height: 190px;
+  height: 236px;
 }
 
 button {

@@ -3,7 +3,7 @@
     <v-input
       class="input"
       type="text"
-      :placeholder="$t('interfaces-tags-placeholder_text')"
+      :placeholder="options.placeholder || $t('interfaces-tags-placeholder_text')"
       :icon-left="options.iconLeft"
       :icon-right="options.iconRight"
       :icon-right-color="null"
