@@ -1,6 +1,6 @@
 <template>
   <div class="interface-json codemirror-custom-styles">
-    <codemirror :value="stringValue" :options="cmOptions" @input="updateValue"></codemirror>
+    <codemirror :value="stringValue" :options="cmOptions" @input="updateValue" />
     <button v-if="options.template" @click="fillTemplate">
       <v-icon name="playlist_add" />
     </button>
@@ -107,6 +107,12 @@ export default {
 <style lang="scss" scoped>
 .interface-json {
   position: relative;
+
+  ::v-deep {
+    .CodeMirror-scroll {
+      min-height: var(--form-column-width);
+    }
+  }
 }
 
 button {
