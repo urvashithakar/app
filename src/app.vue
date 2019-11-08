@@ -1,5 +1,5 @@
 <template>
-  <div v-if="localeLoaded && hydratingError" class="error">
+  <div v-if="localeLoaded && hydratingError" id="app" class="error">
     <v-error
       icon="warning"
       :title="$t('server_error')"
@@ -12,7 +12,7 @@
     </p>
   </div>
 
-  <div v-else-if="localeLoaded && extensionError" class="error">
+  <div v-else-if="localeLoaded && extensionError" id="app" class="error">
     <v-error
       icon="extension"
       :title="$t('extensions_missing')"
@@ -23,6 +23,7 @@
 
   <div
     v-else-if="localeLoaded && !publicRoute"
+    id="app"
     :style="{
       '--brand': `var(--${color})`
     }"
@@ -39,7 +40,7 @@
     <v-notification />
   </div>
 
-  <div v-else-if="localeLoaded">
+  <div v-else-if="localeLoaded" id="app">
     <router-view />
     <v-notification />
   </div>
@@ -235,7 +236,7 @@ body.info-wide-active {
   padding-right: 284px;
 }
 
-body.public > div {
+#app {
   height: 100%;
 }
 </style>
