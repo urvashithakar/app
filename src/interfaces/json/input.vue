@@ -111,6 +111,7 @@ export default {
   ::v-deep {
     .CodeMirror-scroll {
       min-height: var(--form-column-width);
+      max-height: var(--form-row-max-height);
     }
   }
 }

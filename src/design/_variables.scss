@@ -340,6 +340,7 @@
   --note-text-color: var(--blue-grey-300);
 
   --form-column-width: 300px;
+  --form-row-max-height: calc(var(--form-column-width) * 2);
   --form-horizontal-gap: var(--page-padding);
   --form-vertical-gap: 52px;
   --form-vertical-gap-sidebar: 30px;
