@@ -6,7 +6,8 @@
       selected,
       selectable,
       'selection-mode': selectionMode,
-      disabled
+      disabled,
+      'text-background': textBackground
     }"
     class="v-card"
     @click="$emit('click', $event)"
@@ -95,6 +96,10 @@ export default {
     color: {
       type: String,
       default: "card-background-color"
+    },
+    textBackground: {
+      type: Boolean,
+      default: false
     },
     src: {
       type: String,
@@ -208,6 +213,20 @@ export default {
   overflow: hidden;
   transition: box-shadow var(--fast) var(--transition);
   cursor: pointer;
+
+  &.text-background {
+    .header {
+      border-radius: var(--border-radius) var(--border-radius) 0 0;
+      &.medium-image {
+        height: 248px;
+      }
+    }
+    .body {
+      padding: 8px 12px;
+      background-color: var(--input-background-color-alt);
+      border-radius: 0 0 var(--border-radius) var(--border-radius);
+    }
+  }
 
   a {
     text-decoration: none;
