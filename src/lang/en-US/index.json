@@ -83,7 +83,7 @@
   "datatype": "Datatype",
   "datatypes": {
     "mysql": {
-      "BIGINT": "An integer. When signed (allows negative) length is -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807, otherwise the max is 18,446,744,073,709,551,615.",
+      "BIGINT": "An integer. When signed (allows negative) length is -9e18 to 9e18, otherwise the max is 18e18.",
       "BOOLEAN": "True or false. Is saved as either 1 or 0 respectively.",
       "CHAR": "A fixed-length non-binary string right-padded with spaces. Length can be 0 to 255 characters.",
       "DATE": "A date. Allows `1000-01-01` to `9999-12-31`.",
@@ -157,17 +157,17 @@
   "equal_to": "Equal to",
   "error_unknown": "Unknown error. Try again later.",
   "errors": {
-    "11": "Can't connect to database",
-    "100": "Wrong username and/or password",
-    "101": "Logged out due to inactivity",
-    "102": "Logged out due to inactivity",
-    "103": "User inactive",
-    "106": "Wrong username and/or password",
-    "107": "User not found",
+    "11": "Can Not Reach Database",
+    "100": "Incorrect Email/Password",
+    "101": "Logged-out from Inactivity",
+    "102": "Logged-out from Inactivity",
+    "103": "User Suspended",
+    "106": "Incorrect Email/Password",
+    "107": "User Not Found",
     "111": "Enter One-Time Password",
-    "112": "Wrong OTP",
-    "114": "Wrong username and/or password",
-    "-1": "Couldn't reach API"
+    "112": "Wrong One-Time Password",
+    "114": "Incorrect Email/Password",
+    "-1": "Couldn't Reach API"
   },
   "esc_cancel": "Escape will cancel and close the window.",
   "event_count": "No Events | One Event | {count} Events",
