@@ -33,16 +33,18 @@
       @upload="saveUpload"
     ></v-upload>
 
-    <v-button type="button" :disabled="readonly" @click="newFile = true">
-      <v-icon name="add" />
-      {{ $t("new_file") }}
-    </v-button>
-    <!--
-    -->
-    <v-button type="button" :disabled="readonly" @click="existing = true">
-      <v-icon name="playlist_add" />
-      {{ $t("existing") }}
-    </v-button>
+    <template v-if="!value">
+      <v-button type="button" :disabled="readonly" @click="newFile = true">
+        <v-icon name="add" />
+        {{ $t("new_file") }}
+      </v-button>
+      <!--
+      -->
+      <v-button type="button" :disabled="readonly" @click="existing = true">
+        <v-icon name="playlist_add" />
+        {{ $t("existing") }}
+      </v-button>
+    </template>
 
     <portal v-if="newFile" to="modal">
       <v-modal
@@ -229,8 +231,14 @@ export default {
     },
     saveSelection(value) {
       const file = value[value.length - 1];
-      this.image = file;
-      this.$emit("input", { id: file.id });
+
+      if (file) {
+        this.image = file;
+        this.$emit("input", { id: file.id });
+      } else {
+        this.image = null;
+        this.$emit("input", null);
+      }
     },
     async removeFile() {
       const file = this.value;
