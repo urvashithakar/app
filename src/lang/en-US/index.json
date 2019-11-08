@@ -429,6 +429,7 @@
   "settings_update_database": "Update Database",
   "settings_update_database_confirm": "This will update your database schema to work with the latest version of Directus. Always create a database backup before running this operation.",
   "settings_update_database_subtext": "Run Script",
+  "setup_2fa": "Setup 2FA",
   "show_directus_collections": "Show Directus System Collections",
   "sign_in": "Sign In",
   "sign_out": "Sign Out",

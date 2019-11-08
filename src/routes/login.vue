@@ -165,7 +165,18 @@ export default {
 
       this.$api
         .login(credentials)
-        .then(async () => {
+        .then(async response => {
+          // There's one specific case where we expect a successful response (200) to contain an error: 2FA
+          // When 2FA is required but not enabled for the current user, they can
+          // still log in, but the token will only work for /users/me
+          if (response.error) {
+            throw {
+              info: {
+                code: response.error.code
+              }
+            };
+          }
+
           const { data: projectInfo } = await this.$api.api.get("/");
           const { requires2FA, version, database } = projectInfo.api;
           const { max_upload_size } = projectInfo.server;
@@ -185,10 +196,13 @@ export default {
 
           this.signingIn = false;
         })
-        .catch(error => {
+        .catch(response => {
           this.signingIn = false;
-          const { code } = error;
-          if (+code === 111) {
+          const code = response.info?.code;
+
+          console.log(code);
+
+          if (code === 111) {
             this.needs2fa = true;
 
             this.notice = {
@@ -196,7 +210,15 @@ export default {
               color: "blue-grey-100",
               icon: "lock_outline"
             };
-          } else if (+code === 100) {
+          } else if (code === 113) {
+            this.$router.push("/setup-2fa");
+          } else if (code === 100) {
+            this.notice = {
+              text: this.$t(`errors.${code}`),
+              color: "warning",
+              icon: "warning"
+            };
+
             this.$nextTick(() => {
               this.$refs.password.select();
             });
