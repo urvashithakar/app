@@ -36,7 +36,13 @@
         </div>
         <template v-else>
           <input v-model="email" type="email" :placeholder="$t('email')" required />
-          <input v-model="password" type="password" :placeholder="$t('password')" required />
+          <input
+            ref="password"
+            v-model="password"
+            type="password"
+            :placeholder="$t('password')"
+            required
+          />
           <div class="buttons">
             <button type="submit">{{ $t("sign_in") }}</button>
             <router-link class="secondary" to="/forgot-password">
@@ -178,8 +184,11 @@ export default {
           });
 
           this.enterApp();
+
+          this.signingIn = false;
         })
         .catch(error => {
+          this.signingIn = false;
           const { code } = error;
           if (+code === 111) {
             this.needs2fa = true;
@@ -189,6 +198,10 @@ export default {
               color: "blue-grey-100",
               icon: "lock_outline"
             };
+          } else if (+code === 100) {
+            this.$nextTick(() => {
+              this.$refs.password.select();
+            });
           } else if (code) {
             this.notice = {
               text: this.$t(`errors.${code}`),
@@ -202,8 +215,7 @@ export default {
               icon: "error_outline"
             };
           }
-        })
-        .finally(() => (this.signingIn = false));
+        });
     },
     async logout() {
       await this.$api.logout();
