@@ -4,6 +4,7 @@ module.exports = {
 
   devServer: {
     allowedHosts: ["localhost", ".gitpod.io"],
+    public: "127.0.0.1:8080",
     proxy: {
       "/": {
         target: process.env.API_URL,
