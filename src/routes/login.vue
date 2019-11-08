@@ -25,10 +25,8 @@
             currentProject.status === 'successful' && currentProject.data.authenticated === true
           "
         >
-          <p>
-            <b>{{ firstName }} {{ lastName }}</b>
-            {{ $t("continue_as") }}
-          </p>
+          <v-spinner v-if="firstName === null" />
+          <p v-else v-html="$t('continue_as', { name: firstName + ' ' + lastName })" />
           <div class="buttons">
             <button type="button" class="secondary" @click="logout">{{ $t("sign_out") }}</button>
             <button type="submit">{{ $t("continue") }}</button>
@@ -339,7 +337,8 @@ p {
   margin-top: 32px;
   margin-bottom: 32px;
   color: var(--blue-grey-300);
-  b {
+
+  ::v-deep b {
     font-weight: var(--weight-bold);
     color: var(--page-text-color);
   }
