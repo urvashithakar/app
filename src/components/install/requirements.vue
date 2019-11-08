@@ -1,0 +1,157 @@
+<template>
+  <div class="install-requirements">
+    <template v-if="fetchingRequirements">
+      <v-spinner />
+    </template>
+    <template v-else>
+      <v-notice
+        v-for="cat in [server, phpVersion, phpExtensions, permissions, directusVersion]"
+        :key="cat.key"
+        :color="cat.success ? 'success' : 'warning'"
+        :icon="cat.success ? 'check' : 'warning'"
+      >
+        {{ cat.value }}
+        <a
+          v-if="cat.success === false"
+          href="https://docs.directus.io/advanced/requirements.html"
+          target="__blank"
+        >
+          {{ $t("why") }}
+        </a>
+      </v-notice>
+    </template>
+  </div>
+</template>
+
+<script>
+import { mapState } from "vuex";
+import axios from "axios";
+import { satisfies } from "semver";
+
+export default {
+  name: "InstallRequirements",
+  data() {
+    return {
+      fetchingRequirements: false,
+      serverInfo: null,
+      error: null,
+      lastTag: null
+    };
+  },
+  computed: {
+    ...mapState(["apiRootPath"]),
+    server() {
+      if (this.fetchingRequirements || this.serverInfo === null) return;
+
+      return {
+        key: "server",
+        success: this.serverInfo.server.type.toLowerCase().includes("apache"),
+        value: this.serverInfo.server.type
+      };
+    },
+    phpVersion() {
+      if (this.fetchingRequirements || this.serverInfo === null) return;
+      const version = this.serverInfo.php.version.split("-")[0];
+      const minimumVersion = "7.1.0";
+
+      return {
+        key: "phpVersion",
+        success: satisfies(version, `>=${minimumVersion}`),
+        value: `PHP ${version}`
+      };
+    },
+    phpExtensions() {
+      if (this.fetchingRequirements || this.serverInfo === null) return;
+      const extensions = Object.keys(this.serverInfo.php.extensions).map(key => ({
+        key,
+        enabled: this.serverInfo.php.extensions[key]
+      }));
+
+      const allEnabled = extensions.every(e => e.enabled);
+
+      let value = this.$t("php_extensions");
+
+      if (allEnabled === false) {
+        value +=
+          ": " +
+          this.$t("missing_value", {
+            value: extensions.filter(e => e.enabled === false).map(e => e.key)
+          });
+      }
+
+      return {
+        key: "phpExtensions",
+        success: allEnabled,
+        value: value
+      };
+    },
+    permissions() {
+      if (this.fetchingRequirements || this.serverInfo === null) return;
+      const permissions = Object.keys(this.serverInfo.permissions).map(key => ({
+        key,
+        permission: this.serverInfo.permissions[key]
+      }));
+
+      const failedFolders = permissions.filter(p => +p.permission[1] !== 7);
+      const success = failedFolders.length === 0;
+
+      let value = this.$t("write_access");
+
+      if (success === false) {
+        value +=
+          ": " +
+          this.$t("value_not_writeable", { value: failedFolders.map(f => `/${f.key}`).join(", ") });
+      }
+
+      return {
+        key: "permissions",
+        success: failedFolders.length === 0,
+        value: value
+      };
+    },
+    directusVersion() {
+      if (this.fetchingRequirements || this.serverInfo === null || this.lastTag === null) return;
+
+      return {
+        key: "directusVersion",
+        success: this.serverInfo.directus === this.lastTag,
+        value: this.$t("directus_version") + ": " + this.serverInfo.directus
+      };
+    }
+  },
+  created() {
+    this.fetchRequirements();
+  },
+  methods: {
+    async fetchRequirements() {
+      this.fetchingRequirements = true;
+
+      try {
+        const serverInfoResponse = await axios.get(this.apiRootPath + "server/info");
+        this.serverInfo = serverInfoResponse.data.data;
+      } catch (error) {
+        this.error = error;
+      }
+
+      try {
+        const githubVersionResponse = await axios.get(
+          "https://api.github.com/repos/directus/directus/releases/latest"
+        );
+        this.lastTag = githubVersionResponse.data.tag_name;
+      } catch {}
+
+      this.fetchingRequirements = false;
+    }
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+.notice {
+  margin-bottom: 16px;
+}
+
+a {
+  float: right;
+}
+</style>

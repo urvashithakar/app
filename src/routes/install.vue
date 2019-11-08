@@ -17,6 +17,7 @@
     </div>
 
     <div v-show="step === 2" class="step-2">
+      <install-requirements />
       <button type="button" @click="step = 3">{{ $t("next") }}</button>
     </div>
 
@@ -155,13 +156,15 @@ import { mapState, mapActions } from "vuex";
 import PublicStepper from "@/components/public/stepper";
 import slug from "slug";
 import shortid from "shortid";
+import InstallRequirements from "@/components/install/requirements";
 
 export default {
   name: "Install",
   components: {
     PublicView,
     PublicNotice,
-    PublicStepper
+    PublicStepper,
+    InstallRequirements
   },
   data() {
     return {
@@ -184,7 +187,8 @@ export default {
       error: null,
       manualKey: false,
       super_admin_token: "",
-      adminTokenValid: false
+      adminTokenValid: false,
+      fetchingRequirements: false
     };
   },
   created() {

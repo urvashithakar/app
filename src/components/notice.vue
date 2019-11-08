@@ -64,5 +64,9 @@ export default {
     color: var(--warning);
     background-color: var(--warning-light);
   }
+  &.success {
+    color: var(--success);
+    background-color: var(--success-light);
+  }
 }
 </style>

@@ -39,6 +39,7 @@
     "micromustache": "^5.4.0",
     "mousetrap": "^1.6.3",
     "portal-vue": "^2.1.5",
+    "semver": "^6.3.0",
     "shortid": "^2.2.15",
     "slug": "^1.1.0",
     "snarkdown": "^1.2.2",
