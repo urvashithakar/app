@@ -238,12 +238,12 @@ router.beforeEach(async (to, from, next) => {
     await store.dispatch("getProjects");
   }
 
-  if (publicRoute) return next();
-
   // It's false when there aren't any projects installed (no private ones either)
-  if (store.state.projects === false) {
+  if (store.state.projects === false && to.path !== "/install") {
     return next("/install");
   }
+
+  if (publicRoute) return next();
 
   const loggedIn = store.getters.currentProject.data.authenticated;
 
