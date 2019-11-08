@@ -57,9 +57,9 @@ export default {
   computed: {
     cmOptions() {
       return {
-        tabSize: 4,
+        tabSize: 2,
         autoRefresh: true,
-        indentUnit: 4,
+        indentUnit: 2,
         readOnly: this.readonly ? "nocursor" : false,
         line: true,
         lineNumbers: true,
@@ -73,8 +73,15 @@ export default {
 
     stringValue() {
       if (this.value) {
-        if (typeof this.value === "object") return JSON.stringify(this.value, null, 4);
-        return this.value;
+        if (typeof this.value === "object") {
+          return JSON.stringify(this.value, null, 2);
+        }
+
+        try {
+          return JSON.stringify(JSON.parse(this.value), null, 2);
+        } catch {
+          return this.value;
+        }
       }
 
       return "";
