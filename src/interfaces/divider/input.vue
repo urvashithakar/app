@@ -19,7 +19,6 @@ export default {
   position: relative;
   margin-top: 60px;
   padding-top: 8px;
-  padding-bottom: 20px;
   h2 {
     position: absolute;
     top: 0px;
@@ -37,7 +36,7 @@ export default {
     top: 28px;
     left: 50%;
     transform: translateX(-50%);
-    color: var(--blue-grey-300);
+    color: var(--note-text-color);
     max-width: 460px;
   }
   hr {
@@ -50,7 +49,6 @@ export default {
 .medium-style {
   margin-top: 60px;
   padding-top: 6px;
-  padding-bottom: 20px;
   h2 {
     color: var(--heading-text-color);
     font-size: 22px;
@@ -59,7 +57,7 @@ export default {
     margin-bottom: 10px;
   }
   p {
-    color: var(--blue-grey-300);
+    color: var(--note-text-color);
     max-width: 460px;
     margin-top: 6px;
   }
@@ -73,7 +71,6 @@ export default {
 .large-style {
   margin-top: 60px;
   padding-top: 6px;
-  padding-bottom: 20px;
   h2 {
     color: var(--heading-text-color);
     font-size: 28px;
@@ -82,7 +79,7 @@ export default {
     margin-bottom: 10px;
   }
   p {
-    color: var(--blue-grey-300);
+    color: var(--note-text-color);
     max-width: 460px;
     margin-top: 14px;
   }
