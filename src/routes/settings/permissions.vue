@@ -263,8 +263,11 @@ export default {
           });
         });
     }
+    const params = {
+      fields: "*.*.*"
+    };
 
-    return Promise.all([api.getRole(+id), api.getFields("directus_roles")])
+    return Promise.all([api.getRole(+id, params), api.getFields("directus_roles")])
       .then(([roleRes, fieldsRes]) => ({
         role: roleRes.data,
         fields: keyBy(
