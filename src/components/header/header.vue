@@ -178,10 +178,11 @@ body.info-wide-active .v-header {
   border-color: var(--page-background-color);
 
   &.scrolled {
-    height: 66px;
+    height: 64px;
     padding-top: 12px;
     padding-bottom: 12px;
-    border-bottom: 2px solid var(--sidebar-background-color);
+    // border-bottom: 2px solid var(--sidebar-background-color);
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
   }
 
   @media (min-width: 800px) {
