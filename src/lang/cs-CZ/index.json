@@ -66,7 +66,7 @@
   "connection": "Připojení",
   "contains": "Obsahuje",
   "continue": "Continue",
-  "continue_as": "is already authenticated for this project. If you recognize this account, please press continue.",
+  "continue_as": "<b>{name}</b> is already authenticated for this project. If you recognize this account, please press continue.",
   "cozy": "Pohodlný",
   "create": "Vytořit",
   "create_collection": "Vytvořit kategorii",

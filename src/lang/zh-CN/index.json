@@ -66,7 +66,7 @@
   "connection": "连接",
   "contains": "包含",
   "continue": "Continue",
-  "continue_as": "is already authenticated for this project. If you recognize this account, please press continue.",
+  "continue_as": "<b>{name}</b> is already authenticated for this project. If you recognize this account, please press continue.",
   "cozy": "适中",
   "create": "创建",
   "create_collection": "创建集合",

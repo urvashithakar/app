@@ -66,7 +66,7 @@
   "connection": "Anslutning",
   "contains": "Innehåller",
   "continue": "Continue",
-  "continue_as": "is already authenticated for this project. If you recognize this account, please press continue.",
+  "continue_as": "<b>{name}</b> is already authenticated for this project. If you recognize this account, please press continue.",
   "cozy": "Mysig",
   "create": "Skapa",
   "create_collection": "Skapa samling",

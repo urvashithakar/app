@@ -66,7 +66,7 @@
   "connection": "Conexão",
   "contains": "Contém",
   "continue": "Continue",
-  "continue_as": "is already authenticated for this project. If you recognize this account, please press continue.",
+  "continue_as": "<b>{name}</b> is already authenticated for this project. If you recognize this account, please press continue.",
   "cozy": "Aconchegante",
   "create": "Criar",
   "create_collection": "Criar Coleção",
