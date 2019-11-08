@@ -172,17 +172,16 @@ body.info-wide-active .v-header {
   padding-top: 32px;
   padding-left: 32px;
   padding-right: 32px;
-  color: var(--black);
   display: flex;
   align-items: center;
   z-index: 20;
+  border-color: var(--page-background-color);
 
   &.scrolled {
     height: 66px;
     padding-top: 12px;
     padding-bottom: 12px;
     border-bottom: 2px solid var(--sidebar-background-color);
-    // height: calc(var(--header-height) + 2px);
   }
 
   @media (min-width: 800px) {

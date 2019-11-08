@@ -375,11 +375,11 @@ export default {
 }
 
 form {
-  margin-top: var(--input-vertical-spacing);
+  margin-top: var(--form-vertical-gap);
 }
 
 label.type-label {
-  margin-top: var(--input-vertical-spacing);
+  margin-top: var(--form-vertical-gap);
   margin-bottom: var(--input-label-margin);
 }
 

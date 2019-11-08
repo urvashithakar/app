@@ -587,10 +587,10 @@ fieldset {
 }
 
 .modal-content {
-  padding: var(--input-vertical-spacing) 20px;
+  padding: var(--form-vertical-gap) 20px;
 
   fieldset:not(:last-of-type) {
-    margin-bottom: var(--input-vertical-spacing);
+    margin-bottom: var(--form-vertical-gap);
   }
 
   legend.type-label {

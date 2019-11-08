@@ -339,8 +339,11 @@
   --heading-text-color: var(--blue-grey-800);
   --note-text-color: var(--blue-grey-300);
 
-  --input-vertical-spacing: 40px;
-  --input-vertical-spacing-sidebar: 30px;
+  --form-column-width: 300px;
+  --form-horizontal-gap: var(--page-padding);
+  --form-vertical-gap: 52px;
+  --form-vertical-gap-sidebar: 30px;
+
   --input-label-margin: 8px;
   --input-note-margin: 4px;
 

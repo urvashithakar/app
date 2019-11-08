@@ -729,7 +729,7 @@ h2 {
 em.note {
   color: var(--note-text-color);
   margin-top: var(--input-note-margin);
-  margin-bottom: var(--input-vertical-spacing);
+  margin-bottom: var(--form-vertical-gap);
   display: block;
 }
 

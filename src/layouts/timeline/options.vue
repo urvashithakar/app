@@ -121,7 +121,7 @@ export default {
 
 <style lang="scss" scoped>
 .type-label {
-  margin-top: var(--input-vertical-spacing-sidebar);
+  margin-top: var(--form-vertical-gap-sidebar);
   margin-bottom: var(--input-label-margin);
   &:first-of-type {
     margin-top: 0;
