@@ -280,8 +280,10 @@ export default {
       } catch (error) {
         this.error = error;
 
+        console.error(error);
+
         this.$events.emit("error", {
-          notify: error.response.data.error.message,
+          notify: error.response?.data?.error?.message,
           error
         });
 
