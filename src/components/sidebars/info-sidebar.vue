@@ -1,18 +1,26 @@
 <template>
   <div>
-    <v-blocker v-show="active" :z-index="9" class="blocker-info" @click="disableSidebar" />
-    <aside v-if="active" class="info-sidebar" :class="{ wide }">
-      <div class="system"><slot name="system" /></div>
-      <slot />
+    <v-blocker v-show="active" :z-index="9" class="blocker-info" @click="toggle(false)" />
+    <aside class="info-sidebar" :class="{ active }">
+      <button class="sidebar-button" @click="toggle(!active)">
+        <v-icon icon-style="outline" name="info" color="sidebar-text-color" />
+        <span v-if="active">Info</span>
+      </button>
+
+      <div v-if="active" class="content">
+        <div class="system">
+          <slot name="system" />
+        </div>
+        <slot />
+      </div>
+
       <router-link
         v-if="canReadActivity"
         :to="`/${currentProjectKey}/activity`"
-        class="notifications"
+        class="notifications sidebar-button"
       >
-        <div class="preview">
-          <v-icon name="notifications" color="sidebar-text-color" />
-          <span>{{ $t("notifications") }}</span>
-        </div>
+        <v-icon name="notifications" color="sidebar-text-color" />
+        <span v-if="active">{{ $t("notifications") }}</span>
       </router-link>
     </aside>
   </div>
@@ -21,7 +29,7 @@
 <script>
 import VBlocker from "../blocker.vue";
 import { TOGGLE_INFO } from "../../store/mutation-types";
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 
 export default {
   name: "InfoSidebar",
@@ -29,36 +37,30 @@ export default {
     VBlocker
   },
   props: {
-    wide: {
-      type: Boolean,
-      default: false
-    },
     itemDetail: {
       type: Boolean,
       default: false
     }
   },
   computed: {
-    ...mapState(["currentProjectKey"]),
-    active() {
-      return this.$store.state.sidebars.info;
-    },
+    ...mapState({
+      currentProjectKey: state => state.currentProjectKey,
+      active: state => state.sidebars.info,
+      permissions: state => state.permissions
+    }),
     canReadActivity() {
       return this.permissions.directus_activity.read !== "none";
-    },
-    permissions() {
-      return this.$store.state.permissions;
     }
   },
   created() {
     if (this.itemDetail && window.innerWidth > 1235) {
-      this.$store.commit(TOGGLE_INFO, true);
+      this.toggle(true);
     }
   },
   methods: {
-    disableSidebar() {
-      this.$store.commit(TOGGLE_INFO, false);
-    }
+    ...mapMutations({
+      toggle: TOGGLE_INFO
+    })
   }
 };
 </script>
@@ -70,12 +72,16 @@ export default {
   top: 0;
   height: 100%;
   z-index: 30;
-  transition: var(--slow) var(--transition-out);
   width: 90%;
   background-color: var(--sidebar-background-color);
-  padding: 20px;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
+  transform: translateX(220px);
+  transition: transform var(--fast) var(--transition);
+
+  &.active {
+    transform: translateX(0px);
+  }
 
   & .system:not(:empty) {
     padding-bottom: 20px;
@@ -87,45 +93,36 @@ export default {
   }
 }
 
-.info-enter-active {
-  transition: var(--slow) var(--transition-in);
-}
-
-.info-leave-active {
-  transition: var(--medium) var(--transition-out);
-}
-
-.info-enter,
-.info-leave-to {
-  transform: translateX(100%);
-}
-
 .blocker-info {
   @media (min-width: 1235px) {
     display: none;
   }
 }
 
-.notifications {
-  position: fixed;
+.content {
+  padding: 24px;
+}
+
+.sidebar-button {
   width: var(--info-sidebar-width);
-  bottom: 0;
-  right: 0;
   text-decoration: none;
   padding: 20px;
   margin: 0;
   background-color: var(--sidebar-background-color-alt);
   color: var(--sidebar-text-color);
-  display: block;
+  display: flex;
+  align-items: center;
 
-  .preview {
-    display: flex;
-    align-items: center;
-
-    span {
-      flex-grow: 1;
-      margin-left: 10px;
-    }
+  span {
+    flex-grow: 1;
+    margin-left: 10px;
+    text-align: left;
   }
+}
+
+.notifications {
+  position: fixed;
+  bottom: 0;
+  right: 0;
 }
 </style>

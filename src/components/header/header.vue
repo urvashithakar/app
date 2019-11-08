@@ -23,23 +23,6 @@
       </div>
     </div>
     <slot />
-    <v-header-button
-      v-if="infoToggle && !itemDetail"
-      :label="$t('info')"
-      icon="info"
-      icon-color="button-tertiary-text-color"
-      background-color="button-tertiary-background-color"
-      @click="toggleInfo"
-    />
-    <v-header-button
-      v-if="infoToggle && itemDetail"
-      :label="$t('info')"
-      icon="info"
-      icon-color="button-tertiary-text-color"
-      background-color="button-tertiary-background-color"
-      class="info-mobile"
-      @click="toggleInfo"
-    />
     <slot name="buttons" />
   </header>
 </template>
@@ -171,7 +154,7 @@ body.info-wide-active .v-header {
   height: 76px;
   padding-top: 32px;
   padding-left: 32px;
-  padding-right: 32px;
+  padding-right: 96px;
   display: flex;
   align-items: center;
   z-index: 20;

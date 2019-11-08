@@ -220,6 +220,11 @@ export default {
 </script>
 
 <style lang="scss">
+body {
+  padding-right: 0;
+  transition: padding-right var(--fast) var(--transition);
+}
+
 body.no-padding {
   padding: 0 !important;
 

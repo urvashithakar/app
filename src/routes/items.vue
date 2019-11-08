@@ -722,10 +722,11 @@ export default {
 }
 
 .layout-picker {
-  margin: -20px;
-  padding: 20px;
-  background-color: var(--sidebar-background-color-alt);
   color: var(--sidebar-text-color);
+  background-color: var(--input-background-color);
+  border: var(--input-border-width) solid var(--input-border-color);
+  border-radius: var(--border-radius);
+  padding: 8px 4px;
   position: relative;
   display: block;
 
