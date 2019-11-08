@@ -55,10 +55,9 @@ export default {
       const apiUrl = `${url}/${project}`;
 
       try {
-        const response = await axios.post(apiUrl + "/auth/password/request", {
+        await axios.post(apiUrl + "/auth/password/request", {
           email: this.email
         });
-        console.log(response);
       } catch (error) {
         console.log(error);
       }

@@ -287,7 +287,6 @@ export default {
     },
     onOTPInput(value) {
       this.otp = value;
-      console.log(value);
       this.login();
     }
   }
