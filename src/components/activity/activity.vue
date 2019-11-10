@@ -343,8 +343,8 @@ export default {
 
     .comment {
       position: relative;
-      background-color: var(--sidebar-background-color-alt);
-      color: var(--sidebar-text-color);
+      background-color: var(--page-background-color);
+      color: var(--sidebar-text-color-alt);
       border-radius: var(--border-radius);
       padding: 8px 10px;
       display: inline-block;
@@ -360,7 +360,7 @@ export default {
         height: 0;
         border-style: solid;
         border-width: 0 8px 6px 8px;
-        border-color: transparent transparent var(--sidebar-background-color-alt) transparent;
+        border-color: transparent transparent var(--page-background-color) transparent;
       }
       a {
         color: var(--blue-grey-800);
@@ -459,27 +459,21 @@ export default {
 <style lang="scss">
 .v-activity .content .comment {
   a {
-    // color: var(--blue-grey-800);
-    // text-decoration: underline;
-    &:hover {
-      color: var(--blue-grey-900);
-    }
+    text-decoration: underline;
   }
   strong {
     font-weight: 600;
-    color: var(--blue-grey-400);
   }
   code {
     font-family: "Roboto Mono";
-    color: var(--blue-grey-400);
-    font-weight: 600;
+    background-color: var(--sidebar-background-color);
+    padding: 2px 2px;
+    border-radius: var(--border-radius);
   }
   pre {
     font-family: "Roboto Mono";
-    color: var(--blue-grey-400);
-    font-weight: 600;
-    background-color: var(--blue-grey-200);
-    padding: 4px 6px;
+    background-color: var(--sidebar-background-color);
+    padding: 4px 8px;
     border-radius: var(--border-radius);
     margin: 10px 0;
   }
@@ -492,16 +486,15 @@ export default {
     font-size: 1.2em;
     font-weight: 400;
     margin: 20px 10px 20px 10px;
-    border-left: 2px solid var(--blue-grey-200);
+    border-left: 2px solid var(--sidebar-background-color);
     padding-left: 10px;
-    color: var(--blue-grey-900);
     line-height: 1.4em;
   }
   hr {
-    margin: 20px 0;
-    height: 1px;
+    margin: 16px 0;
+    height: 2px;
     border: none;
-    background-color: var(--blue-grey-200);
+    background-color: var(--sidebar-background-color);
   }
 }
 </style>
