@@ -2,9 +2,16 @@
   <div>
     <v-blocker v-show="active" :z-index="9" class="blocker-info" @click="toggle(false)" />
     <aside class="info-sidebar" :class="{ active }">
-      <button class="sidebar-button" @click="toggle(!active)">
+      <button
+        v-tooltip.left="{
+          content: $t('info'),
+          boundariesElement: 'body'
+        }"
+        class="sidebar-button"
+        @click="toggle(!active)"
+      >
         <v-icon icon-style="outline" name="info" color="sidebar-text-color" />
-        <span v-if="active">Info</span>
+        <span v-if="active">{{ $t("info") }}</span>
       </button>
 
       <div v-if="active" class="content">
@@ -16,6 +23,10 @@
 
       <router-link
         v-if="canReadActivity"
+        v-tooltip.left="{
+          content: $t('notifications'),
+          boundariesElement: 'body'
+        }"
         :to="`/${currentProjectKey}/activity`"
         class="notifications sidebar-button"
       >

@@ -4,13 +4,24 @@
 
     <div v-show="step === 1" class="step-1">
       <template v-if="firstInstall">
-        <h1>Welcome to Directus</h1>
-        <p>Isn't this awesome?</p>
+        <div class="field-grid">
+          <div class="field">
+            <h2 class="type-title">Welcome to Directus</h2>
+            <p>Isn't this awesome?</p>
+          </div>
+        </div>
       </template>
-      <template v-else>
-        <h1>Add new project</h1>
-        <p>Enter your super admin password to continue</p>
-        <input v-model="super_admin_token" type="text" />
+      <template v-else class="field-grid">
+        <div class="field-grid">
+          <div class="field">
+            <h2 class="type-title">Create New Project</h2>
+            <p>
+              Make sure you have your database information handy, then enter your API's Super-Admin
+              password to continue.
+            </p>
+            <input v-model="super_admin_token" type="text" />
+          </div>
+        </div>
       </template>
 
       <button type="button" @click="step = 2">{{ $t("next") }}</button>
@@ -372,10 +383,10 @@ button {
 input {
   position: relative;
   width: 100%;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
   border: 0;
   font-size: 16px;
-  border: 2px solid var(--blue-grey-100);
+  border: var(--input-border-width) solid var(--input-border-color);
   width: 100%;
   height: 64px;
   padding: 20px 10px;

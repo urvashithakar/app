@@ -15,7 +15,7 @@
       </template>
 
       <template v-else-if="needs2fa === true">
-        <p>Enter one time password</p>
+        <p>Please enter the one-time-password (OTP) from your authenticator app.</p>
         <otp-input @input="onOTPInput" />
       </template>
 

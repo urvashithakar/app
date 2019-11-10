@@ -1,7 +1,7 @@
 <template>
   <div class="install-requirements">
     <template v-if="fetchingRequirements">
-      <v-spinner />
+      <v-spinner class="spinner" line-fg-color="#263238" />
     </template>
     <template v-else>
       <v-notice
@@ -147,6 +147,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.spinner {
+  width: 32px;
+  margin-bottom: 32px;
+}
 .notice {
   margin-bottom: 16px;
 }
