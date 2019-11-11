@@ -51,27 +51,23 @@ export default {
   computed: {
     ...mapGetters(["currentProject"]),
     artStyles() {
-      if (this.currentProject?.status !== "successful" || !this.project_background.full_url) {
-        return { backgroundColor: `var(--${this.project_color})` };
+      if (this.project_background?.full_url) {
+        return { backgroundImage: `url(${this.project_background?.full_url})` };
       }
 
-      return { backgroundImage: `url(${this.project_background.full_url})` };
+      return { backgroundColor: `var(--${this.project_color})` };
     },
     project_color() {
-      if (this.currentProject?.status !== "successful") return defaults.project_color;
-      return this.currentProject.data.project_color || defaults.project_color;
+      return this.currentProject?.data?.project_color || defaults.project_color;
     },
     project_background() {
-      if (this.currentProject?.status !== "successful") return defaults.project_background;
-      return this.currentProject.data.project_background || defaults.project_background;
+      return this.currentProject?.data?.project_background || defaults.project_background;
     },
     project_foreground() {
-      if (this.currentProject?.status !== "successful") return defaults.project_foreground;
-      return this.currentProject.data.project_foreground || defaults.project_foreground;
+      return this.currentProject?.data?.project_foreground || defaults.project_foreground;
     },
     project_name() {
-      if (this.currentProject?.status !== "successful") return defaults.project_name;
-      return this.currentProject.data.project_name || defaults.project_name;
+      return this.currentProject?.data?.project_name || defaults.project_name;
     },
     version() {
       return `Directus v${version}`;
