@@ -148,8 +148,6 @@ export async function setCurrentProject({ commit, dispatch, state }, key) {
       }
 
       router.push(route);
-    } else {
-      router.push("/login");
     }
   }
 }

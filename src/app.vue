@@ -109,6 +109,8 @@ export default {
     $route() {
       this.bodyClass();
       this.$store.commit(TOGGLE_NAV, false);
+
+      this.preselectProject();
     },
     infoActive(visible) {
       this.toggleInfoSidebarBodyClass(visible);
@@ -121,8 +123,6 @@ export default {
   },
   created() {
     this.bodyClass();
-
-    this.preselectProject();
 
     const shouldLoadLocale =
       window.__DirectusConfig__ &&

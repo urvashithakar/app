@@ -223,7 +223,7 @@ const router = new Router({
 });
 
 router.beforeEach(async (to, from, next) => {
-  const publicRoute = to.matched.some(record => record.meta.publicRoute);
+  const publicRoute = to.meta.publicRoute;
 
   if (store.state.sidebars.nav === true) {
     store.commit(TOGGLE_NAV, false);
@@ -243,7 +243,9 @@ router.beforeEach(async (to, from, next) => {
     return next("/install");
   }
 
-  if (publicRoute) return next();
+  if (publicRoute) {
+    return next();
+  }
 
   const loggedIn = store.getters.currentProject.data.authenticated;
 
