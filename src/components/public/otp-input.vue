@@ -1,5 +1,6 @@
 <template>
   <the-mask
+    ref="main"
     type="text"
     class="otp-input"
     :value="value"
@@ -18,6 +19,9 @@ export default {
       type: String,
       default: ""
     }
+  },
+  mounted() {
+    this.$refs.main.$el.focus();
   },
   methods: {
     onInput(value) {

@@ -33,7 +33,7 @@
           </div>
         </div>
         <template v-else>
-          <input v-model="email" type="email" :placeholder="$t('email')" required />
+          <input ref="main" v-model="email" type="email" :placeholder="$t('email')" required />
           <input
             ref="password"
             v-model="password"
@@ -288,7 +288,6 @@ export default {
       this.ssoProviders = data;
     },
     onOTPInput(value) {
-      console.log(value);
       this.otp = value;
       this.login();
     },
@@ -307,6 +306,9 @@ export default {
         this.$router.replace({ query });
       }
     }
+  },
+  mounted() {
+    this.$refs.main.focus();
   }
 };
 </script>
