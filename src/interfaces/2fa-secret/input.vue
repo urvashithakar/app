@@ -38,7 +38,7 @@ export default {
 
       this.$api.api
         .get("/utils/2fa_secret")
-        .then(res => res["2fa_secret"])
+        .then(res => res.data["2fa_secret"])
         .then(token => {
           this.$emit("input", token);
           this.tfa_secret = token;
