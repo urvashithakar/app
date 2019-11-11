@@ -43,7 +43,7 @@
           />
           <div class="buttons">
             <button type="submit">{{ $t("sign_in") }}</button>
-            <router-link class="secondary" to="/forgot-password">
+            <router-link class="secondary" to="/reset-password">
               {{ $t("forgot_password") }}
             </router-link>
           </div>
