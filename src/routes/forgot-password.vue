@@ -24,7 +24,7 @@
 import PublicView from "@/components/public-view";
 import ProjectChooser from "@/components/public/project-chooser";
 import PublicNotice from "@/components/public/notice";
-import { mapGetters } from "vuex";
+import { mapState } from "vuex";
 import axios from "axios";
 
 export default {
@@ -46,13 +46,12 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["currentProject"])
+    ...mapState(["currentProjectKey", "apiRootPath"])
   },
   methods: {
     async onSubmit() {
       this.resetting = true;
-      const { url, project } = this.currentProject;
-      const apiUrl = `${url}/${project}`;
+      const apiUrl = `${this.apiRootPath}${this.currentProjectKey}`;
 
       try {
         await axios.post(apiUrl + "/auth/password/request", {

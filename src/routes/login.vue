@@ -15,7 +15,7 @@
       </template>
 
       <template v-else-if="needs2fa === true">
-        <p>Please enter the one-time-password (OTP) from your authenticator app.</p>
+        <p>{{ $t("enter_otp") }}</p>
         <otp-input @input="onOTPInput" />
       </template>
 
@@ -47,10 +47,10 @@
               {{ $t("forgot_password") }}
             </router-link>
           </div>
+          <sso :providers="ssoProviders" />
         </template>
       </template>
     </form>
-    <sso :providers="ssoProviders" />
     <public-notice
       v-if="notice.text"
       slot="notice"
@@ -132,6 +132,8 @@ export default {
     } else {
       this.fetchSSOProviders();
     }
+
+    this.checkForErrorQueryParam();
   },
   methods: {
     ...mapMutations([UPDATE_PROJECT]),
@@ -159,9 +161,13 @@ export default {
         mode: "cookie"
       };
 
+      console.log(this.otp, this.otp.length);
+
       if (this.otp && this.otp.length === 6) {
         credentials.otp = this.otp;
       }
+
+      console.log(credentials);
 
       this.$api
         .login(credentials)
@@ -286,8 +292,24 @@ export default {
       this.ssoProviders = data;
     },
     onOTPInput(value) {
+      console.log(value);
       this.otp = value;
       this.login();
+    },
+    checkForErrorQueryParam() {
+      if (this.$route.query.error) {
+        this.notice = {
+          text: this.$t(`errors.${this.$route.query.code}`),
+          color: "danger",
+          icon: "error"
+        };
+
+        // Remove query params
+        const query = _.clone(this.$route.query);
+        delete query.error;
+        delete query.code;
+        this.$router.replace({ query });
+      }
     }
   }
 };

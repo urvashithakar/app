@@ -265,6 +265,8 @@ router.beforeEach(async (to, from, next) => {
     return next({ path: "/login" });
   }
 
+  console.log(to.fullPath);
+
   return next({
     path: "/login",
     query: { redirect: to.fullPath }
