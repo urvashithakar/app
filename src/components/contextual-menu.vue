@@ -82,7 +82,7 @@ export default {
   }
 
   &:hover i {
-    color: var(--input-border-color-hover);
+    color: var(--page-text-color);
     transition: none;
   }
 
