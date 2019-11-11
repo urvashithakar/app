@@ -11,7 +11,7 @@ import FileLibrary from "./routes/file-library.vue";
 import Item from "./routes/item.vue";
 import Login from "./routes/login.vue";
 import Setup2FA from "./routes/setup-2fa.vue";
-import ForgotPassword from "./routes/forgot-password.vue";
+import ResetPassword from "./routes/reset-password.vue";
 import Install from "./routes/install.vue";
 import NotFound from "./routes/not-found.vue";
 import Interfaces from "./routes/settings/interfaces.vue";
@@ -195,8 +195,8 @@ const router = new Router({
       }
     },
     {
-      path: "/forgot-password",
-      component: ForgotPassword,
+      path: "/reset-password",
+      component: ResetPassword,
       meta: {
         publicRoute: true
       }

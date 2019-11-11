@@ -161,13 +161,9 @@ export default {
         mode: "cookie"
       };
 
-      console.log(this.otp, this.otp.length);
-
       if (this.otp && this.otp.length === 6) {
         credentials.otp = this.otp;
       }
-
-      console.log(credentials);
 
       this.$api
         .login(credentials)

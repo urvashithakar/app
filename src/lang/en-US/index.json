@@ -346,6 +346,7 @@
   "password": "Password",
   "password_reset_sending": "Sending email...",
   "password_reset_sent": "Password reset email sent to {email}",
+  "password_reset_successful": "Password successfully reset.",
   "permission_states": {
     "always": "Always",
     "create": "Create",
