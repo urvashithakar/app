@@ -11,7 +11,7 @@
     </form>
 
     <template v-else-if="requestSent === true">
-      <p>{{ $t("password_reset_sent", { email }) }}</p>
+      <p>{{ $t("password_reset_sent") }}</p>
     </template>
 
     <form v-if="resetMode === true && resetDone === false" @submit.prevent="onReset">
@@ -225,6 +225,14 @@ input {
       -webkit-box-shadow: 0 0 0px 1000px var(--white) inset;
     }
   }
+}
+
+p {
+  font-size: 16px;
+  line-height: 26px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  color: var(--blue-grey-300);
 }
 
 .buttons {
