@@ -21,7 +21,7 @@
     <v-header
       :breadcrumb="breadcrumb"
       :info-toggle="!newItem && !batch && !activityDetail"
-      :icon-link="singleItem ? null : `/${currentProjectKey}/collections/${collection}`"
+      :icon-link="iconLink"
       :icon="singleItem ? collectionInfo.icon || 'box' : 'arrow_back'"
       item-detail
     >
@@ -280,6 +280,15 @@ export default {
   },
   computed: {
     ...mapState(["currentProjectKey"]),
+    iconLink() {
+      if (this.singleItem) return null;
+
+      if (this.collection.startsWith("directus_")) {
+        return `/${this.currentProjectKey}/${this.collection.substring(9)}`;
+      }
+
+      return `/${this.currentProjectKey}/collections/${this.collection}`;
+    },
     saveOptions() {
       if (this.singleItem) {
         return {};
