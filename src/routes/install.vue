@@ -23,7 +23,12 @@
               Make sure you have your database information handy, then enter your API's Super-Admin
               password to continue.
             </p>
-            <input v-model="super_admin_token" placeholder="Super-Admin Password..." type="text" />
+            <input
+              ref="input"
+              v-model="super_admin_token"
+              placeholder="Super-Admin Password..."
+              type="text"
+            />
           </div>
         </div>
         <button type="button" @click="step = 2">{{ $t("next") }}</button>
@@ -46,6 +51,7 @@
             <label class="type-label" for="project_name">{{ $t("project_name") }}</label>
             <input
               id="project_name"
+              ref="input"
               v-model="project_name"
               name="project_name"
               type="text"
@@ -95,7 +101,7 @@
         <div class="field-grid">
           <div class="field">
             <label class="type-label" for="db_host">{{ $t("host") }}</label>
-            <input id="db_host" v-model="db_host" name="db_host" type="text" required />
+            <input id="db_host" ref="input" v-model="db_host" name="db_host" type="text" required />
           </div>
           <div class="field">
             <label class="type-label" for="db_port">{{ $t("port") }}</label>
@@ -218,9 +224,6 @@ export default {
       adminTokenValid: false,
       fetchingRequirements: false
     };
-  },
-  created() {
-    this.testValue = "rijk";
   },
   computed: {
     ...mapState(["apiRootPath", "projects"]),
