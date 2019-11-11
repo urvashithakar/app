@@ -45,6 +45,10 @@ import "tinymce/plugins/preview/plugin";
 
 import Editor from "@tinymce/tinymce-vue";
 
+function cssVar(name) {
+  return getComputedStyle(document.body).getPropertyValue(name);
+}
+
 export default {
   components: {
     Editor
@@ -89,7 +93,8 @@ export default {
     contentStyle() {
       return `
         body {
-          color: #546e7a;
+          color: ${cssVar("--input-text-color")};
+          background-color: ${cssVar("--input-background-color")};
           margin: 20px;
           font-family: 'Roboto', sans-serif;
           -webkit-font-smoothing: antialiased;
