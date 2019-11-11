@@ -5,7 +5,7 @@
       :key="provider.name"
       v-tooltip.bottom="{ classes: ['inverted'], content: $helpers.formatTitle(provider.name) }"
     >
-      <a :href="`${ssoPath}${provider.name}`">
+      <a :href="`${ssoPath}${provider.name}?mode=cookie`">
         <img :src="provider.icon" :alt="provider.name" />
       </a>
     </li>
