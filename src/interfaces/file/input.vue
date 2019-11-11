@@ -34,7 +34,7 @@
       @upload="saveUpload"
     ></v-upload>
 
-    <template v-if="!value">
+    <div v-if="!value" class="buttons">
       <v-button type="button" :disabled="readonly" @click="newFile = true">
         <v-icon name="add" />
         {{ $t("new_file") }}
@@ -45,7 +45,7 @@
         <v-icon name="playlist_add" />
         {{ $t("existing") }}
       </v-button>
-    </template>
+    </div>
 
     <portal v-if="newFile" to="modal">
       <v-modal
@@ -262,6 +262,10 @@ export default {
 
 .uploader {
   height: 236px;
+}
+
+.buttons {
+  margin-top: 24px;
 }
 
 button {
