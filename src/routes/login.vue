@@ -443,6 +443,7 @@ input {
     flex-shrink: 0;
     // margin-left: 24px; // Not when on left ("continue as")
     text-decoration: none;
+    font-size: 16px;
     cursor: pointer;
     color: var(--input-placeholder-color);
     &:hover {

@@ -172,9 +172,14 @@ input {
   align-items: center;
   margin-top: 8px;
   .secondary {
+    transition: all var(--fast) var(--transition);
     text-decoration: none;
     cursor: pointer;
+    font-size: 16px;
     color: var(--input-placeholder-color);
+    &:hover {
+      color: var(--page-text-color);
+    }
   }
 }
 </style>

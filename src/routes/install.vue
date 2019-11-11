@@ -465,6 +465,7 @@ input {
     text-decoration: none;
     color: var(--input-placeholder-color);
     cursor: pointer;
+    font-size: 16px;
     &:hover {
       color: var(--page-text-color);
     }
