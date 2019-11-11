@@ -1,7 +1,7 @@
 <template>
   <PublicView :heading="$t('reset_password')">
-    <project-chooser />
     <form @submit.prevent="onSubmit">
+      <project-chooser />
       <input v-model="email" type="email" :placeholder="$t('email')" />
       <div class="buttons">
         <button type="submit">{{ $t("reset") }}</button>
@@ -72,6 +72,10 @@ export default {
   @media (min-height: 800px) {
     margin-top: 52px;
   }
+}
+
+form {
+  margin-top: 52px;
 }
 
 button {
