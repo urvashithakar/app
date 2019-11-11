@@ -128,7 +128,7 @@ export default {
 }
 
 .art {
-  transition: all var(--fast) var(--transition);
+  transition: background-color var(--fast) var(--transition);
   flex-grow: 1;
   background-size: cover;
   background-position: center center;

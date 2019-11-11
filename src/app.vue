@@ -222,7 +222,6 @@ export default {
 <style lang="scss">
 body {
   padding-right: 64px;
-  transition: padding-right var(--fast) var(--transition);
 }
 
 body.no-padding {
