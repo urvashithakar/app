@@ -85,8 +85,6 @@ export default {
   z-index: 30;
   width: 90%;
   background-color: var(--sidebar-background-color);
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
   transform: translateX(220px);
   transition: transform var(--fast) var(--transition);
 
@@ -111,7 +109,10 @@ export default {
 }
 
 .content {
-  padding: 24px;
+  padding: 20px 20px 100px;
+  height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .sidebar-button {
