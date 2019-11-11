@@ -66,6 +66,9 @@
         @confirm="remove"
       />
     </portal>
+    <v-info-sidebar v-if="!newItem && !batch" wide>
+      <span class="type-note">No settings</span>
+    </v-info-sidebar>
   </div>
 </template>
 
