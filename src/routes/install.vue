@@ -456,6 +456,7 @@ input {
   align-items: center;
   margin-top: 16px;
   .secondary {
+    transition: color var(--fast) var(--transition);
     text-decoration: none;
     color: var(--input-placeholder-color);
     cursor: pointer;

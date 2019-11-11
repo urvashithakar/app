@@ -435,7 +435,7 @@ input {
   margin-top: 8px;
 
   .secondary {
-    transition: all var(--fast) var(--transition);
+    transition: color var(--fast) var(--transition);
     flex-shrink: 0;
     // margin-left: 24px; // Not when on left ("continue as")
     text-decoration: none;

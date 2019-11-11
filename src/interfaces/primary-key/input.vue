@@ -39,7 +39,7 @@ export default {
 }
 .immutable {
   display: block;
-  color: var(--blue-grey-300);
+  color: var(--note-text-color);
   text-transform: initial;
   margin-right: 20px;
   font-style: italic;
