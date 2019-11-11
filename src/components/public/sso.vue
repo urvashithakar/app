@@ -5,7 +5,7 @@
       :key="provider.name"
       v-tooltip.bottom="{ classes: ['inverted'], content: $helpers.formatTitle(provider.name) }"
     >
-      <a :href="`${apiUrl}/auth/sso/${provider.name}`">
+      <a :href="`${ssoPath}${provider.name}`">
         <img :src="provider.icon" :alt="provider.name" />
       </a>
     </li>
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapState } from "vuex";
 
 export default {
   name: "Sso",
@@ -24,10 +24,9 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["currentProject"]),
-    apiUrl() {
-      const { url, project } = this.currentProject;
-      return `${url}/${project}`;
+    ...mapState(["currentProjectKey", "apiRootPath"]),
+    ssoPath() {
+      return this.apiRootPath + this.currentProjectKey + "/auth/sso/";
     }
   }
 };
