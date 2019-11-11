@@ -961,7 +961,7 @@ export default {
       })
       .catch(error => {
         store.dispatch("loadingFinished", id);
-        if (error && error.code === 203) {
+        if (error && +error.code === 203) {
           return next(vm => (vm.$data.notFound = true));
         }
 
