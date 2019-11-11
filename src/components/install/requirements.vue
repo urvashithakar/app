@@ -10,14 +10,16 @@
         :color="cat.success ? 'success' : 'warning'"
         :icon="cat.success ? 'check' : 'warning'"
       >
-        {{ cat.value }}
-        <a
-          v-if="cat.success === false"
-          href="https://docs.directus.io/advanced/requirements.html"
-          target="__blank"
-        >
-          {{ $t("why") }}
-        </a>
+        <div class="content">
+          {{ cat.value }}
+          <a
+            v-if="cat.success === false"
+            href="https://docs.directus.io/advanced/requirements.html"
+            target="__blank"
+          >
+            {{ $t("why") }}
+          </a>
+        </div>
       </v-notice>
     </template>
   </div>
@@ -152,10 +154,19 @@ export default {
   margin-bottom: 32px;
 }
 .notice {
-  margin-bottom: 16px;
+  height: 60px;
+  margin-bottom: 8px;
+  max-width: none !important;
 }
 
-a {
-  float: right;
+.content {
+  width: 100%;
+  a {
+    float: right;
+  }
+}
+
+.install-requirements {
+  margin-bottom: 32px;
 }
 </style>

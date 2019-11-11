@@ -7,9 +7,13 @@
         <div class="field-grid">
           <div class="field">
             <h2 class="type-title">Welcome to Directus</h2>
-            <p>Isn't this awesome?</p>
+            <p>
+              Please make sure you have your database information handy to set up your first
+              project.
+            </p>
           </div>
         </div>
+        <button type="button" @click="step = 2">{{ $t("next") }}</button>
       </template>
       <template v-else class="field-grid">
         <div class="field-grid">
@@ -19,17 +23,25 @@
               Make sure you have your database information handy, then enter your API's Super-Admin
               password to continue.
             </p>
-            <input v-model="super_admin_token" type="text" />
+            <input v-model="super_admin_token" placeholder="Super-Admin Password..." type="text" />
           </div>
         </div>
+        <!-- Pushes out the Next button -->
+        <!-- <div class="buttons"> -->
+        <!-- <router-link class="secondary" to="/login">
+            {{ $t("cancel") }}
+          </router-link> -->
+        <button type="button" @click="step = 2">{{ $t("next") }}</button>
+        <!-- </div> -->
       </template>
-
-      <button type="button" @click="step = 2">{{ $t("next") }}</button>
     </div>
 
     <div v-show="step === 2" class="step-2">
       <install-requirements />
-      <button type="button" @click="step = 3">{{ $t("next") }}</button>
+      <div class="buttons">
+        <span class="secondary" @click="step--">{{ $t("back") }}</span>
+        <button type="button" @click="step = 3">{{ $t("next") }}</button>
+      </div>
     </div>
 
     <form v-show="step === 3" class="step-3" @submit.prevent="step = 4">
@@ -460,7 +472,7 @@ p {
   margin-top: 4px;
 
   @media (min-height: 800px) {
-    margin-top: 20px;
+    margin-top: 24px;
   }
 }
 
@@ -469,7 +481,7 @@ legend {
 }
 
 .stepper {
-  margin-bottom: 80px;
+  margin-bottom: 64px;
   max-width: 320px;
 }
 

@@ -48,6 +48,8 @@ export default {
   border-radius: var(--border-radius);
   max-width: 632px;
   vertical-align: middle;
+  display: flex;
+  align-items: center;
   .icon {
     margin-right: 12px;
     line-height: 0;
