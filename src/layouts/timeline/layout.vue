@@ -1,5 +1,5 @@
 <template>
-  <div id="timeline" ref="timeline">
+  <div ref="timeline" class="timeline">
     <Day v-for="day in days" :key="day.id" :date="day.date" :events="day.events" />
     <div v-if="lazyLoading" class="lazy-loader">
       <v-spinner line-fg-color="var(--blue-grey-300)" line-bg-color="var(--blue-grey-200)" />
@@ -111,3 +111,9 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.timeline {
+  margin-top: 32px;
+}
+</style>
