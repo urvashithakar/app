@@ -345,7 +345,7 @@
   "page_not_found_body": "The page you are looking for doesn't seem to exist.",
   "password": "Password",
   "password_reset_sending": "Sending email...",
-  "password_reset_sent": "If a valid user with this email address exists, we've sent you a secure link to reset your password.",
+  "password_reset_sent": "If a valid user with this email address exists in Directus, we've sent you a secure link to reset your password.",
   "password_reset_successful": "Password successfully reset.",
   "permission_states": {
     "always": "Always",
