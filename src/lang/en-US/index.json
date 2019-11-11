@@ -444,6 +444,7 @@
   "something_went_wrong_body": "Trouble processing request. Try again after refreshing the page.",
   "sort": "Sort",
   "sort_by": "Sort By",
+  "sort_direction": "Sort Direction",
   "spacing": "Spacing",
   "status": "Status",
   "statuses": "Statuses",

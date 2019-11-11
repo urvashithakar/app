@@ -52,8 +52,8 @@ export default {
     this.getValueNames();
   },
   methods: {
-    stageValue(event) {
-      this.$emit("input", event.target.value);
+    stageValue(value) {
+      this.$emit("input", value);
     },
     getValueNames() {
       const selectElement = this.$refs.selectElement;

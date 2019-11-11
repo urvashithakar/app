@@ -1,26 +1,5 @@
 <template>
   <div class="layout-cards" @scroll="onScroll">
-    <div class="toolbar">
-      <p>{{ $t("sort_by") }}</p>
-
-      <div class="sort-select">
-        <select :value="sortedOn" @input="setSort($event.target.value)">
-          <option v-for="(fieldInfo, name) in sortableFields" :key="name" :value="name">
-            {{ $helpers.formatTitle(name) }}
-          </option>
-        </select>
-        <v-icon class="icon" name="arrow_drop_down" />
-      </div>
-
-      <div class="sort-select">
-        <select :value="sortDirection" @input="setSortDirection($event.target.value)">
-          <option value="asc">{{ $t("ASC") }}</option>
-          <option value="desc">{{ $t("DESC") }}</option>
-        </select>
-        <v-icon class="icon" name="arrow_drop_down" />
-      </div>
-    </div>
-
     <div class="cards" :class="{ loading: loading }">
       <v-card
         v-for="(item, index) in items"
@@ -100,39 +79,6 @@ export default {
     },
     content() {
       return this.viewOptions.content;
-    },
-    sortableFields() {
-      return _.pickBy(this.fields, field => field.datatype);
-    },
-    sortedOn() {
-      let fieldName;
-      const sortableFieldNames = Object.keys(this.sortableFields);
-      const viewQuerySort = this.viewQuery.sort;
-      if (
-        sortableFieldNames &&
-        viewQuerySort &&
-        sortableFieldNames.some(sortableFieldName => sortableFieldName === viewQuerySort)
-      ) {
-        fieldName = viewQuerySort;
-      } else if (sortableFieldNames && sortableFieldNames.length > 0) {
-        // If the user didn't sort, default to the first field
-        fieldName = sortableFieldNames[0];
-      } else {
-        return null;
-      }
-
-      // If the sort viewQuery was already descending, remove the - so we don't
-      // run into server errors with double direction characters
-      if (fieldName.startsWith("-")) fieldName = fieldName.substring(1);
-
-      return fieldName;
-    },
-    sortDirection() {
-      if (!this.viewQuery.sort) return "asc";
-
-      if (this.viewQuery.sort.substring(0, 1) === "-") return "desc";
-
-      return "asc";
     }
   },
   methods: {
@@ -184,16 +130,6 @@ export default {
       }
 
       this.$emit("select", newSelection);
-    },
-    setSort(fieldName) {
-      this.$emit("query", {
-        sort: fieldName
-      });
-    },
-    setSortDirection(direction) {
-      this.$emit("query", {
-        sort: (direction === "desc" ? "-" : "") + this.sortedOn
-      });
     }
   }
 };
