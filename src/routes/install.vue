@@ -26,18 +26,12 @@
             <input v-model="super_admin_token" placeholder="Super-Admin Password..." type="text" />
           </div>
         </div>
-        <!-- Pushes out the Next button -->
-        <!-- <div class="buttons"> -->
-        <!-- <router-link class="secondary" to="/login">
-            {{ $t("cancel") }}
-          </router-link> -->
         <button type="button" @click="step = 2">{{ $t("next") }}</button>
-        <!-- </div> -->
       </template>
     </div>
 
     <div v-show="step === 2" class="step-2">
-      <install-requirements />
+      <install-requirements v-if="step === 2" :super-admin-token="super_admin_token" />
       <div class="buttons">
         <span class="secondary" @click="step--">{{ $t("back") }}</span>
         <button type="button" @click="step = 3">{{ $t("next") }}</button>
@@ -157,14 +151,14 @@
       <h2 class="type-title">{{ $t("all_set") }}</h2>
       <div class="field-grid">
         <div class="field">
-          <div class="progress-bar-complete"></div>
+          <v-progress class="progress-bar" :value="100" />
           <p>
             {{ $t("install_all_set_copy") }}
             <span v-if="firstInstall" class="warning">
               {{ $t("install_all_set_super_admin_password") }}
             </span>
           </p>
-          <input v-model="super_admin_token" type="text" readonly />
+          <input v-if="firstInstall" v-model="super_admin_token" type="text" readonly />
           <button type="button" class="button" @click="goToLogin">{{ $t("sign_in") }}</button>
         </div>
       </div>

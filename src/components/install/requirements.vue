@@ -3,6 +3,11 @@
     <template v-if="fetchingRequirements">
       <v-spinner class="spinner" line-fg-color="#263238" />
     </template>
+    <template v-else-if="error">
+      <v-notice color="danger" icon="error">
+        {{ error }}
+      </v-notice>
+    </template>
     <template v-else>
       <v-notice
         v-for="cat in [server, phpVersion, phpExtensions, permissions, directusVersion]"
@@ -32,6 +37,13 @@ import { satisfies } from "semver";
 
 export default {
   name: "InstallRequirements",
+  props: {
+    superAdminToken: {
+      type: String,
+      required: false,
+      default: null
+    }
+  },
   data() {
     return {
       fetchingRequirements: false,
@@ -127,12 +139,23 @@ export default {
   methods: {
     async fetchRequirements() {
       this.fetchingRequirements = true;
+      this.error = null;
 
       try {
-        const serverInfoResponse = await axios.get(this.apiRootPath + "server/info");
+        const serverInfoResponse = await axios.get(this.apiRootPath + "server/info", {
+          params: {
+            super_admin_token: this.superAdminToken
+          }
+        });
         this.serverInfo = serverInfoResponse.data.data;
       } catch (error) {
-        this.error = error;
+        const code = error.response?.data?.error?.code;
+
+        if (+code === 3) {
+          this.error = this.$t("wrong_super_admin_password");
+        } else {
+          this.error = error.message;
+        }
       }
 
       try {

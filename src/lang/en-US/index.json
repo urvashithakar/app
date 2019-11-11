@@ -481,6 +481,7 @@
   "welcome": "Welcome",
   "why": "Why?",
   "wrapping_up": "Wrapping Up",
+  "wrong_super_admin_password": "The super admin password you provided is incorrect.",
   "writable_fields": "Writable Fields",
   "writable_fields_copy": "Select the fields that the user can edit",
   "yes": "Yes"
