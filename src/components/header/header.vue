@@ -221,7 +221,7 @@ body.info-wide-active .v-header {
     font-style: normal;
     font-size: 18px;
     display: inline-block;
-    margin: 0 8px;
+    margin: 0 4px;
     line-height: 1;
     text-transform: none;
     letter-spacing: normal;
