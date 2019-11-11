@@ -2,7 +2,7 @@
   <PublicView :heading="$t('reset_password')">
     <form @submit.prevent="onSubmit">
       <project-chooser />
-      <input v-model="email" type="email" :placeholder="$t('email')" />
+      <input v-model="email" type="email" :placeholder="$t('email')" required />
       <div class="buttons">
         <button type="submit">{{ $t("reset") }}</button>
         <router-link to="/login" class="secondary">{{ $t("sign_in") }}</router-link>
