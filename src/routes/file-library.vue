@@ -34,7 +34,7 @@
           icon-color="white"
           hover-color="warning-dark"
           :label="$t('batch')"
-          :to="`/${currentProjectKey}/collections/${collection}/${selection.join(',')}`"
+          :to="batchURL"
         />
         <v-header-button
           v-if="selection.length"
@@ -189,6 +189,9 @@ export default {
           path: `/${this.currentProjectKey}/files`
         }
       ];
+    },
+    batchURL() {
+      return `/${this.currentProjectKey}/files/${this.selection.map(item => item.id).join(",")}`;
     },
     fields() {
       const fields = this.$store.state.collections[this.collection].fields;
@@ -378,7 +381,10 @@ export default {
       this.$store.dispatch("loadingStart", { id });
 
       this.$api
-        .deleteItems(this.collection, this.selection.map(item => item.id))
+        .deleteItems(
+          this.collection,
+          this.selection.map(item => item.id)
+        )
         .then(() => {
           this.$store.dispatch("loadingFinished", id);
           this.$refs.listing.getItems();
