@@ -26,7 +26,7 @@
         @confirm="add"
       />
     </portal>
-    <v-info-sidebar v-if="!newItem && !batch" wide>
+    <v-info-sidebar wide>
       <span class="type-note">No settings</span>
     </v-info-sidebar>
   </div>

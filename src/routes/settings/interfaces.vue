@@ -2,7 +2,7 @@
   <div class="interfaces">
     <v-header :breadcrumb="links" :icon-link="`/${currentProjectKey}/settings`" settings />
     <v-table :columns="columns" :items="items" link="__link" primary-key-field="id" />
-    <v-info-sidebar v-if="!newItem && !batch" wide>
+    <v-info-sidebar wide>
       <span class="type-note">No settings</span>
     </v-info-sidebar>
   </div>

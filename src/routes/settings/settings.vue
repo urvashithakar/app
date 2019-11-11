@@ -129,6 +129,10 @@
         @cancel="updateDBActive = false"
       />
     </portal>
+
+    <v-info-sidebar wide>
+      <span class="type-note">No settings</span>
+    </v-info-sidebar>
   </div>
 </template>
 

@@ -82,6 +82,9 @@
         @revert="revertActivity = $event"
       />
     </v-info-sidebar>
+    <v-info-sidebar v-else wide>
+      <span class="type-note">No settings</span>
+    </v-info-sidebar>
 
     <v-form
       ref="form"
