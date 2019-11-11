@@ -143,20 +143,31 @@
 
     <div v-show="step === 5" class="step-5">
       <h2 class="type-title">{{ $t("wrapping_up") }}</h2>
-      <v-progress />
-      <p>
-        {{ $t("install_busy_copy") }}
-      </p>
+      <div class="field-grid">
+        <div class="field">
+          <v-progress class="progress-bar" />
+          <p>
+            {{ $t("install_busy_copy") }}
+          </p>
+        </div>
+      </div>
     </div>
 
     <div v-show="step === 6" class="step-6">
       <h2 class="type-title">{{ $t("all_set") }}</h2>
-      <div class="progress-bar"></div>
-      <p>{{ $t("install_all_set_copy") }}</p>
-      <p v-if="firstInstall">
-        {{ $t("install_all_set_super_admin_password", { super_admin_token }) }}
-      </p>
-      <button type="button" class="button" @click="goToLogin">{{ $t("sign_in") }}</button>
+      <div class="field-grid">
+        <div class="field">
+          <div class="progress-bar-complete"></div>
+          <p>
+            {{ $t("install_all_set_copy") }}
+            <span v-if="firstInstall" class="warning">
+              {{ $t("install_all_set_super_admin_password") }}
+            </span>
+          </p>
+          <input v-model="super_admin_token" type="text" readonly />
+          <button type="button" class="button" @click="goToLogin">{{ $t("sign_in") }}</button>
+        </div>
+      </div>
     </div>
 
     <public-notice
@@ -483,6 +494,23 @@ legend {
 .stepper {
   margin-bottom: 64px;
   max-width: 320px;
+}
+
+.progress-bar {
+  margin-top: 32px;
+}
+
+.progress-bar-complete {
+  margin-top: 32px;
+  width: 100%;
+  background-color: var(--progress-background-color-accent);
+  position: relative;
+  height: 4px;
+  border-radius: var(--border-radius);
+}
+
+.warning {
+  color: var(--warning);
 }
 
 .field-grid {
