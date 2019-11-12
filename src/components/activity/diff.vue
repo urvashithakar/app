@@ -49,8 +49,8 @@ export default {
   .before {
     position: relative;
     color: var(--danger);
-    background-color: var(--white);
-    border-bottom: 2px solid var(--blue-grey-50);
+    background-color: var(--page-background-color);
+    border-bottom: 2px solid var(--sidebar-background-color);
     max-height: 300px;
     overflow: auto;
     &:after {
@@ -71,7 +71,7 @@ export default {
   .after {
     position: relative;
     color: var(--success);
-    background-color: var(--white);
+    background-color: var(--page-background-color);
     max-height: 300px;
     overflow: auto;
     &:after {
@@ -91,7 +91,7 @@ export default {
 
   .empty {
     color: var(--blue-grey-200);
-    background-color: var(--white);
+    background-color: var(--page-background-color);
     &:after {
       content: "block";
       position: absolute;
