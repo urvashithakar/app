@@ -7,7 +7,7 @@
   "scripts": {
     "build": "vue-cli-service build",
     "test": "vue-cli-service lint",
-    "dev": "NODE_ENV=development vue-cli-service serve",
+    "dev": "cross-env NODE_ENV=development vue-cli-service serve",
     "fix": "prettier --write \"src/**/*.{js,vue}\"",
     "storybook:build": "vue-cli-service storybook:build -c ./.storybook -s ./public",
     "storybook:dev": "vue-cli-service storybook:serve -p 6006 -c ./.storybook -s ./public"
