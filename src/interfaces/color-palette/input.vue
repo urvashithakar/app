@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     useDarkIconColor(value) {
-      const hex = getComputedStyle(document.documentElement)
+      const hex = getComputedStyle(document.body)
         .getPropertyValue(`--${value}`)
         .trim();
 
