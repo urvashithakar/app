@@ -1065,8 +1065,7 @@ export default {
 
 <style lang="scss" scoped>
 .edit {
-  padding: var(--page-padding);
-  padding-bottom: var(--page-padding-bottom);
+  padding: var(--page-padding-top) var(--page-padding) var(--page-padding-bottom);
 }
 
 .revert {

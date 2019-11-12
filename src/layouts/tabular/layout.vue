@@ -107,7 +107,7 @@ export default {
 
 <style lang="scss" scoped>
 .layout {
-  margin-top: 20px;
-  padding: 0 32px;
+  margin-top: var(--page-padding-top-table);
+  padding: 0 var(--page-padding);
 }
 </style>

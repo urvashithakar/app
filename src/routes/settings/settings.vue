@@ -255,7 +255,7 @@ export default {
 
 <style lang="scss" scoped>
 .settings {
-  padding: var(--page-padding);
+  padding: var(--page-padding-top) var(--page-padding) var(--page-padding-bottom);
 }
 
 nav ul {

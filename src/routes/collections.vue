@@ -101,10 +101,6 @@ export default {
 
 <style lang="scss" scoped>
 .collections {
-  padding-bottom: var(--page-padding-bottom);
-}
-
-.padding {
-  padding: 0 32px;
+  padding: var(--page-padding-top-table) var(--page-padding) var(--page-padding-bottom);
 }
 </style>

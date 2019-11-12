@@ -112,6 +112,6 @@ export default {
 
 <style lang="scss" scoped>
 .settings-global {
-  padding: var(--page-padding);
+  padding: var(--page-padding-top) var(--page-padding) var(--page-padding-bottom);
 }
 </style>

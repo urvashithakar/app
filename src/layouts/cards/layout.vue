@@ -192,8 +192,7 @@ export default {
 }
 
 .cards {
-  padding: var(--page-padding);
-  padding-bottom: var(--page-padding-bottom);
+  padding: var(--page-padding-top) var(--page-padding) var(--page-padding-bottom);
   display: grid;
   grid-template-columns: repeat(auto-fill, 136px);
   grid-gap: 30px 20px;

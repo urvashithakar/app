@@ -374,7 +374,7 @@ export default {
 
 <style scoped lang="scss">
 .interface-debugger {
-  padding: var(--page-padding);
+  padding: var(--page-padding-top) var(--page-padding) var(--page-padding-bottom);
 }
 
 form {
