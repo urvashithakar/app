@@ -188,6 +188,15 @@ const router = new Router({
       props: true
     },
     {
+      path: "/:project/settings/webhooks",
+      component: Items
+    },
+    {
+      path: "/:project/settings/webhooks/:primaryKey",
+      props: true,
+      component: Item
+    },
+    {
       path: "/login",
       component: Login,
       meta: {

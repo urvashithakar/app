@@ -6,6 +6,7 @@
       :item-detail="false"
       :breadcrumb="breadcrumb"
       :icon="(collectionInfo && collectionInfo.icon) || 'box'"
+      :settings="collection === 'directus_webhooks'"
       :title="currentBookmark && currentBookmark.title"
     >
       <template slot="title">
@@ -252,6 +253,7 @@ export default {
       return currentBookmark || null;
     },
     collection() {
+      if (this.$route.path.endsWith("webhooks")) return "directus_webhooks";
       return this.$route.params.collection;
     },
     collectionInfo() {
@@ -623,7 +625,9 @@ export default {
     }
   },
   beforeRouteEnter(to, from, next) {
-    const { collection } = to.params;
+    let { collection } = to.params;
+
+    if (to.path.endsWith("webhooks")) collection = "directus_webhooks";
 
     const collectionInfo = store.state.collections[collection] || null;
 

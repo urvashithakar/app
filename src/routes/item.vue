@@ -24,6 +24,7 @@
       :icon-link="iconLink"
       :icon="singleItem ? collectionInfo.icon || 'box' : 'arrow_back'"
       item-detail
+      :settings="collection === 'directus_webhooks'"
     >
       <template v-if="status" slot="title">
         <span
@@ -245,10 +246,6 @@ export default {
     VActivity
   },
   props: {
-    collection: {
-      type: String,
-      required: true
-    },
     primaryKey: {
       type: null,
       required: true
@@ -280,8 +277,16 @@ export default {
   },
   computed: {
     ...mapState(["currentProjectKey"]),
+    collection() {
+      if (this.$route.path.includes("settings/webhooks")) return "directus_webhooks";
+      return this.$route.params.collection;
+    },
     iconLink() {
       if (this.singleItem) return null;
+
+      if (this.collection === "directus_webhooks") {
+        return `/${this.currentProjectKey}/settings/webhooks`;
+      }
 
       if (this.collection.startsWith("directus_")) {
         return `/${this.currentProjectKey}/${this.collection.substring(9)}`;
@@ -924,7 +929,9 @@ export default {
     }
   },
   beforeRouteEnter(to, from, next) {
-    const { collection, primaryKey } = to.params;
+    let { collection, primaryKey } = to.params;
+
+    if (!collection && to.path.includes("settings/webhooks")) collection = "directus_webhooks";
     const exists =
       Object.keys(store.state.collections).includes(collection) ||
       collection.startsWith("directus_");

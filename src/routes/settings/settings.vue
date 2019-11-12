@@ -30,11 +30,11 @@
           />
 
           <v-card
-            :title="$t('settings_update_database')"
-            :subtitle="$t('settings_update_database_subtext')"
+            :title="$t('settings_webhooks')"
+            :subtitle="webhookCount"
             element="li"
-            icon="update"
-            @click="updateDBActive = true"
+            :to="`/${currentProjectKey}/settings/webhooks`"
+            icon="send"
           />
         </ul>
       </nav>
@@ -120,16 +120,6 @@
       </nav>
     </v-details>
 
-    <portal v-if="updateDBActive" to="modal">
-      <v-confirm
-        :message="$t('settings_update_database_confirm')"
-        :confirm-text="$t('update')"
-        :loading="updateDBInProgress"
-        @confirm="updateDB"
-        @cancel="updateDBActive = false"
-      />
-    </portal>
-
     <v-info-sidebar wide>
       <span class="type-note">No settings</span>
     </v-info-sidebar>
@@ -153,10 +143,9 @@ export default {
   },
   data() {
     return {
-      roleCount: "Loading...",
-      activityCount: "Loading...",
-      updateDBActive: false,
-      updateDBInProgress: false
+      roleCount: this.$t("loading"),
+      activityCount: this.$t("loading"),
+      webhookCount: this.$t("loading")
     };
   },
   computed: {
@@ -191,6 +180,7 @@ export default {
   created() {
     this.getRoleCount();
     this.getActivityCount();
+    this.getWebhookCount();
   },
   methods: {
     getRoleCount() {
@@ -227,26 +217,20 @@ export default {
           this.activityCount = "--";
         });
     },
-    updateDB() {
-      this.updateDBInProgress = true;
-
+    getWebhookCount() {
       this.$api
-        .updateDatabase()
-        .then(() => {
-          this.updateDBInProgress = false;
-          this.updateDBActive = false;
-          this.$notify({
-            title: this.$t("db_updated"),
-            color: "green",
-            iconMain: "check"
+        .getItems("directus_webhooks", {
+          limit: 0,
+          meta: "total_count"
+        })
+        .then(res => res.meta)
+        .then(({ total_count }) => {
+          this.webhookCount = this.$tc("webhook_count", total_count, {
+            count: this.$n(total_count)
           });
         })
-        .catch(error => {
-          this.updateDBInProgress = false;
-          this.$events.emit("error", {
-            notify: this.$t("db_update_failed"),
-            error
-          });
+        .catch(() => {
+          this.webhookCount = "--";
         });
     }
   }
