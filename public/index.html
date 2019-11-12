@@ -16,24 +16,6 @@
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
-
-    <script>
-        // Create a default config when the config file is missing.
-        // This allows the app to work even when no configuration was set
-        const defaultConfig = {
-          api: {
-            "https://demo-api.directus.app/_/": "Demo API",
-            "https://next.demo-api.directus.app/_/": "Demo API (Nightly)"
-          },
-          allowOtherAPI: true,
-          routerMode: "hash",
-          routerBaseUrl: "/"
-        };
-
-        if (typeof window.__DirectusConfig__ !== 'object') {
-          window.__DirectusConfig__ = defaultConfig;
-        }
-    </script>
     <script src="script.js"></script>
   </body>
 </html>

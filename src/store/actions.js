@@ -2,6 +2,7 @@ import api from "../api";
 import axios from "axios";
 import router from "@/router";
 import hydrateStore from "@/hydrate";
+import { loadLanguageAsync } from "@/lang/";
 
 import {
   RESET,
@@ -124,10 +125,16 @@ export function loadingFinished({ commit }, id) {
   commit(LOADING_FINISHED, id);
 }
 
-export async function setCurrentProject({ commit, dispatch, state }, key) {
+export async function setCurrentProject({ commit, dispatch, state, getters }, key) {
   commit(SET_CURRENT_PROJECT, key);
 
   const privateRoute = router.currentRoute.meta.publicRoute !== true;
+
+  const locale = getters.currentProject.data?.default_locale;
+
+  if (locale) {
+    loadLanguageAsync(locale);
+  }
 
   if (privateRoute) {
     commit(RESET);
@@ -164,7 +171,9 @@ export async function updateProjectInfo({ commit, state }, key) {
       project_foreground,
       project_color,
       project_background,
-      project_logo
+      project_logo,
+      telemetry,
+      default_locale
     } = response.data.data.api;
     const authenticated = response.data.public === undefined;
 
@@ -176,6 +185,8 @@ export async function updateProjectInfo({ commit, state }, key) {
         project_color,
         project_background,
         project_logo,
+        telemetry,
+        default_locale,
         authenticated
       }
     });

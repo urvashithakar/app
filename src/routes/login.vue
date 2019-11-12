@@ -308,7 +308,7 @@ export default {
     }
   },
   mounted() {
-    this.$refs.main.focus();
+    this.$refs?.main?.focus();
   }
 };
 </script>

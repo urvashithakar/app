@@ -69,8 +69,12 @@ export default {
     },
     tooltipContent() {
       let latency = this.latency[this.latency.length - 1].latency;
+
       latency = Math.round(latency);
-      latency = this.$n(latency);
+
+      if (latency) {
+        latency = this.$n(latency);
+      }
 
       let content = this.apiURL;
       content += "<br>";

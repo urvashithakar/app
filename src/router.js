@@ -27,14 +27,8 @@ import hydrateStore from "@/hydrate";
 
 Vue.use(Router);
 
-const base =
-  process.env.NODE_ENV === "production" // eslint-disable-line
-    ? window.__DirectusConfig__ && window.__DirectusConfig__.routerBaseUrl
-    : "/";
-
 const router = new Router({
   mode: "hash",
-  base: base,
   // Make sure that the page is scrolled to the top on navigation
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
