@@ -69,7 +69,7 @@ so the aria label is used — but that is based on locale. */
 .tox-tinymce {
   border: var(--input-border-width) solid var(--input-border-color);
   border-radius: var(--border-radius);
-  color: var(--blue-grey-400);
+  color: var(--page-text-color);
   transition: var(--fast) var(--transition);
   transition-property: color, border-color;
   min-height: 300px;
@@ -102,11 +102,12 @@ so the aria label is used — but that is based on locale. */
 .tox .tox-tbtn--enabled,
 .tox .tox-tbtn--enabled:hover,
 .tox .tox-tbtn:hover {
-  background: var(--blue-grey-100);
+  background: var(--input-border-color);
   color: var(--input-text-color);
 }
 
 .tox .tox-tbtn {
+  color: var(--input-text-color);
   margin-right: 2px;
 }
 
@@ -151,7 +152,7 @@ so the aria label is used — but that is based on locale. */
 .tox .tox-textarea {
   border: var(--input-border-width) solid var(--input-border-color);
   border-radius: var(--border-radius);
-  color: var(--blue-grey-400);
+  color: var(--page-text-color);
   transition: var(--fast) var(--transition);
   font-family: monospace;
   padding: 12px;
@@ -160,7 +161,7 @@ so the aria label is used — but that is based on locale. */
 .tox .tox-textfield:focus,
 .tox .tox-selectfield select:focus,
 .tox .tox-textarea:focus {
-  border-color: var(--blue-grey-200);
+  border-color: var(--input-icon-color);
 }
 
 .tox .tox-dialog__footer {
@@ -168,8 +169,8 @@ so the aria label is used — but that is based on locale. */
 }
 
 .tox .tox-button {
-  background-color: var(--blue-grey-800);
-  border-color: var(--blue-grey-800);
+  background-color: var(--input-background-color-active);
+  border-color: var(--input-background-color-active);
   border: none;
   border-radius: var(--border-radius);
   cursor: pointer;
@@ -190,8 +191,8 @@ so the aria label is used — but that is based on locale. */
 }
 
 .tox .tox-button:hover:not(:disabled) {
-  background-color: var(--blue-grey-900);
-  border-color: var(--blue-grey-900);
+  background-color: var(--page-text-color);
+  border-color: var(--page-text-color);
 }
 
 .tox .tox-button--secondary {
@@ -207,7 +208,7 @@ so the aria label is used — but that is based on locale. */
 .tox .tox-button--naked {
   background-color: transparent;
   border-color: transparent;
-  color: var(--blue-grey-800);
+  color: var(--input-background-color-active);
   min-width: auto;
   height: auto;
 }
@@ -215,7 +216,7 @@ so the aria label is used — but that is based on locale. */
 .tox .tox-button--naked.tox-button--icon:hover:not(:disabled) {
   background-color: transparent;
   border-color: transparent;
-  color: var(--blue-grey-800);
+  color: var(--input-background-color-active);
 }
 
 .tox .tox-form__group {
@@ -226,5 +227,5 @@ so the aria label is used — but that is based on locale. */
 .tox .tox-toolbar-label {
   font-size: var(--size-2);
   margin-bottom: 10px;
-  color: var(--blue-grey-900);
+  color: var(--page-text-color);
 }
