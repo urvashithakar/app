@@ -46,14 +46,21 @@ export async function loadLanguageAsync(lang) {
       // route level code-splitting
       // this generates a separate chunk (lang-[request].[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      const msgs = await import(
-        /* webpackChunkName: "lang-[request]" */ `@/lang/${lang}/index.json`
-      );
-      const dateTimeFormats = await import(
-        /* webpackChunkName: "date-[request]" */ `@/lang/${lang}/date-format.json`
-      );
-      i18n.setLocaleMessage(lang, msgs);
-      i18n.setDateTimeFormat(lang, dateTimeFormats);
+      try {
+        const msgs = await import(
+          /* webpackChunkName: "lang-[request]" */ `@/lang/${lang}/index.json`
+        );
+
+        i18n.setLocaleMessage(lang, msgs);
+      } catch {}
+
+      try {
+        const dateTimeFormats = await import(
+          /* webpackChunkName: "date-[request]" */ `@/lang/${lang}/date-format.json`
+        );
+        i18n.setDateTimeFormat(lang, dateTimeFormats);
+      } catch {}
+
       loadedLanguages.push(lang);
       return setI18nLanguage(lang);
     }
