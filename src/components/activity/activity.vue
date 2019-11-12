@@ -226,7 +226,7 @@ export default {
   &::before {
     content: "";
     position: absolute;
-    left: 4px;
+    left: 0px;
     top: 80px;
     bottom: 8px;
     width: 2px;
@@ -265,6 +265,7 @@ export default {
   article {
     display: flex;
     margin-bottom: 30px;
+    margin-left: -4px;
   }
 
   .content {
@@ -291,17 +292,16 @@ export default {
 
     summary {
       position: relative;
-      width: 224px;
+      width: 100%;
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
       padding-right: 20px;
       cursor: pointer;
-      color: var(--blue-grey-300);
 
       &:hover {
         .chevron {
-          color: var(--blue-grey-600);
+          color: var(--page-text-color);
         }
       }
 
@@ -309,7 +309,7 @@ export default {
         position: absolute;
         top: 0;
         right: 0;
-        color: var(--blue-grey-200);
+        color: var(--note-text-color);
         transition: all var(--fast) var(--transition);
       }
     }
@@ -320,7 +320,7 @@ export default {
 
     .revert {
       transition: all var(--fast) var(--transition);
-      background-color: var(--blue-grey-200);
+      background-color: var(--button-secondary-background-color);
       border-radius: var(--border-radius);
       padding: 4px;
       margin: 14px auto;
@@ -331,13 +331,10 @@ export default {
         transform: translateX(0);
         background-color: inherit;
         font-size: 24px;
-        color: var(--blue-grey-50);
+        color: var(--button-secondary-text-color);
       }
       &:hover {
-        background-color: var(--blue-grey-600);
-        i.material-icons {
-          color: var(--white);
-        }
+        background-color: var(--button-secondary-background-color-hover);
       }
     }
 
@@ -349,6 +346,7 @@ export default {
       padding: 8px 10px;
       display: inline-block;
       min-width: 36px;
+      width: 100%;
 
       &:before {
         content: "";
@@ -361,50 +359,6 @@ export default {
         border-style: solid;
         border-width: 0 8px 6px 8px;
         border-color: transparent transparent var(--page-background-color) transparent;
-      }
-      a {
-        color: var(--blue-grey-800);
-        text-decoration: none;
-        &:hover {
-          color: var(--blue-grey-900);
-        }
-      }
-      strong {
-        font-weight: 600;
-      }
-      code {
-        font-family: "Roboto Mono";
-        color: var(--blue-grey-400);
-        font-weight: 600;
-      }
-      pre {
-        font-family: "Roboto Mono";
-        color: var(--blue-grey-400);
-        font-weight: 600;
-        background-color: var(--blue-grey-200);
-        padding: 4px 6px;
-        border-radius: var(--border-radius);
-        margin: 4px 0;
-      }
-      ul,
-      ol {
-        margin: 4px 0;
-        padding-left: 25px;
-      }
-      blockquote {
-        font-size: 1.2em;
-        font-weight: 400;
-        margin: 20px 10px 20px 10px;
-        border-left: 2px solid var(--blue-grey-200);
-        padding-left: 10px;
-        color: var(--blue-grey-900);
-        line-height: 1.4em;
-      }
-      hr {
-        margin: 20px 0;
-        height: 1px;
-        border: none;
-        background-color: var(--blue-grey-200);
       }
     }
   }

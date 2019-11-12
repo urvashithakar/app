@@ -90,7 +90,7 @@ export default {
   }
 
   .empty {
-    color: var(--blue-grey-200);
+    color: var(--note-text-color);
     background-color: var(--page-background-color);
     &:after {
       content: "block";
@@ -100,7 +100,7 @@ export default {
       transform: translateY(-50%);
       font-family: "Material Icons";
       font-feature-settings: "liga";
-      color: var(--blue-grey-200);
+      color: var(--note-text-color);
       display: inline-block;
       vertical-align: middle;
       margin: 0 5px;
