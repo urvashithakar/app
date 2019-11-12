@@ -686,6 +686,11 @@ export default {
               color: "green",
               iconMain: "check"
             });
+
+            if (this.collection === "directus_webhooks") {
+              return this.$router.push(`/${this.currentProjectKey}/settings/webhooks/${pk}`);
+            }
+
             if (this.collection.startsWith("directus_")) {
               return this.$router.push(
                 `/${this.currentProjectKey}/${this.collection.substring(9)}/${pk}`
@@ -729,6 +734,10 @@ export default {
           });
 
           if (method === "leave") {
+            if (this.collection === "directus_webhooks") {
+              return this.$router.push(`/${this.currentProjectKey}/settings/webhooks`);
+            }
+
             if (this.collection.startsWith("directus_")) {
               return this.$router.push(
                 `/${this.currentProjectKey}/${this.collection.substring(9)}`
@@ -743,6 +752,19 @@ export default {
 
             if (this.newItem) {
               const primaryKey = savedValues[this.primaryKeyField];
+
+              if (this.collection === "directus_webhooks") {
+                return this.$router.push(
+                  `/${this.currentProjectKey}/settings/webhooks/${primaryKey}`
+                );
+              }
+
+              if (this.collection.startsWith("directus_")) {
+                return this.$router.push(
+                  `/${this.currentProjectKey}/${this.collection.substring(9)}/${primaryKey}`
+                );
+              }
+
               return this.$router.push(
                 `/${this.currentProjectKey}/collections/${this.collection}/${primaryKey}`
               );
