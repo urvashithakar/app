@@ -31,6 +31,7 @@
       </span>
       <v-toggle
         v-if="batchMode"
+        v-tooltip="$t('batch_edit_field')"
         class="batch-toggle"
         :value="!blocked"
         @input="$emit(blocked ? 'activate' : 'deactivate', field.field)"
@@ -240,7 +241,7 @@ export default {
 
 .batch-toggle {
   display: inline-block;
-  vertical-align: -4px;
-  margin-left: 4px;
+  vertical-align: -5px;
+  transform: translate(-4px, 2px);
 }
 </style>
