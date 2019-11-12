@@ -197,6 +197,7 @@ body.info-wide-active .v-header {
   .breadcrumb {
     list-style: none;
     padding: 0;
+    margin-bottom: 2px;
 
     li {
       display: inline-block;
