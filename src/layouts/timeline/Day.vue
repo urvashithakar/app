@@ -28,7 +28,7 @@ export default {
       default: new Date()
     },
     events: {
-      type: Object,
+      type: Array,
       default: null
     }
   },
