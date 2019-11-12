@@ -1,14 +1,14 @@
 <template>
   <form @submit.prevent>
     <label class="type-label">{{ $t("sort_by") }}</label>
-    <v-simple-select :value="sortedOn" @input="setSort($event.target.value)">
+    <v-simple-select :value="sortedOn" @input="setSort($event)">
       <option v-for="(fieldInfo, name) in sortableFields" :key="name" :value="name">
         {{ $helpers.formatTitle(name) }}
       </option>
     </v-simple-select>
 
     <label for="src" class="type-label">{{ $t("sort_direction") }}</label>
-    <v-simple-select :value="sortDirection" @input="setSortDirection($event.target.value)">
+    <v-simple-select :value="sortDirection" @input="setSortDirection($event)">
       <option value="asc">{{ $t("ASC") }}</option>
       <option value="desc">{{ $t("DESC") }}</option>
     </v-simple-select>
