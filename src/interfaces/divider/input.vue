@@ -1,5 +1,5 @@
 <template>
-  <div :class="`${options.style}-style`">
+  <div :class="[`${options.style}-style`, { margin: options.margin }]">
     <h2 v-if="options.title">{{ options.title }}</h2>
     <hr v-if="options.hr" />
     <p v-if="options.description">{{ options.description }}</p>
@@ -17,8 +17,10 @@ export default {
 <style lang="scss" scoped>
 .small-style {
   position: relative;
-  margin-top: 60px;
-  padding-top: 8px;
+  padding-top: 12px;
+  &.margin {
+    margin-top: 48px;
+  }
   h2 {
     position: absolute;
     top: 0px;
@@ -47,19 +49,21 @@ export default {
 }
 
 .medium-style {
-  margin-top: 60px;
-  padding-top: 6px;
+  padding-top: 12px;
+  &.margin {
+    margin-top: 48px;
+  }
   h2 {
     color: var(--heading-text-color);
     font-size: 22px;
     line-height: 28px;
     font-weight: 400;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
   p {
     color: var(--note-text-color);
     max-width: 560px;
-    margin-top: 6px;
+    margin-top: 12px;
   }
   hr {
     border: 0;
@@ -69,19 +73,21 @@ export default {
 }
 
 .large-style {
-  margin-top: 60px;
-  padding-top: 6px;
+  padding-top: 12px;
+  &.margin {
+    margin-top: 48px;
+  }
   h2 {
     color: var(--heading-text-color);
     font-size: 28px;
     line-height: 32px;
     font-weight: 300;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
   p {
     color: var(--note-text-color);
     max-width: 560px;
-    margin-top: 14px;
+    margin-top: 16px;
   }
   hr {
     border: 0;
