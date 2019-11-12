@@ -105,6 +105,7 @@
         :view-options="viewOptions"
         :view-query="viewQuery"
         :selection="selection"
+        :primary-key-field="primaryKeyField"
         link="__link__"
         @query="setViewQuery"
         @options="setViewOptions"

@@ -27,19 +27,19 @@ export default {
   props: {
     week: {
       type: String,
-      required: true
+      default: null
     },
     display: {
       type: String,
       required: true
     },
     date: {
-      type: String,
+      type: Number,
       required: true
     },
     events: {
       type: Array,
-      required: true
+      default: () => []
     }
   },
   data() {

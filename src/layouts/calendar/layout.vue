@@ -143,9 +143,6 @@ export default {
   },
   methods: {
     getData(date) {
-      this.$store.dispatch("loadingStart", {
-        id: "fetch_cal_items"
-      });
       var dateId = this.viewOptions.date;
       var datetimeId = this.viewOptions.datetime;
       var columnName = "";
@@ -196,11 +193,9 @@ export default {
             item.to = "test";
           });
           this.events = res.data;
-          this.$store.dispatch("loadingFinished", "fetch_cal_items");
         })
         .catch(e => {
           console.log(e);
-          this.$store.dispatch("loadingFinished", "fetch_cal_items");
         });
     },
     increaseYear() {

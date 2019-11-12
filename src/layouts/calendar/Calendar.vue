@@ -114,7 +114,7 @@ export default {
 };
 </script>
 
-<style type="scss" scoped>
+<style lang="scss" scoped>
 .hidden {
   opacity: 0.5;
   cursor: default !important;
