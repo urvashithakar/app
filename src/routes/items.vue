@@ -59,7 +59,7 @@
           icon-color="button-primary-text-color"
           background-color="button-primary-background-color"
           :label="$t('new')"
-          :to="`/${currentProjectKey}/collections/${collection}/+`"
+          :to="createLink"
         />
       </template>
     </v-header>
@@ -172,12 +172,36 @@ export default {
     activity() {
       return this.collection === "directus_activity";
     },
+    createLink() {
+      if (this.collection === "directus_webhooks") {
+        return `/${this.currentProjectKey}/settings/webhooks/+`;
+      }
+
+      if (this.collection.startsWith("directus_")) {
+        return `/${this.currentProjectKey}/${this.collection.substr(9)}/+`;
+      }
+
+      return `/${this.currentProjectKey}/collections/${this.collection}/+`;
+    },
     breadcrumb() {
       if (this.collection === "directus_users") {
         return [
           {
             name: this.$t("user_directory"),
             path: `/${this.currentProjectKey}/users`
+          }
+        ];
+      }
+
+      if (this.collection === "directus_webhooks") {
+        return [
+          {
+            name: this.$t("settings"),
+            path: `/${this.currentProjectKey}/settings`
+          },
+          {
+            name: this.$t("settings_webhooks"),
+            path: `/${this.currentProjectKey}/settings/webhooks`
           }
         ];
       }

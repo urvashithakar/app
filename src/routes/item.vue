@@ -357,6 +357,23 @@ export default {
         ];
       }
 
+      if (this.collection === "directus_webhooks") {
+        return [
+          {
+            name: this.$t("settings"),
+            path: `/${this.currentProjectKey}/settings`
+          },
+          {
+            name: this.$t("settings_webhooks"),
+            path: `/${this.currentProjectKey}/settings/webhooks`
+          },
+          {
+            name: this.newItem ? this.$t("creating_item") : this.$t("editing_item"),
+            path: this.$route.path
+          }
+        ];
+      }
+
       if (this.singleItem) {
         return [
           {
