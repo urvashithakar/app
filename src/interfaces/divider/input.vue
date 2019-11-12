@@ -37,7 +37,7 @@ export default {
     left: 50%;
     transform: translateX(-50%);
     color: var(--note-text-color);
-    max-width: 460px;
+    max-width: 560px;
   }
   hr {
     border: 0;
@@ -58,7 +58,7 @@ export default {
   }
   p {
     color: var(--note-text-color);
-    max-width: 460px;
+    max-width: 560px;
     margin-top: 6px;
   }
   hr {
@@ -80,7 +80,7 @@ export default {
   }
   p {
     color: var(--note-text-color);
-    max-width: 460px;
+    max-width: 560px;
     margin-top: 14px;
   }
   hr {
