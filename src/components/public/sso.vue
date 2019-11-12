@@ -5,7 +5,7 @@
       :key="provider.name"
       v-tooltip.bottom="{ classes: ['inverted'], content: $helpers.formatTitle(provider.name) }"
     >
-      <a :href="`${ssoPath}${provider.name}?mode=cookie`">
+      <a :href="`${ssoPath}${provider.name}${params}`">
         <img :src="provider.icon" :alt="provider.name" />
       </a>
     </li>
@@ -27,6 +27,10 @@ export default {
     ...mapState(["currentProjectKey", "apiRootPath"]),
     ssoPath() {
       return this.apiRootPath + this.currentProjectKey + "/auth/sso/";
+    },
+    params() {
+      // %23 == # url encoded
+      return "?mode=cookie&redirect_url=" + this.apiRootPath + "admin/%23/";
     }
   }
 };

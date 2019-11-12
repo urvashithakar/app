@@ -263,8 +263,8 @@ router.beforeEach(async (to, from, next) => {
     return next();
   }
 
-  if (to.fullPath === "/") {
-    return next({ path: "/login" });
+  if (to.path === "/") {
+    return next({ path: "/login", query: to.query });
   }
 
   return next({
