@@ -792,7 +792,7 @@ export default {
       if (this.activeTab === "schema" && !this.field) {
         disabled = true;
       }
-      if (!this.isFieldValid && !this.existing) {
+      if (this.fieldValid && !this.existing) {
         disabled = true;
       }
 
