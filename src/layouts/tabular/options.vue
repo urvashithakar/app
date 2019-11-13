@@ -49,8 +49,9 @@ export default {
     fieldsInUse() {
       if (!this.viewQuery || !this.viewQuery.fields)
         return Object.values(this.fields)
-          .filter(field => field.primary_key === false)
-          .slice(0, 5)
+          .filter(field => field.primary_key === false || field.primary_key === "0")
+          .filter(field => field.hidden_browse !== true)
+          .slice(0, 4)
           .map(field => field.field);
 
       if (this.viewQuery.fields === "") return [];
