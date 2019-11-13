@@ -273,7 +273,7 @@
           </option>
         </v-simple-select>
 
-        <v-icon name="arrow_forward" size="20" />
+        <v-icon name="arrow_forward" size="24" />
 
         <p>{{ $t("related_collection") }}</p>
 

@@ -168,7 +168,19 @@ export default {
 
     visibleFields() {
       if (this.relationshipSetup === false) return [];
-      if (!this.options.fields) return [];
+
+      const relatedFields = this.relation.collection_many.fields;
+      const recursiveKey = this.relation.field_many.field;
+
+      if (!this.options.fields) {
+        return Object.values(relatedFields)
+          .filter(field => field.hidden_browse !== true)
+          .filter(field => {
+            if (recursiveKey && field.field === recursiveKey) return false;
+            return true;
+          })
+          .slice(0, 2);
+      }
 
       let visibleFieldNames;
 
@@ -177,9 +189,6 @@ export default {
       }
 
       visibleFieldNames = this.options.fields.split(",").map(val => val.trim());
-
-      const relatedFields = this.relation.collection_many.fields;
-      const recursiveKey = this.relation.field_many.field;
 
       return visibleFieldNames.map(name => {
         const fieldInfo = relatedFields[name];
