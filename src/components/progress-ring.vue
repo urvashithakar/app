@@ -3,7 +3,8 @@
     class="v-progress-ring"
     :style="{
       height: radius * 2 + 'px',
-      width: radius * 2 + 'px'
+      width: radius * 2 + 'px',
+      minWidth: radius * 2 + 'px'
     }"
   >
     <svg>
