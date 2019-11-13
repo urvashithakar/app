@@ -4,6 +4,7 @@
     trigger="hover"
     :delay="{ show: 300, hide: 0 }"
     :placement="placement"
+    :boundaries-element="boundariesElement"
     @show="fetchUser"
   >
     <slot />
@@ -64,6 +65,11 @@ export default {
       error: null,
       data: null
     };
+  },
+  computed: {
+    boundariesElement() {
+      return document.body;
+    }
   },
   methods: {
     async fetchUser() {
