@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="isImage" class="image">
-      <img v-if="!imgError" id="image" :src="vUrl" @error="imgError = true" />
+      <img v-if="!imgError" id="image" :key="image.hash" :src="vUrl" @error="imgError = true" />
       <div v-if="imgError" class="broken-image">
         <v-icon name="broken_image" />
       </div>
@@ -102,6 +102,7 @@
 import mixin from "@directus/extension-toolkit/mixins/interface";
 import Cropper from "cropperjs";
 import "cropperjs/dist/cropper.min.css";
+import shortid from "shortid";
 
 export default {
   mixins: [mixin],
@@ -110,7 +111,7 @@ export default {
       editMode: null,
       imgError: false,
       image: {
-        version: 0, //To prevent the cacheing issue of image
+        hash: shortid.generate(), //To prevent the cacheing issue of image
         cropper: null, //cropper instance
         cropRatio: "free", // Aspect ratio set by cropper
         cropRatioOptions: {
@@ -176,11 +177,9 @@ export default {
     vUrl() {
       /**
        * Timestamp fetches the latest image from server
-       * Version helps to refresh the image after crop
+       * hash helps to refresh the image after crop
        */
-      return `${this.values.data.full_url}?v=${
-        this.image.version
-      }&timestamp=${new Date().getTime()}`;
+      return `${this.values.data.full_url}?${this.image.hash}&timestamp=${new Date().getTime()}`;
     }
   },
   watch: {
@@ -246,7 +245,7 @@ export default {
        */
     },
 
-    saveImage() {
+    async saveImage() {
       //Running the rabbit
       const isSaving = this.$helpers.shortid.generate();
       this.$store.dispatch("loadingStart", {
@@ -260,36 +259,34 @@ export default {
         })
         .toDataURL(this.values.type);
 
-      //Saving the image via API
-      this.$api
-        .patch(`/files/${this.values.id}`, {
+      try {
+        await this.$api.api.patch(`/files/${this.values.id}`, {
           data: imageBase64
-        })
-        .then(() => {
-          this.$events.emit("success", {
-            notify: "Image updated."
-          });
-        })
-        .catch(err => {
-          this.$events.emit("error", {
-            notify: "There was an error while saving the image",
-            error: err
-          });
-        })
-        .then(() => {
-          this.image.version++;
-          /**
-           * This will wait for new cropped image to load from server
-           * & then destroy the cropper instance
-           * This prevents flickering between old and new image
-           */
-          const img = new Image();
-          img.src = this.vUrl;
-          img.onload = () => {
-            this.$store.dispatch("loadingFinished", isSaving);
-            this.cancelImageEdit();
-          };
         });
+
+        this.$events.emit("success", {
+          notify: "Image updated."
+        });
+
+        this.image.hash = shortid.generate();
+        /**
+         * This will wait for new cropped image to load from server
+         * & then destroy the cropper instance
+         * This prevents flickering between old and new image
+         */
+        const img = new Image();
+        img.src = this.vUrl;
+        img.onload = () => {
+          this.cancelImageEdit();
+        };
+      } catch (err) {
+        this.$events.emit("error", {
+          notify: "There was an error while saving the image",
+          error: err
+        });
+      } finally {
+        this.$store.dispatch("loadingFinished", isSaving);
+      }
     }
   }
 };
