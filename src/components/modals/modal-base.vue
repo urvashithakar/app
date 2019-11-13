@@ -89,6 +89,7 @@ aside {
 
   p {
     font-size: 16px;
+    line-height: var(--line-height-more);
   }
 }
 
