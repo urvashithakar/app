@@ -1,5 +1,5 @@
 <template>
-  <div v-if="userInfo" @click.stop="$router.push(`/${currentProjectKey}/users/` + userInfo.id)">
+  <div v-if="userInfo">
     <span class="label">
       <div>{{ displayValue }}</div>
     </span>
