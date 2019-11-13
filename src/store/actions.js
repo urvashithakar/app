@@ -127,21 +127,19 @@ export function loadingFinished({ commit }, id) {
 
 export async function setCurrentProject({ commit, dispatch, state, getters }, key) {
   commit(SET_CURRENT_PROJECT, key);
+  const newProject = state.projects.find(p => p.key === key);
 
+  const authenticated = newProject.data.authenticated;
   const privateRoute = router.currentRoute.meta.publicRoute !== true;
 
   const locale = getters.currentProject.data?.default_locale;
-
   if (locale) {
     loadLanguageAsync(locale);
   }
 
-  if (privateRoute) {
+  if (privateRoute && authenticated) {
     commit(RESET);
     await dispatch("getProjects");
-
-    const newProject = state.projects.find(p => p.key === key);
-    const authenticated = newProject.data.authenticated;
 
     if (authenticated) {
       await hydrateStore();
@@ -156,6 +154,8 @@ export async function setCurrentProject({ commit, dispatch, state, getters }, ke
 
       router.push(route);
     }
+  } else if (privateRoute && authenticated === false) {
+    router.push("/login");
   }
 }
 

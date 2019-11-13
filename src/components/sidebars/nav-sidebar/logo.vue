@@ -18,14 +18,14 @@ export default {
   computed: {
     ...mapGetters(["currentProject"]),
     customLogoPath() {
-      if (this.currentProject.data.project_logo) {
+      if (this.currentProject?.data?.project_logo) {
         return this.currentProject.data.project_logo.full_url;
       } else {
         return null;
       }
     },
     projectName() {
-      return this.currentProject.data.project_name;
+      return this.currentProject?.data.project_name;
     },
     queueContainsItems() {
       return this.$store.state.queue.length !== 0;
