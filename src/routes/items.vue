@@ -5,9 +5,10 @@
       info-toggle
       :item-detail="false"
       :breadcrumb="breadcrumb"
-      :icon="(collectionInfo && collectionInfo.icon) || 'box'"
+      :icon="breadcrumbIcon"
       :settings="collection === 'directus_webhooks'"
       :title="currentBookmark && currentBookmark.title"
+      :icon-link="collection === 'directus_webhooks' ? `/${currentProjectKey}/settings/` : null"
     >
       <template slot="title">
         <button
@@ -171,6 +172,10 @@ export default {
     ...mapState(["currentProjectKey"]),
     activity() {
       return this.collection === "directus_activity";
+    },
+    breadcrumbIcon() {
+      if (this.collection === "directus_webhooks") return "arrow_back";
+      return this.collectionInfo?.icon || "box";
     },
     createLink() {
       if (this.collection === "directus_webhooks") {
