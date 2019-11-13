@@ -45,6 +45,7 @@ export default {
       } else {
         queryFields = fieldValues
           .filter(field => field.primary_key === false || field.primary_key === "0")
+          .filter(field => field.hidden_browse !== true)
           .slice(0, 4)
           .map(field => field.field);
       }
