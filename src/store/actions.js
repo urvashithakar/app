@@ -129,10 +129,11 @@ export async function setCurrentProject({ commit, dispatch, state, getters }, ke
   commit(SET_CURRENT_PROJECT, key);
   const newProject = state.projects.find(p => p.key === key);
 
-  const authenticated = newProject.data.authenticated;
+  const authenticated = newProject.data?.authenticated || false;
   const privateRoute = router.currentRoute.meta.publicRoute !== true;
 
   const locale = getters.currentProject.data?.default_locale;
+
   if (locale) {
     loadLanguageAsync(locale);
   }

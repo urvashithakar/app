@@ -1078,7 +1078,7 @@ export default {
       })
       .catch(error => {
         this.$store.dispatch("loadingFinished", id);
-        if (error && error.code === 203) {
+        if (error && +error.code === 203) {
           this.notFound = true;
           return next();
         }
