@@ -218,7 +218,7 @@ hr {
 
 .form {
   grid-template-columns:
-    [start] minmax(0, var(--column-width)) [half] minmax(0, var(--column-width))
+    [start] minmax(0, var(--form-column-width)) [half] minmax(0, var(--form-column-width))
     [full];
 }
 </style>
