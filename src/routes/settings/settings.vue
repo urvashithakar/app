@@ -56,7 +56,7 @@
             :subtitle="activityCount"
             element="li"
             :to="`/${currentProjectKey}/activity`"
-            icon="warning"
+            icon="assignment"
           />
 
           <v-card
