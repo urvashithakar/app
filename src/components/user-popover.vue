@@ -78,7 +78,6 @@ export default {
         data.avatar = data.avatar.data.thumbnails[0].url;
         delete data.roles;
         this.data = data;
-        console.log(data);
       } catch (error) {
         this.error = error;
       } finally {
