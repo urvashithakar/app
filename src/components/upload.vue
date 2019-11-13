@@ -15,7 +15,7 @@
         <v-icon name="cloud_upload" />
       </div>
       <div class="info">
-        <p class="name type-heading-medium">{{ $tc("drop_files", multiple ? 2 : 1) }}</p>
+        <p class="name type-heading-small">{{ $tc("drop_files", multiple ? 2 : 1) }}</p>
         <p class="file-info no-wrap">
           {{
             $t("max_size", {
@@ -57,7 +57,7 @@
           :stroke="file.progress === 100 ? 0 : 2"
         />
         <div class="info">
-          <p class="name type-heading-small no-wrap">{{ file.name }}</p>
+          <p class="name no-wrap">{{ file.name }}</p>
           <p class="file-info no-wrap">
             {{ file.size }}
             <span v-if="file.progress && file.progress !== 100" class="progress">
@@ -334,7 +334,7 @@ input.select {
 }
 
 .v-upload:not(.uploading) .dropzone {
-  color: var(--blue-grey-600);
+  color: var(--page-text-color);
   height: 100%;
   display: flex;
   justify-content: center;
@@ -392,17 +392,18 @@ input.select {
 
   .dragging & ol {
     transition: border-color var(--slow) var(--transition);
-    border-color: var(--blue-grey-900);
+    border-color: var(--input-background-color-active);
   }
 
   .dropzone {
-    background-color: var(--input-border-color);
+    background-color: var(--input-background-color-alt);
     border-top-left-radius: var(--border-radius);
     border-top-right-radius: var(--border-radius);
-    padding: 10px 20px;
+    padding: 8px 12px;
     padding-right: 50px;
     border: var(--input-border-width) solid var(--input-border-color);
-    color: var(--white);
+    border-bottom: none;
+    color: var(--heading-text-color);
     flex-shrink: 0;
 
     .info {
@@ -410,7 +411,7 @@ input.select {
     }
 
     .file-info {
-      color: var(--blue-grey-300);
+      color: var(--note-text-color);
     }
 
     .icon {
@@ -429,17 +430,17 @@ input.select {
         flex-grow: 0;
         flex-shrink: 0;
         border-radius: 50%;
-        border: 2px solid var(--white);
-        color: var(--white);
+        border: 2px solid var(--heading-text-color);
+        color: var(--heading-text-color);
       }
     }
 
     .buttons {
       & > * {
-        color: var(--blue-grey-300);
+        color: var(--input-icon-color);
 
         &:hover {
-          color: var(--white);
+          color: var(--heading-text-color);
         }
       }
     }
@@ -451,7 +452,7 @@ input.select {
     border-top: 0;
     border-bottom-left-radius: var(--border-radius);
     border-bottom-right-radius: var(--border-radius);
-    padding: 0 20px;
+    padding: 0 12px;
     list-style: none;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
@@ -473,11 +474,11 @@ input.select {
     background-color: var(--input-background-color);
 
     &:not(:last-of-type) {
-      border-bottom: 1px solid var(--blue-grey-50);
+      border-bottom: 2px solid var(--input-background-color-alt);
     }
 
     .file-info {
-      color: var(--blue-grey-400);
+      color: var(--note-text-color);
     }
   }
 }
