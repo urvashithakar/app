@@ -298,7 +298,7 @@
     "december": "December"
   },
   "my_activity": "My Activity",
-  "my_profile": "My Profile",
+  "my_profile": "My Profile: {name}",
   "name": "Name",
   "name_bookmark": "What would you like to name this bookmark?",
   "name_field": "Now give this \"{field}\" a name and adjust any database specifics.",

@@ -42,7 +42,7 @@
 
     <router-link
       v-tooltip.left="{
-        content: $t('my_profile'),
+        content: currentUser.first_name + ' ' + currentUser.last_name,
         boundariesElement: 'body'
       }"
       class="edit-user"
