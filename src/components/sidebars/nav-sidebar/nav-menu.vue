@@ -57,22 +57,14 @@ a {
 }
 
 a:hover,
-.content .router-link-active,
-.user-menu .router-link-exact-active {
+.nav-menu .router-link-active,
+.nav-menu .router-link-exact-active {
   background-color: var(--sidebar-background-color-alt);
   border-radius: var(--border-radius);
 
   .icon {
     color: currentColor;
     fill: currentColor;
-  }
-}
-
-.content .router-link-active,
-.user-menu .router-link-exact-active {
-  &::before {
-    transform: scaleX(1);
-    transition: var(--medium) var(--transition-in);
   }
 }
 
