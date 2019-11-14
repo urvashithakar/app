@@ -32,7 +32,9 @@
       <div class="content">
         <details v-if="activity.action !== 'external' && activity.changes && activity.name">
           <summary class="title">
-            <span class="name">{{ activity.name }}</span>
+            <v-user-popover :id="activity.action_by" placement="top">
+              <span class="name">{{ activity.name }}</span>
+            </v-user-popover>
             <v-time-ago
               v-if="activity.date"
               v-tooltip="{
@@ -58,7 +60,9 @@
           </div>
         </details>
         <div v-else-if="activity.name" class="title">
-          <span class="name">{{ activity.name }}</span>
+          <v-user-popover :id="activity.action_by" placement="top">
+            <span class="name">{{ activity.name }}</span>
+          </v-user-popover>
           <v-time-ago
             v-if="activity.date"
             v-tooltip="{
@@ -275,6 +279,7 @@ export default {
     .name {
       font-weight: 500;
       color: var(--heading-text-color);
+      cursor: pointer;
     }
 
     .date {
