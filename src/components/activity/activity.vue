@@ -245,12 +245,12 @@ export default {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: var(--input-border-color);
+    background-color: var(--input-border-color-hover);
     // box-shadow: 0 0 0 2px var(--blue-grey-50);
     flex-shrink: 0;
 
     &.update {
-      background-color: var(--blue-grey-600);
+      background-color: var(--input-border-color-hover);
     }
     &.delete {
       background-color: var(--danger);
@@ -259,7 +259,7 @@ export default {
       background-color: var(--success);
     }
     &.external {
-      background-color: var(--input-border-color);
+      background-color: var(--input-border-color-hover);
     }
     &.upload {
       background-color: var(--purple-500);
