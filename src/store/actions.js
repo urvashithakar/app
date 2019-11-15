@@ -127,8 +127,19 @@ export function loadingFinished({ commit }, id) {
 }
 
 export async function setCurrentProject({ commit, dispatch, state, getters }, key) {
+  let newProject = state.projects.find(p => p.key === key);
+
+  // If the project we're trying to switch to doesn't exist in the projects array, there is a
+  // chance it's a hidden project. We're attempting to fetch the project info for the new key
+  // regardless to make sure you can login to private projects too. If the project doesn't exist,
+  // the user will see a "something is wrong with the project" error on the login screen, as the status
+  // of the project will be "failed"
+  if (!newProject) {
+    await dispatch("updateProjectInfo", key);
+    newProject = state.projects.find(p => p.key === key);
+  }
+
   commit(SET_CURRENT_PROJECT, key);
-  const newProject = state.projects.find(p => p.key === key);
 
   const authenticated = newProject.data?.authenticated || false;
   const privateRoute = router.currentRoute.meta.publicRoute !== true;
@@ -215,6 +226,17 @@ export async function getProjects({ state, dispatch, commit }) {
         data: null,
         error: null
       }));
+
+      // If a currentProjectKey is set that doesn't exist in the projects returned by the project endpoint
+      // it's most likely because there is a private project with this key.
+      if (state.currentProjectKey && projectKeys.includes(state.currentProjectKey) === false) {
+        projects.push({
+          key: state.currentProjectKey,
+          status: null,
+          data: null,
+          error: null
+        });
+      }
 
       commit(INIT_PROJECTS, projects);
     }

@@ -163,18 +163,7 @@ export default {
 
     preselectProject() {
       if (this.$route.query.project) {
-        let exists = false;
-
-        this.projects.forEach(p => {
-          if (p.key === this.$route.query.project) {
-            exists = true;
-          }
-        });
-
-        if (exists) {
-          this.$store.dispatch("setCurrentProject", this.$route.query.project);
-        }
-
+        this.$store.dispatch("setCurrentProject", this.$route.query.project);
         const query = _.clone(this.$route.query);
         delete query.project;
         this.$router.replace({ query });
