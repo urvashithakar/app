@@ -130,6 +130,10 @@ export default {
         document.body.classList.remove("public");
       }
 
+      if (["auto", "light", "dark"].indexOf(this.$store.state.currentUser.theme) !== -1) {
+        document.body.classList.add(this.$store.state.currentUser.theme);
+      }
+
       this.toggleInfoSidebarBodyClass();
     },
     keepEditing() {

@@ -63,7 +63,8 @@ export function getCurrentUser({ commit }) {
         "last_name",
         "locale",
         "roles.*.*",
-        "last_page"
+        "last_page",
+        "theme"
       ]
     })
     .then(res => res.data)

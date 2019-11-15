@@ -1,6 +1,7 @@
-// Dark Mode
+// Dark Mode (needs mixin to force dark)
 @media (prefers-color-scheme: dark) {
-  body.private {
+  body.private.auto,
+  body.private.dark, {
     --page-text-color: var(--blue-grey-100);
     --page-background-color: var(--blue-grey-900);
 
