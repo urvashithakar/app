@@ -332,6 +332,7 @@
   "note_note": "An internal description...",
   "note_single": "[Learn More](https://docs.directus.io/guides/collections.html#single)",
   "notifications": "Notifications",
+  "no_public_projects": "This API doesn't have any public projects. Please contact your administrator.",
   "numeric": "Numeric",
   "o2m": "One-to-Many (O2M)",
   "ok": "OK",

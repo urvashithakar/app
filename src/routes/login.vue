@@ -8,6 +8,10 @@
         <p>{{ currentProject.project_name }}</p>
       </template>
 
+      <template v-else-if="!currentProject && Array.isArray(projects) && projects.length === 0">
+        {{ $t("no_public_projects") }}
+      </template>
+
       <template v-else-if="currentProject.status === 'failed'">
         Something is wrong with this project
         <!-- TODO: use v-error here -->
@@ -102,9 +106,9 @@ export default {
   },
   computed: {
     ...mapGetters(["currentProject"]),
-    ...mapState(["currentProjectKey", "apiRootPath"]),
+    ...mapState(["currentProjectKey", "apiRootPath", "projects"]),
     readableError() {
-      if (this.currentProject.status !== "failed") return null;
+      if (this.currentProject?.status !== "failed") return null;
       return (
         this.currentProject.error.response?.data?.error?.message ||
         this.currentProject.error.message
@@ -125,8 +129,8 @@ export default {
   },
   created() {
     if (
-      this.currentProject.status === "successful" &&
-      this.currentProject.data.authenticated === true
+      this.currentProject?.status === "successful" &&
+      this.currentProject?.data?.authenticated === true
     ) {
       this.fetchAuthenticatedUser();
     } else {
@@ -138,7 +142,7 @@ export default {
   methods: {
     ...mapMutations([UPDATE_PROJECT]),
     onSubmit() {
-      if (this.currentProject.data.authenticated) {
+      if (this.currentProject?.data?.authenticated) {
         return this.enterApp();
       } else {
         return this.login();
@@ -276,6 +280,7 @@ export default {
       });
     },
     async fetchAuthenticatedUser() {
+      if (!this.currentProject) return;
       this.firstName = null;
       this.lastName = null;
       const { data } = await this.$api.getMe({ fields: ["first_name", "last_name"] });
@@ -283,6 +288,7 @@ export default {
       this.lastName = data.last_name;
     },
     async fetchSSOProviders() {
+      if (!this.currentProject) return;
       this.ssoProviders = [];
       const { data } = await this.$api.getThirdPartyAuthProviders();
       this.ssoProviders = data;
