@@ -1,5 +1,5 @@
 import api from "../../../api";
-import { SET_USERS } from "../../mutation-types";
+import { SET_USERS, SET_USER, REMOVE_USER, UPDATE_USER } from "../../mutation-types";
 
 export function getUsers({ commit }) {
   return api
@@ -26,4 +26,32 @@ export function getUsers({ commit }) {
     .then(users => {
       commit(SET_USERS, users);
     });
+}
+export function getUser({ commit }, primaryKey) {
+  return api
+    .getUser(primaryKey, {
+      fields: [
+        "id",
+        "first_name",
+        "last_name",
+        "title",
+        "status",
+        "timezone",
+        "roles.*",
+        "avatar.*",
+        "company"
+      ]
+    })
+    .then(result => {
+      const user = result.data;
+      user.roles = user.roles.map(({ role }) => role);
+      commit(SET_USER, user);
+    });
+}
+export function removeUser({ commit }, primaryKey) {
+  commit(REMOVE_USER, primaryKey);
+}
+
+export function updateUser({ commit }, { userId, user }) {
+  commit(UPDATE_USER, { userId, user });
 }

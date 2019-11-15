@@ -645,6 +645,9 @@ export default {
         .then(() => {
           this.$store.dispatch("loadingFinished", id);
           this.$store.dispatch("discardChanges", id);
+          if (this.collection === "directus_users") {
+            this.$store.dispatch("removeUser", this.primaryKey);
+          }
           this.$notify({
             title: this.$t("item_deleted"),
             color: "green",

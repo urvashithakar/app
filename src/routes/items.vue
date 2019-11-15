@@ -636,6 +636,12 @@ export default {
       request
         .then(() => {
           this.$store.dispatch("loadingFinished", id);
+          if (this.collection === "directus_users") {
+            this.$store.dispatch(
+              "removeUser",
+              this.selection.map(item => item[this.primaryKeyField])
+            );
+          }
           this.$refs.listing.getItems();
           this.selection = [];
           this.confirmRemove = false;

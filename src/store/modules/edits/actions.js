@@ -30,7 +30,7 @@ export function unstageValue({ commit }, field) {
   return commit(UNSTAGE_VALUE, { field });
 }
 
-export function save({ commit, state, rootState }, overrides) {
+export function save({ commit, state, rootState, dispatch }, overrides) {
   const info = {
     ...state,
     ...overrides
@@ -43,6 +43,9 @@ export function save({ commit, state, rootState }, overrides) {
   if (info.primaryKey === "+") {
     return api.createItem(info.collection, info.values).then(res => {
       commit(ITEM_CREATED);
+      if (info.collection === "directus_users") {
+        dispatch("getUser", res.data.id, { root: true });
+      }
       return res;
     });
   }
@@ -50,6 +53,9 @@ export function save({ commit, state, rootState }, overrides) {
   if (info.collection.startsWith("directus_")) {
     return api.updateItem(info.collection, info.primaryKey, info.values).then(res => {
       commit(ITEM_CREATED);
+      if (info.collection === "directus_users") {
+        dispatch("updateUser", { userId: info.primaryKey, user: info.values }, { root: true });
+      }
       return res;
     });
   }
