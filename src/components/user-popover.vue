@@ -28,7 +28,7 @@
             {{ data.company || "No Company" }}
           </div>
         </div>
-        <v-icon class="arrow" name="arrow_forward" size="24" />
+        <v-icon class="arrow" color="input-icon-color" name="open_in_new" size="24" />
       </template>
     </router-link>
   </v-popover>
