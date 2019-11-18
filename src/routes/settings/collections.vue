@@ -230,6 +230,7 @@ export default {
           interface: "status",
           default_value: "draft",
           width: "full",
+          required: true,
           options: {
             status_mapping: {
               published: {
@@ -283,7 +284,7 @@ export default {
           interface: "status",
           hidden_detail: false,
           hidden_browse: false,
-          required: false,
+          required: true,
           options: {
             status_mapping: {
               published: {
