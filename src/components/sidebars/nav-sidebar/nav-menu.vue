@@ -43,8 +43,8 @@ h3 {
 }
 
 .icon {
-  margin-right: 15px;
-  vertical-align: -8px;
+  margin-right: 12px;
+  vertical-align: -7px;
 }
 
 a {
@@ -75,7 +75,7 @@ ul {
 
 nav > ul > li > * {
   padding: 8px 4px 8px 10px;
-  margin: 2px 0;
+  margin: 4px 0;
 }
 
 nav {

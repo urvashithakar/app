@@ -143,6 +143,7 @@
                 :options="fieldInfo.options"
                 :value="row[field]"
                 :relation="fieldInfo.relation"
+                class="ellipsis"
               />
               <template v-else>
                 {{ row[field] }}
@@ -687,5 +688,11 @@ export default {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>

@@ -112,8 +112,6 @@
       <v-button
         v-if="moreItemsAvailable && !hydrating"
         class="more"
-        bg="gray"
-        color="black"
         :loading="loading"
         @click="loadMore"
       >
@@ -361,7 +359,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .items {
   display: table;
   min-width: 100%;

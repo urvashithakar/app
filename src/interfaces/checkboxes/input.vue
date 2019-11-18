@@ -141,6 +141,7 @@ export default {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: var(--input-font-size);
 
   .form-checkbox {
     width: 100%;

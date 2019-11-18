@@ -376,7 +376,7 @@ export default {
 
 .new-comment {
   position: relative;
-  height: var(--input-height);
+  height: 44px;
   transition: height var(--slow) var(--transition);
   margin-bottom: 30px;
 

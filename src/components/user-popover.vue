@@ -114,6 +114,7 @@ export default {
 <style lang="scss" scoped>
 .user-popover {
   width: max-content;
+  display: inline-block;
 }
 .popover-inner {
   padding: 0;

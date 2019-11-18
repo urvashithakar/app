@@ -123,7 +123,6 @@ export default {
   padding-left: 10px;
   padding-right: 10px;
   .title {
-    font-size: var(--size-2);
     color: var(--heading-text-color);
   }
 

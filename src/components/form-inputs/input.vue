@@ -201,13 +201,12 @@ export default {
     border-radius: var(--border-radius);
     color: var(--input-text-color);
     background-color: var(--input-background-color);
-    padding: 10px;
-    font-size: 1rem;
-    line-height: 1.5;
     text-transform: none;
     transition: var(--fast) var(--transition);
     transition-property: color, border-color, padding;
     height: var(--input-height);
+    font-size: var(--input-font-size);
+    padding: var(--input-padding);
 
     &.monospace {
       font-family: var(--family-monospace);
@@ -240,17 +239,22 @@ export default {
     }
 
     &:-webkit-autofill {
-      box-shadow: inset 0 0 0 1000px var(--white) !important;
+      background-color: var(--input-background-color) !important;
+      box-shadow: inset 0 0 0 1000px var(--input-background-color) !important;
       color: var(--input-text-color) !important;
       -webkit-text-fill-color: var(--input-text-color) !important;
+      font-size: var(--input-font-size);
     }
 
     &:-webkit-autofill,
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus {
-      border: var(--input-border-width) solid var(--input-border-color);
-      background-color: var(--white);
-      box-shadow: inset 0 0 0 2000px var(--white);
+      background-color: var(--input-background-color) !important;
+      box-shadow: inset 0 0 0 2000px var(--input-background-color) !important;
+      color: var(--input-text-color) !important;
+      -webkit-text-fill-color: var(--input-text-color) !important;
+      border: var(--input-border-width) solid var(--input-border-color) !important;
+      font-size: var(--input-font-size) !important;
     }
 
     &:read-only {

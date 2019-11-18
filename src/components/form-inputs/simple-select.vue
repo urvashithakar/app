@@ -84,9 +84,7 @@ export default {
     padding-left: 10px;
     color: var(--input-text-color);
     background-color: var(--input-background-color);
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.5;
+    font-size: var(--input-font-size);
     text-transform: none;
 
     .icon {

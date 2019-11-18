@@ -763,6 +763,7 @@ export default {
   background-color: var(--input-background-color);
   border: var(--input-border-width) solid var(--input-border-color);
   border-radius: var(--border-radius);
+  height: var(--input-height);
   padding: 8px 4px;
   position: relative;
   display: block;

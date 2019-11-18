@@ -223,7 +223,7 @@ export default {
 
   .footer {
     border-top: 2px solid var(--modal-header-background-color);
-    height: 64px;
+    height: 76px;
   }
 
   button:not(.confirm) {
