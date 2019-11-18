@@ -63,7 +63,7 @@ export function getCurrentUser({ commit }) {
         "first_name",
         "last_name",
         "locale",
-        "roles.*.*",
+        "role.*",
         "last_page",
         "theme"
       ]
@@ -72,8 +72,7 @@ export function getCurrentUser({ commit }) {
     .then(userInfo => {
       return {
         ...userInfo,
-        roles: userInfo.roles.map(obj => obj.role),
-        admin: !!userInfo.roles.map(obj => obj.role).find(obj => obj.id === 1)
+        admin: userInfo.role.id === 1
       };
     })
     .then(data => commit(SET_CURRENT_USER, data));

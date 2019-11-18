@@ -94,12 +94,11 @@ export default {
             "last_name",
             "title",
             "company",
-            "roles.role.name"
+            "role.name"
           ]
         });
-        data.role = data.roles[0]?.role?.name;
+        data.role = data.role?.name;
         data.avatar = data?.avatar?.data?.thumbnails?.[0].url;
-        delete data.roles;
         this.data = data;
       } catch (error) {
         this.error = error;

@@ -465,15 +465,14 @@ export default {
         }
 
         if (permission.delete === "role") {
-          const userRoles = this.$store.state.users[userID].roles;
-          const currentUserRoles = _.map(this.$store.state.currentUser.roles, "id");
-          let contains = false;
+          const userRole = this.$store.state.users[userID].role;
+          const currentUserRole = this.$store.state.currentUser.role.id;
 
-          userRoles.forEach(role => {
-            if (currentUserRoles.includes(role)) contains = true;
-          });
+          if (userRole === currentUserRole) {
+            enabled = true;
+          }
 
-          if (contains === false) return (enabled = false);
+          return;
         }
       });
 
@@ -503,15 +502,13 @@ export default {
         }
 
         if (permission.update === "role") {
-          const userRoles = this.$store.state.users[userID].roles;
-          const currentUserRoles = _.map(this.$store.state.currentUser.roles, "id");
-          let contains = false;
+          const userRole = this.$store.state.users[userID].role;
+          const currentUserRole = this.$store.state.currentUser.role.id;
 
-          userRoles.forEach(role => {
-            if (currentUserRoles.includes(role)) contains = true;
-          });
-
-          if (contains === false) return (enabled = false);
+          if (userRole === currentUserRole) {
+            enabled = true;
+            return;
+          }
         }
       });
 

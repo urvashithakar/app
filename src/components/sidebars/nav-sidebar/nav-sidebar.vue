@@ -124,7 +124,7 @@ export default {
     // nav override or the default structure above if it isn't set
     // It will also replace the `includes` with links for the actual sections
     navStructure() {
-      const userRole = this.$store.state.currentUser.roles[0];
+      const userRole = this.$store.state.currentUser.role;
       const navOverride = userRole.nav_override;
 
       return navOverride || this.defaultNavStructure;

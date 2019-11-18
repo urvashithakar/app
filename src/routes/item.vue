@@ -198,7 +198,6 @@ function getFieldsQuery(collection) {
       }
 
       if (
-        (fieldInfo.type && fieldInfo.type.toLowerCase()) === "m2o" ||
         (fieldInfo.type && fieldInfo.type.toLowerCase()) === "o2m" ||
         (fieldInfo.type && fieldInfo.type.toLowerCase()) === "m2m" ||
         (fieldInfo.type && fieldInfo.type.toLowerCase()) === "translation" ||
