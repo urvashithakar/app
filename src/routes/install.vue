@@ -332,7 +332,7 @@ export default {
       this.project = value;
     },
     async goToLogin() {
-      await this.getProjects();
+      await this.getProjects(true);
 
       this.$router.push("/login", { query: { project: this.project } });
     }
