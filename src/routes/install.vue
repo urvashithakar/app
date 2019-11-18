@@ -290,7 +290,7 @@ export default {
           this.super_admin_token = this.generateMasterPassword();
         }
 
-        await axios.post(this.apiRootPath + "projects", {
+        await axios.post(this.apiRootPath + "server/projects", {
           project_name,
           project,
           user_email,
