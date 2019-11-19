@@ -76,6 +76,7 @@
         </div>
         <p
           v-if="activity.htmlcomment"
+          class="selectable"
           :class="{
             comment: activity.action && activity.action.toLowerCase() === 'comment'
           }"

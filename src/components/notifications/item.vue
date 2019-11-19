@@ -4,8 +4,8 @@
       <v-icon v-if="!!item.iconMain" :color="iconColor" :name="item.iconMain" />
     </div>
     <div class="content">
-      <div class="title">{{ item.title }}</div>
-      <div class="details" v-html="detailHtml"></div>
+      <div class="title selectable">{{ item.title }}</div>
+      <div class="details selectable" v-html="detailHtml"></div>
     </div>
     <div class="icon-right" @click="actionClick">
       <v-icon v-if="!!item.iconRight" :name="item.iconRight" />

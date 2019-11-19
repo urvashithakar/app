@@ -7,12 +7,12 @@
       :id="id"
       ref="input"
       v-mask="mask"
+      v-focus="autofocus"
       :class="{ charactercount, monospace }"
       :type="type"
       :autocomplete="autocomplete"
       :max="max"
       :maxlength="maxlength"
-      v-focus="autofocus"
       :min="min"
       :minlength="minlength"
       :name="name"
@@ -32,13 +32,13 @@
       v-else
       :id="id"
       ref="input"
+      v-focus="autofocus"
       class="test"
       :class="{ charactercount, monospace }"
       :type="type"
       :autocomplete="autocomplete"
       :max="max"
       :maxlength="maxlength"
-      v-focus="autofocus"
       :min="min"
       :minlength="minlength"
       :name="name"
@@ -281,7 +281,7 @@ export default {
     padding-right: 30px;
   }
 
-  input:focus + span {
+  input:not([readonly]):focus + span {
     opacity: 1;
   }
 

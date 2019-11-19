@@ -11,6 +11,7 @@
   font-weight: inherit;
   color: inherit;
   margin: 0;
+  user-select: none;
   box-sizing: border-box;
 }
 
@@ -34,6 +35,10 @@ body {
   &:not(.user-is-tabbing) * {
     outline: 0;
   }
+}
+
+.selectable {
+  user-select: text;
 }
 
 // Type Style Classes
