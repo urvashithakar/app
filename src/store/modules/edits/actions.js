@@ -44,7 +44,7 @@ export function save({ commit, state, rootState, dispatch }, overrides) {
     return api.createItem(info.collection, info.values).then(res => {
       commit(ITEM_CREATED);
       if (info.collection === "directus_users") {
-        dispatch("getUser", res.data.id, { root: true });
+        dispatch("setUser", res.data.id, { root: true });
       }
       return res;
     });
@@ -54,7 +54,11 @@ export function save({ commit, state, rootState, dispatch }, overrides) {
     return api.updateItem(info.collection, info.primaryKey, info.values).then(res => {
       commit(ITEM_CREATED);
       if (info.collection === "directus_users") {
-        dispatch("updateUser", { userId: info.primaryKey, user: info.values }, { root: true });
+        dispatch(
+          "updateUser",
+          { userId: info.primaryKey.split(","), userData: info.values },
+          { root: true }
+        );
       }
       return res;
     });

@@ -18,7 +18,7 @@ export default {
   },
   [REMOVE_USER](state, user) {
     if (_.isArray(user)) {
-      Object.values(user).forEach(value => {
+      user.forEach(value => {
         Vue.delete(state, value);
       });
     } else {
@@ -26,7 +26,10 @@ export default {
     }
   },
   [UPDATE_USER](state, { userId, user }) {
-    console.log(userId);
-    console.log(user);
+    userId.forEach(value => {
+      _.each(user, (val, k) => {
+        Vue.set(state[value], k, val);
+      });
+    });
   }
 };

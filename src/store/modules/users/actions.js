@@ -27,7 +27,7 @@ export function getUsers({ commit }) {
       commit(SET_USERS, users);
     });
 }
-export function getUser({ commit }, primaryKey) {
+export function setUser({ commit }, primaryKey) {
   return api
     .getUser(primaryKey, {
       fields: [
@@ -52,6 +52,14 @@ export function removeUser({ commit }, primaryKey) {
   commit(REMOVE_USER, primaryKey);
 }
 
-export function updateUser({ commit }, { userId, user }) {
+export function updateUser({ commit }, { userId, userData }) {
+  const user = userData;
+  if (user.roles) {
+    user.roles = user.roles.map(({ role }) => role);
+  }
   commit(UPDATE_USER, { userId, user });
+}
+
+export function getAvatar({ commit }, primaryKey) {
+  commit(REMOVE_USER, primaryKey);
 }
