@@ -40,20 +40,14 @@ window._ = lodash;
 Object.defineProperties(Vue.prototype, {
   $api: { value: api },
   $notify: { value: notify },
-  $axios: { value: axios },
-
-  // TODO: Remove this in/after 7.4
-  $lodash: {
-    get() {
-      console.warn("[Directus] this.$lodash is deprecated. Use _ instead.");
-      return _;
-    }
-  }
+  $axios: { value: axios }
 });
 
 Vue.directive("focus", {
-  inserted(el) {
-    el.focus();
+  inserted(el, binding) {
+    if (binding.value === undefined || Boolean(binding.value) !== false) {
+      el.focus();
+    }
   }
 });
 

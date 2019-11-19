@@ -22,6 +22,7 @@
         placeholder="Find an interface..."
         class="interface-filter"
         icon-left="search"
+        autofocus
       />
       <div v-if="!interfaceFilter">
         <v-details
@@ -83,6 +84,7 @@
             <v-icon class="required" name="star" color="input-required-color" sup />
             <v-input
               v-model="field"
+              autofocus
               type="text"
               :placeholder="$t('db_column_name')"
               class="name-input"
