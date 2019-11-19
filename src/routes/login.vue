@@ -39,7 +39,7 @@
           </div>
         </div>
         <template v-else>
-          <input ref="main" v-model="email" type="email" :placeholder="$t('email')" required />
+          <input v-model="email" v-focus type="email" :placeholder="$t('email')" required />
           <input
             ref="password"
             v-model="password"
@@ -118,27 +118,15 @@ export default {
     }
   },
   watch: {
-    currentProjectKey: {
+    currentProject: {
       deep: true,
       handler() {
-        if (this.currentProject.data.authenticated === true) {
-          this.fetchAuthenticatedUser();
-        } else {
-          this.fetchSSOProviders();
-        }
+        this.handleLoad();
       }
     }
   },
   created() {
-    if (
-      this.currentProject?.status === "successful" &&
-      this.currentProject?.data?.authenticated === true
-    ) {
-      this.fetchAuthenticatedUser();
-    } else {
-      this.fetchSSOProviders();
-    }
-
+    this.handleLoad();
     this.checkForErrorQueryParam();
   },
   methods: {
@@ -313,10 +301,16 @@ export default {
         delete query.code;
         this.$router.replace({ query });
       }
+    },
+    handleLoad() {
+      if (this.currentProject?.status === "successful") {
+        if (this.currentProject?.data?.authenticated === true) {
+          this.fetchAuthenticatedUser();
+        } else {
+          this.fetchSSOProviders();
+        }
+      }
     }
-  },
-  mounted() {
-    this.$refs?.main?.focus();
   }
 };
 </script>

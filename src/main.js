@@ -51,6 +51,12 @@ Object.defineProperties(Vue.prototype, {
   }
 });
 
+Vue.directive("focus", {
+  inserted(el) {
+    el.focus();
+  }
+});
+
 Vue.use(events);
 Vue.use(VTooltip, {
   defaultDelay: {

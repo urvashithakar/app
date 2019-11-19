@@ -12,6 +12,7 @@
       :autocomplete="autocomplete"
       :max="max"
       :maxlength="maxlength"
+      v-focus="autofocus"
       :min="min"
       :minlength="minlength"
       :name="name"
@@ -37,6 +38,7 @@
       :autocomplete="autocomplete"
       :max="max"
       :maxlength="maxlength"
+      v-focus="autofocus"
       :min="min"
       :minlength="minlength"
       :name="name"
@@ -181,11 +183,6 @@ export default {
     charsRemaining() {
       if (!this.maxlength) return null;
       return this.maxlength - this.value.length;
-    }
-  },
-  mounted() {
-    if (this.autofocus) {
-      this.$refs.input.focus();
     }
   }
 };
