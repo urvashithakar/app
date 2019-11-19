@@ -61,7 +61,7 @@ export default {
       const children = Array.from(selectElement.querySelectorAll("option"));
 
       children.forEach(element => {
-        valueNames[element.value] = element.innerText;
+        valueNames[element.value.trim()] = element.innerText.trim();
       });
 
       this.valueNames = valueNames;
