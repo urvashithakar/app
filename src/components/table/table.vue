@@ -191,6 +191,8 @@
 </template>
 
 <script>
+import isRelational from "@/helpers/is-relational";
+
 export default {
   name: "VTable",
   props: {
@@ -315,21 +317,7 @@ export default {
     }
   },
   methods: {
-    isRelational(fieldInfo) {
-      if (!fieldInfo) return false;
-
-      const type = fieldInfo.type?.toLowerCase();
-
-      switch (type) {
-        case "o2m":
-        case "m2o":
-        case "alias":
-        case "translation":
-          return true;
-        default:
-          return false;
-      }
-    },
+    isRelational: isRelational,
     isNil(val) {
       return _.isNil(val);
     },

@@ -780,11 +780,21 @@ export default {
       if (!this.selectedInterfaceInfo) return null;
       if (!this.selectedInterfaceInfo.relation) return null;
 
+      const relationsThatDontNeedSetup = ["file", "user"];
+
+      let relation;
+
       if (typeof this.selectedInterfaceInfo.relation === "string") {
-        return this.selectedInterfaceInfo.relation;
+        relation = this.selectedInterfaceInfo.relation;
+      } else {
+        relation = this.selectedInterfaceInfo.relation.type;
       }
 
-      return this.selectedInterfaceInfo.relation.type;
+      if (relationsThatDontNeedSetup.includes(relation)) {
+        relation = null;
+      }
+
+      return relation;
     },
     buttons() {
       let disabled = false;

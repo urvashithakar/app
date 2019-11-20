@@ -62,7 +62,11 @@
             "type": "String",
             "width": "half",
             "preview": true,
-            "default": "text-input"
+            "default": "text-input",
+            "options": {
+              "relational": false,
+              "status": false
+            }
           },
           "options": {
             "interface": "interface-options",
