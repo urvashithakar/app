@@ -277,8 +277,12 @@ export async function getProjects({ state, dispatch, commit }, force) {
     dispatch("setCurrentProject", state.projects[0].key);
   }
 
-  // Fetch the detailed information for each project asynchronously.
-  return Promise.allSettled(
-    state.projects.map(p => p.key).map(key => dispatch("updateProjectInfo", key))
-  );
+  if (state.projects !== null && state.projects !== false) {
+    // Fetch the detailed information for each project asynchronously.
+    return Promise.allSettled(
+      state.projects.map(p => p.key).map(key => dispatch("updateProjectInfo", key))
+    );
+  }
+
+  return Promise.resolve();
 }
