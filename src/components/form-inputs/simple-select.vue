@@ -51,6 +51,9 @@ export default {
   mounted() {
     this.getValueNames();
   },
+  updated() {
+    this.getValueNames();
+  },
   methods: {
     stageValue(event) {
       this.$emit("input", event.target.value);
@@ -64,7 +67,9 @@ export default {
         valueNames[element.value.trim()] = element.innerText.trim();
       });
 
-      this.valueNames = valueNames;
+      if (!_.isEqual(valueNames, this.valueNames)) {
+        this.valueNames = valueNames;
+      }
     }
   }
 };
