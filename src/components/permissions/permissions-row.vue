@@ -661,7 +661,6 @@ fieldset {
 }
 
 .system-row {
-  color: var(--blue-grey-300);
-  background-color: var(--off-white);
+  color: var(--input-placeholder-color);
 }
 </style>
