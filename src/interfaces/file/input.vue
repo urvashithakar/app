@@ -35,33 +35,11 @@
     ></v-upload>
 
     <div v-if="!value" class="buttons">
-      <v-button type="button" :disabled="readonly" @click="newFile = true">
-        <v-icon name="add" />
-        {{ $t("new_file") }}
-      </v-button>
-      <!--
-      -->
       <v-button type="button" :disabled="readonly" @click="existing = true">
         <v-icon name="playlist_add" />
         {{ $t("existing") }}
       </v-button>
     </div>
-
-    <portal v-if="newFile" to="modal">
-      <v-modal
-        :title="$t('file_upload')"
-        :buttons="{
-          done: {
-            text: $t('done')
-          }
-        }"
-        @close="newFile = false"
-      >
-        <div class="body">
-          <v-upload :accept="options.accept" :multiple="false" @upload="saveUpload"></v-upload>
-        </div>
-      </v-modal>
-    </portal>
 
     <portal v-if="existing" to="modal">
       <v-modal
@@ -111,7 +89,6 @@ export default {
   mixins: [mixin],
   data() {
     return {
-      newFile: false,
       existing: false,
       viewOptionsOverride: {},
       viewTypeOverride: null,
@@ -207,8 +184,6 @@ export default {
       this.image = fileInfo.data;
       // We know that the primary key of directus_files is called `id`
       this.$emit("input", { id: fileInfo.data.id });
-
-      this.newFile = false;
     },
     setViewOptions(updates) {
       this.viewOptionsOverride = {
