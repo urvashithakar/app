@@ -49,7 +49,7 @@
             text: $t('done')
           }
         }"
-        action-required
+        @cancel="existing = false"
         @close="existing = false"
         @done="existing = false"
       >
