@@ -125,6 +125,9 @@ export default {
 .interface-checkboxes {
   display: grid;
   grid-gap: 12px;
+  padding-top: calc(
+    (var(--input-height) - 24px) / 2
+  ); // [input height] - 24px (icon height) / 2 (top padding)
 }
 
 .cols {
