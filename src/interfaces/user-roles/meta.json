@@ -1,8 +1,8 @@
 {
   "name": "$t:user-roles",
   "version": "1.0.0",
-  "types": ["o2m"],
-  "relation": "m2m",
+  "types": ["m2o"],
+  "relation": "m2o",
   "icon": "perm_identity",
   "options": {
     "relational": {

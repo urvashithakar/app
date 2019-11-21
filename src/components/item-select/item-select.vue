@@ -325,7 +325,10 @@ export default {
       }
 
       if (this.value.includes(primaryKey)) {
-        this.$emit("input", this.value.filter(pk => pk !== primaryKey));
+        this.$emit(
+          "input",
+          this.value.filter(pk => pk !== primaryKey)
+        );
       } else {
         this.$emit("input", [...this.value, primaryKey]);
       }

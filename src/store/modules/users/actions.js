@@ -11,7 +11,7 @@ export function getUsers({ commit }) {
         "title",
         "status",
         "timezone",
-        "role",
+        "role.*",
         "avatar.*",
         "company"
       ]
