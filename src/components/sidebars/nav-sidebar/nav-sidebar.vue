@@ -144,7 +144,7 @@ export default {
 
       _.forEach(pages, (info, key) => {
         links.push({
-          path: `/ext/${key}`,
+          path: `/${this.currentProjectKey}/ext/${key}`,
           name: info.name,
           icon: info.icon
         });

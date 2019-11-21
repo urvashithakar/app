@@ -58,7 +58,7 @@ const router = new Router({
       }
     },
     {
-      path: "/ext/:id",
+      path: "/:project/ext/:id",
       props: true,
       component: PageExtension
     },
