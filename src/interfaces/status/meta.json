@@ -22,47 +22,56 @@
       "interface": "repeater",
       "type": "JSON",
       "options": {
-        "fields": {
-          "name": {
+        "structure": "object",
+        "structure_key": "value",
+        "template": "{{name}} ({{value}})",
+        "fields": [
+          {
+            "field": "name",
             "interface": "text-input",
-            "type": "String",
-            "preview": true
+            "type": "String"
           },
-          "value": {
+          {
+            "field": "value",
             "interface": "text-input",
-            "type": "String",
-            "index": true
+            "type": "String"
           },
-          "text_color": {
+          {
+            "field": "text_color",
             "interface": "color-palette",
             "type": "String"
           },
-          "background_color": {
+          {
+            "field": "background_color",
             "interface": "color-palette",
-            "type": "String",
-            "preview": true
+            "type": "String"
           },
-          "browse_subdued": {
+          {
+            "field": "browse_subdued",
             "interface": "toggle",
             "type": "boolean"
           },
-          "browse_badge": {
+          {
+            "field": "browse_badge",
             "interface": "toggle",
             "type": "boolean"
           },
-          "soft_delete": {
+          {
+            "field": "soft_delete",
             "interface": "toggle",
             "type": "boolean"
           },
-          "required_fields": {
+          {
+            "field": "required_fields",
             "interface": "toggle",
             "type": "boolean"
           },
-          "published": {
+          {
+            "field": "published",
             "interface": "toggle",
             "type": "boolean"
           }
-        }
+        ]
       },
       "default": {
         "published": {

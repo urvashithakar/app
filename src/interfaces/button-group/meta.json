@@ -13,32 +13,36 @@
       "options": {
         "dataType": "value",
         "buttonText": "Add Group",
-        "fields": {
-          "groups": {
+        "fields": [
+          {
+            "field": "groups",
             "width": "full",
             "interface": "repeater",
             "type": "JSON",
             "options": {
               "buttonText": "Add Button",
-              "fields": {
-                "label": {
+              "fields": [
+                {
+                  "field": "label",
                   "interface": "text-input",
                   "type": "String",
                   "preview": true
                 },
-                "value": {
+                {
+                  "field": "value",
                   "interface": "text-input",
                   "type": "String"
                 },
-                "icon": {
+                {
+                  "field": "icon",
                   "width": "full",
                   "interface": "icon",
                   "type": "String"
                 }
-              }
+              ]
             }
           }
-        }
+        ]
       },
       "default": [
         [

@@ -13,9 +13,10 @@
     :options="optionsWithDefaults"
     :new-item="newItem"
     :relation="relation"
-    :fields="fields"
+    :fields="fieldsFormatted"
     :collection="collection"
     :values="values"
+    :width="width"
     class="v-ext-input"
     @input="$emit('input', $event)"
     @setfield="$emit('setfield', $event)"
@@ -88,12 +89,19 @@ export default {
       default: null
     },
     fields: {
-      type: Object,
+      type: [Array, Object],
       default: null
     },
     values: {
       type: Object,
       default: null
+    },
+    width: {
+      type: String,
+      default: null,
+      validator(val) {
+        return ["half", "half-left", "half-right", "full", "fill"].includes(val);
+      }
     }
   },
   computed: {
@@ -124,6 +132,17 @@ export default {
         ...defaults,
         ...this.options
       };
+    },
+    // NOTE:
+    // We want to move to a setup where everything is an array instead of a keyed object. This is an
+    // in-between patch that allows us to use the array style already while we're refactoring the
+    // rest of the app to use it as well
+    fieldsFormatted() {
+      if (Array.isArray(this.fields)) {
+        return _.keyBy(this.fields, "field");
+      }
+
+      return this.fields;
     },
     componentNameFallback() {
       return `input-${this.interfaceFallback.id}`;
