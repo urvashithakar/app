@@ -251,7 +251,7 @@ aside {
 
 .menu-section + .menu-section {
   border-top: 2px solid var(--sidebar-background-color-alt);
-  padding-top: 20px;
+  padding-top: 16px;
 }
 </style>
 

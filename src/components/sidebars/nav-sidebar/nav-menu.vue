@@ -1,6 +1,6 @@
 <template>
   <div v-if="links.length > 0" class="nav-menu">
-    <h3 v-if="title" class="style-4">{{ title }}</h3>
+    <h3 v-if="title">{{ title }}</h3>
     <nav>
       <ul>
         <li v-for="{ path, name, target, icon, color } in links" :key="path">
@@ -38,8 +38,10 @@ export default {
 
 <style lang="scss" scoped>
 h3 {
-  margin-bottom: 5px;
-  margin-top: 15px;
+  margin-bottom: 8px;
+  margin-top: 8px;
+  color: var(--sidebar-text-color-alt);
+  font-size: var(--type-note-size);
 }
 
 .icon {
@@ -73,14 +75,16 @@ ul {
   padding: 0;
 }
 
-nav > ul > li > * {
-  padding: 8px 4px 8px 10px;
+nav > ul > li {
   margin: 4px 0;
 }
 
+nav > ul > li > * {
+  padding: 8px 4px 8px 10px;
+}
+
 nav {
-  padding-bottom: 10px;
-  margin-bottom: 10px;
+  padding-bottom: 16px;
 }
 
 .success {
