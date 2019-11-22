@@ -224,6 +224,9 @@
                       field: 'translation',
                       type: 'string',
                       interface: 'text-input',
+                      options: {
+                        placeholder: $t('translated_field_name')
+                      },
                       width: 'half'
                     }
                   ]
@@ -1633,11 +1636,9 @@ export default {
 }
 
 form.schema {
-  label:not(.toggle) {
-    > .v-simple-select,
-    > .v-input {
-      margin-top: 10px;
-    }
+  .type-label {
+    margin-bottom: var(--input-label-margin);
+    display: inline-block;
   }
 
   .name {
@@ -1675,10 +1676,6 @@ form.schema {
 
     .translation {
       grid-column: 1 / span 2;
-
-      span {
-        margin-bottom: var(--input-note-margin);
-      }
     }
   }
 }
