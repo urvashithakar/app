@@ -70,6 +70,7 @@
           <p v-else-if="body" class="content">{{ body }}</p>
         </div>
         <v-contextual-menu
+          v-if="options"
           :disabled="disabled"
           :options="options"
           @click="$emit($event)"
