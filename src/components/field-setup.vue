@@ -201,6 +201,35 @@
               <v-toggle v-model="signed" />
               {{ $t("signed") }}
             </label>
+            <label class="translation">
+              <span class="type-label">{{ $t("translation") }}</span>
+              <v-ext-input
+                id="repeater"
+                v-model="translation"
+                name="translation"
+                type="json"
+                width="full"
+                :options="{
+                  fields: [
+                    {
+                      field: 'locale',
+                      type: 'string',
+                      interface: 'language',
+                      options: {
+                        limit: true
+                      },
+                      width: 'half'
+                    },
+                    {
+                      field: 'translation',
+                      type: 'string',
+                      interface: 'text-input',
+                      width: 'half'
+                    }
+                  ]
+                }"
+              />
+            </label>
           </div>
         </details>
       </form>
@@ -1124,8 +1153,8 @@ export default {
         hidden_browse: this.hidden_browse,
         primary_key: this.primary_key,
         validation: this.validation,
-        width: this.width
-        // translation: this.translation, < Haven't implemented that yet
+        width: this.width,
+        translation: this.translation
       };
 
       if (this.lengthDisabled === false) {
@@ -1641,6 +1670,14 @@ form.schema {
 
       > *:first-child {
         margin-right: 10px;
+      }
+    }
+
+    .translation {
+      grid-column: 1 / span 2;
+
+      span {
+        margin-bottom: var(--input-note-margin);
       }
     }
   }
