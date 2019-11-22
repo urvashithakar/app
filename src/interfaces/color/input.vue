@@ -293,9 +293,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.interface-color {
+  display: flex;
+}
+
 .input {
   display: inline-block;
-  margin-right: 16px;
+  margin-right: 8px;
   vertical-align: middle;
   width: 130px;
 }
@@ -322,7 +326,7 @@ export default {
   width: calc(var(--input-height) - 16px);
   height: calc(var(--input-height) - 16px);
   border-radius: 100%;
-  margin-right: 8px;
+  margin: 8px 4px;
   color: var(--white);
   display: inline-flex;
   align-items: center;
@@ -339,8 +343,7 @@ button {
   width: calc(var(--input-height) - 16px);
   height: calc(var(--input-height) - 16px);
   border-radius: 100%;
-  margin-right: 8px;
-  margin-bottom: 8px;
+  margin: 8px 4px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
