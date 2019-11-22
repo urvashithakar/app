@@ -72,9 +72,13 @@ export default {
     displayValue() {
       if (!this.template) {
         return null;
+        // return $t("new_item");
       }
 
-      return this.$helpers.micromustache.render(this.template, this.row);
+      let preview = this.$helpers.micromustache.render(this.template, this.row);
+      // return preview.length > 0 ? preview : $t("new_item");
+
+      return preview;
     }
   }
 };
