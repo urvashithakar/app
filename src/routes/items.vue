@@ -25,6 +25,7 @@
         :filters="filters"
         :search-query="searchQuery"
         :field-names="filterableFieldNames"
+        :collection-name="collection.name"
         :placeholder="resultCopy"
         @filter="updatePreferences('filters', $event)"
         @search="updatePreferences('search_query', $event)"
@@ -234,7 +235,7 @@ export default {
             path: `/${this.currentProjectKey}/collections`
           },
           {
-            name: this.$t(`collections-${this.collection}`),
+            name: this.$helpers.formatCollection(this.collection),
             path: `/${this.currentProjectKey}/collections/${this.collection}`
           }
         ];
@@ -244,7 +245,7 @@ export default {
       const fields = this.$store.state.collections[this.collection].fields;
       const fieldsArray = Object.values(fields).map(field => ({
         ...field,
-        name: this.$helpers.formatTitle(field.field)
+        name: this.$helpers.formatField(field.field, field.collection)
       }));
 
       //Filter out hidden_browser items.
@@ -311,7 +312,7 @@ export default {
       let fields = this.$store.state.collections[this.collection].fields;
       fields = Object.values(fields).map(field => ({
         ...field,
-        name: this.$helpers.formatTitle(field.field)
+        name: this.$helpers.formatField(field.field, field.collection)
       }));
 
       const viewQuery =

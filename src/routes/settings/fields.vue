@@ -49,7 +49,7 @@
               @click.stop="field.interface ? startEditingField(field) : false"
             >
               <div>
-                {{ $helpers.formatTitle(field.field) }}
+                {{ $helpers.formatField(field.field, field.collection) }}
               </div>
               <div>
                 {{
@@ -215,7 +215,7 @@ export default {
           path: `/${this.currentProjectKey}/settings/collections`
         },
         {
-          name: this.$t(`collections-${this.collection}`),
+          name: this.$helpers.formatCollection(this.collection),
           path: `/${this.currentProjectKey}/settings/collections/${this.collection}`
         }
       ];
@@ -350,7 +350,7 @@ export default {
           });
           this.$notify({
             title: this.$t("field_created", {
-              field: this.$helpers.formatTitle(fieldInfo.field)
+              field: this.$helpers.formatField(fieldInfo.field, fieldInfo.collection)
             }),
             color: "green",
             iconMain: "check"
@@ -394,7 +394,7 @@ export default {
 
           this.$notify({
             title: this.$t("field_updated", {
-              field: this.$helpers.formatTitle(fieldInfo.field)
+              field: this.$helpers.formatField(fieldInfo.field, fieldInfo.collection)
             }),
             color: "green",
             iconMain: "check"
@@ -406,7 +406,7 @@ export default {
 
           this.$notify({
             title: this.$t("field_created", {
-              field: this.$helpers.formatTitle(fieldInfo.field)
+              field: this.$helpers.formatField(fieldInfo.field, fieldInfo.collection)
             }),
             color: "green",
             iconMain: "check"
@@ -505,7 +505,7 @@ export default {
           this.confirmFieldRemove = false;
           this.$notify({
             title: this.$t("field_removed", {
-              field: this.$helpers.formatTitle(fieldName)
+              field: this.$helpers.formatField(fieldName, this.collection)
             }),
             color: "green",
             iconMain: "check"
