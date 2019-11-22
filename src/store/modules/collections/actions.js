@@ -12,6 +12,26 @@ import { i18n } from "../../../lang/";
 import _ from "lodash";
 import api from "../../../api";
 
+function updateTranslations(collection) {
+  if (_.isEmpty(collection.translation) === false) {
+    collection.translation.forEach(({ translation, locale }) => {
+      i18n.mergeLocaleMessage(locale, {
+        [`collections-${collection.collection}`]: translation
+      });
+    });
+  }
+
+  _.forEach(collection.fields, (fieldInfo, fieldKey) => {
+    if (_.isEmpty(fieldInfo.translation) === false) {
+      fieldInfo.translation.forEach(({ translation, locale }) => {
+        i18n.mergeLocaleMessage(locale, {
+          [`fields-${collection.collection}-${fieldKey}`]: translation
+        });
+      });
+    }
+  });
+}
+
 export function addField({ commit }, { collection, field }) {
   commit(ADD_FIELD, { collection, field });
 }
@@ -32,25 +52,7 @@ export async function getCollections({ commit }) {
   let { data: collections } = await api.getCollections();
 
   // Add the custom translations for user collections and fields to the i18n messages pool
-  _.forEach(collections, collection => {
-    if (_.isEmpty(collection.translation) === false) {
-      _.forEach(collection.translation, (value, locale) => {
-        i18n.mergeLocaleMessage(locale, {
-          [`collections-${collection.collection}`]: value
-        });
-      });
-    }
-
-    _.forEach(collection.fields, (fieldInfo, fieldKey) => {
-      if (_.isEmpty(fieldInfo.translation) === false) {
-        _.forEach(fieldInfo.translation, (translation, locale) => {
-          i18n.mergeLocaleMessage(locale, {
-            [`fields-${collection.collection}-${fieldKey}`]: translation
-          });
-        });
-      }
-    });
-  });
+  _.forEach(collections, updateTranslations);
 
   /*
    * directus_settings uses a different format for the values. Instead of
@@ -66,31 +68,13 @@ export async function getCollections({ commit }) {
   const { data: settingsFields } = await api.getSettingsFields();
 
   collections = _.keyBy(collections, "collection");
-
   collections.directus_settings.fields = _.keyBy(settingsFields, "field");
 
   commit(SET_COLLECTIONS, collections);
 }
 
 export function addCollection({ commit }, collection) {
-  if (_.isEmpty(collection.translation) === false) {
-    _.forEach(collection.translation, (value, locale) => {
-      i18n.mergeLocaleMessage(locale, {
-        [`collections-${collection.collection}`]: value
-      });
-    });
-  }
-
-  _.forEach(collection.fields, (fieldInfo, fieldKey) => {
-    if (_.isEmpty(fieldInfo.translation) === false) {
-      _.forEach(fieldInfo.translation, (translation, locale) => {
-        i18n.mergeLocaleMessage(locale, {
-          [`fields-${collection.collection}-${fieldKey}`]: translation
-        });
-      });
-    }
-  });
-
+  updateTranslations(collection);
   commit(ADD_COLLECTION, collection);
 }
 
@@ -98,6 +82,8 @@ export function removeCollection({ commit }, collection) {
   commit(DELETE_COLLECTION, collection);
 }
 
-export function updateCollection({ commit }, { collection, edits }) {
+export function updateCollection({ state, commit }, { collection, edits }) {
+  const collectionInfo = _.clone(state[collection]);
+  updateTranslations(_.merge({}, collectionInfo, edits));
   commit(UPDATE_COLLECTION, { collection, edits });
 }
