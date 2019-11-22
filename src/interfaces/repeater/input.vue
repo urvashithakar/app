@@ -4,6 +4,7 @@
     <draggable
       v-model="rows"
       handle=".drag-handle"
+      class="row-container"
       :class="{ dragging }"
       @start="dragging = true"
       @end="endDrag"
@@ -158,6 +159,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.row-container {
+  margin-bottom: 12px;
+}
 .notice {
   margin-bottom: 12px;
 }

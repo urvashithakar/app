@@ -15,7 +15,6 @@ export default {
 .sheet {
   min-height: var(--input-height);
   padding: 8px;
-  border: 2px solid var(--input-border-color);
   background-color: var(--input-background-color-alt);
   border-radius: var(--border-radius);
 }

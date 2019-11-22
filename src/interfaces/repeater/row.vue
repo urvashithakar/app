@@ -33,7 +33,7 @@
         </template>
       </div>
       <button type="button" @click="$emit('remove')">
-        <v-icon name="delete_outline" />
+        <v-icon name="delete_outline" class="remove" />
       </button>
     </div>
     <div v-if="inline === false" v-show="open" class="body">
@@ -82,19 +82,27 @@ export default {
 
 <style lang="scss" scoped>
 .repeater-row {
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .header {
   display: flex;
   align-items: center;
-  min-height: 32px;
+  min-height: 36px;
 
   .content {
+    --form-vertical-gap: 24px;
+    --form-horizontal-gap: 12px;
+    --type-label-size: 15px;
+    --input-height: 44px;
+    --input-font-size: 14px;
+    --input-label-margin: 4px;
+
     flex-grow: 1;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 8px;
+    padding: 0 8px;
 
     &.two-up {
       grid-template-columns: repeat(2, 1fr);
@@ -105,13 +113,21 @@ export default {
       min-height: 32px;
     }
   }
+  .remove {
+    transition: color var(--fast) var(--transition);
+    &:hover {
+      color: var(--danger);
+    }
+  }
 }
 
 .body {
   --form-vertical-gap: 24px;
+  --form-horizontal-gap: 12px;
   --type-label-size: 15px;
   --input-height: 44px;
   --input-font-size: 14px;
   --input-label-margin: 4px;
+  padding: 4px;
 }
 </style>
