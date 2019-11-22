@@ -100,7 +100,7 @@ const router = new Router({
                 listing page in question). By adding this param, it forces the update.
                 The listing view will remove the query on load so it doesn't clutter the URL too much
                */
-              path: `/:project/collections/${collection}?b=${bookmark.id}`
+              path: `/${store.state.currentProjectKey}/collections/${collection}?b=${bookmark.id}`
             });
           })
           .catch(error =>
