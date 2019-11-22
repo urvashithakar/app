@@ -56,6 +56,7 @@ import VTag from "./components/tag.vue";
 import VItemSelect from "./components/item-select/item-select.vue";
 import VProgress from "./components/progress.vue";
 import VUserPopover from "./components/user-popover.vue";
+import VSheet from "./components/sheet.vue";
 
 // Extensions
 Vue.component("v-ext-page", VExtPage);
@@ -112,3 +113,4 @@ Vue.component("v-contextual-menu", VContextualMenu);
 Vue.component("v-item-select", VItemSelect);
 Vue.component("v-progress", VProgress);
 Vue.component("v-user-popover", VUserPopover);
+Vue.component("v-sheet", VSheet);
