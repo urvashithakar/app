@@ -24,13 +24,6 @@
               :links="linksCollections"
             />
             <nav-menu
-              v-else-if="section.include && section.include === 'extensions'"
-              :key="section.id"
-              class="menu-section"
-              :title="$t('extensions')"
-              :links="linksExtensions"
-            />
-            <nav-menu
               v-else
               :key="section.id"
               class="menu-section"
@@ -100,7 +93,7 @@ export default {
     },
 
     // This is the default structure of the navigation pane
-    // By default it will list collections, bookmarks, and extensions
+    // By default it will list collections, bookmarks
     // This is the thing that will be overridden by the nav_override field
     // in directus_roles
     defaultNavStructure() {
@@ -112,10 +105,6 @@ export default {
         {
           title: "$t:bookmarks",
           include: "bookmarks"
-        },
-        {
-          title: "$t:extensions",
-          include: "extensions"
         }
       ];
     },
@@ -136,21 +125,6 @@ export default {
         name: this.$helpers.formatCollection(collection),
         icon
       }));
-    },
-
-    linksExtensions() {
-      const links = [];
-      const pages = this.$store.state.extensions.pages;
-
-      _.forEach(pages, (info, key) => {
-        links.push({
-          path: `/${this.currentProjectKey}/ext/${key}`,
-          name: info.name,
-          icon: info.icon
-        });
-      });
-
-      return links;
     }
   },
   methods: {

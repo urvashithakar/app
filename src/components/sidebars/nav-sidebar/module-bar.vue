@@ -38,6 +38,7 @@
         />
       </router-link>
     </template>
+
     <div class="spacer" />
 
     <router-link
@@ -137,6 +138,16 @@ export default {
         url: "https://docs.directus.io",
         name: this.$t("help_and_docs"),
         icon: "help"
+      });
+
+      const pages = this.$store.state.extensions.pages;
+
+      _.forEach(pages, (info, key) => {
+        modules.push({
+          url: `/${this.currentProjectKey}/ext/${key}`,
+          name: info.name,
+          icon: info.icon
+        });
       });
 
       if (this.$store.state.currentUser.admin === true) {
