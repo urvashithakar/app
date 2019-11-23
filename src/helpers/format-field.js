@@ -9,7 +9,7 @@ export default function formatField(field, collection) {
   }
 
   if (!collection || typeof collection !== "string") {
-    console.warn("[formatField]: Expected field to be a string");
+    console.warn("[formatField]: Expected collection to be a string");
     return fallback;
   }
 
