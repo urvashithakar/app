@@ -3,9 +3,9 @@
     <h3 v-if="title">{{ title }}</h3>
     <nav>
       <ul>
-        <li v-for="{ path, name, target, icon, color } in links" :key="path">
+        <li v-for="{ path, name, icon, color } in links" :key="path">
           <template v-if="path.startsWith('http')">
-            <a :href="path" :class="color || null" :target="target">
+            <a :href="path" :class="color || null" target="_blank" rel="noopener noreferrer">
               <v-icon class="icon" :name="icon || 'box'" color="sidebar-text-color" />
               {{ name }}
             </a>
