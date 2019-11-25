@@ -14,12 +14,14 @@
             <nav-bookmarks
               v-if="section.include && section.include === 'bookmarks' && bookmarks.length > 0"
               :key="section.id"
+              :title="section.title"
               class="menu-section"
               :bookmarks="bookmarks"
             />
             <nav-menu
               v-else-if="section.include && section.include === 'collections'"
               :key="section.id"
+              :title="section.title"
               class="menu-section"
               :links="linksCollections"
             />

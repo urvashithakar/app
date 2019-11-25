@@ -1,6 +1,6 @@
 <template>
   <div v-if="links.length > 0" class="nav-menu">
-    <h3 v-if="title">{{ title }}</h3>
+    <h3 v-if="title">{{ titleTranslated }}</h3>
     <nav>
       <ul>
         <li v-for="{ path, name, icon, color } in links" :key="path">
@@ -31,6 +31,15 @@ export default {
     links: {
       type: Array,
       required: true
+    }
+  },
+  computed: {
+    titleTranslated() {
+      if (this.title.startsWith("$t:")) {
+        return this.$t(this.title.substring(3));
+      }
+
+      return this.title;
     }
   }
 };
