@@ -6,7 +6,9 @@
         <v-icon name="broken_image" />
       </div>
       <button
-        v-if="!imgError && !editMode && isImage && options.edit.includes('image_editor')"
+        v-if="
+          canBeEdited && !imgError && !editMode && isImage && options.edit.includes('image_editor')
+        "
         type="button"
         title="Edit image"
         class="image-edit-start"
@@ -56,7 +58,7 @@
     <div v-else class="file">{{ fileType }}</div>
     <div class="toolbar">
       <!-- Default Toolbar -->
-      <div v-if="!editMode" class="original">
+      <div v-if="canBeEdited === false || !editMode" class="original">
         <a class="file-link" :href="url" target="_blank">
           <v-icon name="link" />
           {{ url }}
@@ -64,7 +66,7 @@
       </div>
 
       <!-- Image Edit Toolbar -->
-      <ul v-if="editMode" class="image-edit">
+      <ul v-if="canBeEdited && editMode" class="image-edit">
         <li>
           <div class="image-aspect-ratio">
             <v-icon name="image_aspect_ratio" />
@@ -132,6 +134,9 @@ export default {
     };
   },
   computed: {
+    canBeEdited() {
+      return this.values.filesize <= 1000000 && this.isImage;
+    },
     isImage() {
       switch (this.values.type) {
         case "image/jpeg":
