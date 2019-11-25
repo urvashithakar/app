@@ -29,7 +29,7 @@
           />
         </template>
         <template v-else>
-          <button type="button" class="preview" @click="open = !open">{{ displayValue }}</button>
+          <button type="button" class="preview" @click="$emit('open')">{{ displayValue }}</button>
         </template>
       </div>
       <button type="button" @click="$emit('remove')">
@@ -61,12 +61,11 @@ export default {
     template: {
       type: String,
       default: null
+    },
+    open: {
+      type: Boolean,
+      default: false
     }
-  },
-  data() {
-    return {
-      open: false
-    };
   },
   computed: {
     displayValue() {
@@ -87,21 +86,24 @@ export default {
 <style lang="scss" scoped>
 .repeater-row {
   margin-bottom: 8px;
+  padding: 0;
 }
 
 .header {
+  --form-vertical-gap: 24px;
+  --form-horizontal-gap: 12px;
+  --type-label-size: 15px;
+  --input-height: 44px;
+  --input-font-size: 14px;
+  --input-label-margin: 4px;
+  --input-background-color-alt: var(--input-background-color);
+
   display: flex;
   align-items: center;
-  min-height: 36px;
+  min-height: var(--input-height);
+  padding: var(--input-padding);
 
   .content {
-    --form-vertical-gap: 24px;
-    --form-horizontal-gap: 12px;
-    --type-label-size: 15px;
-    --input-height: 44px;
-    --input-font-size: 14px;
-    --input-label-margin: 4px;
-
     flex-grow: 1;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
@@ -132,6 +134,7 @@ export default {
   --input-height: 44px;
   --input-font-size: 14px;
   --input-label-margin: 4px;
+  --input-background-color-alt: var(--input-background-color);
   padding: 4px;
 }
 </style>
