@@ -9,9 +9,9 @@
     @close="$emit('close')"
   >
     <template slot="interface">
-      <template v-if="!existing">
-        <h1 class="type-heading-medium">{{ $t("choose_interface") }}</h1>
-      </template>
+      <h1 v-if="!existing" class="type-heading-medium">
+        {{ $t("field_setup_interface") }}
+      </h1>
       <v-notice v-if="interfaceName" color="gray" class="currently-selected">
         {{ $t("currently_selected", { thing: interfaces[interfaceName].name }) }}
       </v-notice>
@@ -72,11 +72,9 @@
     </template>
 
     <template v-if="interfaceName" slot="schema">
-      <template v-if="!existing">
-        <h1 class="type-heading-medium">
-          {{ $t("name_field", { field: $helpers.formatTitle(interfaces[interfaceName].name) }) }}
-        </h1>
-      </template>
+      <h1 v-if="!existing" class="type-heading-medium">
+        {{ $t("field_setup_schema") }}
+      </h1>
       <form class="schema" @submit.prevent>
         <div class="name">
           <label>
@@ -239,9 +237,9 @@
     </template>
 
     <template v-if="selectedInterfaceInfo && relation" slot="relation">
-      <template v-if="!existing">
-        <h1 class="type-heading-medium">{{ $t("relation_setup", { relation: $t(relation) }) }}</h1>
-      </template>
+      <h1 v-if="!existing" class="type-heading-medium">
+        {{ $t("field_setup_relation") }}
+      </h1>
 
       <form v-if="relation === 'm2o'" class="single">
         <p>{{ $t("this_collection") }}</p>
@@ -516,9 +514,9 @@
     </template>
 
     <template slot="options">
-      <template v-if="!existing">
-        <h1 class="type-heading-medium">{{ $t("almost_done_options") }}</h1>
-      </template>
+      <h1 v-if="!existing" class="type-heading-medium">
+        {{ $t("field_setup_options") }}
+      </h1>
 
       <label for="__width" class="type-label">{{ $t("field_width") }}</label>
       <v-simple-select v-model="width" name="__width">
@@ -1544,7 +1542,7 @@ export default {
 
 <style lang="scss" scoped>
 .type-heading-medium {
-  max-width: 80%;
+  // max-width: 80%;
   margin-bottom: 30px;
 }
 
@@ -1698,7 +1696,6 @@ details {
   margin-top: 60px;
   border-top: 2px solid var(--input-border-color);
   padding-top: 40px;
-  padding-bottom: 32px;
   summary {
     font-size: 18px;
     color: var(--note-text-color);
@@ -1798,8 +1795,8 @@ details {
 
   i {
     grid-area: f;
-    font-size: 20px;
-    color: var(--blue-grey-300);
+    color: var(--input-border-color);
+    transform: translateX(-2px);
   }
 }
 
