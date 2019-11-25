@@ -17,7 +17,7 @@
     :collection="collection"
     :values="values"
     :width="width"
-    class="v-ext-input"
+    class="v-ext-input selectable"
     @input="$emit('input', $event)"
     @setfield="$emit('setfield', $event)"
   >
