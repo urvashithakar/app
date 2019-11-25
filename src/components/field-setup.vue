@@ -1096,11 +1096,6 @@ export default {
       }
     },
     nextTab() {
-      if (this.existing && this.activeTab === "interface") {
-        this.initRelation();
-        return;
-      }
-
       if (this.existing) {
         return this.saveField();
       }
@@ -1136,7 +1131,10 @@ export default {
     },
     setInterface(id) {
       this.interfaceName = id;
-      this.nextTab();
+
+      if (!this.existing) {
+        this.nextTab();
+      }
     },
     saveField() {
       const fieldInfo = {
