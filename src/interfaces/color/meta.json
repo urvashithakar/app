@@ -7,39 +7,18 @@
     "length": 20
   },
   "options": {
-    "input": {
-      "name": "$t:input",
-      "comment": "$t:input_comment",
+    "format": {
+      "name": "Output Format",
+      "comment": "In what data format to save the value",
       "interface": "dropdown",
       "default": "hex",
       "options": {
         "choices": {
           "hex": "Hex",
           "rgb": "RGB",
-          "hsl": "HSL",
-          "cmyk": "CMYK"
+          "hsl": "HSL"
         }
       }
-    },
-    "output": {
-      "name": "$t:output",
-      "comment": "$t:output_comment",
-      "interface": "dropdown",
-      "default": "hex",
-      "options": {
-        "choices": {
-          "hex": "Hex",
-          "rgb": "RGB",
-          "hsl": "HSL",
-          "cmyk": "CMYK"
-        }
-      }
-    },
-    "formatValue": {
-      "name": "$t:format",
-      "comment": "$t:format_comment",
-      "interface": "toggle",
-      "default": true
     },
     "palette": {
       "name": "$t:palette",
@@ -56,12 +35,6 @@
     "paletteOnly": {
       "name": "$t:palette_only",
       "comment": "$t:palette_only_comment",
-      "interface": "toggle",
-      "default": false
-    },
-    "allowAlpha": {
-      "name": "$t:allow_alpha",
-      "comment": "$t:allow_alpha_comment",
       "interface": "toggle",
       "default": false
     }
