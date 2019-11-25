@@ -356,7 +356,7 @@
           </option>
         </v-simple-select>
 
-        <v-icon name="arrow_forward" size="20" />
+        <v-icon name="arrow_forward" size="24" />
 
         <p>{{ $t("junction_collection") }}</p>
 
@@ -458,7 +458,7 @@
           @change="createM2Mjunction = !createM2Mjunction"
         />
 
-        <v-icon name="arrow_backward" />
+        <v-icon name="arrow_backward" size="24" />
 
         <p>{{ $t("related_collection") }}</p>
 
@@ -1856,8 +1856,8 @@ details {
 
   i {
     grid-area: l;
-    font-size: 20px;
-    color: var(--blue-grey-300);
+    color: var(--input-border-color);
+    transform: translateX(-2px);
 
     &:last-of-type {
       grid-area: s;
