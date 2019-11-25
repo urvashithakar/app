@@ -393,9 +393,7 @@ export default {
           });
 
           this.$notify({
-            title: this.$t("field_updated", {
-              field: this.$helpers.formatField(fieldInfo.field, fieldInfo.collection)
-            }),
+            title: this.$t("field_updated"),
             color: "green",
             iconMain: "check"
           });
@@ -405,9 +403,7 @@ export default {
           this.fields = [...this.fields, savedFieldInfo];
 
           this.$notify({
-            title: this.$t("field_created", {
-              field: this.$helpers.formatField(fieldInfo.field, fieldInfo.collection)
-            }),
+            title: this.$t("field_created"),
             color: "green",
             iconMain: "check"
           });
@@ -504,9 +500,7 @@ export default {
           this.fieldToBeRemoved = null;
           this.confirmFieldRemove = false;
           this.$notify({
-            title: this.$t("field_removed", {
-              field: this.$helpers.formatField(fieldName, this.collection)
-            }),
+            title: this.$t("field_removed"),
             color: "green",
             iconMain: "check"
           });
