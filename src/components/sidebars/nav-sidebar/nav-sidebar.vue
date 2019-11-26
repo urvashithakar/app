@@ -101,11 +101,9 @@ export default {
     defaultNavStructure() {
       return [
         {
-          title: "$t:collections",
           include: "collections"
         },
         {
-          title: "$t:bookmarks",
           include: "bookmarks"
         }
       ];
