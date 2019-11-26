@@ -13,19 +13,16 @@
       "interface": "repeater",
       "type": "JSON",
       "options": {
-        "dataType": "value",
         "fields": [
           {
             "field": "name",
             "interface": "text-input",
-            "type": "String",
-            "preview": true
+            "type": "String"
           },
           {
             "field": "value",
             "interface": "text-input",
-            "type": "String",
-            "index": true
+            "type": "String"
           }
         ]
       },
