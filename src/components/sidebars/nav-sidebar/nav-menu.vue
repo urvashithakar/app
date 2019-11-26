@@ -48,9 +48,15 @@ export default {
 <style lang="scss" scoped>
 h3 {
   margin-bottom: 8px;
-  margin-top: 8px;
+  margin-top: 16px;
   color: var(--sidebar-text-color-alt);
   font-size: var(--type-note-size);
+}
+
+.menu-section + .menu-section {
+  h3 {
+    margin-top: 8px;
+  }
 }
 
 .icon {
