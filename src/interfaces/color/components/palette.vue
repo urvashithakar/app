@@ -3,6 +3,7 @@
     <button
       v-for="color in palette"
       :key="color"
+      v-tooltip="color.toUpperCase()"
       :style="{ backgroundColor: color }"
       class="color"
       @click="$emit('input', color)"

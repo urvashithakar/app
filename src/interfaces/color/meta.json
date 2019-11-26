@@ -29,7 +29,8 @@
         "wrapWithDelimiter": false
       },
       "default": [
-        "#f44336", "#9C27B0", "#039BE5", "#4CAF50", "#FFC107"
+        "#E91E63", "#F44336", "#FF9800", "#FFC107", "#FFEB3B", "#CDDC39",
+        "#4CAF50", "#00BCD4", "#2196F3", "#3F51B5", "#9C27B0", "#607D8B"
       ]
     },
     "paletteOnly": {

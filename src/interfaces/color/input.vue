@@ -1,6 +1,11 @@
 <template>
   <div class="interface-color">
-    <hex :readonly="readonly || options.paletteOnly" :value="formattedValue" @input="emitValue" />
+    <hex
+      :readonly="readonly || options.paletteOnly"
+      :value="formattedValue"
+      class="hex-input"
+      @input="emitValue"
+    />
     <palette
       v-if="options.palette.length > 0 && !readonly"
       :palette="options.palette"
@@ -27,9 +32,11 @@ export default {
       if (!this.value) return null;
 
       if (this.options.format !== "hex") {
-        return Color[this.options.format](this.value.split(",").map(n => +n)).hex();
+        return Color[this.options.format](this.value.split(",").map(n => +n))
+          .hex()
+          .toUpperCase();
       } else {
-        return this.value;
+        return this.value.toUpperCase();
       }
     }
   },
@@ -44,8 +51,8 @@ export default {
             .array()
             .join(",")
         );
-      } else {
-        this.$emit("input", value);
+      } else if (value) {
+        this.$emit("input", value.toUpperCase());
       }
     }
   }
@@ -56,11 +63,17 @@ export default {
 .interface-color {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   align-items: center;
 
-  > * {
-    flex-basis: var(--form-column-width);
+  .hex-input {
+    width: 136px;
+    flex-basis: 136px;
+    flex-shrink: 0;
+    margin-right: 12px;
+  }
+
+  .palette {
+    flex-grow: 1;
   }
 }
 </style>
