@@ -5,7 +5,7 @@
     :name="name"
     :placeholder="$t('interfaces-user-roles-choose_role')"
     :options="selectOptions"
-    :value="value && value.id"
+    :value="typeof value === 'object' ? value.id : value"
     @input="emitValue"
   ></v-select>
 </template>
