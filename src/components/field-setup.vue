@@ -1083,7 +1083,7 @@ export default {
     this.useFieldInfo();
     this.initRelation();
 
-    this.activeTab = this.existing ? "schema" : "interface";
+    this.activeTab = this.existing ? "options" : "interface";
   },
   methods: {
     interfaceSubtitles(ext) {
