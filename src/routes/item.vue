@@ -591,9 +591,7 @@ export default {
     }
   },
   created() {
-    if (this.isNew) {
-      this.stageDefaultValues();
-    } else {
+    if (this.isNew === false) {
       this.fetchActivity();
       this.checkOtherUsers();
     }
@@ -615,9 +613,6 @@ export default {
     this.formtrap.unbind("mod+s");
   },
   methods: {
-    stageDefaultValues() {
-      _.forEach(this.defaultValues, (value, field) => this.stageValue({ field, value }));
-    },
     stageValue({ field, value }) {
       this.$store.dispatch("stageValue", { field, value });
     },
