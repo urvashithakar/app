@@ -16,7 +16,7 @@
       >
         <v-icon
           class="icon"
-          :name="singleModule.icon"
+          :name="singleModule.icon || 'box'"
           :color="singleModule.color || 'blue-grey-400'"
         />
       </a>
@@ -33,7 +33,7 @@
       >
         <v-icon
           class="icon"
-          :name="singleModule.icon"
+          :name="singleModule.icon || 'box'"
           :color="singleModule.color || 'blue-grey-400'"
         />
       </router-link>
