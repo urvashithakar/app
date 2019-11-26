@@ -451,6 +451,7 @@
         />
 
         <v-checkbox
+          v-if="!existing"
           id="createM2Mjunction"
           value="m2mjunction"
           :label="$t('auto_generate')"
