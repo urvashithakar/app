@@ -140,9 +140,9 @@ export default {
         icon: "help"
       });
 
-      const pages = this.$store.state.extensions.pages;
+      const moduleExtensions = this.$store.state.extensions.modules;
 
-      _.forEach(pages, (info, key) => {
+      _.forEach(moduleExtensions, (info, key) => {
         modules.push({
           url: `/${this.currentProjectKey}/ext/${key}`,
           name: info.name,

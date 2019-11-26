@@ -92,7 +92,7 @@ export default {
       if (
         Object.values(extensions.interfaces).length === 0 &&
         Object.values(extensions.layouts).length === 0 &&
-        Object.values(extensions.pages).length === 0
+        Object.values(extensions.modules).length === 0
       ) {
         return true;
       }
