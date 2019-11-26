@@ -57,7 +57,10 @@
             <span>
               {{ $t(operators[filter.operator]) }}
               <v-icon name="expand_more" size="18" />
-              <select @change="updateFilter(i, 'operator', $event.target.value)">
+              <select
+                :value="filter.operator"
+                @change="updateFilter(i, 'operator', $event.target.value)"
+              >
                 <option v-for="(name, operator) in operators" :key="operator" :value="operator">
                   {{ $t(name) }}
                 </option>
