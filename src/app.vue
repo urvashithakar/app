@@ -25,7 +25,7 @@
     v-else-if="!publicRoute"
     id="app"
     :style="{
-      '--brand': `var(--${color})`
+      '--brand': color.startsWith('#') ? color : `var(--${color})`
     }"
   >
     <div v-if="hydrated" class="directus">
