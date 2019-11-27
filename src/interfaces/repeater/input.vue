@@ -175,6 +175,7 @@ export default {
 .notice {
   margin-bottom: 12px;
 }
+
 .add-new {
   display: flex;
   align-items: center;

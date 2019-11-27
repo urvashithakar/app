@@ -103,6 +103,11 @@ export default {
   min-height: var(--input-height);
   padding: var(--input-padding);
 
+  .drag-handle {
+    color: var(--input-icon-color);
+    cursor: grab;
+  }
+
   .content {
     flex-grow: 1;
     display: grid;
@@ -119,8 +124,10 @@ export default {
       min-height: 32px;
     }
   }
+
   .remove {
     transition: color var(--fast) var(--transition);
+    color: var(--input-icon-color);
     &:hover {
       color: var(--danger);
     }
