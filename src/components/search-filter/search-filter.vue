@@ -53,8 +53,8 @@
             {{ fields[filter.field] }} {{ operators[filter.operator] }}
           </invisible-label>
           <div class="name">
-            <p>{{ fields[filter.field] }}</p>
-            <span>
+            <p class="field-name">{{ fields[filter.field] }}</p>
+            <span class="operator-name">
               {{ $t(operators[filter.operator]) }}
               <v-icon name="expand_more" size="18" />
               <select
@@ -67,7 +67,7 @@
               </select>
             </span>
             <button class="remove" @click="deleteFilter(i)">
-              {{ $t("remove") }}
+              <v-icon name="delete_outline" />
             </button>
           </div>
           <v-input
@@ -264,16 +264,25 @@ export default {
     align-items: center;
     margin-bottom: 4px;
     color: var(--input-placeholder-color);
-    font-weight: 500;
+    font-weight: var(--weight-bold);
 
-    span {
-      position: relative;
+    .field-name {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       color: var(--input-text-color);
-      margin-left: 4px;
+    }
+
+    .operator-name {
+      position: relative;
+      margin-left: 8px;
       padding-right: 2em;
       flex-grow: 1;
       display: flex;
       align-items: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
 
       select {
         position: absolute;
@@ -297,9 +306,16 @@ export default {
       transition-property: color, opacity;
       color: var(--input-text-color);
 
+      i {
+        color: var(--input-icon-color);
+        margin-left: 8px;
+      }
+
       &:hover,
       .user-is-tabbing &:focus {
-        color: var(--danger);
+        i {
+          color: var(--danger);
+        }
         opacity: 1;
       }
     }
@@ -472,6 +488,8 @@ export default {
       }
 
       .search {
+        border-top-left-radius: var(--border-radius);
+        border-top-right-radius: var(--border-radius);
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
       }
@@ -487,7 +505,7 @@ export default {
 
     &.open,
     &:focus-within {
-      width: 300px;
+      width: 344px;
     }
   }
 }
