@@ -17,7 +17,7 @@
           :options="option.options"
           :value="(value || {})[optionID]"
           :fields="interfaceOptions"
-          :values="value || {}"
+          :values="val"
           @input="stageValue(optionID, $event)"
         />
         <p class="note" v-html="$helpers.snarkdown(option.comment || '')" />
@@ -44,6 +44,9 @@ export default {
     interfaceOptions() {
       if (!this.interfaceName) return;
       return this.$store.state.extensions.interfaces[this.interfaceName].options;
+    },
+    val() {
+      return Array.isArray(this.value) ? {} : this.value;
     }
   },
   methods: {
@@ -59,8 +62,8 @@ export default {
 <style lang="scss" scoped>
 label {
   margin-bottom: 8px;
-  font-size: var(--size-2);
-  margin-bottom: 12px;
+  font-size: 15px;
+  margin-bottom: 8px;
 }
 
 div.options {
@@ -69,16 +72,6 @@ div.options {
   &:last-of-type {
     margin-bottom: 0;
   }
-}
-
-form {
-  --form-vertical-gap: 24px;
-  --form-horizontal-gap: 12px;
-  --type-label-size: 15px;
-  --input-height: 44px;
-  --input-font-size: 14px;
-  --input-label-margin: 4px;
-  --input-background-color-alt: var(--input-background-color);
 }
 
 .note {

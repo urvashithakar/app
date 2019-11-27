@@ -1,6 +1,6 @@
 <template>
-  <RepeaterInterface
-    :id="name"
+  <v-ext-input
+    id="repeater"
     type="json"
     :name="name"
     :input-name="id"
@@ -21,12 +21,8 @@
 
 <script>
 import mixin from "@directus/extension-toolkit/mixins/interface";
-import RepeaterInterface from "@/interfaces/repeater/input";
 
 export default {
-  components: {
-    RepeaterInterface
-  },
   mixins: [mixin],
   computed: {
     repeaterOptions() {

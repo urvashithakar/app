@@ -16,6 +16,7 @@
         :inline="inline"
         :template="options.template"
         :open="open === index"
+        :placeholder="options.placeholder"
         @open="toggleOpen(index)"
         @input="updateRow(index, $event)"
         @remove="removeRow(index)"
@@ -23,7 +24,7 @@
     </draggable>
     <div v-if="addButtonVisible" class="add-new" @click="addRow">
       <v-icon name="add" color="input-icon-color" />
-      {{ $t("add_new") }}
+      {{ options.createItemText }}
     </div>
   </div>
 </template>

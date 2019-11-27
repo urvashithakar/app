@@ -28,9 +28,14 @@
             "
           />
         </template>
-        <template v-else>
-          <button type="button" class="preview" @click="$emit('open')">{{ displayValue }}</button>
-        </template>
+        <button
+          v-else
+          type="button"
+          :class="showPlaceholder ? 'placeholder' : 'preview'"
+          @click="$emit('open')"
+        >
+          {{ showPlaceholder ? placeholder : displayValue }}
+        </button>
       </div>
       <button type="button" @click="$emit('remove')">
         <v-icon name="delete_outline" class="remove" />
@@ -43,6 +48,8 @@
 </template>
 
 <script>
+import getFieldsFromTemplate from "@/helpers/get-fields-from-template";
+
 export default {
   name: "RepeaterRow",
   props: {
@@ -65,19 +72,30 @@ export default {
     open: {
       type: Boolean,
       default: false
+    },
+    placeholder: {
+      type: String,
+      required: true
     }
   },
   computed: {
     displayValue() {
       if (!this.template) {
         return null;
-        // return $t("new_item");
       }
 
       let preview = this.$helpers.micromustache.render(this.template, this.row);
-      // return preview.length > 0 ? preview : $t("new_item");
 
       return preview;
+    },
+    showPlaceholder() {
+      const fields = getFieldsFromTemplate(this.template);
+
+      const fieldsHaveValue = fields.every(field => {
+        return this.row[field] !== null && this.row[field]?.length > 0;
+      });
+
+      return fieldsHaveValue === false;
     }
   }
 };
@@ -119,7 +137,13 @@ export default {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    .preview {
+    .placeholder {
+      color: var(--input-placeholder-color);
+      font-style: italic;
+    }
+
+    .preview,
+    .placeholder {
       text-align: left;
       min-height: 32px;
     }
@@ -142,6 +166,6 @@ export default {
   --input-font-size: 14px;
   --input-label-margin: 4px;
   --input-background-color-alt: var(--input-background-color);
-  padding: 4px;
+  padding: 8px;
 }
 </style>
