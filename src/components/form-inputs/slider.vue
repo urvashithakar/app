@@ -39,7 +39,7 @@ export default {
     },
     value: {
       type: Number,
-      required: true
+      default: null
     },
     min: {
       type: Number,
