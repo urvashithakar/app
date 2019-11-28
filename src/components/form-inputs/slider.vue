@@ -90,7 +90,6 @@ export default {
     transition: border-color var(--fast) var(--transition);
     padding: 12px 0 0;
     border-radius: 2px;
-    background-color: var(--input-background-color);
 
     flex-grow: 1;
     flex-shrink: 0;
