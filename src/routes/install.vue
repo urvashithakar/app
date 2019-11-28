@@ -61,7 +61,7 @@
               name="project"
               type="text"
               required
-              pattern="^[a-z_-]+$"
+              pattern="^[0-9a-z_-]+$"
               @input="setProjectKey"
             />
           </div>
