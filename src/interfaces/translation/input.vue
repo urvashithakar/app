@@ -11,7 +11,7 @@
       {{ $t("interfaces-translation-translation_no_languages") }}
     </p>
   </div>
-  <div v-else-if="activeLanguage != null" class="translation">
+  <div v-else-if="activeLanguage" class="translation">
     <v-simple-select
       v-model="activeLanguage"
       class="language-select"
@@ -114,22 +114,14 @@ export default {
               name: language[nameField]
             };
           });
-          /*
-            When no default translation language is selected,display the placeholder and
-            when updating item if translation is added, display it otherwise display
-            the placeholder.
-            Fix 2099
-          */
-          if (this.values.translation == null) {
-            this.activeLanguage = this.options.defaultLanguage ? this.options.defaultLanguage : 0;
-          } else {
-            this.activeLanguage =
-              languages[0][
-                _.find(this.languageFields, {
-                  primary_key: true
-                }).field
-              ];
-          }
+
+          this.activeLanguage =
+            this.options.defaultLanguage ||
+            languages[0][
+              _.find(this.languageFields, {
+                primary_key: true
+              }).field
+            ];
         });
     },
     stageValue({ field, value }) {
